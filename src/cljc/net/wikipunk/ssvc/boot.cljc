@@ -6,7 +6,9 @@
    [net.wikipunk.rdf.owl]
    [net.wikipunk.rdf.xsd]
    [net.wikipunk.rdf.spdx]
-   [net.wikipunk.rdf.d3fend]))
+   [net.wikipunk.rdf.d3fend]
+   [net.wikipunk.rdf.dcterms]
+   [net.wikipunk.rdf.prov]))
 
 (def ssvc
   {:rdf/type         :rdfa/PrefixMapping

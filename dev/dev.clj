@@ -7,6 +7,7 @@
   See also https://github.com/stuartsierra/component.repl"
   (:require
    [clj-http.client :as http]
+   [clojure.data.csv :as csv]
    [clojure.datafy :refer [datafy]]
    [clojure.edn :as edn]
    [clojure.java.io :as io]

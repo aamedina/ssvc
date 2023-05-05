@@ -1,11 +1,17 @@
 (ns net.wikipunk.rdf.ssvc
-  "An ontology representing the concepts and relationships in SSVC scores"
+  "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers."
   {:dcat/downloadURL "resources/ssvc.ttl",
+   :prov/wasDerivedFrom
+   ["https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"
+    "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"],
    :rdf/ns-prefix-map {"d3fend"
                        "http://d3fend.mitre.org/ontologies/d3fend.owl#",
+                       "dcterms" "http://purl.org/dc/terms/",
                        "owl" "http://www.w3.org/2002/07/owl#",
+                       "prov" "http://www.w3.org/ns/prov#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
+                       "skos" "http://www.w3.org/2004/02/skos/core#",
                        "spdx" "http://spdx.org/rdf/terms#",
                        "ssvc" "https://wikipunk.net/ssvc/",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
@@ -13,8 +19,10 @@
    :rdfa/prefix "ssvc",
    :rdfa/uri "https://wikipunk.net/ssvc/",
    :rdfs/comment
-   "An ontology representing the concepts and relationships in SSVC scores",
-   :rdfs/label "SSVC Ontology"}
+   "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers.",
+   :rdfs/label "Stakeholder-Specific Vulnerability Categorization Ontology",
+   :rdfs/seeAlso
+   ["https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"]}
   (:refer-clojure :exclude [key]))
 
 (def ComplexDecisionType
@@ -40,12 +48,14 @@
    :rdfs/label "Decision Point"})
 
 (def DecisionTree
-  "A decision tree used in computing SSVC scores for a vulnerability"
+  "A ssvc:DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."
   {:db/ident :ssvc/DecisionTree,
    :rdf/type :owl/Class,
    :rdfs/comment
-   "A decision tree used in computing SSVC scores for a vulnerability",
-   :rdfs/label "Decision Tree"})
+   "A decision tree used in computing SSVC scores for a vulnerability.",
+   :rdfs/label "Decision Tree",
+   :skos/definition
+   "A ssvc:DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."})
 
 (def DecisionType
   "A decision type, which can be simple, complex, or final"

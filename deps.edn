@@ -1,6 +1,8 @@
 {:deps
  {org.clojure/clojure
-  {:mvn/version "1.11.1"}
+  {:mvn/version "1.12.0-alpha3"}
+  org.clojure/data.csv
+  {:mvn/version "1.0.1"}
   io.github.aamedina/rdf
   {:git/sha "6e6b2fb8c7fff10ed5277510c5ad2560bea87e67"}}
  :paths ["src/clj" "src/cljc" "classes" "resources"]

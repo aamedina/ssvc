@@ -1,18 +1,27 @@
 @prefix : <https://wikipunk.net/ssvc/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix spdx: <http://spdx.org/rdf/terms#> .
 @prefix d3fend: <http://d3fend.mitre.org/ontologies/d3fend.owl#>
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 : a owl:Ontology ;
-  rdfs:label "SSVC Ontology" ;
-  rdfs:comment "An ontology representing the concepts and relationships in SSVC scores" .
+  prov:wasDerivedFrom (
+    <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json>
+    <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json>
+    ) ;
+  rdfs:label "Stakeholder-Specific Vulnerability Categorization Ontology" ;
+  rdfs:comment  "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers." ;
+  rdfs:seeAlso <https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf> .
 
 :DecisionTree a owl:Class ;
   rdfs:label "Decision Tree" ;
-  rdfs:comment "A decision tree used in computing SSVC scores for a vulnerability" .
+  rdfs:comment "A decision tree used in computing SSVC scores for a vulnerability." ;
+  skos:definition "A ssvc:DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point." .
 
 :DecisionPoint a owl:Class ;
   rdfs:label "Decision Point" ;
@@ -43,6 +52,10 @@
 
 :FinalDecisionType a :DecisionType ;
   rdfs:label "Final Decision Type" .
+
+:ComputedScore a owl:Class ;
+  rdfs:label "Computed Score" ;
+  rdfs:comment "A computed SSVC score representing the path in the decision tree" .
 
 :hasDecisionPoint a owl:ObjectProperty ;
   rdfs:label "Has Decision Point" ;
@@ -93,10 +106,6 @@
   rdfs:comment "Relates a decision point to its parent decision point" ;
   rdfs:domain :DecisionPoint ;
   rdfs:range :DecisionPoint .
-
-:ComputedScore a owl:Class ;
-  rdfs:label "Computed Score" ;
-  rdfs:comment "A computed SSVC score representing the path in the decision tree" .
 
 :computed a owl:DatatypeProperty ;
   rdfs:label "Computed" ;

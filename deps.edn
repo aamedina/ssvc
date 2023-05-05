@@ -1,0 +1,25 @@
+{:deps
+ {org.clojure/clojure
+  {:mvn/version "1.11.1"}
+  io.github.aamedina/rdf
+  {:git/sha "6e6b2fb8c7fff10ed5277510c5ad2560bea87e67"}}
+ :paths ["src/clj" "src/cljc" "classes" "resources"]
+ :aliases
+ {:dev
+  {:extra-deps
+   {com.walmartlabs/schematic
+    {:mvn/version "1.3.0"}
+    com.stuartsierra/component.repl
+    {:mvn/version "0.2.0"}
+    org.clojure/test.check
+    {:mvn/version "1.1.1"}
+    org.clojure/tools.namespace
+    {:mvn/version "1.3.0"}
+    org.slf4j/slf4j-simple
+    {:mvn/version "1.7.36"}
+    vlaaad/reveal
+    {:mvn/version "1.3.277"}}
+   :extra-paths ["dev"]
+   :jvm-opts    ["-XX:-OmitStackTraceInFastThrow"
+                 "-XX:+HeapDumpOnOutOfMemoryError"
+                 "-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"]}}}

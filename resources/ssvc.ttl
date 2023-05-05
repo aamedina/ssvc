@@ -1,0 +1,165 @@
+@prefix : <https://wikipunk.net/ssvc/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+@prefix d3fend: <http://d3fend.mitre.org/ontologies/d3fend.owl#>
+
+: a owl:Ontology ;
+  rdfs:label "SSVC Ontology" ;
+  rdfs:comment "An ontology representing the concepts and relationships in SSVC scores" .
+
+:DecisionTree a owl:Class ;
+  rdfs:label "Decision Tree" ;
+  rdfs:comment "A decision tree used in computing SSVC scores for a vulnerability" .
+
+:DecisionPoint a owl:Class ;
+  rdfs:label "Decision Point" ;
+  rdfs:comment "A node in the decision tree, including the root node, with a label and two or more options" .
+
+:Option a owl:Class ;
+  rdfs:label "Option" ;
+  rdfs:comment "An option within a decision point" .
+
+:OptionPattern a owl:Class ;
+  rdfs:label "Option Pattern" ;
+  rdfs:comment "A pattern within an option in the decision tree" .
+
+:DecisionType a owl:Class ;
+  rdfs:label "Decision Type" ;
+  rdfs:comment "A decision type, which can be simple, complex, or final" ;
+  owl:oneOf (
+    :SimpleDecisionType
+    :ComplexDecisionType
+    :FinalDecisionType
+    ) .
+
+:SimpleDecisionType a :DecisionType ;
+  rdfs:label "Simple Decision Type" .
+
+:ComplexDecisionType a :DecisionType ;
+  rdfs:label "Complex Decision Type" .
+
+:FinalDecisionType a :DecisionType ;
+  rdfs:label "Final Decision Type" .
+
+:hasDecisionPoint a owl:ObjectProperty ;
+  rdfs:label "Has Decision Point" ;
+  rdfs:comment "Relates a decision tree to its decision points" ;
+  rdfs:domain :DecisionTree ;
+  rdfs:range :DecisionPoint .
+
+:hasOption a owl:ObjectProperty ;
+  rdfs:label "Has Option" ;
+  rdfs:comment "Relates a decision point to its options" ;
+  rdfs:domain :DecisionPoint ;
+  rdfs:range :Option .
+
+:hasDecisionType a owl:ObjectProperty ;
+  rdfs:label "Has Decision Type" ;
+  rdfs:comment "Relates a decision point to its decision type" ;
+  rdfs:domain :DecisionPoint ;
+  rdfs:range :DecisionType .
+
+:label a owl:DatatypeProperty ;
+  rdfs:label "Label" ;
+  rdfs:comment "A short label that captures a short name of a decision point, option, or decision type" ;
+  rdfs:range xsd:string .
+
+:key a owl:DatatypeProperty ;
+  rdfs:label "Key" ;
+  rdfs:comment "An optional short key that identifies a decision point or option in the SSVC score vector form" ;
+  rdfs:range xsd:string .
+
+:description a owl:DatatypeProperty ;
+  rdfs:label "Description" ;
+  rdfs:comment "A description that provides full information about an option" ;
+  rdfs:range xsd:string .
+
+:color a owl:DatatypeProperty ;
+  rdfs:label "Color" ;
+  rdfs:comment "An optional color to represent the final edge node or final recommended action provided by the SSVC tree" ;
+  rdfs:range xsd:string .
+
+:hasChild a owl:ObjectProperty ;
+  rdfs:label "Has Child" ;
+  rdfs:comment "Relates a decision point to its child decision points" ;
+  rdfs:domain :DecisionPoint ;
+  rdfs:range :DecisionPoint .
+
+:hasParent a owl:ObjectProperty ;
+  rdfs:label "Has Parent" ;
+  rdfs:comment "Relates a decision point to its parent decision point" ;
+  rdfs:domain :DecisionPoint ;
+  rdfs:range :DecisionPoint .
+
+:ComputedScore a owl:Class ;
+  rdfs:label "Computed Score" ;
+  rdfs:comment "A computed SSVC score representing the path in the decision tree" .
+
+:computed a owl:DatatypeProperty ;
+  rdfs:label "Computed" ;
+  rdfs:comment "A short vector representation of an SSVC computed decision score" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:string .
+
+:options a owl:ObjectProperty ;
+  rdfs:label "Options" ;
+  rdfs:comment "Relates a computed score to the options in the decision tree" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range :Option .
+
+:timestamp a owl:DatatypeProperty ;
+  rdfs:label "Timestamp" ;
+  rdfs:comment "Date and time in ISO format (ISO 8601)" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:dateTime .
+
+:role a owl:DatatypeProperty ;
+  rdfs:label "Role" ;
+  rdfs:comment "Roles defined in the SSVC spec and optional in the SSVC provision schema" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:string .
+
+:version a owl:DatatypeProperty ;
+  rdfs:label "Version" ;
+  rdfs:comment "Version of the SSVC that was used in this decision, in semver format" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:string .
+
+:decision_tree a owl:ObjectProperty ;
+  rdfs:label "Decision Tree" ;
+  rdfs:comment "The full decision tree that was used for this SSVC computed score" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range :DecisionTree .
+
+:id a owl:DatatypeProperty ;
+  rdfs:label "ID" ;
+  rdfs:comment "Identifier for a vulnerability (CVE, CERT/CC VU#, OSV id, Bugtraq, etc.)" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:string .
+
+:decision_tree_url a owl:DatatypeProperty ;
+  rdfs:label "Decision Tree URL" ;
+  rdfs:comment "A URL that points to the decision tree used to make this computed decision" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:anyURI .
+
+:schema a owl:DatatypeProperty ;
+  rdfs:label "Schema" ;
+  rdfs:comment "A URL that points to the schema used for the decision tree to make this computed decision" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:anyURI .
+
+:generator a owl:DatatypeProperty ;
+  rdfs:label "Generator" ;
+  rdfs:comment "Identify the software or tool that was used to generate this Computed JSON output, optionally append the version of the tool" ;
+  rdfs:domain :ComputedScore ;
+  rdfs:range xsd:string .
+
+:hasOptionPattern a owl:ObjectProperty ;
+  rdfs:label "Has Option Pattern" ;
+  rdfs:comment "Relates an option to the option patterns within it" ;
+  rdfs:domain :Option ;
+  rdfs:range :OptionPattern .

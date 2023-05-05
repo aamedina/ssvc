@@ -167,7 +167,7 @@
   rdfs:label "Has Option Pattern" ;
   rdfs:comment "Relates an option to the option patterns within it" ;
   rdfs:domain :Option ;
-  rdfs:range :xsd:string .
+  rdfs:range xsd:string .
 
 :Exploitation a :DecisionPoint ;
   rdfs:label "Exploitation" ;

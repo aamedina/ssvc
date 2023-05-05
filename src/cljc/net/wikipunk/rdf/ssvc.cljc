@@ -302,7 +302,7 @@
    :rdfs/comment "Relates an option to the option patterns within it",
    :rdfs/domain  :ssvc/Option,
    :rdfs/label   "Has Option Pattern",
-   :rdfs/range   :ssvc/xsd:string})
+   :rdfs/range   :xsd/string})
 
 (def hasParent
   "Relates a decision point to its parent decision point"

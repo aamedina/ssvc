@@ -25,6 +25,31 @@
    ["https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"]}
   (:refer-clojure :exclude [key]))
 
+(def Automatable
+  "A decision point representing whether an attacker can reliably automate creating exploitation events for a given vulnerability, including reconnaissance, weaponization, delivery, and exploitation steps in the kill chain."
+  {:db/ident :ssvc/Automatable,
+   :rdf/type :ssvc/DecisionPoint,
+   :rdfs/comment
+   "A decision point representing whether an attacker can reliably automate creating exploitation events for a given vulnerability, including reconnaissance, weaponization, delivery, and exploitation steps in the kill chain.",
+   :rdfs/label "Automatable",
+   :ssvc/hasOption [:ssvc/AutomatableYes :ssvc/AutomatableNo]})
+
+(def AutomatableNo
+  "Attackers cannot reliably automate steps 1-4 of the kill chain for this vulnerability."
+  {:db/ident :ssvc/AutomatableNo,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "Attackers cannot reliably automate steps 1-4 of the kill chain for this vulnerability.",
+   :rdfs/label "No"})
+
+(def AutomatableYes
+  "Attackers can reliably automate steps 1-4 of the kill chain for this vulnerability."
+  {:db/ident :ssvc/AutomatableYes,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "Attackers can reliably automate steps 1-4 of the kill chain for this vulnerability.",
+   :rdfs/label "Yes"})
+
 (def ComplexDecisionType
   "Complex Decision Type"
   {:db/ident   :ssvc/ComplexDecisionType,
@@ -67,6 +92,40 @@
    :rdfs/comment "A decision type, which can be simple, complex, or final",
    :rdfs/label   "Decision Type"})
 
+(def Exploitation
+  "A decision point representing the current state of exploitation of a vulnerability, focusing on the present situation rather than predicting future exploitation."
+  {:db/ident :ssvc/Exploitation,
+   :rdf/type :ssvc/DecisionPoint,
+   :rdfs/comment
+   "A decision point representing the current state of exploitation of a vulnerability, focusing on the present situation rather than predicting future exploitation.",
+   :rdfs/label "Exploitation",
+   :ssvc/hasOption
+   [:ssvc/ExploitationActive :ssvc/ExploitationPoC :ssvc/ExploitationNone]})
+
+(def ExploitationActive
+  "Shared, observable, reliable evidence that the exploit is being used in the wild by real attackers; there is credible public reporting."
+  {:db/ident :ssvc/ExploitationActive,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "Shared, observable, reliable evidence that the exploit is being used in the wild by real attackers; there is credible public reporting.",
+   :rdfs/label "Active"})
+
+(def ExploitationNone
+  "There is no evidence of active exploitation and no public proof of concept (PoC) of how to exploit the vulnerability."
+  {:db/ident :ssvc/ExploitationNone,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "There is no evidence of active exploitation and no public proof of concept (PoC) of how to exploit the vulnerability.",
+   :rdfs/label "None"})
+
+(def ExploitationPoC
+  "One of the following cases is true: (1) exploit code is sold or traded on underground or restricted fora; (2) a typical public PoC in places such as Metasploit or ExploitDB; or (3) the vulnerability has a well-known method of exploitation."
+  {:db/ident :ssvc/ExploitationPoC,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "One of the following cases is true: (1) exploit code is sold or traded on underground or restricted fora; (2) a typical public PoC in places such as Metasploit or ExploitDB; or (3) the vulnerability has a well-known method of exploitation.",
+   :rdfs/label "PoC (Proof of Concept)"})
+
 (def FinalDecisionType
   "Final Decision Type"
   {:db/ident   :ssvc/FinalDecisionType,
@@ -80,18 +139,68 @@
    :rdfs/comment "An option within a decision point",
    :rdfs/label   "Option"})
 
-(def OptionPattern
-  "A pattern within an option in the decision tree"
-  {:db/ident     :ssvc/OptionPattern,
-   :rdf/type     :owl/Class,
-   :rdfs/comment "A pattern within an option in the decision tree",
-   :rdfs/label   "Option Pattern"})
-
 (def SimpleDecisionType
   "Simple Decision Type"
   {:db/ident   :ssvc/SimpleDecisionType,
    :rdf/type   :ssvc/DecisionType,
    :rdfs/label "Simple Decision Type"})
+
+(def TechnicalImpact
+  "A decision point representing the extent to which exploiting a vulnerability affects the control or information exposure of the software containing the vulnerability."
+  {:db/ident :ssvc/TechnicalImpact,
+   :rdf/type :ssvc/DecisionPoint,
+   :rdfs/comment
+   "A decision point representing the extent to which exploiting a vulnerability affects the control or information exposure of the software containing the vulnerability.",
+   :rdfs/label "Technical Impact",
+   :ssvc/hasOption [:ssvc/TechnicalImpactTotal :ssvc/TechnicalImpactPartial]})
+
+(def TechnicalImpactPartial
+  "The exploit gives the adversary limited control over, or information exposure about, the behavior of the software that contains the vulnerability. Or the exploit gives the adversary an importantly low stochastic opportunity for total control. Denial of service is a form of limited control over the behavior of the vulnerable component."
+  {:db/ident :ssvc/TechnicalImpactPartial,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "The exploit gives the adversary limited control over, or information exposure about, the behavior of the software that contains the vulnerability. Or the exploit gives the adversary an importantly low stochastic opportunity for total control. Denial of service is a form of limited control over the behavior of the vulnerable component.",
+   :rdfs/label "Partial"})
+
+(def TechnicalImpactTotal
+  "The exploit gives the adversary total control over the behavior of the software, or it gives total disclosure of all information on the system that contains the vulnerability."
+  {:db/ident :ssvc/TechnicalImpactTotal,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "The exploit gives the adversary total control over the behavior of the software, or it gives total disclosure of all information on the system that contains the vulnerability.",
+   :rdfs/label "Total"})
+
+(def Utility
+  "A decision point representing the usefulness of the exploit to an adversary, based on the assumption that they can exploit the vulnerability. Utility is independent from the state of Exploitation and is a combination of the value density of vulnerable components and whether potential exploitation is automatable."
+  {:db/ident :ssvc/Utility,
+   :rdf/type :ssvc/DecisionPoint,
+   :rdfs/comment
+   "A decision point representing the usefulness of the exploit to an adversary, based on the assumption that they can exploit the vulnerability. Utility is independent from the state of Exploitation and is a combination of the value density of vulnerable components and whether potential exploitation is automatable.",
+   :rdfs/label "Utility",
+   :ssvc/hasOption
+   [:ssvc/UtilitySuperEffective :ssvc/UtilityEfficient :ssvc/UtilityLaborious]})
+
+(def UtilityEfficient
+  "{Yes to automatable and diffuse value} OR {No to automatable and concentrated value}."
+  {:db/ident :ssvc/UtilityEfficient,
+   :rdf/type :ssvc/Option,
+   :rdfs/comment
+   "{Yes to automatable and diffuse value} OR {No to automatable and concentrated value}.",
+   :rdfs/label "Efficient"})
+
+(def UtilityLaborious
+  "No to automatable and diffuse value."
+  {:db/ident     :ssvc/UtilityLaborious,
+   :rdf/type     :ssvc/Option,
+   :rdfs/comment "No to automatable and diffuse value.",
+   :rdfs/label   "Laborious"})
+
+(def UtilitySuperEffective
+  "Yes to automatable and concentrated value."
+  {:db/ident     :ssvc/UtilitySuperEffective,
+   :rdf/type     :ssvc/Option,
+   :rdfs/comment "Yes to automatable and concentrated value.",
+   :rdfs/label   "Super Effective"})
 
 (def color
   "An optional color to represent the final edge node or final recommended action provided by the SSVC tree"
@@ -193,7 +302,7 @@
    :rdfs/comment "Relates an option to the option patterns within it",
    :rdfs/domain  :ssvc/Option,
    :rdfs/label   "Has Option Pattern",
-   :rdfs/range   :ssvc/OptionPattern})
+   :rdfs/range   :ssvc/xsd:string})
 
 (def hasParent
   "Relates a decision point to its parent decision point"

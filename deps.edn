@@ -1,15 +1,17 @@
 {:deps
- {org.clojure/clojure
-  {:mvn/version "1.12.0-alpha3"}
-  org.clojure/data.csv
+ {org.clojure/data.csv
   {:mvn/version "1.0.1"}
   io.github.aamedina/rdf
-  {:git/sha "6e6b2fb8c7fff10ed5277510c5ad2560bea87e67"}}
+  {:git/sha "0b3f9376f7b80071b646105d2e0e20998e425819"}}
  :paths ["src/clj" "src/cljc" "classes" "resources"]
  :aliases
  {:dev
   {:extra-deps
-   {com.walmartlabs/schematic
+   {com.datomic/dev-local
+    {:mvn/version "1.0.243"}
+    io.github.aamedina/punk.db
+    {:git/sha "bbe8d261adbff93de65324e7385d742bbebcc08d"}
+    com.walmartlabs/schematic
     {:mvn/version "1.3.0"}
     com.stuartsierra/component.repl
     {:mvn/version "0.2.0"}

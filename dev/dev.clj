@@ -27,7 +27,9 @@
    [net.wikipunk.rdf :as rdf :refer [doc]]
    [zprint.core :as zprint]
    [net.wikipunk.ssvc.boot :as boot]
-   [net.wikipunk.rdf.ssvc])
+   [net.wikipunk.rdf.ssvc]
+   [net.wikipunk.punk.db :as db]
+   [datomic.client.api :as d])
   (:refer-clojure :exclude [isa? descendants parents ancestors]))
 
 (set-init

@@ -8,8 +8,13 @@
 @prefix d3fend: <http://d3fend.mitre.org/ontologies/d3fend.owl#>
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix jsonschema: <https://www.w3.org/2019/wot/json-schema#> .
+@prefix db: <https://wikipunk.net/db/> .
+@prefix db.type: <https://wikipunk.net/db/type/> .
+@prefix db.cardinality: <https://wikipunk.net/db/cardinality/> .
 
 : a owl:Ontology ;
+  owl:versionInfo "2.03" ;
   prov:wasDerivedFrom (
     <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json>
     <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json>
@@ -21,7 +26,7 @@
 :DecisionTree a owl:Class ;
   rdfs:label "Decision Tree" ;
   rdfs:comment "A decision tree used in computing SSVC scores for a vulnerability." ;
-  skos:definition "A ssvc:DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point." .
+  skos:definition "A DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point." .
 
 :DecisionPoint a owl:Class ;
   rdfs:label "Decision Point" ;
@@ -35,19 +40,60 @@
   rdfs:label "Decision Type" ;
   rdfs:comment "A decision type, which can be simple, complex, or final" ;
   owl:oneOf (
-    :SimpleDecisionType
-    :ComplexDecisionType
-    :FinalDecisionType
+    :Simple
+    :Complex
+    :Final
     ) .
 
-:SimpleDecisionType a :DecisionType ;
-  rdfs:label "Simple Decision Type" .
+:Simple a :DecisionType ;
+  rdfs:label "Simple Decision Type" ;
+  rdfs:comment "A decision type that without children." .
 
-:ComplexDecisionType a :DecisionType ;
-  rdfs:label "Complex Decision Type" .
+:Complex a :DecisionType ;
+  rdfs:label "Complex Decision Type" ;
+  rdfs:comment "A decision type with children." .
 
-:FinalDecisionType a :DecisionType ;
-  rdfs:label "Final Decision Type" .
+:Final a :DecisionType ;
+  rdfs:label "The last node on the decision tree." .
+
+:Decision a owl:Class ;
+  rdfs:label "Vulnerability Decision" ;
+  rdfs:comment "A decision made when a vulnerability is discovered, determining the level of action required." .
+
+:Color a owl:Class ;
+  rdfs:label "Color" ;
+  rdfs:comment "A color used to represent a decision" .
+
+:Track a :Decision ;
+  rdfs:label "Track" ;
+  rdfs:comment "The vulnerability does not require action at this time. The organization would continue to track the vulnerability and reassess it if new information becomes available. CISA recommends remediating Track vulnerabilities within standard update guidelines." ;
+  :hasColor "green" .
+
+:TrackStar a :Decision ;
+  rdfs:label "Track*" ;
+  rdfs:comment "The vulnerability contains specific characteristics that may require closer monitoring for changes. CISA recommends remdiating Track* vulnerabilities within standard update guidelines." ;
+  :hasColor "yellow" .
+
+:Attend a :Decision ;
+  rdfs:label "Attend" ;
+  rdfs:comment "The vulnerability requires attention from the organization's internal, supervisory-level individuals. Necessary actions may include requesting assistance or information about the vulnerability and may involve publishing a notification, either internally and/or externally, about the vulnerability. CISA recommends remediating Attend vulnerabilities sooner than standard update timelines." ;
+  :hasColor "orange" .
+
+:Act a :Decision ;
+  rdfs:label "Act" ;
+  rdfs:comment "The vulnerability requires attention from the organization's internal, supervisory-level and leadership-level individuals. Necessary actions include requesting assistance or information about the vulnerability, as well as publishing a notification either internally and/or externally. Typically, internal groups would meet to determine the overall response and then execute agreed upon actions. CISA recommends remediating Act vulnerabilities as soon as possible." ;
+  :hasColor "red" .
+
+:Vulnerability a owl:Class ;
+  rdfs:subClassOf d3fend:Vulnerability ;
+  rdfs:label "Vulnerability" ;
+  rdfs:comment "A specific vulnerability that has been discovered and requires a decision." .
+
+:hasDecision a owl:ObjectProperty ;
+  rdfs:label "Has Vulnerability Decision" ;
+  rdfs:comment "Relates a vulnerability to its decision" ;
+  rdfs:domain :Vulnerability ;
+  rdfs:range :Decision .
 
 :ComputedScore a owl:Class ;
   rdfs:label "Computed Score" ;
@@ -71,24 +117,18 @@
   rdfs:domain :DecisionPoint ;
   rdfs:range :DecisionType .
 
-:label a owl:DatatypeProperty ;
-  rdfs:label "Label" ;
-  rdfs:comment "A short label that captures a short name of a decision point, option, or decision type" ;
-  rdfs:range xsd:string .
-
-:key a owl:DatatypeProperty ;
+:hasKey a owl:DatatypeProperty ;
   rdfs:label "Key" ;
   rdfs:comment "An optional short key that identifies a decision point or option in the SSVC score vector form" ;
+  rdfs:domain :Decision ;
   rdfs:range xsd:string .
 
-:description a owl:DatatypeProperty ;
-  rdfs:label "Description" ;
-  rdfs:comment "A description that provides full information about an option" ;
-  rdfs:range xsd:string .
-
-:color a owl:DatatypeProperty ;
+:hasColor a owl:DatatypeProperty ;
+  db:cardinality db.cardinality:one ;
+  db:valueType db.type:string ;
   rdfs:label "Color" ;
   rdfs:comment "An optional color to represent the final edge node or final recommended action provided by the SSVC tree" ;
+  rdfs:range :DecisionPoint ;
   rdfs:range xsd:string .
 
 :hasChild a owl:ObjectProperty ;
@@ -103,65 +143,53 @@
   rdfs:domain :DecisionPoint ;
   rdfs:range :DecisionPoint .
 
-:computed a owl:DatatypeProperty ;
-  rdfs:label "Computed" ;
+:hasComputedScore a owl:DatatypeProperty ;
+  rdfs:label "Has Computed Score" ;
   rdfs:comment "A short vector representation of an SSVC computed decision score" ;
   rdfs:domain :ComputedScore ;
   rdfs:range xsd:string .
 
-:options a owl:ObjectProperty ;
-  rdfs:label "Options" ;
-  rdfs:comment "Relates a computed score to the options in the decision tree" ;
-  rdfs:domain :ComputedScore ;
-  rdfs:range :Option .
-
-:timestamp a owl:DatatypeProperty ;
-  rdfs:label "Timestamp" ;
+:hasTimestamp a owl:DatatypeProperty ;
+  rdfs:label "Has Timestamp" ;
   rdfs:comment "Date and time in ISO format (ISO 8601)" ;
   rdfs:domain :ComputedScore ;
   rdfs:range xsd:dateTime .
 
-:role a owl:DatatypeProperty ;
-  rdfs:label "Role" ;
+:hasRole a owl:DatatypeProperty ;
+  rdfs:label "Has Role" ;
   rdfs:comment "Roles defined in the SSVC spec and optional in the SSVC provision schema" ;
   rdfs:domain :ComputedScore ;
-  rdfs:range xsd:string .
+  rdfs:range prov:Role .
 
-:version a owl:DatatypeProperty ;
-  rdfs:label "Version" ;
+:hasVersion a owl:DatatypeProperty ;
+  rdfs:label "Has Version" ;
   rdfs:comment "Version of the SSVC that was used in this decision, in semver format" ;
   rdfs:domain :ComputedScore ;
   rdfs:range xsd:string .
 
-:decision_tree a owl:ObjectProperty ;
-  rdfs:label "Decision Tree" ;
+:hasDecisionTree a owl:ObjectProperty ;
+  rdfs:label "Has Decision Tree" ;
   rdfs:comment "The full decision tree that was used for this SSVC computed score" ;
   rdfs:domain :ComputedScore ;
   rdfs:range :DecisionTree .
 
-:id a owl:DatatypeProperty ;
+:hasVulnerability a owl:DatatypeProperty ;
   rdfs:label "ID" ;
   rdfs:comment "Identifier for a vulnerability (CVE, CERT/CC VU#, OSV id, Bugtraq, etc.)" ;
   rdfs:domain :ComputedScore ;
-  rdfs:range xsd:string .
+  rdfs:range (xsd:string :Vulnerability) .
 
-:decision_tree_url a owl:DatatypeProperty ;
+:hasDecisionTreeURL a owl:DatatypeProperty ;
   rdfs:label "Decision Tree URL" ;
   rdfs:comment "A URL that points to the decision tree used to make this computed decision" ;
   rdfs:domain :ComputedScore ;
   rdfs:range xsd:anyURI .
 
-:schema a owl:DatatypeProperty ;
-  rdfs:label "Schema" ;
+:hasSchema a owl:DatatypeProperty ;
+  rdfs:label "Has Schema" ;
   rdfs:comment "A URL that points to the schema used for the decision tree to make this computed decision" ;
   rdfs:domain :ComputedScore ;
   rdfs:range xsd:anyURI .
-
-:generator a owl:DatatypeProperty ;
-  rdfs:label "Generator" ;
-  rdfs:comment "Identify the software or tool that was used to generate this Computed JSON output, optionally append the version of the tool" ;
-  rdfs:domain :ComputedScore ;
-  rdfs:range xsd:string .
 
 :hasOptionPattern a owl:ObjectProperty ;
   rdfs:label "Has Option Pattern" ;

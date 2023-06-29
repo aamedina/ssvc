@@ -1,12 +1,17 @@
 (ns net.wikipunk.rdf.ssvc
   "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers."
   {:dcat/downloadURL "resources/ssvc.ttl",
+   :owl/versionInfo "2.03",
    :prov/wasDerivedFrom
    ["https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"
     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"],
    :rdf/ns-prefix-map {"d3fend"
                        "http://d3fend.mitre.org/ontologies/d3fend.owl#",
+                       "db" "https://wikipunk.net/db/",
+                       "db.cardinality" "https://wikipunk.net/db/cardinality/",
+                       "db.type" "https://wikipunk.net/db/type/",
                        "dcterms" "http://purl.org/dc/terms/",
+                       "jsonschema" "https://www.w3.org/2019/wot/json-schema#",
                        "owl" "http://www.w3.org/2002/07/owl#",
                        "prov" "http://www.w3.org/ns/prov#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -22,8 +27,25 @@
    "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers.",
    :rdfs/label "Stakeholder-Specific Vulnerability Categorization Ontology",
    :rdfs/seeAlso
-   ["https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"]}
-  (:refer-clojure :exclude [key]))
+   ["https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"]})
+
+(def Act
+  "The vulnerability requires attention from the organization's internal, supervisory-level and leadership-level individuals. Necessary actions include requesting assistance or information about the vulnerability, as well as publishing a notification either internally and/or externally. Typically, internal groups would meet to determine the overall response and then execute agreed upon actions. CISA recommends remediating Act vulnerabilities as soon as possible."
+  {:db/ident :ssvc/Act,
+   :rdf/type :ssvc/Decision,
+   :rdfs/comment
+   "The vulnerability requires attention from the organization's internal, supervisory-level and leadership-level individuals. Necessary actions include requesting assistance or information about the vulnerability, as well as publishing a notification either internally and/or externally. Typically, internal groups would meet to determine the overall response and then execute agreed upon actions. CISA recommends remediating Act vulnerabilities as soon as possible.",
+   :rdfs/label "Act",
+   :ssvc/hasColor "red"})
+
+(def Attend
+  "The vulnerability requires attention from the organization's internal, supervisory-level individuals. Necessary actions may include requesting assistance or information about the vulnerability and may involve publishing a notification, either internally and/or externally, about the vulnerability. CISA recommends remediating Attend vulnerabilities sooner than standard update timelines."
+  {:db/ident :ssvc/Attend,
+   :rdf/type :ssvc/Decision,
+   :rdfs/comment
+   "The vulnerability requires attention from the organization's internal, supervisory-level individuals. Necessary actions may include requesting assistance or information about the vulnerability and may involve publishing a notification, either internally and/or externally, about the vulnerability. CISA recommends remediating Attend vulnerabilities sooner than standard update timelines.",
+   :rdfs/label "Attend",
+   :ssvc/hasColor "orange"})
 
 (def Automatable
   "A decision point representing whether an attacker can reliably automate creating exploitation events for a given vulnerability, including reconnaissance, weaponization, delivery, and exploitation steps in the kill chain."
@@ -50,11 +72,19 @@
    "Attackers can reliably automate steps 1-4 of the kill chain for this vulnerability.",
    :rdfs/label "Yes"})
 
-(def ComplexDecisionType
-  "Complex Decision Type"
-  {:db/ident   :ssvc/ComplexDecisionType,
-   :rdf/type   :ssvc/DecisionType,
-   :rdfs/label "Complex Decision Type"})
+(def Color
+  "A color used to represent a decision"
+  {:db/ident     :ssvc/Color,
+   :rdf/type     :owl/Class,
+   :rdfs/comment "A color used to represent a decision",
+   :rdfs/label   "Color"})
+
+(def Complex
+  "A decision type with children."
+  {:db/ident     :ssvc/Complex,
+   :rdf/type     :ssvc/DecisionType,
+   :rdfs/comment "A decision type with children.",
+   :rdfs/label   "Complex Decision Type"})
 
 (def ComputedScore
   "A computed SSVC score representing the path in the decision tree"
@@ -63,6 +93,14 @@
    :rdfs/comment
    "A computed SSVC score representing the path in the decision tree",
    :rdfs/label "Computed Score"})
+
+(def Decision
+  "A decision made when a vulnerability is discovered, determining the level of action required."
+  {:db/ident :ssvc/Decision,
+   :rdf/type :owl/Class,
+   :rdfs/comment
+   "A decision made when a vulnerability is discovered, determining the level of action required.",
+   :rdfs/label "Vulnerability Decision"})
 
 (def DecisionPoint
   "A node in the decision tree, including the root node, with a label and two or more options"
@@ -73,21 +111,19 @@
    :rdfs/label "Decision Point"})
 
 (def DecisionTree
-  "A ssvc:DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."
+  "A DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."
   {:db/ident :ssvc/DecisionTree,
    :rdf/type :owl/Class,
    :rdfs/comment
    "A decision tree used in computing SSVC scores for a vulnerability.",
    :rdfs/label "Decision Tree",
    :skos/definition
-   "A ssvc:DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."})
+   "A DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."})
 
 (def DecisionType
   "A decision type, which can be simple, complex, or final"
   {:db/ident     :ssvc/DecisionType,
-   :owl/oneOf    [:ssvc/SimpleDecisionType
-                  :ssvc/ComplexDecisionType
-                  :ssvc/FinalDecisionType],
+   :owl/oneOf    [:ssvc/Simple :ssvc/Complex :ssvc/Final],
    :rdf/type     :owl/Class,
    :rdfs/comment "A decision type, which can be simple, complex, or final",
    :rdfs/label   "Decision Type"})
@@ -126,11 +162,11 @@
    "One of the following cases is true: (1) exploit code is sold or traded on underground or restricted fora; (2) a typical public PoC in places such as Metasploit or ExploitDB; or (3) the vulnerability has a well-known method of exploitation.",
    :rdfs/label "PoC (Proof of Concept)"})
 
-(def FinalDecisionType
-  "Final Decision Type"
-  {:db/ident   :ssvc/FinalDecisionType,
+(def Final
+  "The last node on the decision tree."
+  {:db/ident   :ssvc/Final,
    :rdf/type   :ssvc/DecisionType,
-   :rdfs/label "Final Decision Type"})
+   :rdfs/label "The last node on the decision tree."})
 
 (def Option
   "An option within a decision point"
@@ -139,11 +175,12 @@
    :rdfs/comment "An option within a decision point",
    :rdfs/label   "Option"})
 
-(def SimpleDecisionType
-  "Simple Decision Type"
-  {:db/ident   :ssvc/SimpleDecisionType,
-   :rdf/type   :ssvc/DecisionType,
-   :rdfs/label "Simple Decision Type"})
+(def Simple
+  "A decision type that without children."
+  {:db/ident     :ssvc/Simple,
+   :rdf/type     :ssvc/DecisionType,
+   :rdfs/comment "A decision type that without children.",
+   :rdfs/label   "Simple Decision Type"})
 
 (def TechnicalImpact
   "A decision point representing the extent to which exploiting a vulnerability affects the control or information exposure of the software containing the vulnerability."
@@ -169,6 +206,24 @@
    :rdfs/comment
    "The exploit gives the adversary total control over the behavior of the software, or it gives total disclosure of all information on the system that contains the vulnerability.",
    :rdfs/label "Total"})
+
+(def Track
+  "The vulnerability does not require action at this time. The organization would continue to track the vulnerability and reassess it if new information becomes available. CISA recommends remediating Track vulnerabilities within standard update guidelines."
+  {:db/ident :ssvc/Track,
+   :rdf/type :ssvc/Decision,
+   :rdfs/comment
+   "The vulnerability does not require action at this time. The organization would continue to track the vulnerability and reassess it if new information becomes available. CISA recommends remediating Track vulnerabilities within standard update guidelines.",
+   :rdfs/label "Track",
+   :ssvc/hasColor "green"})
+
+(def TrackStar
+  "The vulnerability contains specific characteristics that may require closer monitoring for changes. CISA recommends remdiating Track* vulnerabilities within standard update guidelines."
+  {:db/ident :ssvc/TrackStar,
+   :rdf/type :ssvc/Decision,
+   :rdfs/comment
+   "The vulnerability contains specific characteristics that may require closer monitoring for changes. CISA recommends remdiating Track* vulnerabilities within standard update guidelines.",
+   :rdfs/label "Track*",
+   :ssvc/hasColor "yellow"})
 
 (def Utility
   "A decision point representing the usefulness of the exploit to an adversary, based on the assumption that they can exploit the vulnerability. Utility is independent from the state of Exploitation and is a combination of the value density of vulnerable components and whether potential exploitation is automatable."
@@ -202,62 +257,14 @@
    :rdfs/comment "Yes to automatable and concentrated value.",
    :rdfs/label   "Super Effective"})
 
-(def color
-  "An optional color to represent the final edge node or final recommended action provided by the SSVC tree"
-  {:db/ident :ssvc/color,
-   :rdf/type :owl/DatatypeProperty,
+(def Vulnerability
+  "A specific vulnerability that has been discovered and requires a decision."
+  {:db/ident :ssvc/Vulnerability,
+   :rdf/type :owl/Class,
    :rdfs/comment
-   "An optional color to represent the final edge node or final recommended action provided by the SSVC tree",
-   :rdfs/label "Color",
-   :rdfs/range :xsd/string})
-
-(def computed
-  "A short vector representation of an SSVC computed decision score"
-  {:db/ident :ssvc/computed,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "A short vector representation of an SSVC computed decision score",
-   :rdfs/domain :ssvc/ComputedScore,
-   :rdfs/label "Computed",
-   :rdfs/range :xsd/string})
-
-(def decision_tree
-  "The full decision tree that was used for this SSVC computed score"
-  {:db/ident :ssvc/decision_tree,
-   :rdf/type :owl/ObjectProperty,
-   :rdfs/comment
-   "The full decision tree that was used for this SSVC computed score",
-   :rdfs/domain :ssvc/ComputedScore,
-   :rdfs/label "Decision Tree",
-   :rdfs/range :ssvc/DecisionTree})
-
-(def decision_tree_url
-  "A URL that points to the decision tree used to make this computed decision"
-  {:db/ident :ssvc/decision_tree_url,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "A URL that points to the decision tree used to make this computed decision",
-   :rdfs/domain :ssvc/ComputedScore,
-   :rdfs/label "Decision Tree URL",
-   :rdfs/range :xsd/anyURI})
-
-(def description
-  "A description that provides full information about an option"
-  {:db/ident     :ssvc/description,
-   :rdf/type     :owl/DatatypeProperty,
-   :rdfs/comment "A description that provides full information about an option",
-   :rdfs/label   "Description",
-   :rdfs/range   :xsd/string})
-
-(def generator
-  "Identify the software or tool that was used to generate this Computed JSON output, optionally append the version of the tool"
-  {:db/ident :ssvc/generator,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "Identify the software or tool that was used to generate this Computed JSON output, optionally append the version of the tool",
-   :rdfs/domain :ssvc/ComputedScore,
-   :rdfs/label "Generator",
-   :rdfs/range :xsd/string})
+   "A specific vulnerability that has been discovered and requires a decision.",
+   :rdfs/label "Vulnerability",
+   :rdfs/subClassOf :d3fend/Vulnerability})
 
 (def hasChild
   "Relates a decision point to its child decision points"
@@ -268,6 +275,36 @@
    :rdfs/label   "Has Child",
    :rdfs/range   :ssvc/DecisionPoint})
 
+(def hasColor
+  "An optional color to represent the final edge node or final recommended action provided by the SSVC tree"
+  {:db/cardinality :db.cardinality/one,
+   :db/ident :ssvc/hasColor,
+   :db/valueType :db.type/string,
+   :rdf/type :owl/DatatypeProperty,
+   :rdfs/comment
+   "An optional color to represent the final edge node or final recommended action provided by the SSVC tree",
+   :rdfs/label "Color",
+   :rdfs/range [:xsd/string :ssvc/DecisionPoint]})
+
+(def hasComputedScore
+  "A short vector representation of an SSVC computed decision score"
+  {:db/ident :ssvc/hasComputedScore,
+   :rdf/type :owl/DatatypeProperty,
+   :rdfs/comment
+   "A short vector representation of an SSVC computed decision score",
+   :rdfs/domain :ssvc/ComputedScore,
+   :rdfs/label "Has Computed Score",
+   :rdfs/range :xsd/string})
+
+(def hasDecision
+  "Relates a vulnerability to its decision"
+  {:db/ident     :ssvc/hasDecision,
+   :rdf/type     :owl/ObjectProperty,
+   :rdfs/comment "Relates a vulnerability to its decision",
+   :rdfs/domain  :ssvc/Vulnerability,
+   :rdfs/label   "Has Vulnerability Decision",
+   :rdfs/range   :ssvc/Decision})
+
 (def hasDecisionPoint
   "Relates a decision tree to its decision points"
   {:db/ident     :ssvc/hasDecisionPoint,
@@ -277,6 +314,26 @@
    :rdfs/label   "Has Decision Point",
    :rdfs/range   :ssvc/DecisionPoint})
 
+(def hasDecisionTree
+  "The full decision tree that was used for this SSVC computed score"
+  {:db/ident :ssvc/hasDecisionTree,
+   :rdf/type :owl/ObjectProperty,
+   :rdfs/comment
+   "The full decision tree that was used for this SSVC computed score",
+   :rdfs/domain :ssvc/ComputedScore,
+   :rdfs/label "Has Decision Tree",
+   :rdfs/range :ssvc/DecisionTree})
+
+(def hasDecisionTreeURL
+  "A URL that points to the decision tree used to make this computed decision"
+  {:db/ident :ssvc/hasDecisionTreeURL,
+   :rdf/type :owl/DatatypeProperty,
+   :rdfs/comment
+   "A URL that points to the decision tree used to make this computed decision",
+   :rdfs/domain :ssvc/ComputedScore,
+   :rdfs/label "Decision Tree URL",
+   :rdfs/range :xsd/anyURI})
+
 (def hasDecisionType
   "Relates a decision point to its decision type"
   {:db/ident     :ssvc/hasDecisionType,
@@ -285,6 +342,16 @@
    :rdfs/domain  :ssvc/DecisionPoint,
    :rdfs/label   "Has Decision Type",
    :rdfs/range   :ssvc/DecisionType})
+
+(def hasKey
+  "An optional short key that identifies a decision point or option in the SSVC score vector form"
+  {:db/ident :ssvc/hasKey,
+   :rdf/type :owl/DatatypeProperty,
+   :rdfs/comment
+   "An optional short key that identifies a decision point or option in the SSVC score vector form",
+   :rdfs/domain :ssvc/Decision,
+   :rdfs/label "Key",
+   :rdfs/range :xsd/string})
 
 (def hasOption
   "Relates a decision point to its options"
@@ -313,78 +380,51 @@
    :rdfs/label   "Has Parent",
    :rdfs/range   :ssvc/DecisionPoint})
 
-(def id
+(def hasRole
+  "Roles defined in the SSVC spec and optional in the SSVC provision schema"
+  {:db/ident :ssvc/hasRole,
+   :rdf/type :owl/DatatypeProperty,
+   :rdfs/comment
+   "Roles defined in the SSVC spec and optional in the SSVC provision schema",
+   :rdfs/domain :ssvc/ComputedScore,
+   :rdfs/label "Has Role",
+   :rdfs/range :prov/Role})
+
+(def hasSchema
+  "A URL that points to the schema used for the decision tree to make this computed decision"
+  {:db/ident :ssvc/hasSchema,
+   :rdf/type :owl/DatatypeProperty,
+   :rdfs/comment
+   "A URL that points to the schema used for the decision tree to make this computed decision",
+   :rdfs/domain :ssvc/ComputedScore,
+   :rdfs/label "Has Schema",
+   :rdfs/range :xsd/anyURI})
+
+(def hasTimestamp
+  "Date and time in ISO format (ISO 8601)"
+  {:db/ident     :ssvc/hasTimestamp,
+   :rdf/type     :owl/DatatypeProperty,
+   :rdfs/comment "Date and time in ISO format (ISO 8601)",
+   :rdfs/domain  :ssvc/ComputedScore,
+   :rdfs/label   "Has Timestamp",
+   :rdfs/range   :xsd/dateTime})
+
+(def hasVersion
+  "Version of the SSVC that was used in this decision, in semver format"
+  {:db/ident :ssvc/hasVersion,
+   :rdf/type :owl/DatatypeProperty,
+   :rdfs/comment
+   "Version of the SSVC that was used in this decision, in semver format",
+   :rdfs/domain :ssvc/ComputedScore,
+   :rdfs/label "Has Version",
+   :rdfs/range :xsd/string})
+
+(def hasVulnerability
   "Identifier for a vulnerability (CVE, CERT/CC VU#, OSV id, Bugtraq, etc.)"
-  {:db/ident :ssvc/id,
+  {:db/ident :ssvc/hasVulnerability,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
    "Identifier for a vulnerability (CVE, CERT/CC VU#, OSV id, Bugtraq, etc.)",
    :rdfs/domain :ssvc/ComputedScore,
    :rdfs/label "ID",
-   :rdfs/range :xsd/string})
-
-(def key
-  "An optional short key that identifies a decision point or option in the SSVC score vector form"
-  {:db/ident :ssvc/key,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "An optional short key that identifies a decision point or option in the SSVC score vector form",
-   :rdfs/label "Key",
-   :rdfs/range :xsd/string})
-
-(def label
-  "A short label that captures a short name of a decision point, option, or decision type"
-  {:db/ident :ssvc/label,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "A short label that captures a short name of a decision point, option, or decision type",
-   :rdfs/label "Label",
-   :rdfs/range :xsd/string})
-
-(def options
-  "Relates a computed score to the options in the decision tree"
-  {:db/ident     :ssvc/options,
-   :rdf/type     :owl/ObjectProperty,
-   :rdfs/comment "Relates a computed score to the options in the decision tree",
-   :rdfs/domain  :ssvc/ComputedScore,
-   :rdfs/label   "Options",
-   :rdfs/range   :ssvc/Option})
-
-(def role
-  "Roles defined in the SSVC spec and optional in the SSVC provision schema"
-  {:db/ident :ssvc/role,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "Roles defined in the SSVC spec and optional in the SSVC provision schema",
-   :rdfs/domain :ssvc/ComputedScore,
-   :rdfs/label "Role",
-   :rdfs/range :xsd/string})
-
-(def schema
-  "A URL that points to the schema used for the decision tree to make this computed decision"
-  {:db/ident :ssvc/schema,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "A URL that points to the schema used for the decision tree to make this computed decision",
-   :rdfs/domain :ssvc/ComputedScore,
-   :rdfs/label "Schema",
-   :rdfs/range :xsd/anyURI})
-
-(def timestamp
-  "Date and time in ISO format (ISO 8601)"
-  {:db/ident     :ssvc/timestamp,
-   :rdf/type     :owl/DatatypeProperty,
-   :rdfs/comment "Date and time in ISO format (ISO 8601)",
-   :rdfs/domain  :ssvc/ComputedScore,
-   :rdfs/label   "Timestamp",
-   :rdfs/range   :xsd/dateTime})
-
-(def version
-  "Version of the SSVC that was used in this decision, in semver format"
-  {:db/ident :ssvc/version,
-   :rdf/type :owl/DatatypeProperty,
-   :rdfs/comment
-   "Version of the SSVC that was used in this decision, in semver format",
-   :rdfs/domain :ssvc/ComputedScore,
-   :rdfs/label "Version",
-   :rdfs/range :xsd/string})
+   :rdfs/range [:xsd/string :ssvc/Vulnerability]})

@@ -29,7 +29,8 @@
    [net.wikipunk.ssvc.boot :as boot]
    [net.wikipunk.rdf.ssvc]
    [net.wikipunk.punk.db :as db]
-   [datomic.client.api :as d])
+   [datomic.client.api :as d]
+   [xtdb.api :as xt])
   (:refer-clojure :exclude [isa? descendants parents ancestors]))
 
 (set-init

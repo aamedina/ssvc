@@ -5,7 +5,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix spdx: <http://spdx.org/rdf/terms#> .
-@prefix d3fend: <http://d3fend.mitre.org/ontologies/d3fend.owl#>
+@prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#>
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix jsonschema: <https://www.w3.org/2019/wot/json-schema#> .
@@ -84,15 +84,10 @@
   rdfs:comment "The vulnerability requires attention from the organization's internal, supervisory-level and leadership-level individuals. Necessary actions include requesting assistance or information about the vulnerability, as well as publishing a notification either internally and/or externally. Typically, internal groups would meet to determine the overall response and then execute agreed upon actions. CISA recommends remediating Act vulnerabilities as soon as possible." ;
   :hasColor "red" .
 
-:Vulnerability a owl:Class ;
-  rdfs:subClassOf d3fend:Vulnerability ;
-  rdfs:label "Vulnerability" ;
-  rdfs:comment "A specific vulnerability that has been discovered and requires a decision." .
-
 :hasDecision a owl:ObjectProperty ;
   rdfs:label "Has Vulnerability Decision" ;
   rdfs:comment "Relates a vulnerability to its decision" ;
-  rdfs:domain :Vulnerability ;
+  rdfs:domain d3f:Vulnerability ;
   rdfs:range :Decision .
 
 :ComputedScore a owl:Class ;

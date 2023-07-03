@@ -10,7 +10,7 @@
    [net.wikipunk.rdf.dcat]
    [net.wikipunk.rdf.dcterms]
    [net.wikipunk.rdf.dcmitype]
-   [net.wikipunk.rdf.d3fend]
+   [net.wikipunk.rdf.d3f]
    [net.wikipunk.rdf.doap]
    [net.wikipunk.rdf.dqv]
    [net.wikipunk.rdf.duv]

@@ -424,4 +424,4 @@
    "Identifier for a vulnerability (CVE, CERT/CC VU#, OSV id, Bugtraq, etc.)",
    :rdfs/domain [:ssvc/ComputedScore :rdfs/Resource :owl/Thing],
    :rdfs/label "ID",
-   :rdfs/range [[:xsd/string :ssvc/Vulnerability] :rdfs/Resource]})
+   :rdfs/range [:d3f/Vulnerability :rdfs/Resource]})

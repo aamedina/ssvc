@@ -172,7 +172,7 @@
   rdfs:label "ID" ;
   rdfs:comment "Identifier for a vulnerability (CVE, CERT/CC VU#, OSV id, Bugtraq, etc.)" ;
   rdfs:domain :ComputedScore ;
-  rdfs:range (xsd:string :Vulnerability) .
+  rdfs:range d3f:Vulnerability .
 
 :hasDecisionTreeURL a owl:DatatypeProperty ;
   rdfs:label "Decision Tree URL" ;

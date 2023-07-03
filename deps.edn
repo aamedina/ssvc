@@ -2,7 +2,7 @@
  {org.clojure/data.csv
   {:mvn/version "1.0.1"}
   io.github.aamedina/rdf
-  {:sha     "345bdb9dab9ea2bb46e71db49a867b7b61ea1d7b"
+  {:sha     "5d290d40fd2720f0decbe6ea4ed35fdf9678d83f"
    :git/url "https://github.com/aamedina/rdf.git"}}
  :paths ["src/clj" "src/cljc" "classes" "resources"]
  :aliases

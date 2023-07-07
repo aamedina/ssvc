@@ -1,0 +1,128 @@
+{
+  "@context": {
+    "cvss": "https://www.first.org/cvss/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "version": {
+      "@id": "cvss:version",
+      "@type": "xsd:string"
+    },
+    "vectorString": {
+      "@id": "cvss:vectorString",
+      "@type": "xsd:string"
+    },
+    "attackVector": {
+      "@id": "cvss:attackVector",
+      "@type": "@vocab"
+    },
+    "attackComplexity": {
+      "@id": "cvss:attackComplexity",
+      "@type": "@vocab"
+    },
+    "privilegesRequired": {
+      "@id": "cvss:privilegesRequired",
+      "@type": "@vocab"
+    },
+    "userInteraction": {
+      "@id": "cvss:userInteraction",
+      "@type": "@vocab"
+    },
+    "scope": {
+      "@id": "cvss:scope",
+      "@type": "@vocab"
+    },
+    "confidentialityImpact": {
+      "@id": "cvss:confidentialityImpact",
+      "@type": "@vocab"
+    },
+    "integrityImpact": {
+      "@id": "cvss:integrityImpact",
+      "@type": "@vocab"
+    },
+    "availabilityImpact": {
+      "@id": "cvss:availabilityImpact",
+      "@type": "@vocab"
+    },
+    "baseScore": {
+      "@id": "cvss:baseScore",
+      "@type": "xsd:decimal"
+    },
+    "baseSeverity": {
+      "@id": "cvss:baseSeverity",
+      "@type": "@vocab"
+    },
+    "exploitCodeMaturity": {
+      "@id": "cvss:exploitCodeMaturity",
+      "@type": "@vocab"
+    },
+    "remediationLevel": {
+      "@id": "cvss:remediationLevel",
+      "@type": "@vocab"
+    },
+    "reportConfidence": {
+      "@id": "cvss:reportConfidence",
+      "@type": "@vocab"
+    },
+    "temporalScore": {
+      "@id": "cvss:temporalScore",
+      "@type": "xsd:decimal"
+    },
+    "temporalSeverity": {
+      "@id": "cvss:temporalSeverity",
+      "@type": "@vocab"
+    },
+    "confidentialityRequirement": {
+      "@id": "cvss:confidentialityRequirement",
+      "@type": "@vocab"
+    },
+    "integrityRequirement": {
+      "@id": "cvss:integrityRequirement",
+      "@type": "@vocab"
+    },
+    "availabilityRequirement": {
+      "@id": "cvss:availabilityRequirement",
+      "@type": "@vocab"
+    },
+    "modifiedAttackVector": {
+      "@id": "cvss:modifiedAttackVector",
+      "@type": "@vocab"
+    },
+    "modifiedAttackComplexity": {
+      "@id": "cvss:modifiedAttackComplexity",
+      "@type": "@vocab"
+    },
+    "modifiedPrivilegesRequired": {
+      "@id": "cvss:modifiedPrivilegesRequired",
+      "@type": "@vocab"
+    },
+    "modifiedUserInteraction": {
+      "@id": "cvss:modifiedUserInteraction",
+      "@type": "@vocab"
+    },
+    "modifiedScope": {
+      "@id": "cvss:modifiedScope",
+      "@type": "@vocab"
+    },
+    "modifiedConfidentialityImpact": {
+      "@id": "cvss:modifiedConfidentialityImpact",
+      "@type": "@vocab"
+    },
+    "modifiedIntegrityImpact": {
+      "@id": "cvss:modifiedIntegrityImpact",
+      "@type": "@vocab"
+    },
+    "modifiedAvailabilityImpact": {
+      "@id": "cvss:modifiedAvailabilityImpact",
+      "@type": "@vocab"
+    },
+    "environmentalScore": {
+      "@id": "cvss:environmentalScore",
+      "@type": "xsd:decimal"
+    },
+    "environmentalSeverity": {
+      "@id": "cvss:environmentalSeverity",
+      "@type": "@vocab"
+    }
+  }
+}

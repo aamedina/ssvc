@@ -23,15 +23,17 @@
    [com.walmartlabs.schematic :as sc]
    [net.wikipunk.boot]
    [net.wikipunk.ext]
-   [net.wikipunk.mop :as mop :refer [isa? descendants parents ancestors]]
+   [net.wikipunk.mop :as mop]
    [net.wikipunk.rdf :as rdf :refer [doc]]
    [zprint.core :as zprint]
    [net.wikipunk.ssvc.boot :as boot]
    [net.wikipunk.rdf.ssvc]
-   [net.wikipunk.punk.db :as db]
+   [net.wikipunk.rdf.annotea]
+   [net.wikipunk.rdf.annotation]
+   [net.wikipunk.rdf.exif]
+   [net.wikipunk.datomic.boot :as db]
    [datomic.client.api :as d]
-   [xtdb.api :as xt])
-  (:refer-clojure :exclude [isa? descendants parents ancestors]))
+   [xtdb.api :as xt]))
 
 (set-init
   (fn [_]

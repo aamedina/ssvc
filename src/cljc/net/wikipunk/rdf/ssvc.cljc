@@ -3,8 +3,10 @@
   {:dcat/downloadURL "resources/ssvc.ttl",
    :owl/versionInfo "2.03",
    :prov/wasDerivedFrom
-   ["https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"
-    "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"],
+   [{:rdfa/uri
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"}
+    {:rdfa/uri
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}],
    :rdf/ns-prefix-map {"d3f" "http://d3fend.mitre.org/ontologies/d3fend.owl#",
                        "db" "https://wikipunk.net/db/",
                        "db.cardinality" "https://wikipunk.net/db/cardinality/",
@@ -26,7 +28,8 @@
    "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers.",
    :rdfs/label "Stakeholder-Specific Vulnerability Categorization Ontology",
    :rdfs/seeAlso
-   ["https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"]})
+   {:rdfa/uri
+    "https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"}})
 
 (def Act
   "The vulnerability requires attention from the organization's internal, supervisory-level and leadership-level individuals. Necessary actions include requesting assistance or information about the vulnerability, as well as publishing a notification either internally and/or externally. Typically, internal groups would meet to determine the overall response and then execute agreed upon actions. CISA recommends remediating Act vulnerabilities as soon as possible."
@@ -110,7 +113,7 @@
    :rdfs/label "Decision Point"})
 
 (def DecisionTree
-  "A DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."
+  "A decision tree used in computing SSVC scores for a vulnerability."
   {:db/ident :ssvc/DecisionTree,
    :rdf/type :owl/Class,
    :rdfs/comment

@@ -9,9 +9,14 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix jsonschema: <https://www.w3.org/2019/wot/json-schema#> .
+@prefix stix: <http://docs.oasis-open.org/cti/ns/stix#> .
 
 : a owl:Ontology ;
   owl:versionInfo "2.03" ;
+  owl:imports (
+    <http://d3fend.mitre.org/ontologies/d3fend.owl>
+    <http://docs.oasis-open.org/cti/ns/stix>
+    ) ;
   prov:wasDerivedFrom (
     <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json>
     <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json>
@@ -116,8 +121,6 @@
   rdfs:range xsd:string .
 
 :hasColor a owl:DatatypeProperty ;
-  db:cardinality db.cardinality:one ;
-  db:valueType db.type:string ;
   rdfs:label "Color" ;
   rdfs:comment "An optional color to represent the final edge node or final recommended action provided by the SSVC tree" ;
   rdfs:range :DecisionPoint ;
@@ -248,3 +251,4 @@
 :AutomatableYes a :Option ;
   rdfs:label "Yes" ;
   rdfs:comment "Attackers can reliably automate steps 1-4 of the kill chain for this vulnerability." .
+

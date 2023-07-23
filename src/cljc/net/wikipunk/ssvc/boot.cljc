@@ -1,64 +1,27 @@
 (ns net.wikipunk.ssvc.boot
-  {:rdf/type :jsonld/Context}
-  (:require
-   [net.wikipunk.rdf.as]
-   [net.wikipunk.rdf.cc]
-   [net.wikipunk.rdf.csvw]
-   [net.wikipunk.rdf.ctag]
-   [net.wikipunk.rdf.daq]
-   [net.wikipunk.rdf.dc11]
-   [net.wikipunk.rdf.dcat]
-   [net.wikipunk.rdf.dcterms]
-   [net.wikipunk.rdf.dcmitype]
-   [net.wikipunk.rdf.d3f]
-   [net.wikipunk.rdf.doap]
-   [net.wikipunk.rdf.dqv]
-   [net.wikipunk.rdf.duv]
-   [net.wikipunk.rdf.formats]
-   [net.wikipunk.rdf.foaf]
-   [net.wikipunk.rdf.geo]
-   [net.wikipunk.rdf.gr]
-   [net.wikipunk.rdf.greg]
-   [net.wikipunk.rdf.grddl]
-   [net.wikipunk.rdf.cal]
-   [net.wikipunk.rdf.jsonld]
-   [net.wikipunk.rdf.ldp]
-   [net.wikipunk.rdf.ma]
-   [net.wikipunk.rdf.oa]
-   [net.wikipunk.rdf.odrl]
-   [net.wikipunk.rdf.og]
-   [net.wikipunk.rdf.ogc]
-   [net.wikipunk.rdf.org]
-   [net.wikipunk.rdf.owl]
-   [net.wikipunk.rdf.pointers]
-   [net.wikipunk.rdf.prov]
-   [net.wikipunk.rdf.qb]
-   [net.wikipunk.rdf.rdf]
-   [net.wikipunk.rdf.rdfa]
-   [net.wikipunk.rdf.rdfg]
-   [net.wikipunk.rdf.rdfs]
-   [net.wikipunk.rdf.rev]
-   [net.wikipunk.rdf.rr]
-   [net.wikipunk.rdf.schema]
-   [net.wikipunk.rdf.scovo]
-   [net.wikipunk.rdf.sd]
-   [net.wikipunk.rdf.spdx]
-   [net.wikipunk.rdf.sioc]
-   [net.wikipunk.rdf.sioc.types]
-   [net.wikipunk.rdf.skos]
-   [net.wikipunk.rdf.skosxl]
-   [net.wikipunk.rdf.sosa]
-   [net.wikipunk.rdf.ssn]
-   [net.wikipunk.rdf.time]
-   [net.wikipunk.rdf.vs]
-   [net.wikipunk.rdf.vcard]
-   [net.wikipunk.rdf.void]
-   [net.wikipunk.rdf.wdrs]
-   [net.wikipunk.rdf.xhv]
-   [net.wikipunk.rdf.xsd]))
+  {:rdf/type :jsonld/Context})
 
 (def ssvc
   {:rdf/type         :rdfa/PrefixMapping
    :rdfa/uri         "https://wikipunk.net/ssvc/"
    :rdfa/prefix      "ssvc"
    :dcat/downloadURL "resources/ssvc.ttl"})
+
+(def stix
+  {:rdf/type         :rdfa/PrefixMapping
+   :rdfa/uri         "http://docs.oasis-open.org/cti/ns/stix#"
+   :rdfa/prefix      "stix"
+   :dcat/downloadURL "resources/stix.ttl"})
+
+(def tal
+  {:rdf/type         :rdfa/PrefixMapping
+   :rdfa/uri         "http://www.intel.com/ns/ta-library#"
+   :rdfa/prefix      "tal"
+   :dcat/downloadURL "resources/tac-ontology/threat-agent-lib/ta-library.owl"})
+
+(def security-playbook
+  {:rdf/type         :rdfa/PrefixMapping
+   :rdfa/uri         "http://docs.oasis-open.org/tac/ns/security-playbook#"
+   :rdfa/prefix      "security-playbook"
+   :dcat/downloadURL "resources/tac-ontology/security-playbook/security-playbook.owl"
+   :private          true})

@@ -1,6 +1,8 @@
 (ns net.wikipunk.rdf.ssvc
   "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers."
   {:dcat/downloadURL "resources/ssvc.ttl",
+   :owl/imports [{:rdfa/uri "http://d3fend.mitre.org/ontologies/d3fend.owl"}
+                 {:rdfa/uri "http://docs.oasis-open.org/cti/ns/stix"}],
    :owl/versionInfo "2.03",
    :prov/wasDerivedFrom
    [{:rdfa/uri
@@ -8,9 +10,6 @@
     {:rdfa/uri
      "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}],
    :rdf/ns-prefix-map {"d3f" "http://d3fend.mitre.org/ontologies/d3fend.owl#",
-                       "db" "https://wikipunk.net/db/",
-                       "db.cardinality" "https://wikipunk.net/db/cardinality/",
-                       "db.type" "https://wikipunk.net/db/type/",
                        "dcterms" "http://purl.org/dc/terms/",
                        "jsonschema" "https://www.w3.org/2019/wot/json-schema#",
                        "owl" "http://www.w3.org/2002/07/owl#",
@@ -20,6 +19,7 @@
                        "skos" "http://www.w3.org/2004/02/skos/core#",
                        "spdx" "http://spdx.org/rdf/terms#",
                        "ssvc" "https://wikipunk.net/ssvc/",
+                       "stix" "http://docs.oasis-open.org/cti/ns/stix#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
    :rdf/type :owl/Ontology,
    :rdfa/prefix "ssvc",
@@ -270,9 +270,7 @@
 
 (def hasColor
   "An optional color to represent the final edge node or final recommended action provided by the SSVC tree"
-  {:db/cardinality :db.cardinality/one,
-   :db/ident :ssvc/hasColor,
-   :db/valueType :db.type/string,
+  {:db/ident :ssvc/hasColor,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
    "An optional color to represent the final edge node or final recommended action provided by the SSVC tree",

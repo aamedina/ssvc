@@ -27,10 +27,7 @@
    [net.wikipunk.rdf :as rdf :refer [doc]]
    [zprint.core :as zprint]
    [net.wikipunk.ssvc.boot :as boot]
-   [net.wikipunk.rdf.ssvc]
-   [net.wikipunk.rdf.annotea]
-   [net.wikipunk.rdf.annotation]
-   [net.wikipunk.rdf.exif]
+   [net.wikipunk.ssvc :as ssvc]
    [net.wikipunk.datomic.boot :as db]
    [datomic.client.api :as d]
    [xtdb.api :as xt]))

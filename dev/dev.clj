@@ -46,3 +46,16 @@
   [& body]
   `(do (@user/reveal (do ~@body))
        true))
+
+(comment
+  (def boot-db (db/test-bootstrap (:db system)))
+  (let [result (d/q '[:find (pull ?property [:db/ident]) (pull ?value [:db/ident])
+                      :in $ ?class
+                      :where
+                      [?class :rdfs/subClassOf ?restriction]
+                      [?restriction :owl/onProperty ?property]
+                      [?restriction :owl/hasValue ?value]]
+                    boot-db :tal/Vendor)]
+    (reduce (fn [m [property value]]
+              (update m (:db/ident property) (fnil conj #{}) (:db/ident value)))
+            {} result)))

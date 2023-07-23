@@ -84,8 +84,3 @@
 (def topTacObjectProperty
   {:db/ident :tac/topTacObjectProperty,
    :rdf/type :owl/ObjectProperty})
-
-(def ^{:private true} ThreatActor
-  {:db/ident        :stix/ThreatActor,
-   :rdf/type        :rdfs/Class,
-   :rdfs/subClassOf :tac/Adversary})

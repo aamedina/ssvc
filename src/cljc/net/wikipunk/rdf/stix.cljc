@@ -48,107 +48,107 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/File
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mtime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/magic_number_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/content_ref,
-                      :owl/someValuesFrom :stix/Artifact,
+                     {:owl/onProperty     :stix/defanged,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/content_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/content_ref,
+                      :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mime_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/atime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/parent_directory_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_directory_ref,
-                      :owl/someValuesFrom :stix/Directory,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/contains_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/name_enc,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/magic_number_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ctime,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mime_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name_enc,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref,
+                      :owl/someValuesFrom :stix/Directory,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/contains_refs,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/contains_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/ctime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/atime,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mtime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}]})
 
 (def Artifact
@@ -159,80 +159,80 @@
    #xsd/langString
     "The Artifact object permits capturing an array of bytes (8-bits), as a base64-encoded string, or linking to a file-like payload. One of payload_bin or url MUST be provided. It is incumbent on object creators to ensure that the URL is accessible for downstream consumers.@en-us",
    :rdfs/label #xsd/langString "Artifact@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/encryption_algorithm,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/mime_type,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/decryption_key,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/url,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/payload_bin,
                       :owl/someValuesFrom :xsd/base64Binary,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mime_type,
+                     {:owl/onProperty     :stix/decryption_key,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/encryption_algorithm,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def AttackMotivationOv
@@ -258,61 +258,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def AttackResourceLevelOv
@@ -338,61 +338,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Bundle
@@ -422,80 +422,80 @@
    #xsd/langString
     "A Campaign is a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets. Campaigns usually have well defined objectives and may be part of an Intrusion Set. Campaigns are often attributed to an intrusion set and threat actors. The threat actors may reuse known infrastructure from the intrusion set or may set up new infrastructure specific for conducting that campaign. Campaigns can be characterized by their objectives and the incidents they cause, people or resources they target, and the resources (infrastructure, intelligence, Malware, Tools, etc.) they use. For example, a Campaign could be used to describe a crime syndicate's attack using a specific variant of malware and new C2 servers against the executives of ACME Bank during the summer of 2016 in order to gain secret information about an upcoming merger with another bank.ey target, and the resources (infrastructure, intelligence, Malware, Tools, etc.) they use.@en-us",
    :rdfs/label #xsd/langString "Campaign@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/objective,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/objective,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixDomainObject
+                     {:owl/onProperty     :stix/description,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/first_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixDomainObject
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/aliases,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/description,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/last_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/aliases,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def CourseOfAction
@@ -513,61 +513,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Dictionary
@@ -591,83 +591,83 @@
    #xsd/langString
     "The Directory object represents the properties common to a file system directory.@en-US",
    :rdfs/label "Directory Object",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/contains_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ctime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/contains_refs,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/contains_refs,
                       :owl/someValuesFrom [:stix/File :stix/Directory],
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/path_enc,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
                      {:owl/onProperty     :stix/path,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mtime,
+                     {:owl/onProperty     :stix/contains_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/path_enc,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/ctime,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/atime,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
+                     {:owl/onProperty     :stix/mtime,
                       :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def DomainName
@@ -689,61 +689,61 @@
      :owl/someValuesFrom [:stix/IPv6Address :stix/IPv4Address :stix/DomainName],
      :rdf/type           :owl/Restriction}
     :stix/StixCyberObservable
-    {:owl/onProperty     :stix/created,
-     :owl/someValuesFrom :xsd/dateTime,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/object_marking_refs,
-     :owl/someValuesFrom :stix/MarkingDefinition,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/type,
-     :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/extensions,
-     :owl/someValuesFrom :stix/Dictionary,
-     :rdf/type           :owl/Restriction}
-    :owl/Thing
-    {:owl/onProperty     :stix/confidence,
-     :owl/someValuesFrom :xsd/nonNegativeInteger,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/id_string,
-     :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/created_by_ref,
-     :owl/someValuesFrom :stix/Identity,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/granular_markings,
-     :owl/someValuesFrom :stix/GranularMarking,
-     :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/defanged,
      :owl/someValuesFrom :xsd/boolean,
      :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/spec_version,
+    :stix/StixObject
+    {:owl/onProperty     :stix/labels,
      :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/revoked,
-     :owl/someValuesFrom :xsd/boolean,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/modified,
-     :owl/someValuesFrom :xsd/dateTime,
      :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/external_references,
      :owl/someValuesFrom :stix/ExternalReference,
      :rdf/type           :owl/Restriction}
-    :stix/StixObject
-    {:owl/onProperty     :stix/created_by_ref_string,
-     :owl/someValuesFrom :xsd/string,
+    {:owl/onProperty     :stix/granular_markings,
+     :owl/someValuesFrom :stix/GranularMarking,
      :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/labels,
+    {:owl/onProperty     :stix/id_string,
      :owl/someValuesFrom :xsd/string,
      :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/lang,
      :owl/someValuesFrom :xsd/string,
      :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/id,
-     :owl/someValuesFrom :stix/identifier,
+    {:owl/onProperty     :stix/modified,
+     :owl/someValuesFrom :xsd/dateTime,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/revoked,
+     :owl/someValuesFrom :xsd/boolean,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/object_marking_refs,
+     :owl/someValuesFrom :stix/MarkingDefinition,
      :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/object_marking_refs_string,
      :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    :owl/Thing
+    {:owl/onProperty     :stix/created,
+     :owl/someValuesFrom :xsd/dateTime,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/spec_version,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/id,
+     :owl/someValuesFrom :stix/identifier,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/type,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/created_by_ref_string,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/created_by_ref,
+     :owl/someValuesFrom :stix/Identity,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/extensions,
+     :owl/someValuesFrom :stix/Dictionary,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/confidence,
+     :owl/someValuesFrom :xsd/nonNegativeInteger,
      :rdf/type           :owl/Restriction}]})
 
 (def EmailAddress
@@ -767,61 +767,61 @@
                       :owl/someValuesFrom :stix/UserAccount,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def EmailMessage
@@ -832,17 +832,63 @@
    #xsd/langString
     "The Email Message object represents an instance of an email message, corresponding to the internet message format described in [RFC5322] and related RFCs. Header field values that have been encoded as described in section 2 of [RFC2047] MUST be decoded before inclusion in Email Message object properties. For example, this is some text MUST be used instead of =?iso-8859-1?q?this=20is=20some=20text?=. Any characters in the encoded value which cannot be decoded into Unicode SHOULD be replaced with the 'REPLACEMENT CHARACTER' (U+FFFD). If it is necessary to capture the header value as observed, this can be achieved by referencing an Artifact object through the raw_email_ref property.@en-us",
    :rdfs/label #xsd/langString "EmailMessage@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/message_id,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/to_refs,
+                      :owl/someValuesFrom :stix/EmailAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/cc_refs,
+                      :owl/someValuesFrom :stix/EmailAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/sender_ref,
+                      :owl/someValuesFrom :stix/EmailAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/from_ref,
+                      :owl/someValuesFrom :stix/EmailAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/content_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/message_id,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/received_lines,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/sender_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/bcc_refs,
+                      :owl/someValuesFrom :stix/EmailAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/additional_header_fields,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/raw_email_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/to_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/cc_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/raw_email_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/from_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/body,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/subject,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/from_ref,
-                      :owl/someValuesFrom :stix/EmailAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/from_ref_string,
+                     {:owl/onProperty     :stix/bcc_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/date,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/body_multipart,
                       :owl/someValuesFrom :stix/EmailMimePartType,
@@ -850,107 +896,61 @@
                      {:owl/onProperty     :stix/is_multipart,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/additional_header_fields,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/bcc_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/body,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/to_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/raw_email_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/cc_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/received_lines,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/date,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/sender_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/content_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/sender_ref,
-                      :owl/someValuesFrom :stix/EmailAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/to_refs,
-                      :owl/someValuesFrom :stix/EmailAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/raw_email_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/cc_refs,
-                      :owl/someValuesFrom :stix/EmailAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/bcc_refs,
-                      :owl/someValuesFrom :stix/EmailAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def EmailMimePartType
@@ -1007,61 +1007,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixMetaObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def ExtensionTypeEnum
@@ -1102,25 +1102,28 @@
    #xsd/langString
     "The File object represents the properties of a file. A File object MUST contain at least one of hashes or name.@en-us",
    :rdfs/label #xsd/langString "File@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/name,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/magic_number_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mime_type,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/contains_refs,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/magic_number_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ctime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/size,
                       :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref,
+                      :owl/someValuesFrom :stix/Directory,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/atime,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_directory_ref_string,
+                     {:owl/onProperty     :stix/contains_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/mtime,
@@ -1129,80 +1132,77 @@
                      {:owl/onProperty     :stix/content_ref,
                       :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name_enc,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_directory_ref,
-                      :owl/someValuesFrom :stix/Directory,
-                      :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
+                     {:owl/onProperty     :stix/ctime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/contains_refs_string,
+                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/content_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mime_type,
+                     {:owl/onProperty     :stix/name_enc,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def GranularMarking
@@ -1248,61 +1248,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def GroupingContextOv
@@ -1342,102 +1342,52 @@
    :rdfs/subClassOf [{:owl/onProperty     :stix/request_value,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/message_body_length,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/request_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/message_body_data_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/message_body_data_ref,
                       :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/message_body_length,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
                      :stix/NetworkTraffic
+                     {:owl/onProperty     :stix/message_body_data_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/request_method,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/ipfix,
+                      :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref_string,
+                     {:owl/onProperty     :stix/protocols,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/is_active,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/dst_payload_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref,
-                      :owl/someValuesFrom :stix/MACAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_ref_string,
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/start,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ipfix,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulates_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_packets,
-                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/type,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_byte_count,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulates_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_active,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_byte_count,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_port,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_packets,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_port,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
+                     {:owl/onProperty     :stix/dst_packets,
+                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/granular_markings,
                       :owl/someValuesFrom :stix/GranularMarking,
@@ -1445,44 +1395,94 @@
                      {:owl/onProperty     :stix/end,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
+                     {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/protocols,
+                     {:owl/onProperty     :stix/dst_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
+                     {:owl/onProperty     :stix/created,
                       :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_ref,
                       :owl/someValuesFrom :stix/MACAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/defanged,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_ref,
+                      :owl/someValuesFrom :stix/MACAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_byte_count,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/start,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_packets,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulates_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_port,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulates_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_byte_count,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def IPv4Address
@@ -1509,61 +1509,61 @@
                       :owl/someValuesFrom :stix/AutonomousSystem,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def IPv6Address
@@ -1590,61 +1590,61 @@
                       :owl/someValuesFrom :stix/AutonomousSystem,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def IcmpExt
@@ -1662,131 +1662,131 @@
                       :owl/someValuesFrom :xsd/hexBinary,
                       :rdf/type           :owl/Restriction}
                      :stix/NetworkTraffic
-                     {:owl/onProperty     :stix/src_port,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref,
+                     {:owl/onProperty     :stix/src_ref,
                       :owl/someValuesFrom :stix/MACAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/end,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/start,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ipfix,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/encapsulates_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_packets,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_byte_count,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/protocols,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/ipfix,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/protocols,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulates_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/is_active,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/dst_ref,
+                      :owl/someValuesFrom :stix/MACAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
                      {:owl/onProperty     :stix/dst_byte_count,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_port,
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_port,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/start,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_packets,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_packets,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_ref,
-                      :owl/someValuesFrom :stix/MACAddress,
+                     {:owl/onProperty     :stix/encapsulates_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/end,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_port,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulates_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_byte_count,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Identity
@@ -1797,80 +1797,80 @@
    #xsd/langString
     "Identities can represent actual individuals, organizations, or groups (e.g., ACME, Inc.) as well as classes of individuals, organizations, systems or groups (e.g., the finance sector). The Identity SDO can capture basic identifying information, contact information, and the sectors that the Identity belongs to. Identity is used in STIX to represent, among other things, targets of attacks, information sources, object creators, and threat actor identities.@en-us",
    :rdfs/label #xsd/langString "Identity@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/roles,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/identity_class,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/contact_information,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/identity_class,
+                     :stix/StixDomainObject
+                     {:owl/onProperty     :stix/name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/roles,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/sectors,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/description,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixDomainObject
-                     {:owl/onProperty     :stix/sectors,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def IdentityClassOv
@@ -1898,61 +1898,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Indicator
@@ -1963,86 +1963,86 @@
    #xsd/langString
     "Indicators contain a pattern that can be used to detect suspicious or malicious cyber activity. For example, an Indicator may be used to represent a set of malicious domains and use the STIX Patterning Language (see section 9) to specify these domains. The Indicator SDO contains a simple textual description, the Kill Chain Phases that it detects behavior in, a time window for when the Indicator is valid or useful, and a required pattern property to capture a structured detection pattern. Conforming STIX implementations MUST support the STIX Patterning Language as defined in section 9. Relationships from the Indicator can describe the malicious or suspicious behavior that it directly detects (Malware, Tool, and Attack Pattern). In addition, it may also imply the presence of a Campaigns, Intrusion Sets, and Threat Actors, etc.@en-us",
    :rdfs/label #xsd/langString "Indicator@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/pattern_version,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/indicator_types,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixDomainObject
                      {:owl/onProperty     :stix/valid_until,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/valid_from,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/description,
+                     {:owl/onProperty     :stix/pattern_version,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/pattern_type,
+                     :stix/StixDomainObject
+                     {:owl/onProperty     :stix/description,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/pattern,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/indicator_types,
+                     {:owl/onProperty     :stix/pattern_type,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
+                     {:owl/onProperty     :stix/valid_from,
                       :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def IndicatorTypeOv
@@ -2063,80 +2063,80 @@
    #xsd/langString
     "The Infrastructure SDO represents a type of TTP and describes any systems, software services and any associated physical or virtual resources intended to support some purpose (e.g., C2 servers used as part of an attack, device or server that are part of defense, database servers targeted by an attack, etc.). While elements of an attack can be represented by other SDOs or SCOs, the Infrastructure SDO represents a named group of related data that constitutes the infrastructure.@en-us",
    :rdfs/label #xsd/langString "Infrastructure@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/aliases,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/description,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/infrastructure_types,
+                     {:owl/onProperty     :stix/aliases,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/last_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/infrastructure_types,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/description,
+                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/first_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def InfrastructureTypeOv
@@ -2152,89 +2152,89 @@
    #xsd/langString
     "An Intrusion Set is a grouped set of adversarial behaviors and resources with common properties that is believed to be orchestrated by a single organization. An Intrusion Set may capture multiple Campaigns or other activities that are all tied together by shared attributes indicating a commonly known or unknown Threat Actor. New activity can be attributed to an Intrusion Set even if the Threat Actors behind the attack are not known. Threat Actors can move from supporting one Intrusion Set to supporting another, or they may support multiple Intrusion Sets. Where a Campaign is a set of attacks over a period of time against a specific set of targets to achieve some objective, an Intrusion Set is the entire attack package and may be used over a very long period of time in multiple Campaigns to achieve potentially multiple purposes. While sometimes an Intrusion Set is not active, or changes focus, it is usually difficult to know if it has truly disappeared or ended. Analysts may have varying level of fidelity on attributing an Intrusion Set back to Threat Actors and may be able to only attribute it back to a nation state or perhaps back to an organization within that nation state.@en-us",
    :rdfs/label #xsd/langString "Intrusion Set@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/resource_level,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/secondary_motivations,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/goals,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/secondary_motivations,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/description,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/last_seen,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
                      {:owl/onProperty     :stix/aliases,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/first_seen,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/last_seen,
+                     {:owl/onProperty     :stix/first_seen,
                       :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/description,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/resource_level,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/primary_motivation,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def KillChainPhase
@@ -2271,61 +2271,61 @@
                       :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
                      :stix/StixMetaObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Location
@@ -2336,15 +2336,27 @@
    #xsd/langString
     "A Location represents a geographic location. The location may be described as any, some or all of the following: region (e.g., North America), civic address (e.g. New York, US), latitude and longitude. \\n\\n Locations are primarily used to give context to other SDOs. For example, a Location could be used in a relationship to describe that the Bourgeois Swallow intrusion set originates from Eastern Europe. \\n\\n The Location SDO can be related to an Identity or Intrusion Set to indicate that the identity or intrusion set is located in that location. It can also be related from a malware or attack pattern to indicate that they target victims in that location. The Location object describes geographic areas, not governments, even in cases where that area might have a government. For example, a Location representing the United States describes the United States as a geographic area, not the federal government of the United States. \\n\\n At least one of the following properties/sets of properties MUST be provided: region, country, latitude and longitude. \\n\\n When a combination of properties is provided (e.g. a region and a latitude and longitude) the more precise properties are what the location describes. In other words, if a location contains both a region of northern-america and a country of us, then the location describes the United States, not all of North America. In cases where a latitude and longitude are specified without a precision, the location describes the most precise other value. \\n\\n If precision is specified, then the datum for latitude and longitude MUST be WGS 84 [WGS84]. Organizations specifying a designated location using latitude and longitude SHOULD specify the precision which is appropriate for the scope of the location being identified. The scope is defined by the boundary as outlined by the precision around the coordinates.@en-us",
    :rdfs/label #xsd/langString "Location@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/name,
+   :rdfs/subClassOf [:stix/StixDomainObject
+                     {:owl/onProperty     :stix/postal_code,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixDomainObject
                      {:owl/onProperty     :stix/administrative_area,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/latitude,
                       :owl/someValuesFrom :xsd/float,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/street_address,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/region,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/city,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/longitude,
                       :owl/someValuesFrom :xsd/float,
@@ -2352,79 +2364,67 @@
                      {:owl/onProperty     :stix/country,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/region,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/street_address,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/description,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/precision,
                       :owl/someValuesFrom :xsd/float,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/postal_code,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/city,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/description,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def MACAddress
@@ -2439,61 +2439,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Malware
@@ -2504,29 +2504,41 @@
    #xsd/langString
     "Malware is a type of TTP that represents malicious code. It generally refers to a program that is inserted into a system, usually covertly. The intent is to compromise the confidentiality, integrity, or availability of the victim's data, applications, or operating system (OS) or otherwise annoy or disrupt the victim. The Malware SDO characterizes, identifies, and categorizes malware instances and families from data that may be derived from analysis. This SDO captures detailed information about how the malware works and what it does. This SDO captures contextual data relevant to sharing Malware data without requiring the full analysis provided by the Malware Analysis SDO. The Indicator SDO provides intelligence producers with the ability to define, using the STIX Pattern Grammar in a standard way to identify and detect behaviors associated with malicious activities. Although the Malware SDO provides vital intelligence on a specific instance or malware family, it does not provide a standard grammar that the Indicator SDO provides to identify those properties in security detection systems designed to process the STIX Pattern grammar. We strongly encourage the use of STIX Indicators for the detection of actual malware, due to its use of the STIX Patterning language and the clear semantics that it provides. To minimize the risk of a consumer compromising their system in parsing malware samples, producers SHOULD consider sharing defanged content (archive and password-protected samples) instead of raw, base64-encoded malware samples.@en-us",
    :rdfs/label #xsd/langString "Malware@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/implementation_languages,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/operating_system_refs,
+                      :owl/someValuesFrom :stix/Software,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixDomainObject
+                     {:owl/onProperty     :stix/architecture_execution_envs,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/malware_types,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/description,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/is_family,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/sample_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/capabilities,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/operating_system_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixDomainObject
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/sample_refs,
+                      :owl/someValuesFrom :stix/File,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/aliases,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/sample_refs,
-                      :owl/someValuesFrom :stix/File,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/capabilities,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/sample_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/architecture_execution_envs,
+                     {:owl/onProperty     :stix/implementation_languages,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/last_seen,
@@ -2535,73 +2547,61 @@
                      {:owl/onProperty     :stix/first_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/description,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_family,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/operating_system_refs,
-                      :owl/someValuesFrom :stix/Software,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/malware_types,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def MalwareAnalysis
@@ -2612,125 +2612,125 @@
    #xsd/langString
     "Malware Analysis captures the metadata and results of a particular static or dynamic analysis performed on a malware instance or family. One of result or analysis_sco_refs properties MUST be provided.@en-us",
    :rdfs/label #xsd/langString "Malware Analysis@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/operating_system_ref,
-                      :owl/someValuesFrom :stix/Software,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/result,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/installed_software_refs,
-                      :owl/someValuesFrom :stix/Software,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/sample_ref_string,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/version,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/sample_ref,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/submitted,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modules,
+                     {:owl/onProperty     :stix/result,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/configuration_version,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/operating_system_ref,
+                      :owl/someValuesFrom :stix/Software,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/analysis_sco_refs,
-                      :owl/someValuesFrom :stix/StixCyberObservable,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/analysis_engine_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/result_name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/operating_system_ref_string,
+                     {:owl/onProperty     :stix/analysis_sco_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/analysis_definition_version,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/host_vm_ref,
+                     {:owl/onProperty     :stix/analysis_engine_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/operating_system_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/result_name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modules,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/installed_software_refs,
                       :owl/someValuesFrom :stix/Software,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/product,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/version,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/analysis_sco_refs,
+                      :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/installed_software_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/analysis_started,
+                     {:owl/onProperty     :stix/analysis_ended,
                       :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/sample_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/configuration_version,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/host_vm_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/submitted,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/host_vm_ref,
+                      :owl/someValuesFrom :stix/Software,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/analysis_started,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/analysis_ended,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/analysis_sco_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/installed_software_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def MalwareCapabilitiesOv
@@ -2767,61 +2767,61 @@
                                            :stix/StatementMarking],
                       :rdf/type           :owl/Restriction}
                      :stix/StixMetaObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Mutex
@@ -2836,61 +2836,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def NetworkSocketFamilyEnum
@@ -2911,131 +2911,131 @@
    #xsd/langString
     "The Network Traffic object represents arbitrary network traffic that originates from a source and is addressed to a destination. The network traffic MAY or MAY NOT constitute a valid unicast, multicast, or broadcast network connection. This MAY also include traffic that is not established, such as a SYN flood. To allow for use cases where a source or destination address may be sensitive and not suitable for sharing, such as addresses that are internal to an organization's network, the source and destination properties (src_ref and dst_ref, respectively) are defined as optional in the properties table below. However, a Network Traffic object MUST contain the protocols property and at least one of the src_ref or dst_ref properties and SHOULD contain the src_port and dst_port properties.@en-us",
    :rdfs/label #xsd/langString "Network Traffic@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/encapsulates_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/end,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/start,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_packets,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/protocols,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_packets,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_ref,
-                      :owl/someValuesFrom :stix/MACAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/dst_port,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/dst_byte_count,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulates_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_port,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref_string,
+                     {:owl/onProperty     :stix/protocols,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_byte_count,
-                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/dst_ref,
                       :owl/someValuesFrom :stix/MACAddress,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
+                     {:owl/onProperty     :stix/start,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ipfix,
-                      :owl/someValuesFrom :stix/Dictionary,
+                     {:owl/onProperty     :stix/dst_port,
+                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/is_active,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
+                     {:owl/onProperty     :stix/encapsulates_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_packets,
+                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_byte_count,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/src_packets,
+                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
+                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
+                     {:owl/onProperty     :stix/dst_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/ipfix,
                       :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/src_port,
+                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/dst_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulates_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/end,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_ref,
+                      :owl/someValuesFrom :stix/MACAddress,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Note
@@ -3059,61 +3059,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def NtfsExt
@@ -3131,107 +3131,107 @@
                       :owl/someValuesFrom :stix/AlternateDataStreamType,
                       :rdf/type           :owl/Restriction}
                      :stix/File
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mtime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/magic_number_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/content_ref,
-                      :owl/someValuesFrom :stix/Artifact,
+                     {:owl/onProperty     :stix/defanged,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/content_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/content_ref,
+                      :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mime_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/atime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/parent_directory_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_directory_ref,
-                      :owl/someValuesFrom :stix/Directory,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/contains_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/name_enc,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/magic_number_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ctime,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mime_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name_enc,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref,
+                      :owl/someValuesFrom :stix/Directory,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/contains_refs,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/contains_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/ctime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/atime,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mtime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}]})
 
 (def ObservedData
@@ -3245,78 +3245,78 @@
    :rdfs/subClassOf [{:owl/onProperty     :stix/first_observed,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/number_observed,
-                      :owl/someValuesFrom :xsd/positiveInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_refs,
-                      :owl/someValuesFrom [:stix/StixRelationshipObject
-                                           :stix/StixCyberObservable],
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/objects,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/last_observed,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_refs,
+                      :owl/someValuesFrom [:stix/StixRelationshipObject
+                                           :stix/StixCyberObservable],
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/number_observed,
+                      :owl/someValuesFrom :xsd/positiveInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Opinion
@@ -3337,61 +3337,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def OpinionEnum
@@ -3428,107 +3428,107 @@
                       :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
                      :stix/File
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mtime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/magic_number_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/content_ref,
-                      :owl/someValuesFrom :stix/Artifact,
+                     {:owl/onProperty     :stix/defanged,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/content_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/content_ref,
+                      :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mime_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/atime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/parent_directory_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_directory_ref,
-                      :owl/someValuesFrom :stix/Directory,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/contains_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/name_enc,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/magic_number_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ctime,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mime_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name_enc,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref,
+                      :owl/someValuesFrom :stix/Directory,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/contains_refs,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/contains_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/ctime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/atime,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mtime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}]})
 
 (def ProcessClass
@@ -3539,20 +3539,23 @@
    #xsd/langString
     "The Process object represents common properties of an instance of a computer program as executed on an operating system. A Process object MUST contain at least one property (other than type) from this object (or one of its extensions).@en-us",
    :rdfs/label #xsd/langString "Process@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/opened_connection_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/pid,
+                      :owl/someValuesFrom :xsd/positiveInteger,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/opened_connection_refs_string,
+                     {:owl/onProperty     :stix/parent_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_hidden,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/child_refs_string,
+                     {:owl/onProperty     :stix/image_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/cwd,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/opened_connection_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/image_ref,
+                      :owl/someValuesFrom :stix/File,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/command_line,
                       :owl/someValuesFrom :xsd/string,
@@ -3560,89 +3563,86 @@
                      {:owl/onProperty     :stix/created_time,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/image_ref,
-                      :owl/someValuesFrom :stix/File,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/creator_user_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/creator_user_ref,
-                      :owl/someValuesFrom :stix/UserAccount,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/image_ref_string,
+                     {:owl/onProperty     :stix/child_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/child_refs,
                       :owl/someValuesFrom :stix/Process,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/pid,
-                      :owl/someValuesFrom :xsd/positiveInteger,
+                     {:owl/onProperty     :stix/creator_user_ref,
+                      :owl/someValuesFrom :stix/UserAccount,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/parent_ref,
                       :owl/someValuesFrom :stix/Process,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
                      {:owl/onProperty     :stix/environment_variables,
                       :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/opened_connection_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/creator_user_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
+                     {:owl/onProperty     :stix/is_hidden,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def ProcessorArchitectureOv
@@ -3671,107 +3671,107 @@
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      :stix/File
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mtime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/magic_number_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/content_ref,
-                      :owl/someValuesFrom :stix/Artifact,
+                     {:owl/onProperty     :stix/defanged,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/content_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/content_ref,
+                      :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mime_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/atime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/parent_directory_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_directory_ref,
-                      :owl/someValuesFrom :stix/Directory,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/contains_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/name_enc,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/magic_number_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ctime,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mime_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name_enc,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref,
+                      :owl/someValuesFrom :stix/Directory,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/contains_refs,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/contains_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/ctime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/atime,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mtime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}]})
 
 (def RegionOv
@@ -3794,77 +3794,77 @@
     {:owl/onProperty     :stix/description,
      :owl/someValuesFrom :xsd/string,
      :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/source_ref_string,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/start_time,
      :owl/someValuesFrom :xsd/dateTime,
      :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/stop_time,
-     :owl/someValuesFrom :xsd/dateTime,
+    {:owl/onProperty     :stix/relationship_type,
+     :owl/someValuesFrom :xsd/string,
      :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/source_ref,
      :owl/someValuesFrom [:stix/StixDomainObject :stix/StixCyberObservable],
      :rdf/type           :owl/Restriction}
     :stix/StixRelationshipObject
-    {:owl/onProperty     :stix/source_ref_string,
-     :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/relationship_type,
-     :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/created,
+    {:owl/onProperty     :stix/stop_time,
      :owl/someValuesFrom :xsd/dateTime,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/object_marking_refs,
-     :owl/someValuesFrom :stix/MarkingDefinition,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/created_by_ref,
-     :owl/someValuesFrom :stix/Identity,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/granular_markings,
-     :owl/someValuesFrom :stix/GranularMarking,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/revoked,
-     :owl/someValuesFrom :xsd/boolean,
-     :rdf/type           :owl/Restriction}
-    :stix/StixObject
-    {:owl/onProperty     :stix/type,
-     :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/extensions,
-     :owl/someValuesFrom :stix/Dictionary,
-     :rdf/type           :owl/Restriction}
-    :owl/Thing
-    {:owl/onProperty     :stix/confidence,
-     :owl/someValuesFrom :xsd/nonNegativeInteger,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/id_string,
-     :owl/someValuesFrom :xsd/string,
      :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/defanged,
      :owl/someValuesFrom :xsd/boolean,
      :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/spec_version,
-     :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/modified,
-     :owl/someValuesFrom :xsd/dateTime,
-     :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/external_references,
      :owl/someValuesFrom :stix/ExternalReference,
      :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/created_by_ref_string,
-     :owl/someValuesFrom :xsd/string,
-     :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/labels,
+    {:owl/onProperty     :stix/id_string,
      :owl/someValuesFrom :xsd/string,
      :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/lang,
      :owl/someValuesFrom :xsd/string,
      :rdf/type           :owl/Restriction}
-    {:owl/onProperty     :stix/id,
-     :owl/someValuesFrom :stix/identifier,
+    {:owl/onProperty     :stix/modified,
+     :owl/someValuesFrom :xsd/dateTime,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/revoked,
+     :owl/someValuesFrom :xsd/boolean,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/object_marking_refs,
+     :owl/someValuesFrom :stix/MarkingDefinition,
+     :rdf/type           :owl/Restriction}
+    :owl/Thing
+    {:owl/onProperty     :stix/spec_version,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/type,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/created_by_ref,
+     :owl/someValuesFrom :stix/Identity,
+     :rdf/type           :owl/Restriction}
+    :stix/StixObject
+    {:owl/onProperty     :stix/labels,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/granular_markings,
+     :owl/someValuesFrom :stix/GranularMarking,
      :rdf/type           :owl/Restriction}
     {:owl/onProperty     :stix/object_marking_refs_string,
      :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/created,
+     :owl/someValuesFrom :xsd/dateTime,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/id,
+     :owl/someValuesFrom :stix/identifier,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/created_by_ref_string,
+     :owl/someValuesFrom :xsd/string,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/extensions,
+     :owl/someValuesFrom :stix/Dictionary,
+     :rdf/type           :owl/Restriction}
+    {:owl/onProperty     :stix/confidence,
+     :owl/someValuesFrom :xsd/nonNegativeInteger,
      :rdf/type           :owl/Restriction}]})
 
 (def Report
@@ -3891,61 +3891,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def ReportTypeOv
@@ -3961,95 +3961,95 @@
    #xsd/langString
     "A Sighting denotes the belief that something in CTI (e.g., an indicator, malware, tool, threat actor, etc.) was seen. Sightings are used to track who and what are being targeted, how attacks are carried out, and to track trends in attack behavior. \\n\\n The Sighting relationship object is a special type of SRO; it is a relationship that contains extra properties not present on the Generic Relationship object. These extra properties are included to represent data specific to sighting relationships (e.g., count, representing how many times something was seen), but for other purposes a Sighting can be thought of as a Relationship with a name of \"sighting-of\". Sighting is captured as a relationship because you cannot have a sighting unless you have something that has been sighted. Sighting does not make sense without the relationship to what was sighted. \\n\\n Sighting relationships relate three aspects of the sighting: \\n\\n What was sighted, such as the Indicator, Malware, Campaign, or other SDO (sighting_of_ref). \\n\\n Who sighted it and/or where it was sighted, represented as an Identity (where_sighted_refs). \\n\\n What was actually seen on systems and networks, represented as Observed Data (observed_data_refs). \\n\\n What was sighted is required; a sighting does not make sense unless you say what you saw. Who sighted it, where it was sighted, and what was actually seen are optional. In many cases it is not necessary to provide that level of detail in order to provide value. \\n\\n Sightings are used whenever any SDO has been \"seen\". In some cases, the object creator wishes to convey very little information about the sighting; the details might be sensitive, but the fact that they saw a malware instance or threat actor could still be very useful. In other cases, providing the details may be helpful or even necessary; saying exactly which of the 1000 IP addresses in an indicator were sighted is helpful when tracking which of those IPs is still malicious. \\n\\n Sighting is distinct from Observed Data in that Sighting is an intelligence assertion (\"I saw this threat actor\") while Observed Data is simply information (\"I saw this file\"). When you combine them by including the linked Observed Data (observed_data_refs) from a Sighting, you can say \"I saw this file, and that makes me think I saw this threat actor\".@en-us",
    :rdfs/label #xsd/langString "Sighting@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/where_sighted_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/sighting_of_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/observed_data_refs,
+                      :owl/someValuesFrom :stix/ObservedData,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/description,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/where_sighted_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/last_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/where_sighted_refs,
-                      :owl/someValuesFrom :stix/Location,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/count,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/observed_data_refs_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/summary,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/first_seen,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/where_sighted_refs,
+                      :owl/someValuesFrom :stix/Location,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/sighting_of_ref,
                       :owl/someValuesFrom :stix/StixDomainObject,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/observed_data_refs_string,
+                     {:owl/onProperty     :stix/sighting_of_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixRelationshipObject
-                     {:owl/onProperty     :stix/observed_data_refs,
-                      :owl/someValuesFrom :stix/ObservedData,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
+                     {:owl/onProperty     :stix/first_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
+                     {:owl/onProperty     :stix/count,
                       :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
+                     :stix/StixRelationshipObject
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def SocketExt
@@ -4073,86 +4073,36 @@
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      :stix/NetworkTraffic
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/ipfix,
+                      :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref_string,
+                     {:owl/onProperty     :stix/protocols,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/is_active,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/dst_payload_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref,
-                      :owl/someValuesFrom :stix/MACAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_ref_string,
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/start,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ipfix,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulates_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_packets,
-                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/type,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_byte_count,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulates_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_active,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_byte_count,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_port,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_packets,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_port,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
+                     {:owl/onProperty     :stix/dst_packets,
+                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/granular_markings,
                       :owl/someValuesFrom :stix/GranularMarking,
@@ -4160,44 +4110,94 @@
                      {:owl/onProperty     :stix/end,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
+                     {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/protocols,
+                     {:owl/onProperty     :stix/dst_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
+                     {:owl/onProperty     :stix/created,
                       :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_ref,
                       :owl/someValuesFrom :stix/MACAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/defanged,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_ref,
+                      :owl/someValuesFrom :stix/MACAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_byte_count,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/start,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_packets,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulates_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_port,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulates_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_byte_count,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Software
@@ -4208,80 +4208,80 @@
    #xsd/langString
     "The Software object represents high-level properties associated with software, including software products.@en-us",
    :rdfs/label #xsd/langString "Software@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/languages,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/vendor,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
                      {:owl/onProperty     :stix/cpe,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/vendor,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/swid,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/languages,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def StatementMarking
@@ -4296,72 +4296,72 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/MarkingDefinition
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixMetaObject
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/definition_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
+                     {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/definition,
-                      :owl/someValuesFrom [:stix/TLPMarking
-                                           :stix/StatementMarking],
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixMetaObject
+                     {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
                      {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/definition,
+                      :owl/someValuesFrom [:stix/TLPMarking
+                                           :stix/StatementMarking],
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/definition_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def StixCategoryObject
@@ -4377,60 +4377,60 @@
     "Objects that represent observed facts about a network or host that may be used and related to higher level intelligence to form a more complete understanding of the threat landscape.@en-us",
    :rdfs/label #xsd/langString "STIX Cyber-Observable Object@en-us",
    :rdfs/subClassOf [:stix/StixObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def StixDatatype
@@ -4446,60 +4446,60 @@
     "Higher Level Intelligence Objects that represent behaviors and constructs that threat analysts would typically create or work with while understanding the threat landscape.@en-us",
    :rdfs/label #xsd/langString "STIX Domain Object@en-us",
    :rdfs/subClassOf [:stix/StixObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def StixEnumeration
@@ -4516,60 +4516,60 @@
     "A STIX Object that provides the necessary glue and associated metadata to enrich or extend STIX Core Objects to support user and system workflows.@en-us",
    :rdfs/label #xsd/langString "STIX Meta Object@en-us",
    :rdfs/subClassOf [:stix/StixObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def StixObject
@@ -4580,36 +4580,33 @@
    #xsd/langString
     "STIX Domain Objects (SDOs) and Relationship Objects (SROs) all share a common set of properties which provide core capabilities such as versioning and data markings (representing how data can be shared and used). All STIX Cyber-observable Objects (SCOs) likewise share a common set of properties that are applicable for all SCOs. Similarly, STIX Meta Objects (SMOs) use some but not all of the common properties.@en-us",
    :rdfs/label #xsd/langString "STIX Object@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/type,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
                      {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
+                     :owl/Thing
+                     {:owl/onProperty     :stix/lang,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/confidence,
                       :owl/someValuesFrom :xsd/nonNegativeInteger,
@@ -4617,23 +4614,26 @@
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/granular_markings,
                       :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}]})
 
 (def StixOpenVocabulary
@@ -4650,60 +4650,60 @@
     "Objects that connect STIX Domain Objects together, STIX Cyber-observable Objects together, and connect STIX Domain Objects and STIX Cyber-observable Objects together to form a more complete understanding of the threat landscape.@en-us",
    :rdfs/label #xsd/langString "STIX Relationship Object@en-us",
    :rdfs/subClassOf [:stix/StixObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def TLPMarking
@@ -4718,72 +4718,72 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/MarkingDefinition
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixMetaObject
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/definition_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
+                     {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/definition,
-                      :owl/someValuesFrom [:stix/TLPMarking
-                                           :stix/StatementMarking],
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixMetaObject
+                     {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
                      {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/definition,
+                      :owl/someValuesFrom [:stix/TLPMarking
+                                           :stix/StatementMarking],
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/definition_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def TcpExt
@@ -4801,131 +4801,131 @@
                       :owl/someValuesFrom :xsd/hexBinary,
                       :rdf/type           :owl/Restriction}
                      :stix/NetworkTraffic
-                     {:owl/onProperty     :stix/src_port,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_ref,
+                     {:owl/onProperty     :stix/src_ref,
                       :owl/someValuesFrom :stix/MACAddress,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/end,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/start,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ipfix,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/encapsulates_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_packets,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_byte_count,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/protocols,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/ipfix,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/protocols,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/encapsulates_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_payload_ref,
-                      :owl/someValuesFrom :stix/Artifact,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/is_active,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/dst_ref,
+                      :owl/someValuesFrom :stix/MACAddress,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
                      {:owl/onProperty     :stix/dst_byte_count,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dst_port,
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_port,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/start,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulated_by_ref,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_packets,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/src_packets,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/src_ref,
-                      :owl/someValuesFrom :stix/MACAddress,
+                     {:owl/onProperty     :stix/encapsulates_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/end,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/dst_port,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/encapsulates_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_byte_count,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/src_payload_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def ThreatActor
@@ -4942,101 +4942,102 @@
    #xsd/langString
     "Threat Actors are actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time. \\n\\nThreat Actors leverage their resources, and possibly the resources of an Intrusion Set, to conduct attacks and run Campaigns against targets. \\n\\nThreat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.@en-us",
    :rdfs/label #xsd/langString "Threat Actor@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/aliases,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/sophistication,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/last_seen,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/first_seen,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/secondary_motivations,
+                     {:owl/onProperty     :stix/roles,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/description,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/resource_level,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/aliases,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/personal_motivations,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixDomainObject
+                     {:owl/onProperty     :stix/last_seen,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/threat_actor_types,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/sophistication,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/secondary_motivations,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/goals,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixDomainObject
-                     {:owl/onProperty     :stix/first_seen,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/resource_level,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/roles,
+                     {:owl/onProperty     :stix/primary_motivation,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/primary_motivation,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/threat_actor_types,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
+                     :tac/Adversary
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def ThreatActorRoleOv
@@ -5078,61 +5079,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def ToolTypeOv
@@ -5152,61 +5153,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def UnixAccountExt
@@ -5230,11 +5231,29 @@
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      :stix/UserAccount
-                     {:owl/onProperty     :stix/created,
+                     {:owl/onProperty     :stix/can_escalate_privs,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/defanged,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/is_privileged,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/credential,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs,
                       :owl/someValuesFrom :stix/MarkingDefinition,
@@ -5242,89 +5261,71 @@
                      {:owl/onProperty     :stix/credential_last_changed,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/account_expires,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/display_name,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/account_created,
+                     :owl/Thing
+                     {:owl/onProperty     :stix/account_expires,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/is_service_account,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/account_last_login,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/user_id,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
                      {:owl/onProperty     :stix/account_login,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/display_name,
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/is_disabled,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/credential,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/can_escalate_privs,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/account_first_login,
+                     {:owl/onProperty     :stix/account_last_login,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/is_privileged,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/defanged,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/user_id,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
+                     {:owl/onProperty     :stix/created,
                       :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/account_first_login,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/account_created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def UserAccount
@@ -5335,23 +5336,11 @@
    #xsd/langString
     "The User Account object represents an instance of any type of user account, including but not limited to operating system, device, messaging service, and social media platform accounts. As all properties of this object are optional, at least one of the properties defined below MUST be included when using this object.@en-us",
    :rdfs/label #xsd/langString "User Account@en-us",
-   :rdfs/subClassOf [:stix/StixCyberObservable
+   :rdfs/subClassOf [{:owl/onProperty     :stix/account_expires,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
                      {:owl/onProperty     :stix/can_escalate_privs,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/account_login,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/credential_last_changed,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/account_expires,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/account_created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_privileged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/user_id,
@@ -5363,73 +5352,85 @@
                      {:owl/onProperty     :stix/display_name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_disabled,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/account_first_login,
                       :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/is_disabled,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/credential,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/credential_last_changed,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/account_created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/is_privileged,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/account_last_login,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/account_login,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def Vulnerability
@@ -5447,61 +5448,61 @@
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      :stix/StixDomainObject
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def WindowsIntegrityLevelEnum
@@ -5522,98 +5523,98 @@
    #xsd/langString
     "The Windows PE Optional Header type represents the properties of the PE optional header. An object using the Windows PE Optional Header Type MUST contain at least one property from this type.@en-us",
    :rdfs/label #xsd/langString "Windows PE Optional Header Type@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/major_linker_version,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/minor_image_version,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/image_base,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/major_os_version,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/minor_subsystem_version,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size_of_code,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/subsystem_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/size_of_uninitialized_data,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/minor_linker_version,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/magic_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/number_of_rva_and_sizes,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/major_image_version,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixDatatype
-                     {:owl/onProperty     :stix/image_base,
+                     {:owl/onProperty     :stix/major_linker_version,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/major_subsystem_version,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/base_of_data,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dll_characteristics_hex,
+                     {:owl/onProperty     :stix/checksum_hex,
                       :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size_of_initialized_data,
-                      :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/size_of_stack_reserve,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size_of_initialized_data,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size_of_image,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/address_of_entry_point,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixDatatype
                      {:owl/onProperty     :stix/hashes,
                       :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/size_of_heap_reserve,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/subsystem_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/section_alignment,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/minor_subsystem_version,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/loader_flags_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/address_of_entry_point,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/win32_version_value_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size_of_headers,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/minor_image_version,
+                     {:owl/onProperty     :stix/major_image_version,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/size_of_stack_commit,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size_of_code,
+                     {:owl/onProperty     :stix/base_of_data,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size_of_image,
+                     {:owl/onProperty     :stix/section_alignment,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size_of_heap_commit,
-                      :owl/someValuesFrom :xsd/integer,
+                     {:owl/onProperty     :stix/dll_characteristics_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/minor_os_version,
-                      :owl/someValuesFrom :xsd/integer,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/checksum_hex,
+                     {:owl/onProperty     :stix/magic_hex,
                       :owl/someValuesFrom :xsd/hexBinary,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/base_of_code,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size_of_heap_commit,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size_of_headers,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/loader_flags_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/number_of_rva_and_sizes,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/win32_version_value_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/minor_os_version,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/file_alignment,
+                      :owl/someValuesFrom :xsd/integer,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/minor_linker_version,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}]})
 
@@ -5647,138 +5648,138 @@
    #xsd/langString
     "The Windows PE Binary File extension specifies a default extension for capturing properties specific to Windows portable executable (PE) files. The key for this extension when used in the extensions dictionary MUST be windows-pebinary-ext. Note that this predefined extension does not use the extension facility described in section 7.3. An object using the Windows™ PE Binary File Extension MUST contain at least one property other than the required pe_type property from this extension.@en-us",
    :rdfs/label #xsd/langString "Windows PE Binary File Extension@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/characteristics_hex,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/machine_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/characteristics_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/imphash,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/optional_header,
+                      :owl/someValuesFrom :stix/WindowsPeOptionalHeaderType,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/number_of_symbols,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/time_date_stamp,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/pointer_to_symbol_table_hex,
                       :owl/someValuesFrom :xsd/hexBinary,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/sections,
                       :owl/someValuesFrom :stix/WindowsPeSectionType,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/pointer_to_symbol_table_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/time_date_stamp,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/machine_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/optional_header,
-                      :owl/someValuesFrom :stix/WindowsPeOptionalHeaderType,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/number_of_sections,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     :stix/File
-                     {:owl/onProperty     :stix/number_of_symbols,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/size_of_optional_header,
                       :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/imphash,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mtime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/magic_number_hex,
-                      :owl/someValuesFrom :xsd/hexBinary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/content_ref,
-                      :owl/someValuesFrom :stix/Artifact,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/content_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/size,
+                     :stix/File
+                     {:owl/onProperty     :stix/number_of_sections,
                       :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/mime_type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/atime,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/parent_directory_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_directory_ref,
-                      :owl/someValuesFrom :stix/Directory,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/contains_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/name_enc,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/content_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/content_ref,
+                      :owl/someValuesFrom :stix/Artifact,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/magic_number_hex,
+                      :owl/someValuesFrom :xsd/hexBinary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/ctime,
-                      :owl/someValuesFrom :xsd/dateTime,
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mime_type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name_enc,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref,
+                      :owl/someValuesFrom :stix/Directory,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_directory_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/contains_refs,
                       :owl/someValuesFrom :stix/StixCyberObservable,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     {:owl/onProperty     :stix/name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/contains_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
-                      :owl/someValuesFrom :xsd/string,
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/ctime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/atime,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/size,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/mtime,
+                      :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}]})
 
 (def WindowsProcessExt
@@ -5789,17 +5790,14 @@
    #xsd/langString
     "The Windows Process extension specifies a default extension for capturing properties specific to Windows processes. The key for this extension when used in the extensions dictionary MUST be windows-process-ext. Note that this predefined extension does not use the extension facility described in section 7.3. An object using the Windows Process Extension MUST contain at least one property from this extension.@en-us",
    :rdfs/label #xsd/langString "Windows Process Extension@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/priority,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/startup_info,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/dep_enabled,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/dep_enabled,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/owner_sid,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/startup_info,
+                      :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/window_title,
                       :owl/someValuesFrom :xsd/string,
@@ -5808,89 +5806,57 @@
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
                      :stix/Process
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/image_ref,
-                      :owl/someValuesFrom :stix/File,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/creator_user_ref,
-                      :owl/someValuesFrom :stix/UserAccount,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/child_refs,
-                      :owl/someValuesFrom :stix/Process,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_time,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_ref_string,
+                     {:owl/onProperty     :stix/priority,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/command_line,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/creator_user_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_hidden,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/cwd,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_ref,
-                      :owl/someValuesFrom :stix/Process,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/child_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/opened_connection_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/environment_variables,
-                      :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/opened_connection_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/command_line,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/opened_connection_refs_string,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/creator_user_ref,
+                      :owl/someValuesFrom :stix/UserAccount,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_time,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/environment_variables,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/creator_user_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/pid,
                       :owl/someValuesFrom :xsd/positiveInteger,
@@ -5898,20 +5864,55 @@
                      {:owl/onProperty     :stix/image_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_ref,
+                      :owl/someValuesFrom :stix/Process,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/opened_connection_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/child_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/is_hidden,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/child_refs,
+                      :owl/someValuesFrom :stix/Process,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/cwd,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/image_ref,
+                      :owl/someValuesFrom :stix/File,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def WindowsRegistryDatatypeEnum
@@ -5927,80 +5928,80 @@
    #xsd/langString
     "The Registry Key object represents the properties of a Windows registry key. As all properties of this object are optional, at least one of the properties defined below MUST be included when using this object.@en-us",
    :rdfs/label #xsd/langString "Windows Registry Key Object@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/creator_user_ref,
-                      :owl/someValuesFrom :stix/UserAccount,
+   :rdfs/subClassOf [:stix/StixCyberObservable
+                     {:owl/onProperty     :stix/values,
+                      :owl/someValuesFrom :stix/WindowsRegistryValueType,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified_time,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/creator_user_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
                      {:owl/onProperty     :stix/number_of_subkeys,
                       :owl/someValuesFrom :xsd/integer,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/key,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/values,
-                      :owl/someValuesFrom :stix/WindowsRegistryValueType,
+                     {:owl/onProperty     :stix/creator_user_ref,
+                      :owl/someValuesFrom :stix/UserAccount,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
+                     {:owl/onProperty     :stix/creator_user_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/modified_time,
                       :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def WindowsRegistryValueType
@@ -6027,108 +6028,73 @@
    #xsd/langString
     "The Windows Service extension specifies a default extension for capturing properties specific to Windows services. The key for this extension when used in the extensions dictionary MUST be windows-service-ext. Note that this predefined extension does not use the extension facility described in section 7.3. As all properties of this extension are optional, at least one of the properties defined below MUST be included when using this extension.@en-us",
    :rdfs/label #xsd/langString "Windows Service Extension@en-us",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/service_name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/service_dll_refs,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/service_dll_refs,
                       :owl/someValuesFrom :stix/File,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/display_name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/service_name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/Process
                      {:owl/onProperty     :stix/descriptions,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/service_dll_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/Process
-                     {:owl/onProperty     :stix/display_name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/group_name,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/image_ref,
-                      :owl/someValuesFrom :stix/File,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/creator_user_ref,
-                      :owl/someValuesFrom :stix/UserAccount,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/child_refs,
-                      :owl/someValuesFrom :stix/Process,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/created_time,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/command_line,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/creator_user_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_hidden,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/cwd,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/parent_ref,
-                      :owl/someValuesFrom :stix/Process,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/child_refs_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/opened_connection_refs,
-                      :owl/someValuesFrom :stix/NetworkTraffic,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/environment_variables,
-                      :owl/someValuesFrom :stix/Dictionary,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
+                     {:owl/onProperty     :stix/opened_connection_refs,
+                      :owl/someValuesFrom :stix/NetworkTraffic,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/command_line,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/opened_connection_refs_string,
+                     {:owl/onProperty     :stix/external_references,
+                      :owl/someValuesFrom :stix/ExternalReference,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/lang,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/creator_user_ref,
+                      :owl/someValuesFrom :stix/UserAccount,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/modified,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/external_references,
-                      :owl/someValuesFrom :stix/ExternalReference,
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_time,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/environment_variables,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/creator_user_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_ref_string,
+                      :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/pid,
                       :owl/someValuesFrom :xsd/positiveInteger,
@@ -6136,20 +6102,55 @@
                      {:owl/onProperty     :stix/image_ref_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
+                     :stix/StixCyberObservable
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/parent_ref,
+                      :owl/someValuesFrom :stix/Process,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/opened_connection_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/labels,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/lang,
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/child_refs_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/id,
                       :owl/someValuesFrom :stix/identifier,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs_string,
+                     {:owl/onProperty     :stix/is_hidden,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/child_refs,
+                      :owl/someValuesFrom :stix/Process,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/cwd,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/image_ref,
+                      :owl/someValuesFrom :stix/File,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def WindowsServiceStartTypeEnum
@@ -6175,101 +6176,101 @@
    #xsd/langString
     "The X.509 Certificate object represents the properties of an X.509 certificate, as defined by ITU recommendation X.509 [X.509]. An X.509 Certificate object MUST contain at least one object specific property (other than type) from this object.@en-US",
    :rdfs/label #xsd/langString "X.509 Certificate Object@en-US",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/serial_number,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/subject,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/version,
+                     {:owl/onProperty     :stix/issuer,
                       :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/hashes,
-                      :owl/someValuesFrom :stix/Hashes,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/validity_not_before,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/signature_algorithm,
+                     {:owl/onProperty     :stix/is_self_signed,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/hashes,
+                      :owl/someValuesFrom :stix/Hashes,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/validity_not_after,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/subject_public_key_algorithm,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/subject_public_key_exponent,
                       :owl/someValuesFrom :xsd/positiveInteger,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/validity_not_after,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      :stix/StixCyberObservable
-                     {:owl/onProperty     :stix/issuer,
+                     {:owl/onProperty     :stix/serial_number,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/subject_public_key_modulus,
+                     {:owl/onProperty     :stix/version,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/x509_v3_extensions,
                       :owl/someValuesFrom :stix/X509v3ExtensionsType,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/subject,
+                     {:owl/onProperty     :stix/signature_algorithm,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/subject_public_key_algorithm,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/is_self_signed,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/object_marking_refs,
-                      :owl/someValuesFrom :stix/MarkingDefinition,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref,
-                      :owl/someValuesFrom :stix/Identity,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/granular_markings,
-                      :owl/someValuesFrom :stix/GranularMarking,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/revoked,
-                      :owl/someValuesFrom :xsd/boolean,
-                      :rdf/type           :owl/Restriction}
-                     :stix/StixObject
-                     {:owl/onProperty     :stix/type,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extensions,
-                      :owl/someValuesFrom :stix/Dictionary,
-                      :rdf/type           :owl/Restriction}
-                     :owl/Thing
-                     {:owl/onProperty     :stix/confidence,
-                      :owl/someValuesFrom :xsd/nonNegativeInteger,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id_string,
+                     {:owl/onProperty     :stix/subject_public_key_modulus,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/defanged,
                       :owl/someValuesFrom :xsd/boolean,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/spec_version,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/modified,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/external_references,
                       :owl/someValuesFrom :stix/ExternalReference,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/created_by_ref_string,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/labels,
+                     {:owl/onProperty     :stix/id_string,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/lang,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/id,
-                      :owl/someValuesFrom :stix/identifier,
+                     {:owl/onProperty     :stix/modified,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/revoked,
+                      :owl/someValuesFrom :xsd/boolean,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/object_marking_refs,
+                      :owl/someValuesFrom :stix/MarkingDefinition,
+                      :rdf/type           :owl/Restriction}
+                     :owl/Thing
+                     {:owl/onProperty     :stix/spec_version,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/type,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref,
+                      :owl/someValuesFrom :stix/Identity,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixObject
+                     {:owl/onProperty     :stix/labels,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/granular_markings,
+                      :owl/someValuesFrom :stix/GranularMarking,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/object_marking_refs_string,
                       :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/id,
+                      :owl/someValuesFrom :stix/identifier,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/created_by_ref_string,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/extensions,
+                      :owl/someValuesFrom :stix/Dictionary,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/confidence,
+                      :owl/someValuesFrom :xsd/nonNegativeInteger,
                       :rdf/type           :owl/Restriction}]})
 
 (def X509v3ExtensionsType
@@ -6280,32 +6281,13 @@
    #xsd/langString
     "The X.509 v3 Extensions type captures properties associated with X.509 v3 extensions, which serve as a mechanism for specifying additional information such as alternative subject names. An object using the X.509 v3 Extensions type MUST contain at least one property from this type. Note that the use of the term \"extensions\" in this context refers to the X.509 v3 Extensions type and is not a STIX Cyber Observables extension. Therefore, it is a type that describes X.509 extensions.@en-US",
    :rdfs/label #xsd/langString "X.509 v3 Extensions Type@en-US",
-   :rdfs/subClassOf [{:owl/onProperty     :stix/certificate_policies,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/inhibit_any_policy,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/crl_distribution_points,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/subject_alternative_name,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/policy_constraints,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/name_constraints,
-                      :owl/someValuesFrom :xsd/string,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/issuer_alternative_name,
+   :rdfs/subClassOf [{:owl/onProperty     :stix/inhibit_any_policy,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/authority_key_identifier,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     :stix/StixDatatype
-                     {:owl/onProperty     :stix/subject_key_identifier,
+                     {:owl/onProperty     :stix/certificate_policies,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :stix/basic_constraints,
@@ -6314,19 +6296,38 @@
                      {:owl/onProperty     :stix/key_usage,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/policy_mappings,
+                     {:owl/onProperty     :stix/subject_directory_attributes,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/name_constraints,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/crl_distribution_points,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     :stix/StixDatatype
+                     {:owl/onProperty     :stix/subject_alternative_name,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/subject_key_identifier,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty :stix/private_key_usage_period_not_before,
+                      :owl/someValuesFrom :xsd/dateTime,
+                      :rdf/type :owl/Restriction}
+                     {:owl/onProperty     :stix/extended_key_usage,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty :stix/private_key_usage_period_not_after,
                       :owl/someValuesFrom :xsd/dateTime,
                       :rdf/type :owl/Restriction}
-                     {:owl/onProperty :stix/private_key_usage_period_not_before,
-                      :owl/someValuesFrom :xsd/dateTime,
-                      :rdf/type :owl/Restriction}
-                     {:owl/onProperty     :stix/subject_directory_attributes,
+                     {:owl/onProperty     :stix/issuer_alternative_name,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :stix/extended_key_usage,
+                     {:owl/onProperty     :stix/policy_mappings,
+                      :owl/someValuesFrom :xsd/string,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :stix/policy_constraints,
                       :owl/someValuesFrom :xsd/string,
                       :rdf/type           :owl/Restriction}]})
 
@@ -6334,8 +6335,8 @@
   {:db/ident :stix/_Accidental-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Activist-tatov
   {:db/ident :stix/_Activist-tatov,
@@ -6348,15 +6349,15 @@
   {:db/ident :stix/_Club-arlov,
    :rdf/type [:stix/AttackResourceLevelOv
               :owl/NamedIndividual
-              :stix/StixOpenVocabulary
-              :stix/StixCategoryObject]})
+              :stix/StixCategoryObject
+              :stix/StixOpenVocabulary]})
 
 (def _Coercion-amov
   {:db/ident :stix/_Coercion-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Competitor-tatov
   {:db/ident :stix/_Competitor-tatov,
@@ -6369,8 +6370,8 @@
   {:db/ident :stix/_Contest-arlov,
    :rdf/type [:stix/AttackResourceLevelOv
               :owl/NamedIndividual
-              :stix/StixOpenVocabulary
-              :stix/StixCategoryObject]})
+              :stix/StixCategoryObject
+              :stix/StixOpenVocabulary]})
 
 (def _Crime-Syndicate-tatov
   {:db/ident :stix/_Crime-Syndicate-tatov,
@@ -6390,8 +6391,8 @@
   {:db/ident :stix/_Dominance-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Facebook-aov
   {:db/ident :stix/_Facebook-aov,
@@ -6404,8 +6405,8 @@
   {:db/ident :stix/_Government-arlov,
    :rdf/type [:stix/AttackResourceLevelOv
               :owl/NamedIndividual
-              :stix/StixOpenVocabulary
-              :stix/StixCategoryObject]})
+              :stix/StixCategoryObject
+              :stix/StixOpenVocabulary]})
 
 (def _Hacker-tatov
   {:db/ident :stix/_Hacker-tatov,
@@ -6418,15 +6419,15 @@
   {:db/ident :stix/_Ideology-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Individual-arlov
   {:db/ident :stix/_Individual-arlov,
    :rdf/type [:stix/AttackResourceLevelOv
               :owl/NamedIndividual
-              :stix/StixOpenVocabulary
-              :stix/StixCategoryObject]})
+              :stix/StixCategoryObject
+              :stix/StixOpenVocabulary]})
 
 (def _Insider-Accidental-tatov
   {:db/ident :stix/_Insider-Accidental-tatov,
@@ -6474,8 +6475,8 @@
   {:db/ident :stix/_Notoriety-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Openid-aov
   {:db/ident :stix/_Openid-aov,
@@ -6488,29 +6489,29 @@
   {:db/ident :stix/_Organization-arlov,
    :rdf/type [:stix/AttackResourceLevelOv
               :owl/NamedIndividual
-              :stix/StixOpenVocabulary
-              :stix/StixCategoryObject]})
+              :stix/StixCategoryObject
+              :stix/StixOpenVocabulary]})
 
 (def _Organizational-gain-amov
   {:db/ident :stix/_Organizational-gain-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Personal-gain-amov
   {:db/ident :stix/_Personal-gain-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Personal-satisfaction-amov
   {:db/ident :stix/_Personal-satisfaction-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Radius-aov
   {:db/ident :stix/_Radius-aov,
@@ -6527,8 +6528,8 @@
   {:db/ident :stix/_Revenge-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Sensationalist-tatov
   {:db/ident :stix/_Sensationalist-tatov,
@@ -6569,8 +6570,8 @@
   {:db/ident :stix/_Team-arlov,
    :rdf/type [:stix/AttackResourceLevelOv
               :owl/NamedIndividual
-              :stix/StixOpenVocabulary
-              :stix/StixCategoryObject]})
+              :stix/StixCategoryObject
+              :stix/StixOpenVocabulary]})
 
 (def _Terrorist-tatov
   {:db/ident :stix/_Terrorist-tatov,
@@ -6604,8 +6605,8 @@
   {:db/ident :stix/_Unpredictable-amov,
    :rdf/type [:stix/AttackMotivationOv
               :owl/NamedIndividual
-              :stix/StixCategoryObject
-              :stix/StixOpenVocabulary]})
+              :stix/StixOpenVocabulary
+              :stix/StixCategoryObject]})
 
 (def _Unspecified-gcov
   {:db/ident :stix/_Unspecified-gcov,

@@ -9085,6 +9085,11 @@ _:b871  <http://www.w3.org/2002/07/owl#onProperty>  <http://docs.oasis-open.org/
         a       <http://www.w3.org/2002/07/owl#Class> ;
         <http://www.w3.org/2000/01/rdf-schema#subClassOf>  <http://docs.oasis-open.org/cti/ns/stix#StixDomainObject> .
 
+<http://docs.oasis-open.org/cti/ns/stix#ThreatActor>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+  <http://www.w3.org/2000/01/rdf-schema#subClassOf>  <http://docs.oasis-open.org/tac/ns/tac#Adversary> .
+  
+
 _:b872  a       <http://www.w3.org/2002/07/owl#Restriction> .
 
 <http://docs.oasis-open.org/cti/ns/stix#ThreatActor>

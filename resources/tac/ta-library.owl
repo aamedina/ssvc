@@ -43,43 +43,50 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&tal;Anarchist">
-		<rdfs:subClassOf rdf:resource="&tal;HostileThreatActor"/>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="http://docs.oasis-open.org/cti/ns/stix#ThreatActor">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&tac;categorizedBy"/>
-						<owl:hasValue rdf:resource="&tal;ClubResources"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&tac;categorizedBy"/>
-						<owl:hasValue rdf:resource="&tal;DamageOutcome"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&tac;categorizedBy"/>
-						<owl:hasValue rdf:resource="&tal;DestroyObjective"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&tac;categorizedBy"/>
-						<owl:hasValue rdf:resource="&tal;ExternalAccess"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&tac;categorizedBy"/>
-						<owl:hasValue rdf:resource="&tal;MajorExtraLegalLimits"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&tac;categorizedBy"/>
-						<owl:hasValue rdf:resource="&tal;NoSkills"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&tac;categorizedBy"/>
-						<owl:hasValue rdf:resource="&tal;OvertVisibility"/>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
+		<rdfs:subClassOf
+		    rdf:resource="&tal;HostileThreatActor"/>
+		<rdfs:subClassOf>
+		  <owl:Restriction>
+		    <owl:onProperty rdf:resource="&tac;categorizedBy"/>
+		    <owl:hasValue rdf:resource="&tal;ClubResources"/>
+		  </owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+		  <owl:Restriction>
+		    <owl:onProperty rdf:resource="&tac;categorizedBy"/>
+		    <owl:hasValue rdf:resource="&tal;DamageOutcome"/>
+		  </owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+		  <owl:Restriction>
+		    <owl:onProperty rdf:resource="&tac;categorizedBy"/>
+		    <owl:hasValue rdf:resource="&tal;DestroyObjective"/>
+		  </owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+		  <owl:Restriction>
+		  <owl:onProperty rdf:resource="&tac;categorizedBy"/>
+		  <owl:hasValue rdf:resource="&tal;ExternalAccess"/>
+		  </owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+		  <owl:Restriction>
+		    <owl:onProperty rdf:resource="&tac;categorizedBy"/>
+		    <owl:hasValue rdf:resource="&tal;MajorExtraLegalLimits"/>
+		  </owl:Restriction>
+		</rdfs:subClassOf>		
+		<rdfs:subClassOf>
+		  <owl:Restriction>
+		    <owl:onProperty rdf:resource="&tac;categorizedBy"/>
+		    <owl:hasValue rdf:resource="&tal;NoSkills"/>
+		  </owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+		  <owl:Restriction>
+		    <owl:onProperty rdf:resource="&tac;categorizedBy"/>
+		    <owl:hasValue rdf:resource="&tal;OvertVisibility"/>
+		  </owl:Restriction>
+		</rdfs:subClassOf>		
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&tal;AnyObjective">
@@ -1018,6 +1025,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&tal;ThreatActor">
+	  	<rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/cti/ns/stix#ThreatActor"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&tal;hasAccessAttribute"/>

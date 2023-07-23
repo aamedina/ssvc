@@ -1,18 +1,18 @@
 (ns net.wikipunk.rdf.tal
   "Intel authored the conceptual notions captured in this ontological representation. Intel retains the copyright on the original work, which was published in open format in the 2007 time frame. Tim Casey and Intel Corporation were the orignal sources that inspired the members of the OASIS TAC-TC  to capture and  expand it in a formal ontology langauge, W3C's Ontology Web Language (OWL). https://pdfs.semanticscholar.org/391e/70510353ba762fa1580a6d9c002eefd2d86b.pdf https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/understanding-cyberthreat-motivations-to-improve-defense-paper.pdf"
-  {:dcat/downloadURL "resources/tac-ontology/threat-agent-lib/ta-library.owl",
-   :owl/imports {:rdfa/uri "http://docs.oasis-open.org/tac/ns/tac"},
-   :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
-                       "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+  {:dcat/downloadURL  "resources/tac/ta-library.owl",
+   :owl/imports       {:rdfa/uri "http://docs.oasis-open.org/tac/ns/tac"},
+   :rdf/ns-prefix-map {"owl"  "http://www.w3.org/2002/07/owl#",
+                       "rdf"  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
                        "swrla"
                        "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#",
-                       "tac" "http://docs.oasis-open.org/tac/ns/tac#",
-                       "tal" "http://www.intel.com/ns/ta-library#",
-                       "xsd" "http://www.w3.org/2001/XMLSchema#"},
-   :rdf/type :owl/Ontology,
-   :rdfa/prefix "tal",
-   :rdfa/uri "http://www.intel.com/ns/ta-library",
+                       "tac"  "http://docs.oasis-open.org/tac/ns/tac#",
+                       "tal"  "http://www.intel.com/ns/ta-library#",
+                       "xsd"  "http://www.w3.org/2001/XMLSchema#"},
+   :rdf/type          :owl/Ontology,
+   :rdfa/prefix       "tal",
+   :rdfa/uri          "http://www.intel.com/ns/ta-library",
    :rdfs/comment
    "Intel authored the conceptual notions captured in this ontological representation. Intel retains the copyright on the original work, which was published in open format in the 2007 time frame. Tim Casey and Intel Corporation were the orignal sources that inspired the members of the OASIS TAC-TC  to capture and  expand it in a formal ontology langauge, W3C's Ontology Web Language (OWL). https://pdfs.semanticscholar.org/391e/70510353ba762fa1580a6d9c002eefd2d86b.pdf https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/understanding-cyberthreat-motivations-to-improve-defense-paper.pdf"})
 
@@ -35,72 +35,70 @@
 
 (def Anarchist
   {:db/ident        :tal/Anarchist,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/ClubResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DestroyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MajorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/NoSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OvertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
-   :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+   :rdfs/subClassOf [{:owl/hasValue   :tal/OvertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/NoSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MajorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DestroyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ClubResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     :tal/HostileThreatActor
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def AnyObjective
   {:db/ident :tal/AnyObjective,
@@ -120,72 +118,70 @@
 
 (def CivilActivist
   {:db/ident        :tal/CivilActivist,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CopyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CovertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OrganizationalResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CopyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CovertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OrganizationalResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def ClandestineVisibility
   {:db/ident :tal/ClandestineVisibility,
@@ -205,75 +201,73 @@
 
 (def Competitor
   {:db/ident        :tal/Competitor,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue
-                                          :tal/BusinessAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}
-                                         {:owl/hasValue
-                                          :tal/TechnologyAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ClandestineVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CopyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
-   :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+   :rdfs/subClassOf [:tal/HostileThreatActor                     
+                     {:owl/unionOf [{:owl/hasValue
+                                     :tal/BusinessAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue
+                                     :tal/TechnologyAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ClandestineVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CopyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def ContestResources
   {:db/ident :tal/ContestResources,
@@ -285,78 +279,76 @@
 
 (def CorruptGovernmentOfficial
   {:db/ident        :tal/CorruptGovernmentOfficial,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue
-                                          :tal/BusinessAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}
-                                         {:owl/hasValue
-                                          :tal/TechnologyAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DenyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/GovernmentResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OvertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/unionOf [{:owl/hasValue
+                                     :tal/BusinessAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue
+                                     :tal/TechnologyAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DenyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/GovernmentResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OvertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def CovertVisibility
   {:db/ident :tal/CovertVisibility,
@@ -371,79 +363,77 @@
    :rdf/type [:tal/Outcome :owl/NamedIndividual :tal/DefiningAttribute]})
 
 (def DataMiner
-  {:db/ident        :tal/DataMiner,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue
-                                          :tal/BusinessAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}
-                                         {:owl/hasValue
-                                          :tal/TechnologyAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ClandestineVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CopyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/TeamResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
+  {:db/ident        :tal/DataMiner
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/unionOf [{:owl/hasValue
+                                     :tal/BusinessAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue
+                                     :tal/TechnologyAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ClandestineVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CopyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/TeamResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def DefiningAttribute
   {:db/ident :tal/DefiningAttribute,
@@ -461,46 +451,47 @@
   {:db/ident        :tal/DisgruntledEmployee,
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Disgruntlement
   {:db/ident :tal/Disgruntlement,
@@ -520,84 +511,82 @@
 
 (def GovernmentCyberWarrior
   {:db/ident        :tal/GovernmentCyberWarrior,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue   :tal/CopyObjective,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}
-                                         {:owl/hasValue   :tal/DenyObjective,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}
-                                         {:owl/hasValue   :tal/DestroyObjective,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/unionOf [{:owl/hasValue   :tal/DamageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}
-                                         {:owl/hasValue
-                                          :tal/EmbarrassmentOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/AnyVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/GovernmentResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MajorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/unionOf [{:owl/hasValue   :tal/CopyObjective,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue   :tal/DenyObjective,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue   :tal/DestroyObjective,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/unionOf [{:owl/hasValue   :tal/DamageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue
+                                     :tal/EmbarrassmentOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/AnyVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/GovernmentResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MajorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def GovernmentResources
   {:db/ident :tal/GovernmentResources,
@@ -605,91 +594,107 @@
 
 (def GovernmentSpy
   {:db/ident        :tal/GovernmentSpy,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue
-                                          :tal/BusinessAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}
-                                         {:owl/hasValue
-                                          :tal/TechnologyAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ClandestineVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CopyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/GovernmentResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/InternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MajorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/unionOf [{:owl/hasValue
+                                     :tal/BusinessAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue
+                                     :tal/TechnologyAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ClandestineVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CopyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/GovernmentResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/InternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MajorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def HostileThreatActor
   {:db/ident        :tal/HostileThreatActor,
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/ThreatActor
+                     {:owl/onProperty     :tal/hasBindingMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasMotivationAttribute,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasSubordinateMotivation,
                       :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasCoMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasMotivationAttribute,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
@@ -697,30 +702,13 @@
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Ideology
   {:db/ident :tal/Ideology,
@@ -732,75 +720,73 @@
 
 (def InformationPartner
   {:db/ident        :tal/InformationPartner,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/AllDontCareObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CovertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/IndividualResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/InternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/LegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/NonHostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/AllDontCareObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CovertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/IndividualResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/InternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/LegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def InternalAccess
   {:db/ident :tal/InternalAccess,
@@ -808,223 +794,217 @@
 
 (def InternalSpy
   {:db/ident        :tal/InternalSpy,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/AquisitionOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ClandestineVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CopyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/InternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OrganizationalResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/TechnologyAdvantageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/AquisitionOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ClandestineVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CopyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/InternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OrganizationalResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/TechnologyAdvantageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def IrrationalIndividual
   {:db/ident        :tal/IrrationalIndividual,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AllDontCareObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/IndividualResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MajorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MultipleDontCareVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/NoSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AllDontCareObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/IndividualResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MajorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MultipleDontCareVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/NoSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def LegalAdversary
   {:db/ident        :tal/LegalAdversary,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue   :tal/CopyObjective,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}
-                                         {:owl/hasValue   :tal/TakeObjective,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/BusinessAdvantageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/LegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OrganizationalResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OvertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/unionOf [{:owl/hasValue   :tal/CopyObjective,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue   :tal/TakeObjective,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/BusinessAdvantageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/LegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OrganizationalResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OvertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def LegalLimits
   {:db/ident :tal/LegalLimits,
@@ -1049,72 +1029,70 @@
 
 (def Mobster
   {:db/ident        :tal/Mobster,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/AquisitionOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CovertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MajorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OrganizationalResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/TakeObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/AquisitionOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CovertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MajorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OrganizationalResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/TakeObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Motivation
   {:db/ident        :tal/Motivation,
@@ -1133,14 +1111,32 @@
   {:db/ident        :tal/NonHostileThreatActor,
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/ThreatActor
+                     {:owl/onProperty     :tal/hasBindingMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasMotivationAttribute,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasSubordinateMotivation,
                       :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasCoMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasMotivationAttribute,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
@@ -1148,30 +1144,13 @@
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Notoriety
   {:db/ident :tal/Notoriety,
@@ -1213,147 +1192,143 @@
 
 (def RadicalActivist
   {:db/ident        :tal/RadicalActivist,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/AllDontCareObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OrganizationalResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OvertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/AllDontCareObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OrganizationalResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OvertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def RecklessEmployee
   {:db/ident        :tal/RecklessEmployee,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/AllDontCareObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CovertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/IndividualResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/InternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/LegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/NonHostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/AllDontCareObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CovertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/IndividualResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/InternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/LegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Resources
   {:db/ident        :tal/Resources,
@@ -1362,75 +1337,73 @@
 
 (def Sensationalist
   {:db/ident        :tal/Sensationalist,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AllDontCareObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ClubResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinimalSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OvertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AllDontCareObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ClubResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinimalSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OvertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Skills
   {:db/ident        :tal/Skills,
@@ -1451,79 +1424,77 @@
 
 (def Terrorist
   {:db/ident        :tal/Terrorist,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue   :tal/DamageObjective,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}
-                                         {:owl/hasValue   :tal/DestroyObjective,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type       :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/AdeptSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CovertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MajorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OrganizationalResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/TakeObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/unionOf [{:owl/hasValue   :tal/DamageObjective,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue   :tal/DestroyObjective,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/AdeptSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CovertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MajorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OrganizationalResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/TakeObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def TheftOutcome
   {:db/ident :tal/TheftOutcome,
@@ -1531,114 +1502,113 @@
 
 (def Thief
   {:db/ident        :tal/Thief,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AquisitionOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ClandestineVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/IndividualResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/InternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OperationalSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/TakeObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AquisitionOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ClandestineVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/IndividualResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/InternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OperationalSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/TakeObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def ThreatActor
   {:db/ident        :tal/ThreatActor,
    :rdf/type        :owl/Class,
-   :rdfs/subClassOf [{:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasVisibilityAttribute,
-                      :owl/someValuesFrom :tal/Visibility,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasPersonalMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasMotivationAttribute,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+   :rdfs/subClassOf [{:owl/onProperty     :tal/hasObjectiveAttribute,
                       :owl/someValuesFrom :tal/Objective,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasVisibilityAttribute,
+                      :owl/someValuesFrom :tal/Visibility,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasMotivationAttribute,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasPersonalMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
                       :rdf/type           :owl/Restriction}]})
 
 (def Unpredictable
@@ -1647,219 +1617,213 @@
 
 (def UntrainedEmployee
   {:db/ident        :tal/UntrainedEmployee,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AllDontCareObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CodeOfConductLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/EmbarrassmentOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/IndividualResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/InternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinimalSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OvertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/NonHostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AllDontCareObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CodeOfConductLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/EmbarrassmentOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/IndividualResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/InternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinimalSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OvertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Vandal
   {:db/ident        :tal/Vandal,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/hasValue   :tal/AllDontCareObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ContestResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CovertVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/DamageOutcome,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/ExternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/MinorExtraLegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OperationalSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/hasValue   :tal/AllDontCareObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ContestResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CovertVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/DamageOutcome,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/ExternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/MinorExtraLegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OperationalSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Vendor
   {:db/ident        :tal/Vendor,
-   :owl/equivalentClass {:owl/intersectionOf
-                         [:stix/ThreatActor
-                          {:owl/unionOf [{:owl/hasValue
-                                          :tal/BusinessAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}
-                                         {:owl/hasValue
-                                          :tal/TechnologyAdvantageOutcome,
-                                          :owl/onProperty :tac/categorizedBy,
-                                          :rdf/type :owl/Restriction}],
-                           :rdf/type    :owl/Class}
-                          {:owl/hasValue   :tal/ClandestineVisibility,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/CopyObjective,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/InternalAccess,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/LegalLimits,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/OperationalSkills,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}
-                          {:owl/hasValue   :tal/TeamResources,
-                           :owl/onProperty :tac/categorizedBy,
-                           :rdf/type       :owl/Restriction}],
-                         :rdf/type :owl/Class},
    :rdf/type        :owl/Class,
    :rdfs/subClassOf [:tal/HostileThreatActor
-                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                     {:owl/unionOf [{:owl/hasValue
+                                     :tal/BusinessAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}
+                                    {:owl/hasValue
+                                     :tal/TechnologyAdvantageOutcome,
+                                     :owl/onProperty :tac/categorizedBy,
+                                     :rdf/type       :owl/Restriction}],
+                      :rdf/type    :owl/Class}
+                     {:owl/hasValue   :tal/ClandestineVisibility,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/CopyObjective,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/InternalAccess,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/LegalLimits,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/OperationalSkills,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/hasValue   :tal/TeamResources,
+                      :owl/onProperty :tac/categorizedBy,
+                      :rdf/type       :owl/Restriction}
+                     {:owl/onProperty     :tal/hasBindingMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasCoMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
+                     {:owl/onProperty     :tal/hasOutcomeAttribute,
+                      :owl/someValuesFrom :tal/Outcome,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasAccessAttribute,
+                      :owl/someValuesFrom :tal/Access,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasMotivationAttribute,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasResourcesAttribute,
+                      :owl/someValuesFrom :tal/Resources,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSubordinateMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasObjectiveAttribute,
+                      :owl/someValuesFrom :tal/Objective,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasCoMotivation,
+                      :owl/someValuesFrom :tal/Motivation,
+                      :rdf/type           :owl/Restriction}
+                     {:owl/onProperty     :tal/hasSkillsAttribute,
+                      :owl/someValuesFrom :tal/Skills,
+                      :rdf/type           :owl/Restriction}
+                     :tal/ThreatActor
                      {:owl/onProperty     :tal/hasDefiningMotivation,
                       :owl/someValuesFrom :tal/Motivation,
                       :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasLimitsAttribute,
                       :owl/someValuesFrom :tal/Limits,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasObjectiveAttribute,
-                      :owl/someValuesFrom :tal/Objective,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasVisibilityAttribute,
                       :owl/someValuesFrom :tal/Visibility,
                       :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasBindingMotivation,
-                      :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}
-                     :tal/ThreatActor
-                     {:owl/onProperty     :tal/hasAccessAttribute,
-                      :owl/someValuesFrom :tal/Access,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasSkillsAttribute,
-                      :owl/someValuesFrom :tal/Skills,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasOutcomeAttribute,
-                      :owl/someValuesFrom :tal/Outcome,
-                      :rdf/type           :owl/Restriction}
-                     {:owl/onProperty     :tal/hasResourcesAttribute,
-                      :owl/someValuesFrom :tal/Resources,
-                      :rdf/type           :owl/Restriction}
                      {:owl/onProperty     :tal/hasPersonalMotivation,
                       :owl/someValuesFrom :tal/Motivation,
-                      :rdf/type           :owl/Restriction}]})
+                      :rdf/type           :owl/Restriction}
+                     :stix/ThreatActor]})
 
 (def Visibility
   {:db/ident        :tal/Visibility,
@@ -1867,8 +1831,8 @@
    :rdfs/subClassOf :tal/DefiningAttribute})
 
 (def hasAccessAttribute
-  {:db/ident :tal/hasAccessAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasAccessAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})
 
 (def hasBindingMotivation
@@ -1889,51 +1853,51 @@
    :rdfs/range :tal/DefiningAttribute})
 
 (def hasDefiningMotivation
-  {:db/ident :tal/hasDefiningMotivation,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasDefiningMotivation,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf [:tal/hasMotivationAttribute :tal/hasDefiningAttribute]})
 
 (def hasLimitsAttribute
-  {:db/ident :tal/hasLimitsAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasLimitsAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})
 
 (def hasMotivationAttribute
-  {:db/ident :tal/hasMotivationAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasMotivationAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})
 
 (def hasObjectiveAttribute
-  {:db/ident :tal/hasObjectiveAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasObjectiveAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})
 
 (def hasOutcomeAttribute
-  {:db/ident :tal/hasOutcomeAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasOutcomeAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})
 
 (def hasPersonalMotivation
-  {:db/ident :tal/hasPersonalMotivation,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasPersonalMotivation,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf [:tal/hasMotivationAttribute :tal/hasDefiningAttribute]})
 
 (def hasResourcesAttribute
-  {:db/ident :tal/hasResourcesAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasResourcesAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})
 
 (def hasSkillsAttribute
-  {:db/ident :tal/hasSkillsAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasSkillsAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})
 
 (def hasSubordinateMotivation
-  {:db/ident :tal/hasSubordinateMotivation,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasSubordinateMotivation,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf [:tal/hasMotivationAttribute :tal/hasDefiningAttribute]})
 
 (def hasVisibilityAttribute
-  {:db/ident :tal/hasVisibilityAttribute,
-   :rdf/type :owl/ObjectProperty,
+  {:db/ident           :tal/hasVisibilityAttribute,
+   :rdf/type           :owl/ObjectProperty,
    :rdfs/subPropertyOf :tal/hasDefiningAttribute})

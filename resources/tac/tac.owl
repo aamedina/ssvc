@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY stix "http://docs.oasis-open.org/cti/ns/stix#">
+	<!ENTITY tac "http://docs.oasis-open.org/tac/ns/tac#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="http://docs.oasis-open.org/tac/ns/tac"
+	xmlns="http://docs.oasis-open.org/tac/ns/tac#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:stix="http://docs.oasis-open.org/cti/ns/stix#"
+	xmlns:tac="http://docs.oasis-open.org/tac/ns/tac#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="http://docs.oasis-open.org/tac/ns/tac">
+		<rdfs:comment>Concepts that have been developed and approved at a committee level by the OASIS Threat Actor Context Technical Committee are called TAC TC concepts. TAC TC concepts are incorporated as import statements into the main tac.owl file and thus are part of the core ontology.</rdfs:comment>
+		<owl:imports rdf:resource="http://docs.oasis-open.org/cti/ns/stix"/>
+	</owl:Ontology>
+
+	<owl:Class rdf:about="&tac;Adversary">
+	  <rdfs:comment>There has been some ambiguity with respect to the differentiation of stix:IntrusionSet and stix:ThreatActor. They are different, and the tac:Adversary class is intended to clarify the differences.</rdfs:comment>
+	</owl:Class>
+	
+	<rdf:Description rdf:about="&stix;ThreatActor">
+		<rdfs:subClassOf rdf:resource="&tac;Adversary"/>
+	</rdf:Description>	
+
+	<owl:ObjectProperty rdf:about="&tac;categorizedBy">
+		<rdfs:subPropertyOf rdf:resource="&tac;topTacObjectProperty"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasAdversary">
+		<rdfs:subPropertyOf rdf:resource="&tac;topTacObjectProperty"/>
+		<rdfs:range rdf:resource="&tac;Adversary"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasAttackPattern">
+		<rdfs:subPropertyOf rdf:resource="&tac;topTacObjectProperty"/>
+		<rdfs:range rdf:resource="&stix;AttackPattern"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasCampaign">
+		<rdfs:subPropertyOf rdf:resource="&tac;topTacObjectProperty"/>
+		<rdfs:range rdf:resource="&stix;Campaign"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasContributor">
+		<rdfs:subPropertyOf rdf:resource="&tac;topTacObjectProperty"/>
+		<rdfs:range rdf:resource="&stix;Identity"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasIntrusionSet">
+		<rdfs:subPropertyOf rdf:resource="&tac;hasAdversary"/>
+		<rdfs:range rdf:resource="&stix;IntrusionSet"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasOriginator">
+		<rdfs:subPropertyOf rdf:resource="&tac;topTacObjectProperty"/>
+		<rdfs:range rdf:resource="&stix;Identity"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasThreatActor">
+		<rdfs:subPropertyOf rdf:resource="&tac;hasAdversary"/>
+		<rdfs:range rdf:resource="&stix;ThreatActor"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasThreatEvent">
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasThreatEventPattern">
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;hasThreatScenario">
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&tac;topTacObjectProperty">
+	</owl:ObjectProperty>
+
+</rdf:RDF>

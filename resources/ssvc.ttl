@@ -10,12 +10,14 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix jsonschema: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix stix: <http://docs.oasis-open.org/cti/ns/stix#> .
+@prefix tac: <http://docs.oasis-open.org/cti/ns/tac#> .
 
 : a owl:Ontology ;
   owl:versionInfo "2.03" ;
   owl:imports (
     <http://d3fend.mitre.org/ontologies/d3fend.owl>
     <http://docs.oasis-open.org/cti/ns/stix>
+    <http://docs.oasis-open.org/cti/ns/tac>
     ) ;
   prov:wasDerivedFrom (
     <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json>

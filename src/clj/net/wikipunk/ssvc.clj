@@ -15,11 +15,14 @@
    [net.wikipunk.rdf.doap]
    [net.wikipunk.rdf.sioc.types]
    [net.wikipunk.rdf.pointers]
-   [net.wikipunk.rdf.tal]))
+   [net.wikipunk.rdf.tal]
+   [net.wikipunk.rdf.tac]))
 
 (defrecord SSVC []
   com/Lifecycle
   (start [this]
+    (rdf/import-from 'net.wikipunk.rdf.tac
+                     'net.wikipunk.rdf.stix)
     this)
   (stop [this]
     this))

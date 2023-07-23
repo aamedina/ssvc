@@ -1,5 +1,5 @@
 (ns net.wikipunk.rdf.stix
-  {:dcat/downloadURL  "resources/stix.ttl",
+  {:dcat/downloadURL  "resources/tac/stix.ttl",
    :rdf/ns-prefix-map {"stix" "http://docs.oasis-open.org/cti/ns/stix#"},
    :rdf/type          :rdfa/PrefixMapping,
    :rdfa/prefix       "stix",

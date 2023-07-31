@@ -1,19 +1,10 @@
 (ns net.wikipunk.rdf.spdx-core
-  {:dcat/downloadURL  "resources/spdx/model.ttl",
+  {:dcat/downloadURL  "resources/spdx/Core/Core.ttl",
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
                        "sh" "http://www.w3.org/ns/shacl#",
-                       "spdx-ai" "https://spdx.org/rdf/v3/AI/",
-                       "spdx-build" "https://spdx.org/rdf/v3/Build/",
                        "spdx-core" "https://spdx.org/rdf/v3/Core/",
-                       "spdx-dataset" "https://spdx.org/rdf/v3/Dataset/",
-                       "spdx-expandedlicensing"
-                       "https://spdx.org/rdf/v3/ExpandedLicensing/",
-                       "spdx-security" "https://spdx.org/rdf/v3/Security/",
-                       "spdx-simplelicensing"
-                       "https://spdx.org/rdf/v3/SimpleLicensing/",
-                       "spdx-software" "https://spdx.org/rdf/v3/Software/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
    :rdf/type          :rdfa/PrefixMapping,
@@ -37,35 +28,47 @@
    :rdfs/comment
    "An Annotation is an assertion made in relation to one or more elements.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/class    :spdx-core/Element,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "subject",
-                  :sh/path     :spdx-core/subject}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "statement",
-                  :sh/path     :spdx-core/statement}
-                 {:sh/class    :spdx-core/AnnotationType,
+   :sh/property [{:sh/class    :spdx-core/AnnotationType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "annotationType",
                   :sh/path     :spdx-core/annotationType}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "statement",
+                  :sh/path     :spdx-core/statement}
                  {:sh/datatype :spdx-core/MediaType,
                   :sh/name     "contentType",
-                  :sh/path     :spdx-core/contentType}],
+                  :sh/path     :spdx-core/contentType}
+                 {:sh/class    :spdx-core/Element,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "subject",
+                  :sh/path     :spdx-core/subject}],
    :vs/term_status "Stable"})
 
 (def AnnotationType
   "AnnotationType specifies the type of an annotation."
   {:db/ident       :spdx-core/AnnotationType,
-   :owl/oneOf      [{:rdfa/uri
-                     "https://spdx.org/rdf/v3/Core/AnnotationType/review"}
-                    {:rdfa/uri
-                     "https://spdx.org/rdf/v3/Core/AnnotationType/other"}],
    :rdf/type       :owl/Class,
    :rdfs/comment   "AnnotationType specifies the type of an annotation.",
    :vs/term_status "Stable"})
+
+(def AnnotationType-Other
+  "Type of annotation which does not fit in any of the pre-defined annotation types."
+  {:db/ident :spdx-core/AnnotationType-Other,
+   :rdf/type [:spdx-core/AnnotationType :owl/NamedIndividual],
+   :rdfs/comment
+   "Type of annotation which does not fit in any of the pre-defined annotation types.",
+   :rdfs/label "other"})
+
+(def AnnotationType-Review
+  "A Review represents an audit and signoff by an individual, organization or tool on the information for an SpdxElement."
+  {:db/ident :spdx-core/AnnotationType-Review,
+   :rdf/type [:spdx-core/AnnotationType :owl/NamedIndividual],
+   :rdfs/comment
+   "A Review represents an audit and signoff by an individual, organization or tool on the information for an SpdxElement.",
+   :rdfs/label "review"})
 
 (def Artifact
   "An artifact is a distinct article or unit within the digital domain,\nsuch as an electronic file, a software package, a device or an element of data."
@@ -74,27 +77,27 @@
    :rdfs/comment
    "An artifact is a distinct article or unit within the digital domain,\nsuch as an electronic file, a software package, a device or an element of data.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "releaseTime",
-                  :sh/path     :spdx-core/releaseTime}
-                 {:sh/datatype :xsd/string,
+   :sh/property [{:sh/datatype :xsd/string,
                   :sh/name     "standard",
                   :sh/path     :spdx-core/standard}
                  {:sh/class :spdx-core/Agent,
                   :sh/name  "originatedBy",
                   :sh/path  :spdx-core/originatedBy}
+                 {:sh/class :spdx-core/Agent,
+                  :sh/name  "suppliedBy",
+                  :sh/path  :spdx-core/suppliedBy}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "builtTime",
-                  :sh/path     :spdx-core/builtTime}
+                  :sh/name     "releaseTime",
+                  :sh/path     :spdx-core/releaseTime}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "validUntilTime",
                   :sh/path     :spdx-core/validUntilTime}
-                 {:sh/class :spdx-core/Agent,
-                  :sh/name  "suppliedBy",
-                  :sh/path  :spdx-core/suppliedBy}],
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "builtTime",
+                  :sh/path     :spdx-core/builtTime}],
    :vs/term_status "Stable"})
 
 (def Bom
@@ -133,20 +136,20 @@
                   :sh/path     :spdx-core/specVersion}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "created",
-                  :sh/path     :spdx-core/created}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "dataLicense",
                   :sh/path     :spdx-core/dataLicense}
                  {:sh/class    :spdx-core/Agent,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "createdBy",
                   :sh/path     :spdx-core/createdBy}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "created",
+                  :sh/path     :spdx-core/created}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}
                  {:sh/class    :spdx-core/ProfileIdentifierType,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "profile",
@@ -175,13 +178,13 @@
    "The class used for implementing a generic string mapping (also known as associative array, dictionary, or hash map) in SPDX.  Each DictionaryEntry contains a key-value pair which maps the key to its associated value.  To implement a dictionary, this class is to be used in a collection with unique keys.",
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "key",
-                  :sh/path     :spdx-core/key}
+                  :sh/name     "value",
+                  :sh/path     :spdx-core/value}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "value",
-                  :sh/path     :spdx-core/value}],
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "key",
+                  :sh/path     :spdx-core/key}],
    :vs/term_status "Stable"})
 
 (def Element
@@ -190,36 +193,36 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "An Element is a representation of a fundamental concept either directly inherent\nto the Bill of Materials (BOM) domain or indirectly related to the BOM domain\nand necessary for contextually characterizing BOM concepts and relationships.\nWithin SPDX-3.0 structure this is the base class acting as a consistent,\nunifying, and interoperable foundation for all explicit\nand inter-relatable content objects.",
-   :sh/property [{:sh/class :spdx-core/ExternalReference,
-                  :sh/name  "externalReference",
-                  :sh/path  :spdx-core/externalReference}
-                 {:sh/class :spdx-core/IntegrityMethod,
-                  :sh/name  "verifiedUsing",
-                  :sh/path  :spdx-core/verifiedUsing}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "name",
-                  :sh/path     :spdx-core/name}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "description",
-                  :sh/path     :spdx-core/description}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "summary",
-                  :sh/path     :spdx-core/summary}
-                 {:sh/class    :spdx-core/CreationInfo,
+   :sh/property [{:sh/class    :spdx-core/CreationInfo,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "creationInfo",
                   :sh/path     :spdx-core/creationInfo}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "summary",
+                  :sh/path     :spdx-core/summary}
+                 {:sh/class :spdx-core/IntegrityMethod,
+                  :sh/name  "verifiedUsing",
+                  :sh/path  :spdx-core/verifiedUsing}
+                 {:sh/class :spdx-core/ExternalReference,
+                  :sh/name  "externalReference",
+                  :sh/path  :spdx-core/externalReference}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "description",
+                  :sh/path     :spdx-core/description}
                  {:sh/class :spdx-core/ExternalIdentifier,
                   :sh/name  "externalIdentifier",
                   :sh/path  :spdx-core/externalIdentifier}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}],
+                  :sh/name     "name",
+                  :sh/path     :spdx-core/name}],
    :vs/term_status "Stable"})
 
 (def ElementCollection
@@ -229,17 +232,17 @@
    :rdfs/comment
    "An SpdxCollection is a collection of Elements, not necessarily with unifying context.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/class :spdx-core/ExternalMap,
-                  :sh/name  "imports",
-                  :sh/path  :spdx-core/imports}
-                 {:sh/class    :spdx-core/Element,
+   :sh/property [{:sh/class    :spdx-core/Element,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "element",
                   :sh/path     :spdx-core/element}
                  {:sh/class    :spdx-core/Element,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "rootElement",
-                  :sh/path     :spdx-core/rootElement}],
+                  :sh/path     :spdx-core/rootElement}
+                 {:sh/class :spdx-core/ExternalMap,
+                  :sh/name  "imports",
+                  :sh/path  :spdx-core/imports}],
    :vs/term_status "Stable"})
 
 (def ExternalIdentifier
@@ -248,49 +251,102 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "An ExternalIdentifier is a reference to a resource outside the scope of SPDX-3.0 content\nthat uniquely identifies an Element.",
-   :sh/property [{:sh/datatype :xsd/string,
+   :sh/property [{:sh/datatype :xsd/anyURI,
+                  :sh/name     "identifierLocator",
+                  :sh/path     :spdx-core/identifierLocator}
+                 {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "comment",
                   :sh/path     :spdx-core/comment}
-                 {:sh/class    :spdx-core/ExternalIdentifierType,
+                 {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "externalIdentifierType",
-                  :sh/path     :spdx-core/externalIdentifierType}
+                  :sh/name     "issuingAuthority",
+                  :sh/path     :spdx-core/issuingAuthority}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "identifier",
                   :sh/path     :spdx-core/identifier}
-                 {:sh/datatype :xsd/anyURI,
+                 {:sh/class    :spdx-core/ExternalIdentifierType,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "issuingAuthority",
-                  :sh/path     :spdx-core/issuingAuthority}
-                 {:sh/datatype :xsd/anyURI,
-                  :sh/name     "identifierLocator",
-                  :sh/path     :spdx-core/identifierLocator}],
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "externalIdentifierType",
+                  :sh/path     :spdx-core/externalIdentifierType}],
    :vs/term_status "Stable"})
 
 (def ExternalIdentifierType
   "ExteralIdentifierType specifies the type of an external identifier."
   {:db/ident :spdx-core/ExternalIdentifierType,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/email"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/cpe22"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/securityOther"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/swhid"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/other"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/urlScheme"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/cpe23"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/gitoid"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/pkgUrl"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/swid"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalIdentifierType/cve"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "ExteralIdentifierType specifies the type of an external identifier.",
    :vs/term_status "Stable"})
+
+(def ExternalIdentifierType-CPE22
+  "cpe22"
+  {:db/ident   :spdx-core/ExternalIdentifierType-CPE22,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "cpe22"})
+
+(def ExternalIdentifierType-CPE23
+  "cpe23"
+  {:db/ident   :spdx-core/ExternalIdentifierType-CPE23,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "cpe23"})
+
+(def ExternalIdentifierType-CVE
+  "cve"
+  {:db/ident   :spdx-core/ExternalIdentifierType-CVE,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "cve"})
+
+(def ExternalIdentifierType-Email
+  "email"
+  {:db/ident   :spdx-core/ExternalIdentifierType-Email,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "email"})
+
+(def ExternalIdentifierType-Gitoid
+  "gitoid"
+  {:db/ident   :spdx-core/ExternalIdentifierType-Gitoid,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "gitoid"})
+
+(def ExternalIdentifierType-Other
+  "other"
+  {:db/ident   :spdx-core/ExternalIdentifierType-Other,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def ExternalIdentifierType-PkgUrl
+  "pkgUrl"
+  {:db/ident   :spdx-core/ExternalIdentifierType-PkgUrl,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "pkgUrl"})
+
+(def ExternalIdentifierType-SecurityOther
+  "securityOther"
+  {:db/ident   :spdx-core/ExternalIdentifierType-SecurityOther,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "securityOther"})
+
+(def ExternalIdentifierType-Swhid
+  "swhid"
+  {:db/ident   :spdx-core/ExternalIdentifierType-Swhid,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "swhid"})
+
+(def ExternalIdentifierType-Swid
+  "swid"
+  {:db/ident   :spdx-core/ExternalIdentifierType-Swid,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "swid"})
+
+(def ExternalIdentifierType-UrlScheme
+  "urlScheme"
+  {:db/ident   :spdx-core/ExternalIdentifierType-UrlScheme,
+   :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
+   :rdfs/label "urlScheme"})
 
 (def ExternalMap
   "An External Map is a map of Element identifiers that are used within a Document\nbut defined external to that Document.\nThe external map provides details about the externally-defined Element\nsuch as its provenance, where to retrieve it, and how to verify its integrity."
@@ -342,79 +398,257 @@
 (def ExternalReferenceType
   "ExteralReferenceType specifies the type of an external reference."
   {:db/ident :spdx-core/ExternalReferenceType,
-   :owl/oneOf
-   [{:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/componentAnalysisReport"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityAdvisory"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/vulnerabilityExploitabilityAssessment"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/buildSystem"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/releaseHistory"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/funding"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/sourceArtifact"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/vcs"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/chat"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/buildMeta"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/eolNotice"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/releaseNotes"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityAdversaryModel"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/altWebPage"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/altDownloadLocation"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/certificationReport"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/purchaseOrder"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/privacyAssessment"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityPenTestReport"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/issueTracker"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/qualityAssessmentReport"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/secureSoftwareAttestation"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/riskAssessment"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/support"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityFix"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/staticAnalysisReport"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/runtimeAnalysisReport"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/socialMedia"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/productMetadata"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/mailingList"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityPolicy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/license"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/exportControlAssessment"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/other"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityThreatModel"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/binaryArtifact"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/dynamicAnalysisReport"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityOther"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/documentation"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ExternalReferenceType/metrics"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ExternalReferenceType/vulnerabilityDisclosureReport"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "ExteralReferenceType specifies the type of an external reference.",
    :vs/term_status "Stable"})
+
+(def ExternalReferenceType-AltDownloadLocation
+  "altDownloadLocation"
+  {:db/ident   :spdx-core/ExternalReferenceType-AltDownloadLocation,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "altDownloadLocation"})
+
+(def ExternalReferenceType-AltWebPage
+  "altWebPage"
+  {:db/ident   :spdx-core/ExternalReferenceType-AltWebPage,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "altWebPage"})
+
+(def ExternalReferenceType-BinaryArtifact
+  "binaryArtifact"
+  {:db/ident   :spdx-core/ExternalReferenceType-BinaryArtifact,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "binaryArtifact"})
+
+(def ExternalReferenceType-BuildMeta
+  "buildMeta"
+  {:db/ident   :spdx-core/ExternalReferenceType-BuildMeta,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "buildMeta"})
+
+(def ExternalReferenceType-BuildSystem
+  "buildSystem"
+  {:db/ident   :spdx-core/ExternalReferenceType-BuildSystem,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "buildSystem"})
+
+(def ExternalReferenceType-CertificationReport
+  "certificationReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-CertificationReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "certificationReport"})
+
+(def ExternalReferenceType-Chat
+  "chat"
+  {:db/ident   :spdx-core/ExternalReferenceType-Chat,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "chat"})
+
+(def ExternalReferenceType-ComponentAnalysisReport
+  "componentAnalysisReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-ComponentAnalysisReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "componentAnalysisReport"})
+
+(def ExternalReferenceType-Documentation
+  "documentation"
+  {:db/ident   :spdx-core/ExternalReferenceType-Documentation,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "documentation"})
+
+(def ExternalReferenceType-DynamicAnalysisReport
+  "dynamicAnalysisReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-DynamicAnalysisReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "dynamicAnalysisReport"})
+
+(def ExternalReferenceType-EolNotice
+  "eolNotice"
+  {:db/ident   :spdx-core/ExternalReferenceType-EolNotice,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "eolNotice"})
+
+(def ExternalReferenceType-ExportControlAssessment
+  "exportControlAssessment"
+  {:db/ident   :spdx-core/ExternalReferenceType-ExportControlAssessment,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "exportControlAssessment"})
+
+(def ExternalReferenceType-Funding
+  "funding"
+  {:db/ident   :spdx-core/ExternalReferenceType-Funding,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "funding"})
+
+(def ExternalReferenceType-IssueTracker
+  "issueTracker"
+  {:db/ident   :spdx-core/ExternalReferenceType-IssueTracker,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "issueTracker"})
+
+(def ExternalReferenceType-License
+  "license"
+  {:db/ident   :spdx-core/ExternalReferenceType-License,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "license"})
+
+(def ExternalReferenceType-MailingList
+  "mailingList"
+  {:db/ident   :spdx-core/ExternalReferenceType-MailingList,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "mailingList"})
+
+(def ExternalReferenceType-Metrics
+  "metrics"
+  {:db/ident   :spdx-core/ExternalReferenceType-Metrics,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "metrics"})
+
+(def ExternalReferenceType-Other
+  "other"
+  {:db/ident   :spdx-core/ExternalReferenceType-Other,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def ExternalReferenceType-PrivacyAssessment
+  "privacyAssessment"
+  {:db/ident   :spdx-core/ExternalReferenceType-PrivacyAssessment,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "privacyAssessment"})
+
+(def ExternalReferenceType-ProductMetadata
+  "productMetadata"
+  {:db/ident   :spdx-core/ExternalReferenceType-ProductMetadata,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "productMetadata"})
+
+(def ExternalReferenceType-PurchaseOrder
+  "purchaseOrder"
+  {:db/ident   :spdx-core/ExternalReferenceType-PurchaseOrder,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "purchaseOrder"})
+
+(def ExternalReferenceType-QualityAssessmentReport
+  "qualityAssessmentReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-QualityAssessmentReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "qualityAssessmentReport"})
+
+(def ExternalReferenceType-ReleaseHistory
+  "releaseHistory"
+  {:db/ident   :spdx-core/ExternalReferenceType-ReleaseHistory,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "releaseHistory"})
+
+(def ExternalReferenceType-ReleaseNotes
+  "releaseNotes"
+  {:db/ident   :spdx-core/ExternalReferenceType-ReleaseNotes,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "releaseNotes"})
+
+(def ExternalReferenceType-RiskAssessment
+  "riskAssessment"
+  {:db/ident   :spdx-core/ExternalReferenceType-RiskAssessment,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "riskAssessment"})
+
+(def ExternalReferenceType-RuntimeAnalysisReport
+  "runtimeAnalysisReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-RuntimeAnalysisReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "runtimeAnalysisReport"})
+
+(def ExternalReferenceType-SecureSoftwareAttestation
+  "secureSoftwareAttestation"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecureSoftwareAttestation,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "secureSoftwareAttestation"})
+
+(def ExternalReferenceType-SecurityAdversaryModel
+  "securityAdversaryModel"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecurityAdversaryModel,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "securityAdversaryModel"})
+
+(def ExternalReferenceType-SecurityAdvisory
+  "securityAdvisory"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecurityAdvisory,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "securityAdvisory"})
+
+(def ExternalReferenceType-SecurityFix
+  "securityFix"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecurityFix,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "securityFix"})
+
+(def ExternalReferenceType-SecurityOther
+  "securityOther"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecurityOther,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "securityOther"})
+
+(def ExternalReferenceType-SecurityPenTestReport
+  "securityPenTestReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecurityPenTestReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "securityPenTestReport"})
+
+(def ExternalReferenceType-SecurityPolicy
+  "securityPolicy"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecurityPolicy,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "securityPolicy"})
+
+(def ExternalReferenceType-SecurityThreatModel
+  "securityThreatModel"
+  {:db/ident   :spdx-core/ExternalReferenceType-SecurityThreatModel,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "securityThreatModel"})
+
+(def ExternalReferenceType-SocialMedia
+  "socialMedia"
+  {:db/ident   :spdx-core/ExternalReferenceType-SocialMedia,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "socialMedia"})
+
+(def ExternalReferenceType-SourceArtifact
+  "sourceArtifact"
+  {:db/ident   :spdx-core/ExternalReferenceType-SourceArtifact,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "sourceArtifact"})
+
+(def ExternalReferenceType-StaticAnalysisReport
+  "staticAnalysisReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-StaticAnalysisReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "staticAnalysisReport"})
+
+(def ExternalReferenceType-Support
+  "support"
+  {:db/ident   :spdx-core/ExternalReferenceType-Support,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "support"})
+
+(def ExternalReferenceType-Vcs
+  "vcs"
+  {:db/ident   :spdx-core/ExternalReferenceType-Vcs,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "vcs"})
+
+(def ExternalReferenceType-VulnerabilityDisclosureReport
+  "vulnerabilityDisclosureReport"
+  {:db/ident   :spdx-core/ExternalReferenceType-VulnerabilityDisclosureReport,
+   :rdf/type   [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "vulnerabilityDisclosureReport"})
+
+(def ExternalReferenceType-VulnerabilityExploitabilityAssessment
+  "vulnerabilityExploitabilityAssessment"
+  {:db/ident
+   :spdx-core/ExternalReferenceType-VulnerabilityExploitabilityAssessment,
+   :rdf/type [:spdx-core/ExternalReferenceType :owl/NamedIndividual],
+   :rdfs/label "vulnerabilityExploitabilityAssessment"})
 
 (def Hash
   "A hash is a grouping of characteristics unique to the result\nof applying a mathematical algorithm\nthat maps data of arbitrary size to a bit string (the hash)\nand is a one-way function, that is,\na function which is practically infeasible to invert.\nThis is commonly used for integrity checking of data."
@@ -438,35 +672,154 @@
 (def HashAlgorithm
   "A HashAlgorithm is a mathematical algorithm that maps data of arbitrary size to a bit string (the hash)\nand is a one-way function, that is, a function which is practically infeasible to invert."
   {:db/ident :spdx-core/HashAlgorithm,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/blake3"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/blake2b384"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha512"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/spdxPvcSha1"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha1"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha224"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sphincsPlus"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/md5"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_224"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/blake2b256"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/md4"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/other"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/crystalsDilithium"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/md2"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/blake2b512"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha256"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_384"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_512"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/md6"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/spdxPvcSha256"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/crystalsKyber"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/falcon"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_256"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/HashAlgorithm/sha384"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "A HashAlgorithm is a mathematical algorithm that maps data of arbitrary size to a bit string (the hash)\nand is a one-way function, that is, a function which is practically infeasible to invert.",
    :vs/term_status "Stable"})
+
+(def HashAlgorithm-Blake2b256
+  "blake2b256"
+  {:db/ident   :spdx-core/HashAlgorithm-Blake2b256,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "blake2b256"})
+
+(def HashAlgorithm-Blake2b384
+  "blake2b384"
+  {:db/ident   :spdx-core/HashAlgorithm-Blake2b384,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "blake2b384"})
+
+(def HashAlgorithm-Blake2b512
+  "blake2b512"
+  {:db/ident   :spdx-core/HashAlgorithm-Blake2b512,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "blake2b512"})
+
+(def HashAlgorithm-Blake3
+  "blake3"
+  {:db/ident   :spdx-core/HashAlgorithm-Blake3,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "blake3"})
+
+(def HashAlgorithm-CrystalsDilithium
+  "crystalsDilithium"
+  {:db/ident   :spdx-core/HashAlgorithm-CrystalsDilithium,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "crystalsDilithium"})
+
+(def HashAlgorithm-CrystalsKyber
+  "crystalsKyber"
+  {:db/ident   :spdx-core/HashAlgorithm-CrystalsKyber,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "crystalsKyber"})
+
+(def HashAlgorithm-Falcon
+  "falcon"
+  {:db/ident   :spdx-core/HashAlgorithm-Falcon,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "falcon"})
+
+(def HashAlgorithm-Md2
+  "md2"
+  {:db/ident   :spdx-core/HashAlgorithm-Md2,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "md2"})
+
+(def HashAlgorithm-Md4
+  "md4"
+  {:db/ident   :spdx-core/HashAlgorithm-Md4,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "md4"})
+
+(def HashAlgorithm-Md5
+  "md5"
+  {:db/ident   :spdx-core/HashAlgorithm-Md5,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "md5"})
+
+(def HashAlgorithm-Md6
+  "md6"
+  {:db/ident   :spdx-core/HashAlgorithm-Md6,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "md6"})
+
+(def HashAlgorithm-Other
+  "other"
+  {:db/ident   :spdx-core/HashAlgorithm-Other,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def HashAlgorithm-Sha1
+  "sha1"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha1,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha1"})
+
+(def HashAlgorithm-Sha224
+  "sha224"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha224,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha224"})
+
+(def HashAlgorithm-Sha256
+  "sha256"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha256,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha256"})
+
+(def HashAlgorithm-Sha3-224
+  "sha3_224"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha3-224,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha3_224"})
+
+(def HashAlgorithm-Sha3-256
+  "sha3_256"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha3-256,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha3_256"})
+
+(def HashAlgorithm-Sha3-384
+  "sha3_384"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha3-384,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha3_384"})
+
+(def HashAlgorithm-Sha3-512
+  "sha3_512"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha3-512,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha3_512"})
+
+(def HashAlgorithm-Sha384
+  "sha384"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha384,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha384"})
+
+(def HashAlgorithm-Sha512
+  "sha512"
+  {:db/ident   :spdx-core/HashAlgorithm-Sha512,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sha512"})
+
+(def HashAlgorithm-SpdxPvcSha1
+  "spdxPvcSha1"
+  {:db/ident   :spdx-core/HashAlgorithm-SpdxPvcSha1,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "spdxPvcSha1"})
+
+(def HashAlgorithm-SpdxPvcSha256
+  "spdxPvcSha256"
+  {:db/ident   :spdx-core/HashAlgorithm-SpdxPvcSha256,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "spdxPvcSha256"})
+
+(def HashAlgorithm-SphincsPlus
+  "sphincsPlus"
+  {:db/ident   :spdx-core/HashAlgorithm-SphincsPlus,
+   :rdf/type   [:spdx-core/HashAlgorithm :owl/NamedIndividual],
+   :rdfs/label "sphincsPlus"})
 
 (def IntegrityMethod
   "An IntegrityMethod provides an independently reproducible mechanism that permits verification\nof a specific Element that correlates to the data in this SPDX document. This identifier enables\na recipient to determine if anything in the original Element has been changed and eliminates\nconfusion over which version or modification of a specific Element is referenced."
@@ -482,17 +835,46 @@
 
 (def LifecycleScopeType
   "TODO"
-  {:db/ident :spdx-core/LifecycleScopeType,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Core/LifecycleScopeType/build"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/LifecycleScopeType/runtime"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/LifecycleScopeType/test"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/LifecycleScopeType/other"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/LifecycleScopeType/design"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/LifecycleScopeType/development"}],
-   :rdf/type :owl/Class,
-   :rdfs/comment "TODO",
+  {:db/ident       :spdx-core/LifecycleScopeType,
+   :rdf/type       :owl/Class,
+   :rdfs/comment   "TODO",
    :vs/term_status "Stable"})
+
+(def LifecycleScopeType-Build
+  "build"
+  {:db/ident   :spdx-core/LifecycleScopeType-Build,
+   :rdf/type   [:spdx-core/LifecycleScopeType :owl/NamedIndividual],
+   :rdfs/label "build"})
+
+(def LifecycleScopeType-Design
+  "design"
+  {:db/ident   :spdx-core/LifecycleScopeType-Design,
+   :rdf/type   [:spdx-core/LifecycleScopeType :owl/NamedIndividual],
+   :rdfs/label "design"})
+
+(def LifecycleScopeType-Development
+  "development"
+  {:db/ident   :spdx-core/LifecycleScopeType-Development,
+   :rdf/type   [:spdx-core/LifecycleScopeType :owl/NamedIndividual],
+   :rdfs/label "development"})
+
+(def LifecycleScopeType-Other
+  "other"
+  {:db/ident   :spdx-core/LifecycleScopeType-Other,
+   :rdf/type   [:spdx-core/LifecycleScopeType :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def LifecycleScopeType-Runtime
+  "runtime"
+  {:db/ident   :spdx-core/LifecycleScopeType-Runtime,
+   :rdf/type   [:spdx-core/LifecycleScopeType :owl/NamedIndividual],
+   :rdfs/label "runtime"})
+
+(def LifecycleScopeType-Test
+  "test"
+  {:db/ident   :spdx-core/LifecycleScopeType-Test,
+   :rdf/type   [:spdx-core/LifecycleScopeType :owl/NamedIndividual],
+   :rdfs/label "test"})
 
 (def LifecycleScopedRelationship
   "TODO"
@@ -544,35 +926,82 @@
    :sh/property [{:sh/datatype :xsd/positiveInteger,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
-                  :sh/name     "begin",
-                  :sh/path     :spdx-core/begin}
+                  :sh/name     "end",
+                  :sh/path     :spdx-core/end}
                  {:sh/datatype :xsd/positiveInteger,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
-                  :sh/name     "end",
-                  :sh/path     :spdx-core/end}],
+                  :sh/name     "begin",
+                  :sh/path     :spdx-core/begin}],
    :vs/term_status "Stable"})
 
 (def ProfileIdentifierType
   "There are a set of profiles that have been defined to be valid for a specific release   This file enumerates the values that have been agreed on, and may be applied to the creation information for an an element."
   {:db/ident :spdx-core/ProfileIdentifierType,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/extension"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/ai"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/core"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/dataset"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/software"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/simpleLicensing"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/security"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/usage"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/expandedLicensing"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/ProfileIdentifierType/build"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "There are a set of profiles that have been defined to be valid for a specific release   This file enumerates the values that have been agreed on, and may be applied to the creation information for an an element.",
    :vs/term_status "Stable"})
+
+(def ProfileIdentifierType-AI
+  "ai"
+  {:db/ident   :spdx-core/ProfileIdentifierType-AI,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "ai"})
+
+(def ProfileIdentifierType-Build
+  "build"
+  {:db/ident   :spdx-core/ProfileIdentifierType-Build,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "build"})
+
+(def ProfileIdentifierType-Core
+  "core"
+  {:db/ident   :spdx-core/ProfileIdentifierType-Core,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "core"})
+
+(def ProfileIdentifierType-Dataset
+  "dataset"
+  {:db/ident   :spdx-core/ProfileIdentifierType-Dataset,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "dataset"})
+
+(def ProfileIdentifierType-ExpandedLicensing
+  "expandedLicensing"
+  {:db/ident   :spdx-core/ProfileIdentifierType-ExpandedLicensing,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "expandedLicensing"})
+
+(def ProfileIdentifierType-Extension
+  "extension"
+  {:db/ident   :spdx-core/ProfileIdentifierType-Extension,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "extension"})
+
+(def ProfileIdentifierType-Security
+  "security"
+  {:db/ident   :spdx-core/ProfileIdentifierType-Security,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "security"})
+
+(def ProfileIdentifierType-SimpleLicensing
+  "simpleLicensing"
+  {:db/ident   :spdx-core/ProfileIdentifierType-SimpleLicensing,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "simpleLicensing"})
+
+(def ProfileIdentifierType-Software
+  "software"
+  {:db/ident   :spdx-core/ProfileIdentifierType-Software,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "software"})
+
+(def ProfileIdentifierType-Usage
+  "usage"
+  {:db/ident   :spdx-core/ProfileIdentifierType-Usage,
+   :rdf/type   [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
+   :rdfs/label "usage"})
 
 (def Relationship
   "A Relationship is a grouping of characteristics unique to an assertion\nthat one Element is related to one or more other Elements in some way."
@@ -586,121 +1015,433 @@
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "relationshipType",
                   :sh/path     :spdx-core/relationshipType}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "endTime",
-                  :sh/path     :spdx-core/endTime}
                  {:sh/class    :spdx-core/Element,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "from",
                   :sh/path     :spdx-core/from}
-                 {:sh/class :spdx-core/Element,
-                  :sh/name  "to",
-                  :sh/path  :spdx-core/to}
+                 {:sh/class    :spdx-core/RelationshipCompleteness,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "completeness",
+                  :sh/path     :spdx-core/completeness}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "endTime",
+                  :sh/path     :spdx-core/endTime}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "startTime",
                   :sh/path     :spdx-core/startTime}
-                 {:sh/class    :spdx-core/RelationshipCompleteness,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "completeness",
-                  :sh/path     :spdx-core/completeness}],
+                 {:sh/class :spdx-core/Element,
+                  :sh/name  "to",
+                  :sh/path  :spdx-core/to}],
    :vs/term_status "Stable"})
 
 (def RelationshipCompleteness
   "RelationshipCompleteness indicates whether a relationship is complete or \nknown to be incomplete or if there is made no assertion either way."
   {:db/ident :spdx-core/RelationshipCompleteness,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipCompleteness/complete"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipCompleteness/incomplete"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipCompleteness/noAssertion"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "RelationshipCompleteness indicates whether a relationship is complete or \nknown to be incomplete or if there is made no assertion either way.",
    :vs/term_status "Stable"})
 
+(def RelationshipCompleteness-Complete
+  "complete"
+  {:db/ident   :spdx-core/RelationshipCompleteness-Complete,
+   :rdf/type   [:spdx-core/RelationshipCompleteness :owl/NamedIndividual],
+   :rdfs/label "complete"})
+
+(def RelationshipCompleteness-Incomplete
+  "incomplete"
+  {:db/ident   :spdx-core/RelationshipCompleteness-Incomplete,
+   :rdf/type   [:spdx-core/RelationshipCompleteness :owl/NamedIndividual],
+   :rdfs/label "incomplete"})
+
+(def RelationshipCompleteness-NoAssertion
+  "noAssertion"
+  {:db/ident   :spdx-core/RelationshipCompleteness-NoAssertion,
+   :rdf/type   [:spdx-core/RelationshipCompleteness :owl/NamedIndividual],
+   :rdfs/label "noAssertion"})
+
 (def RelationshipType
   "Provides information about the relationship between two Elements.\nFor example, you can represent a relationship between two different Files,\nbetween a Package and a File, between two Packages, or between one SPDXDocument and another SPDXDocument."
   {:db/ident :spdx-core/RelationshipType,
-   :owl/oneOf
-   [{:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/hasAssociatedVulnerability"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/providedDependency"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/testDependency"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/dependsOn"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/configOf"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/copy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/invokedBy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/evidenceFor"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/fixedIn"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/reportedBy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/describes"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/packages"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/other"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/optionalComponent"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/patch"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/coordinatedBy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/devTool"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/fileDeleted"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/amends"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/fileModified"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/test"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/testTool"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/exploitCreatedBy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/dynamicLink"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/contains"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/doesNotAffect"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/hasAssessmentFor"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/devDependency"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/ancestor"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/inputOf"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/testedOn"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/variant"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/hostOf"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/staticLink"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/specificationFor"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/expandedFromArchive"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/requirementFor"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/buildDependency"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/optionalDependency"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/outputOf"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/documentation"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/onBehalfOf"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/metafile"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/dependencyManifest"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/trainedOn"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/publishedBy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/prerequisite"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/fileAdded"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/generates"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/republishedBy"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/descendant"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/example"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/availableFrom"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/runtimeDependency"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/buildTool"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/affects"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/testCase"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/underInvestigationFor"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/dataFile"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/fixedBy"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Core/RelationshipType/distributionArtifact"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Core/RelationshipType/foundBy"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "Provides information about the relationship between two Elements.\nFor example, you can represent a relationship between two different Files,\nbetween a Package and a File, between two Packages, or between one SPDXDocument and another SPDXDocument.",
    :vs/term_status "Stable"})
+
+(def RelationshipType-Affects
+  "affects"
+  {:db/ident   :spdx-core/RelationshipType-Affects,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "affects"})
+
+(def RelationshipType-Amends
+  "amends"
+  {:db/ident   :spdx-core/RelationshipType-Amends,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "amends"})
+
+(def RelationshipType-Ancestor
+  "ancestor"
+  {:db/ident   :spdx-core/RelationshipType-Ancestor,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "ancestor"})
+
+(def RelationshipType-AvailableFrom
+  "availableFrom"
+  {:db/ident   :spdx-core/RelationshipType-AvailableFrom,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "availableFrom"})
+
+(def RelationshipType-BuildDependency
+  "buildDependency"
+  {:db/ident   :spdx-core/RelationshipType-BuildDependency,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "buildDependency"})
+
+(def RelationshipType-BuildTool
+  "buildTool"
+  {:db/ident   :spdx-core/RelationshipType-BuildTool,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "buildTool"})
+
+(def RelationshipType-ConfigOf
+  "configOf"
+  {:db/ident   :spdx-core/RelationshipType-ConfigOf,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "configOf"})
+
+(def RelationshipType-Contains
+  "contains"
+  {:db/ident   :spdx-core/RelationshipType-Contains,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "contains"})
+
+(def RelationshipType-CoordinatedBy
+  "coordinatedBy"
+  {:db/ident   :spdx-core/RelationshipType-CoordinatedBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "coordinatedBy"})
+
+(def RelationshipType-Copy
+  "copy"
+  {:db/ident   :spdx-core/RelationshipType-Copy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "copy"})
+
+(def RelationshipType-DataFile
+  "dataFile"
+  {:db/ident   :spdx-core/RelationshipType-DataFile,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "dataFile"})
+
+(def RelationshipType-DependencyManifest
+  "dependencyManifest"
+  {:db/ident   :spdx-core/RelationshipType-DependencyManifest,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "dependencyManifest"})
+
+(def RelationshipType-DependsOn
+  "dependsOn"
+  {:db/ident   :spdx-core/RelationshipType-DependsOn,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "dependsOn"})
+
+(def RelationshipType-Descendant
+  "descendant"
+  {:db/ident   :spdx-core/RelationshipType-Descendant,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "descendant"})
+
+(def RelationshipType-Describes
+  "describes"
+  {:db/ident   :spdx-core/RelationshipType-Describes,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "describes"})
+
+(def RelationshipType-DevDependency
+  "devDependency"
+  {:db/ident   :spdx-core/RelationshipType-DevDependency,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "devDependency"})
+
+(def RelationshipType-DevTool
+  "devTool"
+  {:db/ident   :spdx-core/RelationshipType-DevTool,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "devTool"})
+
+(def RelationshipType-DistributionArtifact
+  "distributionArtifact"
+  {:db/ident   :spdx-core/RelationshipType-DistributionArtifact,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "distributionArtifact"})
+
+(def RelationshipType-Documentation
+  "documentation"
+  {:db/ident   :spdx-core/RelationshipType-Documentation,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "documentation"})
+
+(def RelationshipType-DoesNotAffect
+  "doesNotAffect"
+  {:db/ident   :spdx-core/RelationshipType-DoesNotAffect,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "doesNotAffect"})
+
+(def RelationshipType-DynamicLink
+  "dynamicLink"
+  {:db/ident   :spdx-core/RelationshipType-DynamicLink,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "dynamicLink"})
+
+(def RelationshipType-EvidenceFor
+  "evidenceFor"
+  {:db/ident   :spdx-core/RelationshipType-EvidenceFor,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "evidenceFor"})
+
+(def RelationshipType-Example
+  "example"
+  {:db/ident   :spdx-core/RelationshipType-Example,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "example"})
+
+(def RelationshipType-ExpandedFromArchive
+  "expandedFromArchive"
+  {:db/ident   :spdx-core/RelationshipType-ExpandedFromArchive,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "expandedFromArchive"})
+
+(def RelationshipType-ExploitCreatedBy
+  "exploitCreatedBy"
+  {:db/ident   :spdx-core/RelationshipType-ExploitCreatedBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "exploitCreatedBy"})
+
+(def RelationshipType-FileAdded
+  "fileAdded"
+  {:db/ident   :spdx-core/RelationshipType-FileAdded,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "fileAdded"})
+
+(def RelationshipType-FileDeleted
+  "fileDeleted"
+  {:db/ident   :spdx-core/RelationshipType-FileDeleted,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "fileDeleted"})
+
+(def RelationshipType-FileModified
+  "fileModified"
+  {:db/ident   :spdx-core/RelationshipType-FileModified,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "fileModified"})
+
+(def RelationshipType-FixedBy
+  "fixedBy"
+  {:db/ident   :spdx-core/RelationshipType-FixedBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "fixedBy"})
+
+(def RelationshipType-FixedIn
+  "fixedIn"
+  {:db/ident   :spdx-core/RelationshipType-FixedIn,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "fixedIn"})
+
+(def RelationshipType-FoundBy
+  "foundBy"
+  {:db/ident   :spdx-core/RelationshipType-FoundBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "foundBy"})
+
+(def RelationshipType-Generates
+  "generates"
+  {:db/ident   :spdx-core/RelationshipType-Generates,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "generates"})
+
+(def RelationshipType-HasAssessmentFor
+  "hasAssessmentFor"
+  {:db/ident   :spdx-core/RelationshipType-HasAssessmentFor,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "hasAssessmentFor"})
+
+(def RelationshipType-HasAssociatedVulnerability
+  "hasAssociatedVulnerability"
+  {:db/ident   :spdx-core/RelationshipType-HasAssociatedVulnerability,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "hasAssociatedVulnerability"})
+
+(def RelationshipType-HostOf
+  "hostOf"
+  {:db/ident   :spdx-core/RelationshipType-HostOf,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "hostOf"})
+
+(def RelationshipType-InputOf
+  "inputOf"
+  {:db/ident   :spdx-core/RelationshipType-InputOf,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "inputOf"})
+
+(def RelationshipType-InvokedBy
+  "invokedBy"
+  {:db/ident   :spdx-core/RelationshipType-InvokedBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "invokedBy"})
+
+(def RelationshipType-Metafile
+  "metafile"
+  {:db/ident   :spdx-core/RelationshipType-Metafile,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "metafile"})
+
+(def RelationshipType-OnBehalfOf
+  "onBehalfOf"
+  {:db/ident   :spdx-core/RelationshipType-OnBehalfOf,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "onBehalfOf"})
+
+(def RelationshipType-OptionalComponent
+  "optionalComponent"
+  {:db/ident   :spdx-core/RelationshipType-OptionalComponent,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "optionalComponent"})
+
+(def RelationshipType-OptionalDependency
+  "optionalDependency"
+  {:db/ident   :spdx-core/RelationshipType-OptionalDependency,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "optionalDependency"})
+
+(def RelationshipType-Other
+  "other"
+  {:db/ident   :spdx-core/RelationshipType-Other,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def RelationshipType-OutputOf
+  "outputOf"
+  {:db/ident   :spdx-core/RelationshipType-OutputOf,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "outputOf"})
+
+(def RelationshipType-Packages
+  "packages"
+  {:db/ident   :spdx-core/RelationshipType-Packages,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "packages"})
+
+(def RelationshipType-Patch
+  "patch"
+  {:db/ident   :spdx-core/RelationshipType-Patch,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "patch"})
+
+(def RelationshipType-Prerequisite
+  "prerequisite"
+  {:db/ident   :spdx-core/RelationshipType-Prerequisite,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "prerequisite"})
+
+(def RelationshipType-ProvidedDependency
+  "providedDependency"
+  {:db/ident   :spdx-core/RelationshipType-ProvidedDependency,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "providedDependency"})
+
+(def RelationshipType-PublishedBy
+  "publishedBy"
+  {:db/ident   :spdx-core/RelationshipType-PublishedBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "publishedBy"})
+
+(def RelationshipType-ReportedBy
+  "reportedBy"
+  {:db/ident   :spdx-core/RelationshipType-ReportedBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "reportedBy"})
+
+(def RelationshipType-RepublishedBy
+  "republishedBy"
+  {:db/ident   :spdx-core/RelationshipType-RepublishedBy,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "republishedBy"})
+
+(def RelationshipType-RequirementFor
+  "requirementFor"
+  {:db/ident   :spdx-core/RelationshipType-RequirementFor,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "requirementFor"})
+
+(def RelationshipType-RuntimeDependency
+  "runtimeDependency"
+  {:db/ident   :spdx-core/RelationshipType-RuntimeDependency,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "runtimeDependency"})
+
+(def RelationshipType-SpecificationFor
+  "specificationFor"
+  {:db/ident   :spdx-core/RelationshipType-SpecificationFor,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "specificationFor"})
+
+(def RelationshipType-StaticLink
+  "staticLink"
+  {:db/ident   :spdx-core/RelationshipType-StaticLink,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "staticLink"})
+
+(def RelationshipType-Test
+  "test"
+  {:db/ident   :spdx-core/RelationshipType-Test,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "test"})
+
+(def RelationshipType-TestCase
+  "testCase"
+  {:db/ident   :spdx-core/RelationshipType-TestCase,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "testCase"})
+
+(def RelationshipType-TestDependency
+  "testDependency"
+  {:db/ident   :spdx-core/RelationshipType-TestDependency,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "testDependency"})
+
+(def RelationshipType-TestTool
+  "testTool"
+  {:db/ident   :spdx-core/RelationshipType-TestTool,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "testTool"})
+
+(def RelationshipType-TestedOn
+  "testedOn"
+  {:db/ident   :spdx-core/RelationshipType-TestedOn,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "testedOn"})
+
+(def RelationshipType-TrainedOn
+  "trainedOn"
+  {:db/ident   :spdx-core/RelationshipType-TrainedOn,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "trainedOn"})
+
+(def RelationshipType-UnderInvestigationFor
+  "underInvestigationFor"
+  {:db/ident   :spdx-core/RelationshipType-UnderInvestigationFor,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "underInvestigationFor"})
+
+(def RelationshipType-Variant
+  "variant"
+  {:db/ident   :spdx-core/RelationshipType-Variant,
+   :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/label "variant"})
 
 (def SemVer
   "A string constrained to be the SemVer 2.0.0 specification."

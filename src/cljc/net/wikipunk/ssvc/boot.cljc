@@ -49,7 +49,7 @@
   {:rdfa/uri    "https://spdx.org/rdf/v3/Core/"
    :rdfa/prefix "spdx-core"
    :rdf/type    :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/Core/Core.ttl"})
 
 (def spdx-dataset
   {:rdfa/uri    "https://spdx.org/rdf/v3/Dataset/"
@@ -85,4 +85,5 @@
   {:rdfa/uri         "https://spdx.org/rdf/v3/MetadataSPDX/"
    :rdfa/prefix      "spdx-spec"
    :rdf/type         :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/MetadataSPDX.ttl"})
+   :dcat/downloadURL "resources/spdx/MetadataSPDX.ttl"
+   :private          true})

@@ -17,7 +17,9 @@
    [net.wikipunk.rdf.pointers]
    [net.wikipunk.rdf.tal]
    [net.wikipunk.rdf.tac]
-   [net.wikipunk.rdf.sh]))
+   [net.wikipunk.rdf.sh]
+   [net.wikipunk.rdf.spdx-core]
+   [net.wikipunk.rdf.spdx-spec]))
 
 (defrecord SSVC []
   com/Lifecycle
@@ -30,6 +32,7 @@
     (defmethod rdf/infer-datomic-cardinality :spdx/referenceLocator [_] :db.cardinality/one)
     (defmethod rdf/infer-datomic-unique :spdx/licenseId [_] :db.unique/identity)
     (defmethod rdf/infer-datomic-cardinality :spdx/licenseId [_] :db.cardinality/one)
+    (rdf/import-from 'net.wikipunk.rdf.spdx-spec 'net.wikipunk.rdf.spdx-core)
     this)
   (stop [this]
     this))

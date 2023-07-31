@@ -36,18 +36,17 @@
   dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
   dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
   dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
-  dcterms:hasPart :AIProfile ;
-  dcterms:hasPart :BuildProfile ;
-  dcterms:hasPart :CoreProfile ;
-  dcterms:hasPart :DatasetProfile ;
-  dcterms:hasPart :ExpandedLicensingProfile ;
-  dcterms:hasPart :SecurityProfile ;
-  dcterms:hasPart :SimpleLicensingProfile ;
-  dcterms:hasPart :SoftwareProfile ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-AI ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-Build ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-Core ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-Dataset ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-ExpandedLicensing ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-Security ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-SimpleLicensing ;
+  dcterms:hasPart spdx-core:ProfileIdentifierType-Software ;
   owl:versionInfo "3.0"^^xsd:string .
 
-:AIProfile a owl:NamedIndividual ;
-  rdfs:label "AI Profile" ;
+spdx-core:ProfileIdentifierType-AI a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   dcterms:abstract "The AI profile namespace defines concepts related to AI application and model artifacts." ;
   dcterms:identifier "AI" ;
   dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
@@ -57,7 +56,7 @@
   dcterms:references <https://spdx.org/rdf/v3/Software/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/AI/> .
 
-:BuildProfile a owl:NamedIndividual ;
+spdx-core:ProfileIdentifierType-Build a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "Build Profile" ;
   dcterms:abstract "The Build namespace defines concepts related to building of artifacts." ;
   dcterms:identifier "Build" ;
@@ -67,7 +66,7 @@
   dcterms:references <https://spdx.org/rdf/v3/Core/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/Build/> .
 
-:CoreProfile a owl:NamedIndividual ;
+spdx-core:ProfileIdentifierType-Core a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "Core Profile" ;
   dcterms:abstract "The Core namespace defines foundational concepts serving as the basis for all SPDX-3.0 profiles." ;
   dcterms:identifier "Core" ;
@@ -76,7 +75,7 @@
   dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/Core/> .
 
-:DatasetProfile a owl:NamedIndividual ;
+spdx-core:ProfileIdentifierType-Dataset a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "Dataset Profile" ;
   dcterms:abstract "The Dataset profile namespace defines concepts related to datasets." ;
   dcterms:identifier "Dataset" ;
@@ -88,7 +87,7 @@
   dcterms:references <https://spdx.org/rdf/v3/Software/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/Dataset/> .
 
-:ExpandedLicensingProfile a owl:NamedIndividual ;
+spdx-core:ProfileIdentifierType-ExpandedLicensing a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "Expanded Licensing Profile" ;
   dcterms:abstract "The Expanded Licensing profile This profile supports representing a fully expanded license expression in object form." ;
   dcterms:identifier "ExpandedLicensing" ;
@@ -99,7 +98,7 @@
   dcterms:references <https://spdx.org/rdf/v3/SimpleLicensing/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/ExpandedLicensing/> .
 
-:SecurityProfile a owl:NamedIndividual ;
+spdx-core:ProfileIdentifierType-Security a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "Security Profile" ;
   dcterms:abstract "The Security Profile captures security related information." ;
   dcterms:identifier "Security" ;
@@ -109,7 +108,7 @@
   dcterms:references <https://spdx.org/rdf/v3/Core/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/Security/> .
 
-:SimpleLicensingProfile a owl:NamedIndividual ;
+spdx-core:ProfileIdentifierType-SimpleLicensing a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "Simple Licensing Profile" ;
   dcterms:abstract "The Licensing namespace defines metadata fields applicable to software licensing. It also defines the classes and properties that comprise the SPDX License Expression syntax and that relate to the SPDX License List." ;
   dcterms:identifier "SimpleLicensing" ;
@@ -119,7 +118,7 @@
   dcterms:references <https://spdx.org/rdf/v3/Core/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/SimpleLicensing/> .
 
-:SoftwareProfile a owl:NamedIndividual ;
+spdx-core:ProfileIdentifierType-Software a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "Software Profile" ;
   dcterms:abstract "The Software profile namespace defines concepts related to software artifacts." ;
   dcterms:identifier "Software" ;

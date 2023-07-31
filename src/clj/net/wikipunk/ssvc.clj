@@ -25,6 +25,11 @@
     (defmethod rdf/infer-datomic-type :sh/name [_] :db.type/string)
     (defmethod rdf/infer-datomic-type :sh/minCount [_] :db.type/long)
     (defmethod rdf/infer-datomic-type :sh/maxCount [_] :db.type/long)
+    (defmethod rdf/infer-datomic-type :spdx/referenceLocator [_] :db.type/string)
+    (defmethod rdf/infer-datomic-unique :spdx/referenceLocator [_] :db.unique/identity)
+    (defmethod rdf/infer-datomic-cardinality :spdx/referenceLocator [_] :db.cardinality/one)
+    (defmethod rdf/infer-datomic-unique :spdx/licenseId [_] :db.unique/identity)
+    (defmethod rdf/infer-datomic-cardinality :spdx/licenseId [_] :db.cardinality/one)
     this)
   (stop [this]
     this))

@@ -95,14 +95,21 @@
                                  :db.type/bigint  (bigint v)
                                  :db.type/bigdec  (bigdec v)
                                  v)])
-                          :else form)))))
+                          :else form)))
+       (walk/prewalk rdf/unroll-blank)))
 
 (comment
   (def license-db
     (reduce (fn [with-db tx-data]
               (:db-after (d/with with-db {:tx-data tx-data})))
-            boot-db
+            (db/test-bootstrap (:db system))
             (for [file  (file-seq (io/file "resources/spdx/license-list-data/"))
                   :when (.isFile file)
                   :when (str/ends-with? (.getPath file) ".ttl")]
               (mapv transactable (rdf/parse {:dcat/downloadURL (.getPath file)}))))))
+
+(comment
+  (d/pull license-db '[*] [:spdx/licenseId "MIT"]))
+
+;; do we need to add this to rdf/unroll-blank?
+;; (not (some #{:db.unique/identity} (map infer-datomic-unique (keys form))))

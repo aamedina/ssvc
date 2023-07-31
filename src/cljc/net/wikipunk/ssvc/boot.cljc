@@ -80,3 +80,9 @@
    :rdfa/prefix "spdx-software"
    :rdf/type    :rdfa/PrefixMapping
    :dcat/downloadURL "resources/spdx/model.ttl"})
+
+(def spdx-spec
+  {:rdfa/uri         "https://spdx.org/rdf/v3/MetadataSPDX/"
+   :rdfa/prefix      "spdx-spec"
+   :rdf/type         :rdfa/PrefixMapping
+   :dcat/downloadURL "resources/spdx/MetadataSPDX.ttl"})

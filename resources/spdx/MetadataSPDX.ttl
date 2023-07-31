@@ -1,0 +1,130 @@
+@prefix : <https://spdx.org/rdf/v3/MetadataSPDX> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix spdx-ai: <https://spdx.org/rdf/v3/AI/> .
+@prefix spdx-build: <https://spdx.org/rdf/v3/Build/> .
+@prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
+@prefix spdx-dataset: <https://spdx.org/rdf/v3/Dataset/> .
+@prefix spdx-expandedlicensing: <https://spdx.org/rdf/v3/ExpandedLicensing/>
+@prefix spdx-security: <https://spdx.org/rdf/v3/Security/> .
+@prefix spdx-simplelicensing: <https://spdx.org/rdf/v3/SimpleLicensing/> .
+@prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
+
+: a owl:Ontology ;
+  rdfs:label "Metadata for the SPDX specification." ;
+  dcterms:abstract "This is the metadata ontology for the SPDX specification." ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  owl:imports (
+    <https://spdx.org/rdf/v3/AI/>
+    <https://spdx.org/rdf/v3/Build/>
+    <https://spdx.org/rdf/v3/Core/> 
+    <https://spdx.org/rdf/v3/Dataset/>
+    <https://spdx.org/rdf/v3/ExpandedLicensing/>
+    <https://spdx.org/rdf/v3/Security/>
+    <https://spdx.org/rdf/v3/SimpleLicensing/>
+    <https://spdx.org/rdf/v3/Software/>
+    ) .
+
+:SPDXSpecification a owl:NamedIndividual ;
+  rdfs:label "SPDX" ;
+  rdfs:comment "SPDX® is an open standard for communicating software bill of material information, including components, licenses, copyrights, and security references. SPDX reduces redundant work by providing a common format for companies and communities to share important data, thereby streamlining and improving compliance." ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:hasPart :AIProfile ;
+  dcterms:hasPart :BuildProfile ;
+  dcterms:hasPart :CoreProfile ;
+  dcterms:hasPart :DatasetProfile ;
+  dcterms:hasPart :ExpandedLicensingProfile ;
+  dcterms:hasPart :SecurityProfile ;
+  dcterms:hasPart :SimpleLicensingProfile ;
+  dcterms:hasPart :SoftwareProfile ;
+  owl:versionInfo "3.0"^^xsd:string .
+
+:AIProfile a owl:NamedIndividual ;
+  rdfs:label "AI Profile" ;
+  dcterms:abstract "The AI profile namespace defines concepts related to AI application and model artifacts." ;
+  dcterms:identifier "AI" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:references <https://spdx.org/rdf/v3/Software/> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/AI/> .
+
+:BuildProfile a owl:NamedIndividual ;
+  rdfs:label "Build Profile" ;
+  dcterms:abstract "The Build namespace defines concepts related to building of artifacts." ;
+  dcterms:identifier "Build" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/Build/> .
+
+:CoreProfile a owl:NamedIndividual ;
+  rdfs:label "Core Profile" ;
+  dcterms:abstract "The Core namespace defines foundational concepts serving as the basis for all SPDX-3.0 profiles." ;
+  dcterms:identifier "Core" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/Core/> .
+
+:DatasetProfile a owl:NamedIndividual ;
+  rdfs:label "Dataset Profile" ;
+  dcterms:abstract "The Dataset profile namespace defines concepts related to datasets." ;
+  dcterms:identifier "Dataset" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:references <https://spdx.org/rdf/v3/AI/> ;
+  dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:references <https://spdx.org/rdf/v3/Software/> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/Dataset/> .
+
+:ExpandedLicensingProfile a owl:NamedIndividual ;
+  rdfs:label "Expanded Licensing Profile" ;
+  dcterms:abstract "The Expanded Licensing profile This profile supports representing a fully expanded license expression in object form." ;
+  dcterms:identifier "ExpandedLicensing" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:references <https://spdx.org/rdf/v3/SimpleLicensing/> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/ExpandedLicensing/> .
+
+:SecurityProfile a owl:NamedIndividual ;
+  rdfs:label "Security Profile" ;
+  dcterms:abstract "The Security Profile captures security related information." ;
+  dcterms:identifier "Security" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/Security/> .
+
+:SimpleLicensingProfile a owl:NamedIndividual ;
+  rdfs:label "Simple Licensing Profile" ;
+  dcterms:abstract "The Licensing namespace defines metadata fields applicable to software licensing. It also defines the classes and properties that comprise the SPDX License Expression syntax and that relate to the SPDX License List." ;
+  dcterms:identifier "SimpleLicensing" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/SimpleLicensing/> .
+
+:SoftwareProfile a owl:NamedIndividual ;
+  rdfs:label "Software Profile" ;
+  dcterms:abstract "The Software profile namespace defines concepts related to software artifacts." ;
+  dcterms:identifier "Software" ;
+  dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
+  dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
+  dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:hasPart <https://spdx.org/rdf/v3/Software/> .

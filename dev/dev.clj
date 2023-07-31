@@ -18,6 +18,7 @@
    [clojure.set :as set]
    [clojure.string :as str]
    [clojure.tools.namespace.repl :refer [refresh refresh-all clear]]
+   [clojure.walk :as walk]
    [com.stuartsierra.component :as com]
    [com.stuartsierra.component.repl :refer [reset set-init start stop system]]
    [com.walmartlabs.schematic :as sc]
@@ -48,7 +49,9 @@
        true))
 
 (comment
-  (def boot-db (db/test-bootstrap (:db system)))
+  (def boot-db (db/test-bootstrap (:db system))))
+
+(comment  
   (let [result (d/q '[:find (pull ?property [:db/ident]) (pull ?value [:db/ident])
                       :in $ ?class
                       :where
@@ -59,3 +62,47 @@
     (reduce (fn [m [property value]]
               (update m (:db/ident property) (fnil conj #{}) (:db/ident value)))
             {} result)))
+
+(defn transactable
+  "Ensure the metaobject can be transacted into Datomic."
+  [mo]
+  (->> mo
+       (walk/prewalk rdf/unroll-langString)
+       (walk/prewalk rdf/unroll-tagged-literals)       
+       (walk/postwalk (fn [form]
+                        (cond
+                          (and (map-entry? form)
+                               (isa? (key form) :rdf/Property))
+                          (let [k (key form)
+                                v (val form)]
+                            [k (case (rdf/infer-datomic-type k)
+                                 :db.type/string  (if (map? v)
+                                                    (or (:rdfa/uri v) (pr-str v))
+                                                    (str v))
+                                 :db.type/long    (long v)
+                                 :db.type/double  (double v)
+                                 :db.type/instant (if (string? v)
+                                                    (clojure.instant/read-instant-date v)
+                                                    v)
+                                 :db.type/ref     (mapv (fn [v]
+                                                          (cond
+                                                            (not (or (map? v) (keyword? v)))
+                                                            (rdf/box v)
+                                                            :else v))
+                                                        (if (vector? v)
+                                                          v
+                                                          [v]))
+                                 :db.type/bigint  (bigint v)
+                                 :db.type/bigdec  (bigdec v)
+                                 v)])
+                          :else form)))))
+
+(comment
+  (def license-db
+    (reduce (fn [with-db tx-data]
+              (:db-after (d/with with-db {:tx-data tx-data})))
+            boot-db
+            (for [file  (file-seq (io/file "resources/spdx/license-list-data/"))
+                  :when (.isFile file)
+                  :when (str/ends-with? (.getPath file) ".ttl")]
+              (mapv transactable (rdf/parse {:dcat/downloadURL (.getPath file)}))))))

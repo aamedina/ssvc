@@ -77,27 +77,27 @@
    :rdfs/comment
    "An artifact is a distinct article or unit within the digital domain,\nsuch as an electronic file, a software package, a device or an element of data.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/datatype :xsd/string,
-                  :sh/name     "standard",
-                  :sh/path     :spdx-core/standard}
-                 {:sh/class :spdx-core/Agent,
+   :sh/property [{:sh/class :spdx-core/Agent,
                   :sh/name  "originatedBy",
                   :sh/path  :spdx-core/originatedBy}
-                 {:sh/class :spdx-core/Agent,
-                  :sh/name  "suppliedBy",
-                  :sh/path  :spdx-core/suppliedBy}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "validUntilTime",
+                  :sh/path     :spdx-core/validUntilTime}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "standard",
+                  :sh/path     :spdx-core/standard}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "releaseTime",
                   :sh/path     :spdx-core/releaseTime}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "validUntilTime",
-                  :sh/path     :spdx-core/validUntilTime}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "builtTime",
-                  :sh/path     :spdx-core/builtTime}],
+                  :sh/path     :spdx-core/builtTime}
+                 {:sh/class :spdx-core/Agent,
+                  :sh/name  "suppliedBy",
+                  :sh/path  :spdx-core/suppliedBy}],
    :vs/term_status "Stable"})
 
 (def Bom
@@ -107,7 +107,7 @@
    :rdfs/comment
    "A Bill Of Materials (BOM) is a container for a grouping of SPDX-3.0 content\ncharacterizing details about a product.\nThis could include details of the content and composition of the product,\nprovenence details of the product and/or\nits composition, licensing information, known quality or security issues, etc.",
    :rdfs/subClassOf
-   [:spdx-core/Bundle :spdx-core/ElementCollection :spdx-core/Element],
+   [:spdx-core/Bundle :spdx-core/Element :spdx-core/ElementCollection],
    :vs/term_status "Stable"})
 
 (def Bundle
@@ -129,34 +129,34 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "The CreationInfo provides information about who created the Element, and when and how it was created. \n\nThe dateTime created is often the date of last change (e.g., a git commit date), not the date when the SPDX data was created, as doing so supports reproducible builds.",
-   :sh/property [{:sh/datatype :spdx-core/SemVer,
-                  :sh/maxCount #xsd/integer 1,
+   :sh/property [{:sh/class    :spdx-core/ProfileIdentifierType,
                   :sh/minCount #xsd/integer 1,
-                  :sh/name     "specVersion",
-                  :sh/path     :spdx-core/specVersion}
+                  :sh/name     "profile",
+                  :sh/path     :spdx-core/profile}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "dataLicense",
                   :sh/path     :spdx-core/dataLicense}
-                 {:sh/class    :spdx-core/Agent,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "createdBy",
-                  :sh/path     :spdx-core/createdBy}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "created",
-                  :sh/path     :spdx-core/created}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "comment",
                   :sh/path     :spdx-core/comment}
-                 {:sh/class    :spdx-core/ProfileIdentifierType,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "profile",
-                  :sh/path     :spdx-core/profile}
                  {:sh/class :spdx-core/Tool,
                   :sh/name  "createdUsing",
-                  :sh/path  :spdx-core/createdUsing}],
+                  :sh/path  :spdx-core/createdUsing}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "created",
+                  :sh/path     :spdx-core/created}
+                 {:sh/class    :spdx-core/Agent,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "createdBy",
+                  :sh/path     :spdx-core/createdBy}
+                 {:sh/datatype :spdx-core/SemVer,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "specVersion",
+                  :sh/path     :spdx-core/specVersion}],
    :vs/term_status "Stable"})
 
 (def DateTime
@@ -193,25 +193,17 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "An Element is a representation of a fundamental concept either directly inherent\nto the Bill of Materials (BOM) domain or indirectly related to the BOM domain\nand necessary for contextually characterizing BOM concepts and relationships.\nWithin SPDX-3.0 structure this is the base class acting as a consistent,\nunifying, and interoperable foundation for all explicit\nand inter-relatable content objects.",
-   :sh/property [{:sh/class    :spdx-core/CreationInfo,
+   :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "creationInfo",
-                  :sh/path     :spdx-core/creationInfo}
+                  :sh/name     "name",
+                  :sh/path     :spdx-core/name}
+                 {:sh/class :spdx-core/IntegrityMethod,
+                  :sh/name  "verifiedUsing",
+                  :sh/path  :spdx-core/verifiedUsing}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "summary",
                   :sh/path     :spdx-core/summary}
-                 {:sh/class :spdx-core/IntegrityMethod,
-                  :sh/name  "verifiedUsing",
-                  :sh/path  :spdx-core/verifiedUsing}
-                 {:sh/class :spdx-core/ExternalReference,
-                  :sh/name  "externalReference",
-                  :sh/path  :spdx-core/externalReference}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "description",
@@ -219,10 +211,18 @@
                  {:sh/class :spdx-core/ExternalIdentifier,
                   :sh/name  "externalIdentifier",
                   :sh/path  :spdx-core/externalIdentifier}
+                 {:sh/class    :spdx-core/CreationInfo,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "creationInfo",
+                  :sh/path     :spdx-core/creationInfo}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "name",
-                  :sh/path     :spdx-core/name}],
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}
+                 {:sh/class :spdx-core/ExternalReference,
+                  :sh/name  "externalReference",
+                  :sh/path  :spdx-core/externalReference}],
    :vs/term_status "Stable"})
 
 (def ElementCollection
@@ -280,23 +280,33 @@
    :rdf/type :owl/Class,
    :rdfs/comment
    "ExteralIdentifierType specifies the type of an external identifier.",
+   :sh/in [:spdx-core/ExternalIdentifierType-Email
+           :spdx-core/ExternalIdentifierType-PkgUrl
+           :spdx-core/ExternalIdentifierType-Swid
+           :spdx-core/ExternalIdentifierType-Cpe23
+           :spdx-core/ExternalIdentifierType-Gitoid
+           :spdx-core/ExternalIdentifierType-Swhid
+           :spdx-core/ExternalIdentifierType-Cpe22
+           :spdx-core/ExternalIdentifierType-Other
+           :spdx-core/ExternalIdentifierType-SecurityOther
+           :spdx-core/ExternalIdentifierType-UrlScheme],
    :vs/term_status "Stable"})
 
-(def ExternalIdentifierType-CPE22
+(def ExternalIdentifierType-Cpe22
   "cpe22"
-  {:db/ident   :spdx-core/ExternalIdentifierType-CPE22,
+  {:db/ident   :spdx-core/ExternalIdentifierType-Cpe22,
    :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
    :rdfs/label "cpe22"})
 
-(def ExternalIdentifierType-CPE23
+(def ExternalIdentifierType-Cpe23
   "cpe23"
-  {:db/ident   :spdx-core/ExternalIdentifierType-CPE23,
+  {:db/ident   :spdx-core/ExternalIdentifierType-Cpe23,
    :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
    :rdfs/label "cpe23"})
 
-(def ExternalIdentifierType-CVE
+(def ExternalIdentifierType-Cve
   "cve"
-  {:db/ident   :spdx-core/ExternalIdentifierType-CVE,
+  {:db/ident   :spdx-core/ExternalIdentifierType-Cve,
    :rdf/type   [:spdx-core/ExternalIdentifierType :owl/NamedIndividual],
    :rdfs/label "cve"})
 
@@ -401,6 +411,48 @@
    :rdf/type :owl/Class,
    :rdfs/comment
    "ExteralReferenceType specifies the type of an external reference.",
+   :sh/in
+   [:spdx-core/ExternalReferenceType-SecurityFix
+    :spdx-core/ExternalReferenceType-MailingList
+    :spdx-core/ExternalReferenceType-SecurityAdvisory
+    :spdx-core/ExternalReferenceType-ReleaseHistory
+    :spdx-core/ExternalReferenceType-SocialMedia
+    :spdx-core/ExternalReferenceType-AltWebPage
+    :spdx-core/ExternalReferenceType-DynamicAnalysisReport
+    :spdx-core/ExternalReferenceType-RiskAssessment
+    :spdx-core/ExternalReferenceType-QualityAssessmentReport
+    :spdx-core/ExternalReferenceType-Vcs
+    :spdx-core/ExternalReferenceType-VulnerabilityExploitabilityAssessment
+    :spdx-core/ExternalReferenceType-ProductMetadata
+    :spdx-core/ExternalReferenceType-ExportControlAssessment
+    :spdx-core/ExternalReferenceType-PurchaseOrder
+    :spdx-core/ExternalReferenceType-BuildMeta
+    :spdx-core/ExternalReferenceType-ComponentAnalysisReport
+    :spdx-core/ExternalReferenceType-ReleaseNotes
+    :spdx-core/ExternalReferenceType-Documentation
+    :spdx-core/ExternalReferenceType-SecurityThreatModel
+    :spdx-core/ExternalReferenceType-SecurityAdversaryModel
+    :spdx-core/ExternalReferenceType-CertificationReport
+    :spdx-core/ExternalReferenceType-EolNotice
+    :spdx-core/ExternalReferenceType-Chat
+    :spdx-core/ExternalReferenceType-IssueTracker
+    :spdx-core/ExternalReferenceType-SourceArtifact
+    :spdx-core/ExternalReferenceType-Other
+    :spdx-core/ExternalReferenceType-BuildSystem
+    :spdx-core/ExternalReferenceType-SecurityPenTestReport
+    :spdx-core/ExternalReferenceType-VulnerabilityDisclosureReport
+    :spdx-core/ExternalReferenceType-License
+    :spdx-core/ExternalReferenceType-Metrics
+    :spdx-core/ExternalReferenceType-PrivacyAssessment
+    :spdx-core/ExternalReferenceType-Funding
+    :spdx-core/ExternalReferenceType-SecurityPolicy
+    :spdx-core/ExternalReferenceType-Support
+    :spdx-core/ExternalReferenceType-SecurityOther
+    :spdx-core/ExternalReferenceType-AltDownloadLocation
+    :spdx-core/ExternalReferenceType-RuntimeAnalysisReport
+    :spdx-core/ExternalReferenceType-BinaryArtifact
+    :spdx-core/ExternalReferenceType-SecureSoftwareAttestation
+    :spdx-core/ExternalReferenceType-StaticAnalysisReport],
    :vs/term_status "Stable"})
 
 (def ExternalReferenceType-AltDownloadLocation
@@ -675,6 +727,30 @@
    :rdf/type :owl/Class,
    :rdfs/comment
    "A HashAlgorithm is a mathematical algorithm that maps data of arbitrary size to a bit string (the hash)\nand is a one-way function, that is, a function which is practically infeasible to invert.",
+   :sh/in [:spdx-core/HashAlgorithm-SphincsPlus
+           :spdx-core/HashAlgorithm-Sha3-384
+           :spdx-core/HashAlgorithm-Md4
+           :spdx-core/HashAlgorithm-Sha1
+           :spdx-core/HashAlgorithm-Blake2b512
+           :spdx-core/HashAlgorithm-Md2
+           :spdx-core/HashAlgorithm-Sha3-224
+           :spdx-core/HashAlgorithm-Sha256
+           :spdx-core/HashAlgorithm-Md6
+           :spdx-core/HashAlgorithm-Other
+           :spdx-core/HashAlgorithm-Blake2b256
+           :spdx-core/HashAlgorithm-Sha512
+           :spdx-core/HashAlgorithm-Sha3-256
+           :spdx-core/HashAlgorithm-Md5
+           :spdx-core/HashAlgorithm-CrystalsDilithium
+           :spdx-core/HashAlgorithm-Blake3
+           :spdx-core/HashAlgorithm-SpdxPvcSha256
+           :spdx-core/HashAlgorithm-Sha3-512
+           :spdx-core/HashAlgorithm-SpdxPvcSha1
+           :spdx-core/HashAlgorithm-Sha384
+           :spdx-core/HashAlgorithm-Falcon
+           :spdx-core/HashAlgorithm-Sha224
+           :spdx-core/HashAlgorithm-CrystalsKyber
+           :spdx-core/HashAlgorithm-Blake2b384],
    :vs/term_status "Stable"})
 
 (def HashAlgorithm-Blake2b256
@@ -838,6 +914,12 @@
   {:db/ident       :spdx-core/LifecycleScopeType,
    :rdf/type       :owl/Class,
    :rdfs/comment   "TODO",
+   :sh/in          [:spdx-core/LifecycleScopeType-Test
+                    :spdx-core/LifecycleScopeType-Runtime
+                    :spdx-core/LifecycleScopeType-Other
+                    :spdx-core/LifecycleScopeType-Development
+                    :spdx-core/LifecycleScopeType-Design
+                    :spdx-core/LifecycleScopeType-Build],
    :vs/term_status "Stable"})
 
 (def LifecycleScopeType-Build
@@ -941,6 +1023,16 @@
    :rdf/type :owl/Class,
    :rdfs/comment
    "There are a set of profiles that have been defined to be valid for a specific release   This file enumerates the values that have been agreed on, and may be applied to the creation information for an an element.",
+   :sh/in [:spdx-core/ProfileIdentifierType-Dataset
+           :spdx-core/ProfileIdentifierType-Build
+           :spdx-core/ProfileIdentifierType-Security
+           :spdx-core/ProfileIdentifierType-Usage
+           :spdx-core/ProfileIdentifierType-Extension
+           :spdx-core/ProfileIdentifierType-ExpandedLicensing
+           :spdx-core/ProfileIdentifierType-SimpleLicensing
+           :spdx-core/ProfileIdentifierType-Core
+           :spdx-core/ProfileIdentifierType-AI
+           :spdx-core/ProfileIdentifierType-Software],
    :vs/term_status "Stable"})
 
 (def ProfileIdentifierType-AI
@@ -1010,7 +1102,11 @@
    :rdfs/comment
    "A Relationship is a grouping of characteristics unique to an assertion\nthat one Element is related to one or more other Elements in some way.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/class    :spdx-core/RelationshipType,
+   :sh/property [{:sh/class    :spdx-core/RelationshipCompleteness,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "completeness",
+                  :sh/path     :spdx-core/completeness}
+                 {:sh/class    :spdx-core/RelationshipType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "relationshipType",
@@ -1020,10 +1116,6 @@
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "from",
                   :sh/path     :spdx-core/from}
-                 {:sh/class    :spdx-core/RelationshipCompleteness,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "completeness",
-                  :sh/path     :spdx-core/completeness}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "endTime",
@@ -1043,6 +1135,9 @@
    :rdf/type :owl/Class,
    :rdfs/comment
    "RelationshipCompleteness indicates whether a relationship is complete or \nknown to be incomplete or if there is made no assertion either way.",
+   :sh/in [:spdx-core/RelationshipCompleteness-NoAssertion
+           :spdx-core/RelationshipCompleteness-Incomplete
+           :spdx-core/RelationshipCompleteness-Complete],
    :vs/term_status "Stable"})
 
 (def RelationshipCompleteness-Complete
@@ -1069,6 +1164,68 @@
    :rdf/type :owl/Class,
    :rdfs/comment
    "Provides information about the relationship between two Elements.\nFor example, you can represent a relationship between two different Files,\nbetween a Package and a File, between two Packages, or between one SPDXDocument and another SPDXDocument.",
+   :sh/in [:spdx-core/RelationshipType-UnderInvestigationFor
+           :spdx-core/RelationshipType-DevDependency
+           :spdx-core/RelationshipType-StaticLink
+           :spdx-core/RelationshipType-HasAssociatedVulnerability
+           :spdx-core/RelationshipType-Metafile
+           :spdx-core/RelationshipType-ReportedBy
+           :spdx-core/RelationshipType-Other
+           :spdx-core/RelationshipType-Documentation
+           :spdx-core/RelationshipType-Patch
+           :spdx-core/RelationshipType-ExpandedFromArchive
+           :spdx-core/RelationshipType-Prerequisite
+           :spdx-core/RelationshipType-OptionalDependency
+           :spdx-core/RelationshipType-FileDeleted
+           :spdx-core/RelationshipType-CoordinatedBy
+           :spdx-core/RelationshipType-TestTool
+           :spdx-core/RelationshipType-Ancestor
+           :spdx-core/RelationshipType-Copy
+           :spdx-core/RelationshipType-TestCase
+           :spdx-core/RelationshipType-OutputOf
+           :spdx-core/RelationshipType-DistributionArtifact
+           :spdx-core/RelationshipType-BuildDependency
+           :spdx-core/RelationshipType-ExploitCreatedBy
+           :spdx-core/RelationshipType-OnBehalfOf
+           :spdx-core/RelationshipType-SpecificationFor
+           :spdx-core/RelationshipType-Descendant
+           :spdx-core/RelationshipType-Affects
+           :spdx-core/RelationshipType-EvidenceFor
+           :spdx-core/RelationshipType-DependencyManifest
+           :spdx-core/RelationshipType-Amends
+           :spdx-core/RelationshipType-RequirementFor
+           :spdx-core/RelationshipType-HasAssessmentFor
+           :spdx-core/RelationshipType-DataFile
+           :spdx-core/RelationshipType-Test
+           :spdx-core/RelationshipType-FileAdded
+           :spdx-core/RelationshipType-InputOf
+           :spdx-core/RelationshipType-Variant
+           :spdx-core/RelationshipType-ProvidedDependency
+           :spdx-core/RelationshipType-Contains
+           :spdx-core/RelationshipType-AvailableFrom
+           :spdx-core/RelationshipType-FoundBy
+           :spdx-core/RelationshipType-TestedOn
+           :spdx-core/RelationshipType-DependsOn
+           :spdx-core/RelationshipType-DoesNotAffect
+           :spdx-core/RelationshipType-FixedBy
+           :spdx-core/RelationshipType-TestDependency
+           :spdx-core/RelationshipType-DevTool
+           :spdx-core/RelationshipType-FixedIn
+           :spdx-core/RelationshipType-RepublishedBy
+           :spdx-core/RelationshipType-TrainedOn
+           :spdx-core/RelationshipType-DynamicLink
+           :spdx-core/RelationshipType-Generates
+           :spdx-core/RelationshipType-InvokedBy
+           :spdx-core/RelationshipType-Example
+           :spdx-core/RelationshipType-ConfigOf
+           :spdx-core/RelationshipType-Describes
+           :spdx-core/RelationshipType-Packages
+           :spdx-core/RelationshipType-OptionalComponent
+           :spdx-core/RelationshipType-PublishedBy
+           :spdx-core/RelationshipType-FileModified
+           :spdx-core/RelationshipType-BuildTool
+           :spdx-core/RelationshipType-RuntimeDependency
+           :spdx-core/RelationshipType-HostOf],
    :vs/term_status "Stable"})
 
 (def RelationshipType-Affects
@@ -1470,7 +1627,7 @@
    :rdfs/comment
    "An SpdxDocument assembles a collection of Elements under a common string, the name of the document.\nCommonly used when representing a unit of transfer of SPDX Elements.\nExternal property restriction on /Core/Element/name: minCount: 1",
    :rdfs/subClassOf
-   [:spdx-core/Bundle :spdx-core/ElementCollection :spdx-core/Element],
+   [:spdx-core/Bundle :spdx-core/Element :spdx-core/ElementCollection],
    :vs/term_status "Stable"})
 
 (def Tool

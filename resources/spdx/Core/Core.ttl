@@ -894,17 +894,21 @@ spdx-core:AnnotationType-Review a owl:NamedIndividual, spdx-core:AnnotationType 
 
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/cpe22> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
-spdx-core:ExternalIdentifierType-CPE22 a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
+spdx-core:ExternalIdentifierType-Cpe22 a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "cpe22" .
+
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-Cpe22 .
 
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/cpe23> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
-spdx-core:ExternalIdentifierType-CPE23 a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
+spdx-core:ExternalIdentifierType-Cpe23 a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "cpe23" .
+
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-Cpe23 .
 
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/cve> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
-spdx-core:ExternalIdentifierType-CVE a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
+spdx-core:ExternalIdentifierType-Cve a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "cve" .
 
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/email> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
@@ -912,770 +916,1078 @@ spdx-core:ExternalIdentifierType-CVE a owl:NamedIndividual, spdx-core:ExternalId
 spdx-core:ExternalIdentifierType-Email a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "email" .
 
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-Email .
+
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/gitoid> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
 spdx-core:ExternalIdentifierType-Gitoid a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "gitoid" .
+
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-Gitoid .
 
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/other> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
 spdx-core:ExternalIdentifierType-Other a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "other" .
 
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-Other .
+
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/pkgUrl> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
 spdx-core:ExternalIdentifierType-PkgUrl a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "pkgUrl" .
+
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-PkgUrl .
 
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/securityOther> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
 spdx-core:ExternalIdentifierType-SecurityOther a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "securityOther" .
 
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-SecurityOther .
+
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/swhid> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
 spdx-core:ExternalIdentifierType-Swhid a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "swhid" .
+
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-Swhid .
 
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/swid> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
 spdx-core:ExternalIdentifierType-Swid a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "swid" .
 
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-Swid .
+
 # <https://spdx.org/rdf/v3/Core/ExternalIdentifierType/urlScheme> a owl:NamedIndividual, spdx-core:ExternalIdentifierType .
 
 spdx-core:ExternalIdentifierType-UrlScheme a owl:NamedIndividual, spdx-core:ExternalIdentifierType ;
   rdfs:label "urlScheme" .
+
+spdx-core:ExternalIdentifierType sh:in spdx-core:ExternalIdentifierType-UrlScheme .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/altDownloadLocation> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-AltDownloadLocation a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "altDownloadLocation" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-AltDownloadLocation .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/altWebPage> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-AltWebPage a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "altWebPage" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-AltWebPage .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/binaryArtifact> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-BinaryArtifact a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "binaryArtifact" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-BinaryArtifact .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/buildMeta> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-BuildMeta a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "buildMeta" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-BuildMeta .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/buildSystem> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-BuildSystem a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "buildSystem" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-BuildSystem .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/certificationReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-CertificationReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "certificationReport" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-CertificationReport .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/chat> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-Chat a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "chat" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-Chat .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/componentAnalysisReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-ComponentAnalysisReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "componentAnalysisReport" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-ComponentAnalysisReport .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/documentation> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-Documentation a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "documentation" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-Documentation .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/dynamicAnalysisReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-DynamicAnalysisReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "dynamicAnalysisReport" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-DynamicAnalysisReport .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/eolNotice> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-EolNotice a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "eolNotice" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-EolNotice .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/exportControlAssessment> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-ExportControlAssessment a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "exportControlAssessment" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-ExportControlAssessment .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/funding> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-Funding a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "funding" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-Funding .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/issueTracker> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-IssueTracker a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "issueTracker" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-IssueTracker .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/license> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-License a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "license" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-License .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/mailingList> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-MailingList a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "mailingList" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-MailingList .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/metrics> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-Metrics a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "metrics" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-Metrics .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/other> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-Other a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "other" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-Other .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/privacyAssessment> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-PrivacyAssessment a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "privacyAssessment" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-PrivacyAssessment .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/productMetadata> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-ProductMetadata a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "productMetadata" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-ProductMetadata .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/purchaseOrder> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-PurchaseOrder a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "purchaseOrder" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-PurchaseOrder .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/qualityAssessmentReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-QualityAssessmentReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "qualityAssessmentReport" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-QualityAssessmentReport .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/releaseHistory> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-ReleaseHistory a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "releaseHistory" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-ReleaseHistory .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/releaseNotes> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-ReleaseNotes a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "releaseNotes" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-ReleaseNotes .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/riskAssessment> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-RiskAssessment a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "riskAssessment" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-RiskAssessment .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/runtimeAnalysisReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-RuntimeAnalysisReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "runtimeAnalysisReport" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-RuntimeAnalysisReport .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/secureSoftwareAttestation> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecureSoftwareAttestation a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "secureSoftwareAttestation" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecureSoftwareAttestation .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityAdversaryModel> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecurityAdversaryModel a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "securityAdversaryModel" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecurityAdversaryModel .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityAdvisory> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecurityAdvisory a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "securityAdvisory" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecurityAdvisory .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityFix> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecurityFix a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "securityFix" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecurityFix .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityOther> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecurityOther a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "securityOther" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecurityOther .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityPenTestReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecurityPenTestReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "securityPenTestReport" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecurityPenTestReport .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityPolicy> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecurityPolicy a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "securityPolicy" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecurityPolicy .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/securityThreatModel> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SecurityThreatModel a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "securityThreatModel" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SecurityThreatModel .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/socialMedia> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SocialMedia a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "socialMedia" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SocialMedia .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/sourceArtifact> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-SourceArtifact a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "sourceArtifact" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-SourceArtifact .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/staticAnalysisReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-StaticAnalysisReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "staticAnalysisReport" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-StaticAnalysisReport .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/support> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-Support a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "support" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-Support .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/vcs> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-Vcs a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "vcs" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-Vcs .
+
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/vulnerabilityDisclosureReport> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-VulnerabilityDisclosureReport a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "vulnerabilityDisclosureReport" .
+
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-VulnerabilityDisclosureReport .
 
 # <https://spdx.org/rdf/v3/Core/ExternalReferenceType/vulnerabilityExploitabilityAssessment> a owl:NamedIndividual, spdx-core:ExternalReferenceType .
 
 spdx-core:ExternalReferenceType-VulnerabilityExploitabilityAssessment a owl:NamedIndividual, spdx-core:ExternalReferenceType ;
   rdfs:label "vulnerabilityExploitabilityAssessment" .
 
+spdx-core:ExternalReferenceType sh:in spdx-core:ExternalReferenceType-VulnerabilityExploitabilityAssessment .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/blake2b256> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Blake2b256 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "blake2b256" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Blake2b256 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/blake2b384> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Blake2b384 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "blake2b384" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Blake2b384 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/blake2b512> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Blake2b512 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "blake2b512" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Blake2b512 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/blake3> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Blake3 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "blake3" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Blake3 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/crystalsDilithium> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-CrystalsDilithium a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "crystalsDilithium" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-CrystalsDilithium .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/crystalsKyber> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-CrystalsKyber a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "crystalsKyber" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-CrystalsKyber .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/falcon> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Falcon a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "falcon" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Falcon .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/md2> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Md2 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "md2" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Md2 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/md4> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Md4 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "md4" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Md4 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/md5> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Md5 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "md5" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Md5 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/md6> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Md6 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "md6" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Md6 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/other> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Other a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "other" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Other .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha1> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha1 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha1" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha1 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha224> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha224 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha224" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha224 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha256> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha256 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha256" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha256 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha384> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha384 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha384" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha384 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_224> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha3-224 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha3_224" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha3-224 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_256> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha3-256 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha3_256" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha3-256 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_384> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha3-384 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha3_384" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha3-384 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha3_512> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha3-512 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha3_512" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha3-512 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sha512> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-Sha512 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sha512" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-Sha512 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/spdxPvcSha1> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-SpdxPvcSha1 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "spdxPvcSha1" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-SpdxPvcSha1 .
+
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/spdxPvcSha256> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-SpdxPvcSha256 a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "spdxPvcSha256" .
+
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-SpdxPvcSha256 .
 
 # <https://spdx.org/rdf/v3/Core/HashAlgorithm/sphincsPlus> a owl:NamedIndividual, spdx-core:HashAlgorithm .
 
 spdx-core:HashAlgorithm-SphincsPlus a owl:NamedIndividual, spdx-core:HashAlgorithm ;
   rdfs:label "sphincsPlus" .
 
+spdx-core:HashAlgorithm sh:in spdx-core:HashAlgorithm-SphincsPlus .
+
 # <https://spdx.org/rdf/v3/Core/LifecycleScopeType/build> a owl:NamedIndividual, spdx-core:LifecycleScopeType .
 
 spdx-core:LifecycleScopeType-Build a owl:NamedIndividual, spdx-core:LifecycleScopeType ;
   rdfs:label "build" .
+
+spdx-core:LifecycleScopeType sh:in spdx-core:LifecycleScopeType-Build .
 
 # <https://spdx.org/rdf/v3/Core/LifecycleScopeType/design> a owl:NamedIndividual, spdx-core:LifecycleScopeType .
 
 spdx-core:LifecycleScopeType-Design a owl:NamedIndividual, spdx-core:LifecycleScopeType ;
   rdfs:label "design" .
 
+spdx-core:LifecycleScopeType sh:in spdx-core:LifecycleScopeType-Design .
+
 # <https://spdx.org/rdf/v3/Core/LifecycleScopeType/development> a owl:NamedIndividual, spdx-core:LifecycleScopeType .
 
 spdx-core:LifecycleScopeType-Development a owl:NamedIndividual, spdx-core:LifecycleScopeType ;
   rdfs:label "development" .
+
+spdx-core:LifecycleScopeType sh:in spdx-core:LifecycleScopeType-Development .
 
 # <https://spdx.org/rdf/v3/Core/LifecycleScopeType/other> a owl:NamedIndividual, spdx-core:LifecycleScopeType .
 
 spdx-core:LifecycleScopeType-Other a owl:NamedIndividual, spdx-core:LifecycleScopeType ;
   rdfs:label "other" .
 
+spdx-core:LifecycleScopeType sh:in spdx-core:LifecycleScopeType-Other .
+
 # <https://spdx.org/rdf/v3/Core/LifecycleScopeType/runtime> a owl:NamedIndividual, spdx-core:LifecycleScopeType .
 
 spdx-core:LifecycleScopeType-Runtime a owl:NamedIndividual, spdx-core:LifecycleScopeType ;
   rdfs:label "runtime" .
+
+spdx-core:LifecycleScopeType sh:in spdx-core:LifecycleScopeType-Runtime .
 
 # <https://spdx.org/rdf/v3/Core/LifecycleScopeType/test> a owl:NamedIndividual, spdx-core:LifecycleScopeType .
 
 spdx-core:LifecycleScopeType-Test a owl:NamedIndividual, spdx-core:LifecycleScopeType ;
   rdfs:label "test" .
 
+spdx-core:LifecycleScopeType sh:in spdx-core:LifecycleScopeType-Test .
+
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/ai> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-AI a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "ai" .
+
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-AI .
 
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/build> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-Build a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "build" .
 
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-Build .
+
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/core> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-Core a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "core" .
+
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-Core .
 
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/dataset> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-Dataset a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "dataset" .
 
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-Dataset .
+
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/expandedLicensing> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-ExpandedLicensing a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "expandedLicensing" .
+
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-ExpandedLicensing .
 
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/extension> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-Extension a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "extension" .
 
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-Extension .
+
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/security> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-Security a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "security" .
+
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-Security .
 
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/simpleLicensing> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-SimpleLicensing a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "simpleLicensing" .
 
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-SimpleLicensing .
+
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/software> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-Software a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "software" .
+
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-Software .
 
 # <https://spdx.org/rdf/v3/Core/ProfileIdentifierType/usage> a owl:NamedIndividual, spdx-core:ProfileIdentifierType .
 
 spdx-core:ProfileIdentifierType-Usage a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
   rdfs:label "usage" .
 
+spdx-core:ProfileIdentifierType sh:in spdx-core:ProfileIdentifierType-Usage .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipCompleteness/complete> a owl:NamedIndividual, spdx-core:RelationshipCompleteness .
 
 spdx-core:RelationshipCompleteness-Complete a owl:NamedIndividual, spdx-core:RelationshipCompleteness ;
   rdfs:label "complete" .
+
+spdx-core:RelationshipCompleteness sh:in spdx-core:RelationshipCompleteness-Complete .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipCompleteness/incomplete> a owl:NamedIndividual, spdx-core:RelationshipCompleteness .
 
 spdx-core:RelationshipCompleteness-Incomplete a owl:NamedIndividual, spdx-core:RelationshipCompleteness ;
   rdfs:label "incomplete" .
 
+spdx-core:RelationshipCompleteness sh:in spdx-core:RelationshipCompleteness-Incomplete .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipCompleteness/noAssertion> a owl:NamedIndividual, spdx-core:RelationshipCompleteness .
 
 spdx-core:RelationshipCompleteness-NoAssertion a owl:NamedIndividual, spdx-core:RelationshipCompleteness ;
   rdfs:label "noAssertion" .
+
+spdx-core:RelationshipCompleteness sh:in spdx-core:RelationshipCompleteness-NoAssertion .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/affects> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Affects a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "affects" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Affects .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/amends> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Amends a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "amends" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Amends .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/ancestor> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Ancestor a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "ancestor" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Ancestor .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/availableFrom> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-AvailableFrom a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "availableFrom" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-AvailableFrom .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/buildDependency> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-BuildDependency a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "buildDependency" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-BuildDependency .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/buildTool> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-BuildTool a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "buildTool" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-BuildTool .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/configOf> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-ConfigOf a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "configOf" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-ConfigOf .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/contains> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Contains a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "contains" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Contains .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/coordinatedBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-CoordinatedBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "coordinatedBy" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-CoordinatedBy .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/copy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Copy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "copy" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Copy .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/dataFile> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DataFile a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "dataFile" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DataFile .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/dependencyManifest> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DependencyManifest a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "dependencyManifest" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DependencyManifest .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/dependsOn> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DependsOn a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "dependsOn" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DependsOn .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/descendant> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Descendant a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "descendant" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Descendant .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/describes> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Describes a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "describes" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Describes .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/devDependency> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DevDependency a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "devDependency" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DevDependency .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/devTool> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DevTool a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "devTool" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DevTool .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/distributionArtifact> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DistributionArtifact a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "distributionArtifact" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DistributionArtifact .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/documentation> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Documentation a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "documentation" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Documentation .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/doesNotAffect> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DoesNotAffect a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "doesNotAffect" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DoesNotAffect .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/dynamicLink> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-DynamicLink a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "dynamicLink" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-DynamicLink .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/evidenceFor> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-EvidenceFor a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "evidenceFor" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-EvidenceFor .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/example> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Example a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "example" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Example .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/expandedFromArchive> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-ExpandedFromArchive a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "expandedFromArchive" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-ExpandedFromArchive .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/exploitCreatedBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-ExploitCreatedBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "exploitCreatedBy" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-ExploitCreatedBy .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/fileAdded> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-FileAdded a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "fileAdded" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-FileAdded .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/fileDeleted> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-FileDeleted a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "fileDeleted" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-FileDeleted .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/fileModified> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-FileModified a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "fileModified" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-FileModified .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/fixedBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-FixedBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "fixedBy" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-FixedBy .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/fixedIn> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-FixedIn a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "fixedIn" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-FixedIn .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/foundBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-FoundBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "foundBy" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-FoundBy .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/generates> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Generates a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "generates" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Generates .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/hasAssessmentFor> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-HasAssessmentFor a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "hasAssessmentFor" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-HasAssessmentFor .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/hasAssociatedVulnerability> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-HasAssociatedVulnerability a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "hasAssociatedVulnerability" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-HasAssociatedVulnerability .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/hostOf> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-HostOf a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "hostOf" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-HostOf .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/inputOf> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-InputOf a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "inputOf" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-InputOf .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/invokedBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-InvokedBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "invokedBy" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-InvokedBy .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/metafile> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Metafile a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "metafile" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Metafile .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/onBehalfOf> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-OnBehalfOf a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "onBehalfOf" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-OnBehalfOf .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/optionalComponent> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-OptionalComponent a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "optionalComponent" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-OptionalComponent .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/optionalDependency> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-OptionalDependency a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "optionalDependency" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-OptionalDependency .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/other> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Other a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "other" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Other .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/outputOf> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-OutputOf a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "outputOf" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-OutputOf .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/packages> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Packages a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "packages" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Packages .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/patch> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Patch a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "patch" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Patch .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/prerequisite> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Prerequisite a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "prerequisite" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Prerequisite .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/providedDependency> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-ProvidedDependency a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "providedDependency" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-ProvidedDependency .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/publishedBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-PublishedBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "publishedBy" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-PublishedBy .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/reportedBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-ReportedBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "reportedBy" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-ReportedBy .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/republishedBy> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-RepublishedBy a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "republishedBy" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-RepublishedBy .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/requirementFor> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-RequirementFor a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "requirementFor" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-RequirementFor .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/runtimeDependency> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-RuntimeDependency a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "runtimeDependency" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-RuntimeDependency .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/specificationFor> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-SpecificationFor a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "specificationFor" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-SpecificationFor .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/staticLink> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-StaticLink a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "staticLink" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-StaticLink .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/test> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Test a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "test" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Test .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/testCase> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-TestCase a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "testCase" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-TestCase .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/testDependency> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-TestDependency a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "testDependency" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-TestDependency .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/testTool> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-TestTool a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "testTool" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-TestTool .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/testedOn> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-TestedOn a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "testedOn" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-TestedOn .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/trainedOn> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-TrainedOn a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "trainedOn" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-TrainedOn .
 
 # <https://spdx.org/rdf/v3/Core/RelationshipType/underInvestigationFor> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-UnderInvestigationFor a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "underInvestigationFor" .
 
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-UnderInvestigationFor .
+
 # <https://spdx.org/rdf/v3/Core/RelationshipType/variant> a owl:NamedIndividual, spdx-core:RelationshipType .
 
 spdx-core:RelationshipType-Variant a owl:NamedIndividual, spdx-core:RelationshipType ;
   rdfs:label "variant" .
+
+spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Variant .
 
 spdx-core:DateTime a rdfs:Datatype ;
   rdfs:comment "A Datetime is a string representation of a specific date and time. It has resolution of seconds and is always expressed in UTC timezone. The specific format is one of the most commonly used ISO-8601 formats." ;

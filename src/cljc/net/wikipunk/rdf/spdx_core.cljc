@@ -1,5 +1,6 @@
 (ns net.wikipunk.rdf.spdx-core
-  {:dcat/downloadURL  "resources/spdx/Core/Core.ttl",
+  "The Core namespace defines foundational concepts serving as the basis for all SPDX-3.0 profiles."
+  {:dcat/downloadURL "resources/spdx/Core/Core.ttl",
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
@@ -7,9 +8,13 @@
                        "spdx-core" "https://spdx.org/rdf/v3/Core/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
-   :rdf/type          :rdfa/PrefixMapping,
-   :rdfa/prefix       "spdx-core",
-   :rdfa/uri          "https://spdx.org/rdf/v3/Core/"}
+   :rdf/type :owl/Ontology,
+   :rdfa/prefix "spdx-core",
+   :rdfa/uri "https://spdx.org/rdf/v3/Core/",
+   :rdfs/comment
+   "The Core namespace defines foundational concepts serving as the basis for all SPDX-3.0 profiles.",
+   :sh/declare {:sh/namespace "https://spdx.org/rdf/v3/Core/",
+                :sh/prefix    "spdx-core"}}
   (:refer-clojure :exclude [comment key name]))
 
 (def Agent
@@ -81,10 +86,6 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "builtTime",
                   :sh/path     :spdx-core/builtTime}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "releaseTime",
-                  :sh/path     :spdx-core/releaseTime}
                  {:sh/class :spdx-core/Agent,
                   :sh/name  "originatedBy",
                   :sh/path  :spdx-core/originatedBy}
@@ -97,7 +98,11 @@
                   :sh/path     :spdx-core/validUntilTime}
                  {:sh/datatype :xsd/string,
                   :sh/name     "standard",
-                  :sh/path     :spdx-core/standard}],
+                  :sh/path     :spdx-core/standard}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "releaseTime",
+                  :sh/path     :spdx-core/releaseTime}],
    :vs/term_status "Stable"})
 
 (def Bom
@@ -129,18 +134,10 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "The CreationInfo provides information about who created the Element, and when and how it was created. \n\nThe dateTime created is often the date of last change (e.g., a git commit date), not the date when the SPDX data was created, as doing so supports reproducible builds.",
-   :sh/property [{:sh/class    :spdx-core/Agent,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "createdBy",
-                  :sh/path     :spdx-core/createdBy}
-                 {:sh/datatype :xsd/string,
+   :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "comment",
                   :sh/path     :spdx-core/comment}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "dataLicense",
-                  :sh/path     :spdx-core/dataLicense}
                  {:sh/class :spdx-core/Tool,
                   :sh/name  "createdUsing",
                   :sh/path  :spdx-core/createdUsing}
@@ -156,18 +153,25 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "specVersion",
-                  :sh/path     :spdx-core/specVersion}],
+                  :sh/path     :spdx-core/specVersion}
+                 {:sh/class    :spdx-core/Agent,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "createdBy",
+                  :sh/path     :spdx-core/createdBy}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "dataLicense",
+                  :sh/path     :spdx-core/dataLicense}],
    :vs/term_status "Stable"})
 
 (def DateTime
   "A Datetime is a string representation of a specific date and time. It has resolution of seconds and is always expressed in UTC timezone. The specific format is one of the most commonly used ISO-8601 formats."
   {:db/ident :spdx-core/DateTime,
-   :owl/withRestrictions
-   [{:xsd/pattern "^\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\dZ$"}],
    :rdf/type :rdfs/Datatype,
    :rdfs/comment
    "A Datetime is a string representation of a specific date and time. It has resolution of seconds and is always expressed in UTC timezone. The specific format is one of the most commonly used ISO-8601 formats.",
    :rdfs/subClassOf :xsd/string,
+   :sh/pattern "^\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\dZ$",
    :vs/term_status "Stable"})
 
 (def DictionaryEntry
@@ -195,34 +199,34 @@
    "An Element is a representation of a fundamental concept either directly inherent\nto the Bill of Materials (BOM) domain or indirectly related to the BOM domain\nand necessary for contextually characterizing BOM concepts and relationships.\nWithin SPDX-3.0 structure this is the base class acting as a consistent,\nunifying, and interoperable foundation for all explicit\nand inter-relatable content objects.",
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "description",
-                  :sh/path     :spdx-core/description}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "summary",
-                  :sh/path     :spdx-core/summary}
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "name",
                   :sh/path     :spdx-core/name}
-                 {:sh/class :spdx-core/IntegrityMethod,
-                  :sh/name  "verifiedUsing",
-                  :sh/path  :spdx-core/verifiedUsing}
+                 {:sh/class :spdx-core/ExternalIdentifier,
+                  :sh/name  "externalIdentifier",
+                  :sh/path  :spdx-core/externalIdentifier}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "summary",
+                  :sh/path     :spdx-core/summary}
                  {:sh/class    :spdx-core/CreationInfo,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "creationInfo",
                   :sh/path     :spdx-core/creationInfo}
-                 {:sh/class :spdx-core/ExternalIdentifier,
-                  :sh/name  "externalIdentifier",
-                  :sh/path  :spdx-core/externalIdentifier}
+                 {:sh/class :spdx-core/IntegrityMethod,
+                  :sh/name  "verifiedUsing",
+                  :sh/path  :spdx-core/verifiedUsing}
                  {:sh/class :spdx-core/ExternalReference,
                   :sh/name  "externalReference",
                   :sh/path  :spdx-core/externalReference}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}],
+                  :sh/name     "description",
+                  :sh/path     :spdx-core/description}],
    :vs/term_status "Stable"})
 
 (def ElementCollection
@@ -973,13 +977,12 @@
 (def MediaType
   "A MediaType is a string constrained to the RFC 6838 specification, and includes type-name, subtype-name and optional parameters. It provides a standardized way of indicating the type of content of an Element. A list of all possible media types is available at https://www.iana.org/assignments/media-types/media-types.xhtml."
   {:db/ident :spdx-core/MediaType,
-   :owl/withRestrictions
-   [{:xsd/pattern
-     "^([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})/([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})(;.+)?$"}],
    :rdf/type :rdfs/Datatype,
    :rdfs/comment
    "A MediaType is a string constrained to the RFC 6838 specification, and includes type-name, subtype-name and optional parameters. It provides a standardized way of indicating the type of content of an Element. A list of all possible media types is available at https://www.iana.org/assignments/media-types/media-types.xhtml.",
    :rdfs/subClassOf :xsd/string,
+   :sh/pattern
+   "^([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})/([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})(;.+)?$",
    :vs/term_status "Stable"})
 
 (def Organization
@@ -1102,11 +1105,7 @@
    :rdfs/comment
    "A Relationship is a grouping of characteristics unique to an assertion\nthat one Element is related to one or more other Elements in some way.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "endTime",
-                  :sh/path     :spdx-core/endTime}
-                 {:sh/class    :spdx-core/Element,
+   :sh/property [{:sh/class    :spdx-core/Element,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "from",
@@ -1116,17 +1115,21 @@
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "relationshipType",
                   :sh/path     :spdx-core/relationshipType}
+                 {:sh/class    :spdx-core/RelationshipCompleteness,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "completeness",
+                  :sh/path     :spdx-core/completeness}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "startTime",
+                  :sh/path     :spdx-core/startTime}
                  {:sh/class :spdx-core/Element,
                   :sh/name  "to",
                   :sh/path  :spdx-core/to}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "startTime",
-                  :sh/path     :spdx-core/startTime}
-                 {:sh/class    :spdx-core/RelationshipCompleteness,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "completeness",
-                  :sh/path     :spdx-core/completeness}],
+                  :sh/name     "endTime",
+                  :sh/path     :spdx-core/endTime}],
    :vs/term_status "Stable"})
 
 (def RelationshipCompleteness
@@ -1603,12 +1606,11 @@
 (def SemVer
   "A string constrained to be the SemVer 2.0.0 specification."
   {:db/ident :spdx-core/SemVer,
-   :owl/withRestrictions
-   [{:xsd/pattern
-     "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"}],
    :rdf/type :rdfs/Datatype,
    :rdfs/comment "A string constrained to be the SemVer 2.0.0 specification.",
    :rdfs/subClassOf :xsd/string,
+   :sh/pattern
+   "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
    :vs/term_status "Stable"})
 
 (def SoftwareAgent

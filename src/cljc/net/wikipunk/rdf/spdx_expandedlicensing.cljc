@@ -1,19 +1,25 @@
 (ns net.wikipunk.rdf.spdx-expandedlicensing
-  {:dcat/downloadURL  "resources/spdx/ExpandedLicensing/ExpandedLicensing.ttl",
-   :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
-                       "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                       "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
-                       "sh" "http://www.w3.org/ns/shacl#",
-                       "spdx-core" "https://spdx.org/rdf/v3/Core/",
-                       "spdx-expandedlicensing"
-                       "https://spdx.org/rdf/v3/ExpandedLicensing/",
-                       "spdx-simplelicensing"
-                       "https://spdx.org/rdf/v3/SimpleLicensing/",
-                       "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
-                       "xsd" "http://www.w3.org/2001/XMLSchema#"},
-   :rdf/type          :rdfa/PrefixMapping,
-   :rdfa/prefix       "spdx-expandedlicensing",
-   :rdfa/uri          "https://spdx.org/rdf/v3/ExpandedLicensing/"})
+  "This profile supports representing a fully expanded license expression in object form."
+  {:dcat/downloadURL "resources/spdx/ExpandedLicensing/ExpandedLicensing.ttl",
+   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Core/"}
+                 {:rdfa/uri "https://spdx.org/rdf/v3/SimpleLicensing/"}],
+   :rdf/ns-prefix-map
+   {"owl"       "http://www.w3.org/2002/07/owl#",
+    "rdf"       "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs"      "http://www.w3.org/2000/01/rdf-schema#",
+    "sh"        "http://www.w3.org/ns/shacl#",
+    "spdx-core" "https://spdx.org/rdf/v3/Core/",
+    "spdx-expandedlicensing" "https://spdx.org/rdf/v3/ExpandedLicensing/",
+    "spdx-simplelicensing" "https://spdx.org/rdf/v3/SimpleLicensing/",
+    "vs"        "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+    "xsd"       "http://www.w3.org/2001/XMLSchema#"},
+   :rdf/type :owl/Ontology,
+   :rdfa/prefix "spdx-expandedlicensing",
+   :rdfa/uri "https://spdx.org/rdf/v3/ExpandedLicensing/",
+   :rdfs/comment
+   "This profile supports representing a fully expanded license expression in object form.",
+   :sh/declare {:sh/namespace "https://spdx.org/rdf/v3/ExpandedLicensing/",
+                :sh/prefix    "spdx-expandedlicensing"}})
 
 (def ConjunctiveLicenseSet
   "A ConjunctiveLicenseSet indicates that _each_ of its subsidiary\nAnyLicenseInfos apply. In other words, a ConjunctiveLicenseSet of two or\nmore licenses represents a licensing situation where _all_ of the specified\nlicenses are to be complied with. It is represented in the SPDX License\nExpression Syntax by the `AND` operator.\n\nIt is syntactically correct to specify a ConjunctiveLicenseSet where the\nsubsidiary AnyLicenseInfos may be \"incompatible\" according to a particular\ninterpretation of the corresponding Licenses. The SPDX License Expression\nSyntax does not take into account interpretation of license texts, which is\nleft to the consumer of SPDX data to determine for themselves."
@@ -81,33 +87,33 @@
                      :spdx-simplelicensing/AnyLicenseInfo],
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "licenseText",
-                  :sh/path     :spdx-simplelicensing/licenseText}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "standardLicenseTemplate",
-                  :sh/path     :spdx-expandedlicensing/standardLicenseTemplate}
+                  :sh/name     "standardLicenseHeader",
+                  :sh/path     :spdx-expandedlicensing/standardLicenseHeader}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "obsoletedBy",
                   :sh/path     :spdx-expandedlicensing/obsoletedBy}
-                 {:sh/datatype :xsd/boolean,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "isFsfLibre",
-                  :sh/path     :spdx-expandedlicensing/isFsfLibre}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "standardLicenseHeader",
-                  :sh/path     :spdx-expandedlicensing/standardLicenseHeader}
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "licenseText",
+                  :sh/path     :spdx-simplelicensing/licenseText}
+                 {:sh/datatype :xsd/boolean,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "isOsiApproved",
+                  :sh/path     :spdx-expandedlicensing/isOsiApproved}
                  {:sh/datatype :xsd/boolean,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "isDeprecatedLicenseId",
                   :sh/path     :spdx-expandedlicensing/isDeprecatedLicenseId}
                  {:sh/datatype :xsd/boolean,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "isOsiApproved",
-                  :sh/path     :spdx-expandedlicensing/isOsiApproved}],
+                  :sh/name     "isFsfLibre",
+                  :sh/path     :spdx-expandedlicensing/isFsfLibre}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name "standardLicenseTemplate",
+                  :sh/path :spdx-expandedlicensing/standardLicenseTemplate}],
    :vs/term_status "Stable"})
 
 (def LicenseAddition

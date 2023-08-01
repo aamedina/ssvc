@@ -1,3 +1,4 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -5,6 +6,17 @@
 @prefix spdx-build: <https://spdx.org/rdf/v3/Build/> .
 @prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+spdx-build: a owl:Ontology ;
+  rdfs:comment "The Build namespace defines concepts related to building of artifacts." ;
+  rdfs:seeAlso <https://slsa.dev/provenance/v0.2> ;
+  owl:imports (
+    spdx-core:
+    ) ;
+  sh:declare [
+    sh:prefix "spdx-build" ;
+    sh:namespace "https://spdx.org/rdf/v3/Build/" ;
+  ] .
 
 spdx-build:Build a owl:Class, sh:NodeShape ;
   rdfs:comment """A build is a representation of the process in which a piece of software or artifact is built. It encapsulates information related to a build process and

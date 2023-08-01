@@ -9,6 +9,18 @@
 @prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
+spdx-dataset: a owl:Ontology ;
+  rdfs:comment "This ontology describes the metadata that can be added to a dataset that may be used in a software or to train/test an AI package." ;
+  owl:import (
+    spdx-ai:
+    spdx-core:
+    spdx-software:
+    ) ;
+  sh:declare [
+    sh:prefix "spdx-dataset" ;
+    sh:namespace "https://spdx.org/rdf/v3/Dataset/" ;
+  ] .
+
 spdx-dataset:ConfidentialityLevelType a owl:Class ;
   rdfs:comment "Describes the different confidentiality levels as given by the [Traffic Light Protocol](https://en.wikipedia.org/wiki/Traffic_Light_Protocol)." ;
   sh:in spdx-dataset:ConfidentialityLevelType-Amber ;

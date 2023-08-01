@@ -1,5 +1,8 @@
 (ns net.wikipunk.rdf.spdx-software
-  {:dcat/downloadURL  "resources/spdx/Software/Software.ttl",
+  "This ontology provides a vocabulary for describing software-related SPDX elements."
+  {:dcat/downloadURL "resources/spdx/Software/Software.ttl",
+   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Core/"}
+                 {:rdfa/uri "https://spdx.org/rdf/v3/SimpleLicensing/"}],
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
@@ -10,9 +13,13 @@
                        "spdx-software" "https://spdx.org/rdf/v3/Software/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
-   :rdf/type          :rdfa/PrefixMapping,
-   :rdfa/prefix       "spdx-software",
-   :rdfa/uri          "https://spdx.org/rdf/v3/Software/"})
+   :rdf/type :owl/Ontology,
+   :rdfa/prefix "spdx-software",
+   :rdfa/uri "https://spdx.org/rdf/v3/Software/",
+   :rdfs/comment
+   "This ontology provides a vocabulary for describing software-related SPDX elements.",
+   :sh/declare {:sh/namespace "https://spdx.org/rdf/v3/Software/",
+                :sh/prefix    "spdx-software"}})
 
 (def DependencyConditionalityType
   "TODO"
@@ -85,22 +92,22 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "packageVersion",
                   :sh/path     :spdx-software/packageVersion}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "sourceInfo",
-                  :sh/path     :spdx-software/sourceInfo}
                  {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "packageUrl",
-                  :sh/path     :spdx-software/packageUrl}
+                  :sh/name     "downloadLocation",
+                  :sh/path     :spdx-software/downloadLocation}
                  {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "homePage",
                   :sh/path     :spdx-software/homePage}
                  {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "downloadLocation",
-                  :sh/path     :spdx-software/downloadLocation}],
+                  :sh/name     "packageUrl",
+                  :sh/path     :spdx-software/packageUrl}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "sourceInfo",
+                  :sh/path     :spdx-software/sourceInfo}],
    :vs/term_status "Stable"})
 
 (def Sbom
@@ -189,33 +196,33 @@
    :rdfs/comment
    "A software artifact is a distinct article or unit related to software\nsuch as a package, a file, or a snippet.",
    :rdfs/subClassOf :spdx-core/Artifact,
-   :sh/property [{:sh/datatype :xsd/anyURI,
+   :sh/property [{:sh/class    :spdx-software/SoftwarePurpose,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "contentIdentifier",
-                  :sh/path     :spdx-software/contentIdentifier}
+                  :sh/name     "primaryPurpose",
+                  :sh/path     :spdx-software/primaryPurpose}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "attributionText",
+                  :sh/path     :spdx-software/attributionText}
+                 {:sh/class :spdx-software/SoftwarePurpose,
+                  :sh/name  "additionalPurpose",
+                  :sh/path  :spdx-software/additionalPurpose}
                  {:sh/datatype :spdx-simplelicensing/AnyLicenseInfo,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "concludedLicense",
                   :sh/path     :spdx-software/concludedLicense}
-                 {:sh/class :spdx-software/SoftwarePurpose,
-                  :sh/name  "additionalPurpose",
-                  :sh/path  :spdx-software/additionalPurpose}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "copyrightText",
-                  :sh/path     :spdx-software/copyrightText}
-                 {:sh/class    :spdx-software/SoftwarePurpose,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "primaryPurpose",
-                  :sh/path     :spdx-software/primaryPurpose}
                  {:sh/datatype :spdx-simplelicensing/AnyLicenseInfo,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "declaredLicense",
                   :sh/path     :spdx-software/declaredLicense}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "attributionText",
-                  :sh/path     :spdx-software/attributionText}],
+                  :sh/name     "copyrightText",
+                  :sh/path     :spdx-software/copyrightText}
+                 {:sh/datatype :xsd/anyURI,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "contentIdentifier",
+                  :sh/path     :spdx-software/contentIdentifier}],
    :vs/term_status "Stable"})
 
 (def SoftwareDependencyLinkType

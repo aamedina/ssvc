@@ -1,5 +1,7 @@
 (ns net.wikipunk.rdf.spdx-security
-  {:dcat/downloadURL  "resources/spdx/Security/Security.ttl",
+  "This ontology provides a vocabulary for describing security-related information about software packages and their dependencies. It is intended to be used in conjunction with the SPDX specification, which provides a vocabulary for describing software packages and their dependencies."
+  {:dcat/downloadURL "resources/spdx/Security/Security.ttl",
+   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Core/"}],
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
@@ -8,9 +10,13 @@
                        "spdx-security" "https://spdx.org/rdf/v3/Security/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
-   :rdf/type          :rdfa/PrefixMapping,
-   :rdfa/prefix       "spdx-security",
-   :rdfa/uri          "https://spdx.org/rdf/v3/Security/"}
+   :rdf/type :owl/Ontology,
+   :rdfa/prefix "spdx-security",
+   :rdfa/uri "https://spdx.org/rdf/v3/Security/",
+   :rdfs/comment
+   "This ontology provides a vocabulary for describing security-related information about software packages and their dependencies. It is intended to be used in conjunction with the SPDX specification, which provides a vocabulary for describing software packages and their dependencies.",
+   :sh/declare {:sh/namespace "https://spdx.org/rdf/v3/Security/",
+                :sh/prefix    "spdx-security"}}
   (:refer-clojure :exclude [vector]))
 
 (def CvssV2VulnAssessmentRelationship
@@ -309,10 +315,18 @@
    :rdfs/comment
    "VulnAssessmentRelationship is the ancestor class common to all vulnerability\nassessment relationships. It factors out the common properties shared by them.\nExternal property restriction on /Core/Relationship/to: minCount: 1",
    :rdfs/subClassOf :spdx-core/Relationship,
-   :sh/property [{:sh/class    :spdx-core/Element,
+   :sh/property [{:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "modifiedTime",
+                  :sh/path     :spdx-security/modifiedTime}
+                 {:sh/class    :spdx-core/Element,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "assessedElement",
                   :sh/path     :spdx-security/assessedElement}
+                 {:sh/class    :spdx-core/Agent,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "suppliedBy",
+                  :sh/path     :spdx-security/suppliedBy}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "publishedTime",
@@ -320,15 +334,7 @@
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "withdrawnTime",
-                  :sh/path     :spdx-security/withdrawnTime}
-                 {:sh/class    :spdx-core/Agent,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "suppliedBy",
-                  :sh/path     :spdx-security/suppliedBy}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "modifiedTime",
-                  :sh/path     :spdx-security/modifiedTime}],
+                  :sh/path     :spdx-security/withdrawnTime}],
    :vs/term_status "Stable"})
 
 (def Vulnerability

@@ -8,6 +8,17 @@
 @prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
+spdx-software: a owl:Ontology ;
+  rdfs:comment "This ontology provides a vocabulary for describing software-related SPDX elements." ;
+  owl:imports (
+    spdx-core:
+    spdx-simplelicensing:
+    ) ;
+  sh:declare [
+    sh:prefix "spdx-software" ;
+    sh:namespace "https://spdx.org/rdf/v3/Software/" ;
+  ] .
+
 spdx-software:DependencyConditionalityType a owl:Class ;
   rdfs:comment "TODO" ;
   sh:in ( 

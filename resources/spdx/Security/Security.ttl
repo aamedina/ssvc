@@ -7,6 +7,16 @@
 @prefix spdx-security: <https://spdx.org/rdf/v3/Security/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
+spdx-security: a owl:Ontology ;
+  rdfs:comment "This ontology provides a vocabulary for describing security-related information about software packages and their dependencies. It is intended to be used in conjunction with the SPDX specification, which provides a vocabulary for describing software packages and their dependencies." ;
+  owl:imports (
+    spdx-core:
+    ) ;
+  sh:declare [
+    sh:prefix "spdx-security" ;
+    sh:namespace "https://spdx.org/rdf/v3/Security/" ;
+  ] .
+
 spdx-security:CvssV2VulnAssessmentRelationship a owl:Class, sh:NodeShape ;
   rdfs:comment """A CvssV2VulnAssessmentRelationship relationship describes the determined score and vector of a vulnerability using version 2.0 of the Common Vulnerability Scoring System
 (CVSS) as defined on [https://www.first.org/cvss/v2/guide](https://www.first.org/cvss/v2/guide). It is intented to communicate the results of using a CVSS calculator.

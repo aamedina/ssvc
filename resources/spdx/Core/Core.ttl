@@ -6,6 +6,13 @@
 @prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
+spdx-core: a owl:Ontology ;
+  rdfs:comment "The Core namespace defines foundational concepts serving as the basis for all SPDX-3.0 profiles."  ;
+  sh:declare [
+    sh:prefix "spdx-core" ;
+    sh:namespace "https://spdx.org/rdf/v3/Core/" ;
+    ] .
+  
 spdx-core:Agent a owl:Class, sh:NodeShape ;
   rdfs:comment "The Agent class represents anything that has the potential to act on a system. This could be a person, organization, software agent, etc. This is not to be confused with tools that are used to perform tasks." ;
   rdfs:subClassOf spdx-core:Element ;
@@ -1991,25 +1998,19 @@ spdx-core:RelationshipType sh:in spdx-core:RelationshipType-Variant .
 
 spdx-core:DateTime a rdfs:Datatype ;
   rdfs:comment "A Datetime is a string representation of a specific date and time. It has resolution of seconds and is always expressed in UTC timezone. The specific format is one of the most commonly used ISO-8601 formats." ;
-  owl:withRestrictions ( [
-    xsd:pattern "^\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\dZ$" ;
-  ] ) ;
+  sh:pattern "^\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\dZ$" ;
   rdfs:subClassOf xsd:string ;
   vs:term_status "Stable" .
 
 spdx-core:MediaType a rdfs:Datatype ;
   rdfs:comment "A MediaType is a string constrained to the RFC 6838 specification, and includes type-name, subtype-name and optional parameters. It provides a standardized way of indicating the type of content of an Element. A list of all possible media types is available at https://www.iana.org/assignments/media-types/media-types.xhtml." ;
-  owl:withRestrictions ( [
-    xsd:pattern "^([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})/([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})(;.+)?$" ;
-  ] ) ;
+  sh:pattern "^([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})/([a-zA-Z0-9][-a-zA-Z0-9!#$&^.+]{0,126})(;.+)?$" ;
   rdfs:subClassOf xsd:string ;
   vs:term_status "Stable" .
 
 spdx-core:SemVer a rdfs:Datatype ;
   rdfs:comment "A string constrained to be the SemVer 2.0.0 specification." ;
-  owl:withRestrictions ( [
-    xsd:pattern "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$" ;
-  ] ) ;
+  sh:pattern "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$" ;
   rdfs:subClassOf xsd:string ;
   vs:term_status "Stable" .
 

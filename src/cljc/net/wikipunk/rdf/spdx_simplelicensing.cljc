@@ -1,6 +1,9 @@
 (ns net.wikipunk.rdf.spdx-simplelicensing
-  {:dcat/downloadURL  "resources/spdx/SimpleLicensing/SimpleLicensing.ttl",
+  "The Licensing namespace defines metadata fields applicable to software licensing. It also defines the classes and properties that comprise the SPDX License Expression syntax and that relate to the SPDX License List."
+  {:dcat/downloadURL "resources/spdx/SimpleLicensing/SimpleLicensing.ttl",
+   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Core/"}],
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
+                       "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
                        "sh" "http://www.w3.org/ns/shacl#",
                        "spdx-core" "https://spdx.org/rdf/v3/Core/",
@@ -8,9 +11,13 @@
                        "https://spdx.org/rdf/v3/SimpleLicensing/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
-   :rdf/type          :rdfa/PrefixMapping,
-   :rdfa/prefix       "spdx-simplelicensing",
-   :rdfa/uri          "https://spdx.org/rdf/v3/SimpleLicensing/"})
+   :rdf/type :owl/Ontology,
+   :rdfa/prefix "spdx-simplelicensing",
+   :rdfa/uri "https://spdx.org/rdf/v3/SimpleLicensing/",
+   :rdfs/comment
+   "The Licensing namespace defines metadata fields applicable to software licensing. It also defines the classes and properties that comprise the SPDX License Expression syntax and that relate to the SPDX License List.",
+   :sh/declare {:sh/namespace "https://spdx.org/rdf/v3/SimpleLicensing/",
+                :sh/prefix    "spdx-simplelicensing"}})
 
 (def AnyLicenseInfo
   "An AnyLicenseInfo is used by licensing properties of software artifacts.\nIt can be a NoneLicense, a NoAssertionLicense,\nsingle license (either on the SPDX License List or a custom-defined license);\na single license with an \"or later\" operator applied; the foregoing with\nadditional text applied; or a set of licenses combined by applying \"AND\" and\n\"OR\" operators recursively."

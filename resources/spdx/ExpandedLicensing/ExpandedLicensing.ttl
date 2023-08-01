@@ -8,6 +8,17 @@
 @prefix spdx-simplelicensing: <https://spdx.org/rdf/v3/SimpleLicensing/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
+spdx-expandedlicensing: a owl:Ontology ;
+  rdfs:comment "This profile supports representing a fully expanded license expression in object form." ;
+  owl:imports (
+    spdx-core:
+    spdx-simplelicensing:
+  ) ;
+  sh:declare [
+    sh:prefix "spdx-expandedlicensing" ;
+    sh:namespace "https://spdx.org/rdf/v3/ExpandedLicensing/" ;
+  ] .
+
 spdx-expandedlicensing:ConjunctiveLicenseSet a owl:Class, sh:NodeShape ;
   rdfs:comment """A ConjunctiveLicenseSet indicates that _each_ of its subsidiary
 AnyLicenseInfos apply. In other words, a ConjunctiveLicenseSet of two or

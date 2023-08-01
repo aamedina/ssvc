@@ -9,6 +9,14 @@
 @prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
+spdx-ai: a owl:Ontology ;
+  rdfs:comment "The AI profile namespace defines concepts related to AI application and model artifacts." ;
+  owl:imports (
+    spdx-core:
+    spdx-simplelicensing:
+    spdx-software:
+    ) .
+
 spdx-ai:AIPackage a owl:Class, sh:NodeShape ;
   rdfs:comment """Metadata information that can be added to a package to describe an AI application or trained AI model.
 External property restriction on /Core/Artifact/suppliedBy: minCount: 1
@@ -104,7 +112,7 @@ External property restriction on /Core/Artifact/releaseTime: minCount: 1""" ;
 spdx-ai:PresenceType a owl:Class ;
   rdfs:comment "This type is used to indicate if a given field is present or absent or unknown." ;
   sh:in spdx-ai:PresenceType-No ;
-  sh:in spdx-ai:PresenceType-Noassertion ;
+  sh:in spdx-ai:PresenceType-NoAssertion ;
   sh:in spdx-ai:PresenceType-Yes ;
   vs:term_status "Stable" .
 
@@ -233,8 +241,8 @@ For instance, if it is a supervised model, unsupervised model, reinforcement lea
 spdx-ai:PresenceType-No a owl:NamedIndividual, spdx-ai:PresenceType ;
   rdfs:label "no" .
 
-spdx-ai:PresenceType-Noassertion a owl:NamedIndividual, spdx-ai:PresenceType ;
-  rdfs:label "noassertion" .
+spdx-ai:PresenceType-NoAssertion a owl:NamedIndividual, spdx-ai:PresenceType ;
+  rdfs:label "noAssertion" .
 
 spdx-ai:PresenceType-Yes a owl:NamedIndividual, spdx-ai:PresenceType ;
   rdfs:label "yes" .

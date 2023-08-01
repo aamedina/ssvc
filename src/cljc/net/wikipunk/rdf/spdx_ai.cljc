@@ -1,5 +1,9 @@
 (ns net.wikipunk.rdf.spdx-ai
-  {:dcat/downloadURL  "resources/spdx/AI/AI.ttl",
+  "The AI profile namespace defines concepts related to AI application and model artifacts."
+  {:dcat/downloadURL "resources/spdx/AI/AI.ttl",
+   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Core/"}
+                 {:rdfa/uri "https://spdx.org/rdf/v3/SimpleLicensing/"}
+                 {:rdfa/uri "https://spdx.org/rdf/v3/Software/"}],
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
@@ -11,9 +15,11 @@
                        "spdx-software" "https://spdx.org/rdf/v3/Software/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
-   :rdf/type          :rdfa/PrefixMapping,
-   :rdfa/prefix       "spdx-ai",
-   :rdfa/uri          "https://spdx.org/rdf/v3/AI/"})
+   :rdf/type :owl/Ontology,
+   :rdfa/prefix "spdx-ai",
+   :rdfa/uri "https://spdx.org/rdf/v3/AI/",
+   :rdfs/comment
+   "The AI profile namespace defines concepts related to AI application and model artifacts."})
 
 (def AIPackage
   "Metadata information that can be added to a package to describe an AI application or trained AI model.\nExternal property restriction on /Core/Artifact/suppliedBy: minCount: 1\nExternal property restriction on /Software/Package/downloadLocation: minCount: 1\nExternal property restriction on /Software/Package/packageVersion: minCount: 1\nExternal property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1\nExternal property restriction on /Core/Artifact/releaseTime: minCount: 1"
@@ -22,32 +28,18 @@
    :rdfs/comment
    "Metadata information that can be added to a package to describe an AI application or trained AI model.\nExternal property restriction on /Core/Artifact/suppliedBy: minCount: 1\nExternal property restriction on /Software/Package/downloadLocation: minCount: 1\nExternal property restriction on /Software/Package/packageVersion: minCount: 1\nExternal property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1\nExternal property restriction on /Core/Artifact/releaseTime: minCount: 1",
    :rdfs/subClassOf :spdx-software/Package,
-   :sh/property [{:sh/datatype :xsd/string,
-                  :sh/name     "standardCompliance",
-                  :sh/path     :spdx-ai/standardCompliance}
-                 {:sh/class    :spdx-ai/PresenceType,
+   :sh/property [{:sh/class    :spdx-ai/PresenceType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "sensitivePersonalInformation",
                   :sh/path     :spdx-ai/sensitivePersonalInformation}
-                 {:sh/class    :spdx-ai/SafetyRiskAssessmentType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "safetyRiskAssessment",
-                  :sh/path     :spdx-ai/safetyRiskAssessment}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "informationAboutTraining",
-                  :sh/path     :spdx-ai/informationAboutTraining}
+                  :sh/name     "energyConsumption",
+                  :sh/path     :spdx-ai/energyConsumption}
                  {:sh/class    :spdx-ai/PresenceType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "autonomyType",
                   :sh/path     :spdx-ai/autonomyType}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "informationAboutApplication",
-                  :sh/path     :spdx-ai/informationAboutApplication}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "metric",
-                  :sh/path  :spdx-ai/metric}
                  {:sh/class :spdx-core/DictionaryEntry,
                   :sh/name  "hyperparameter",
                   :sh/path  :spdx-ai/hyperparameter}
@@ -55,25 +47,39 @@
                   :sh/name     "typeOfModel",
                   :sh/path     :spdx-ai/typeOfModel}
                  {:sh/datatype :xsd/string,
+                  :sh/name     "modelDataPreprocessing",
+                  :sh/path     :spdx-ai/modelDataPreprocessing}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "metricDecisionThreshold",
+                  :sh/path  :spdx-ai/metricDecisionThreshold}
+                 {:sh/datatype :xsd/string,
                   :sh/name     "domain",
                   :sh/path     :spdx-ai/domain}
                  {:sh/datatype :xsd/string,
-                  :sh/name     "modelDataPreprocessing",
-                  :sh/path     :spdx-ai/modelDataPreprocessing}
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "informationAboutApplication",
+                  :sh/path     :spdx-ai/informationAboutApplication}
                  {:sh/datatype :xsd/string,
                   :sh/name     "modelExplainability",
                   :sh/path     :spdx-ai/modelExplainability}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "energyConsumption",
-                  :sh/path     :spdx-ai/energyConsumption}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "metricDecisionThreshold",
-                  :sh/path  :spdx-ai/metricDecisionThreshold}
+                  :sh/name     "limitation",
+                  :sh/path     :spdx-ai/limitation}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "limitation",
-                  :sh/path     :spdx-ai/limitation}],
+                  :sh/name     "informationAboutTraining",
+                  :sh/path     :spdx-ai/informationAboutTraining}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "standardCompliance",
+                  :sh/path     :spdx-ai/standardCompliance}
+                 {:sh/class    :spdx-ai/SafetyRiskAssessmentType,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "safetyRiskAssessment",
+                  :sh/path     :spdx-ai/safetyRiskAssessment}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "metric",
+                  :sh/path  :spdx-ai/metric}],
    :vs/term_status "Stable"})
 
 (def PresenceType
@@ -83,7 +89,7 @@
    :rdfs/comment
    "This type is used to indicate if a given field is present or absent or unknown.",
    :sh/in [:spdx-ai/PresenceType-Yes
-           :spdx-ai/PresenceType-Noassertion
+           :spdx-ai/PresenceType-NoAssertion
            :spdx-ai/PresenceType-No],
    :vs/term_status "Stable"})
 
@@ -93,11 +99,11 @@
    :rdf/type   [:spdx-ai/PresenceType :owl/NamedIndividual],
    :rdfs/label "no"})
 
-(def PresenceType-Noassertion
-  "noassertion"
-  {:db/ident   :spdx-ai/PresenceType-Noassertion,
+(def PresenceType-NoAssertion
+  "noAssertion"
+  {:db/ident   :spdx-ai/PresenceType-NoAssertion,
    :rdf/type   [:spdx-ai/PresenceType :owl/NamedIndividual],
-   :rdfs/label "noassertion"})
+   :rdfs/label "noAssertion"})
 
 (def PresenceType-Yes
   "yes"

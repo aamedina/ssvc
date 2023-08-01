@@ -84,8 +84,8 @@
    :rdfs/subClassOf :spdx-core/Element,
    :sh/property [{:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "builtTime",
-                  :sh/path     :spdx-core/builtTime}
+                  :sh/name     "releaseTime",
+                  :sh/path     :spdx-core/releaseTime}
                  {:sh/class :spdx-core/Agent,
                   :sh/name  "originatedBy",
                   :sh/path  :spdx-core/originatedBy}
@@ -101,8 +101,8 @@
                   :sh/path     :spdx-core/standard}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "releaseTime",
-                  :sh/path     :spdx-core/releaseTime}],
+                  :sh/name     "builtTime",
+                  :sh/path     :spdx-core/builtTime}],
    :vs/term_status "Stable"})
 
 (def Bom
@@ -136,32 +136,32 @@
    "The CreationInfo provides information about who created the Element, and when and how it was created. \n\nThe dateTime created is often the date of last change (e.g., a git commit date), not the date when the SPDX data was created, as doing so supports reproducible builds.",
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}
-                 {:sh/class :spdx-core/Tool,
-                  :sh/name  "createdUsing",
-                  :sh/path  :spdx-core/createdUsing}
-                 {:sh/class    :spdx-core/ProfileIdentifierType,
+                  :sh/name     "dataLicense",
+                  :sh/path     :spdx-core/dataLicense}
+                 {:sh/class    :spdx-core/Agent,
                   :sh/minCount #xsd/integer 1,
-                  :sh/name     "profile",
-                  :sh/path     :spdx-core/profile}
+                  :sh/name     "createdBy",
+                  :sh/path     :spdx-core/createdBy}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "created",
                   :sh/path     :spdx-core/created}
+                 {:sh/class :spdx-core/Tool,
+                  :sh/name  "createdUsing",
+                  :sh/path  :spdx-core/createdUsing}
                  {:sh/datatype :spdx-core/SemVer,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "specVersion",
                   :sh/path     :spdx-core/specVersion}
-                 {:sh/class    :spdx-core/Agent,
+                 {:sh/class    :spdx-core/ProfileIdentifierType,
                   :sh/minCount #xsd/integer 1,
-                  :sh/name     "createdBy",
-                  :sh/path     :spdx-core/createdBy}
+                  :sh/name     "profile",
+                  :sh/path     :spdx-core/profile}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "dataLicense",
-                  :sh/path     :spdx-core/dataLicense}],
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}],
    :vs/term_status "Stable"})
 
 (def DateTime
@@ -203,30 +203,30 @@
                   :sh/path     :spdx-core/comment}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "name",
-                  :sh/path     :spdx-core/name}
-                 {:sh/class :spdx-core/ExternalIdentifier,
-                  :sh/name  "externalIdentifier",
-                  :sh/path  :spdx-core/externalIdentifier}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "summary",
-                  :sh/path     :spdx-core/summary}
-                 {:sh/class    :spdx-core/CreationInfo,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "creationInfo",
-                  :sh/path     :spdx-core/creationInfo}
+                  :sh/name     "description",
+                  :sh/path     :spdx-core/description}
                  {:sh/class :spdx-core/IntegrityMethod,
                   :sh/name  "verifiedUsing",
                   :sh/path  :spdx-core/verifiedUsing}
                  {:sh/class :spdx-core/ExternalReference,
                   :sh/name  "externalReference",
                   :sh/path  :spdx-core/externalReference}
+                 {:sh/class    :spdx-core/CreationInfo,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "creationInfo",
+                  :sh/path     :spdx-core/creationInfo}
+                 {:sh/class :spdx-core/ExternalIdentifier,
+                  :sh/name  "externalIdentifier",
+                  :sh/path  :spdx-core/externalIdentifier}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "description",
-                  :sh/path     :spdx-core/description}],
+                  :sh/name     "name",
+                  :sh/path     :spdx-core/name}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "summary",
+                  :sh/path     :spdx-core/summary}],
    :vs/term_status "Stable"})
 
 (def ElementCollection
@@ -1020,6 +1020,35 @@
                   :sh/path     :spdx-core/begin}],
    :vs/term_status "Stable"})
 
+(def PresenceType
+  "This type is used to indicate if a given field is present or absent or unknown."
+  {:db/ident :spdx-core/PresenceType,
+   :rdf/type :owl/Class,
+   :rdfs/comment
+   "This type is used to indicate if a given field is present or absent or unknown.",
+   :sh/in [:spdx-core/PresenceType-Yes
+           :spdx-core/PresenceType-NoAssertion
+           :spdx-core/PresenceType-No],
+   :vs/term_status "Stable"})
+
+(def PresenceType-No
+  "no"
+  {:db/ident   :spdx-core/PresenceType-No,
+   :rdf/type   [:spdx-core/PresenceType :owl/NamedIndividual],
+   :rdfs/label "no"})
+
+(def PresenceType-NoAssertion
+  "noAssertion"
+  {:db/ident   :spdx-core/PresenceType-NoAssertion,
+   :rdf/type   [:spdx-core/PresenceType :owl/NamedIndividual],
+   :rdfs/label "noAssertion"})
+
+(def PresenceType-Yes
+  "yes"
+  {:db/ident   :spdx-core/PresenceType-Yes,
+   :rdf/type   [:spdx-core/PresenceType :owl/NamedIndividual],
+   :rdfs/label "yes"})
+
 (def ProfileIdentifierType
   "There are a set of profiles that have been defined to be valid for a specific release   This file enumerates the values that have been agreed on, and may be applied to the creation information for an an element."
   {:db/ident :spdx-core/ProfileIdentifierType,
@@ -1105,12 +1134,7 @@
    :rdfs/comment
    "A Relationship is a grouping of characteristics unique to an assertion\nthat one Element is related to one or more other Elements in some way.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/class    :spdx-core/Element,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "from",
-                  :sh/path     :spdx-core/from}
-                 {:sh/class    :spdx-core/RelationshipType,
+   :sh/property [{:sh/class    :spdx-core/RelationshipType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "relationshipType",
@@ -1123,13 +1147,18 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "startTime",
                   :sh/path     :spdx-core/startTime}
-                 {:sh/class :spdx-core/Element,
-                  :sh/name  "to",
-                  :sh/path  :spdx-core/to}
+                 {:sh/class    :spdx-core/Element,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "from",
+                  :sh/path     :spdx-core/from}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "endTime",
-                  :sh/path     :spdx-core/endTime}],
+                  :sh/path     :spdx-core/endTime}
+                 {:sh/class :spdx-core/Element,
+                  :sh/name  "to",
+                  :sh/path  :spdx-core/to}],
    :vs/term_status "Stable"})
 
 (def RelationshipCompleteness
@@ -1169,6 +1198,7 @@
    "Provides information about the relationship between two Elements.\nFor example, you can represent a relationship between two different Files,\nbetween a Package and a File, between two Packages, or between one SPDXDocument and another SPDXDocument.",
    :sh/in [:spdx-core/RelationshipType-UnderInvestigationFor
            :spdx-core/RelationshipType-DevDependency
+           :spdx-core/RelationshipType-ConcludedLicense
            :spdx-core/RelationshipType-StaticLink
            :spdx-core/RelationshipType-HasAssociatedVulnerability
            :spdx-core/RelationshipType-Metafile
@@ -1181,6 +1211,7 @@
            :spdx-core/RelationshipType-OptionalDependency
            :spdx-core/RelationshipType-FileDeleted
            :spdx-core/RelationshipType-CoordinatedBy
+           :spdx-core/RelationshipType-DeclaredLicense
            :spdx-core/RelationshipType-TestTool
            :spdx-core/RelationshipType-Ancestor
            :spdx-core/RelationshipType-Copy
@@ -1267,6 +1298,14 @@
    :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
    :rdfs/label "buildTool"})
 
+(def RelationshipType-ConcludedLicense
+  "A concludedLicense is the license identified by the SPDX data creator,\nbased on analyzing the license information in the software Package, File\nor Snippet and other information to arrive at a reasonably objective\nconclusion as to what license governs it.\n\nIf a concludedLicense has a NONE value (NoneLicense), this indicates that the\nSPDX data creator has looked and did not find any license information for this\nsoftware Package, File or Snippet.\n\nIf a concludedLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no\n  meaning should be implied by doing so).\n\nA written explanation of a NOASSERTION value (NoAssertionLicense) MAY be\nprovided in the licenseComment field.\n\nIf the concludedLicense for a software Package, File or Snippet is not the\nsame as its declaredLicense, a written explanation SHOULD be provided in\nthe licenseComment field.\n\nIf the declaredLicense for a software Package, File or Snippet is a choice\nof more than one license (e.g. a license expression combining two licenses\nthrough use of the `OR` operator), then the concludedLicense may either\nretain the license choice or identify which license was chosen."
+  {:db/ident :spdx-core/RelationshipType-ConcludedLicense,
+   :rdf/type [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/comment
+   "A concludedLicense is the license identified by the SPDX data creator,\nbased on analyzing the license information in the software Package, File\nor Snippet and other information to arrive at a reasonably objective\nconclusion as to what license governs it.\n\nIf a concludedLicense has a NONE value (NoneLicense), this indicates that the\nSPDX data creator has looked and did not find any license information for this\nsoftware Package, File or Snippet.\n\nIf a concludedLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no\n  meaning should be implied by doing so).\n\nA written explanation of a NOASSERTION value (NoAssertionLicense) MAY be\nprovided in the licenseComment field.\n\nIf the concludedLicense for a software Package, File or Snippet is not the\nsame as its declaredLicense, a written explanation SHOULD be provided in\nthe licenseComment field.\n\nIf the declaredLicense for a software Package, File or Snippet is a choice\nof more than one license (e.g. a license expression combining two licenses\nthrough use of the `OR` operator), then the concludedLicense may either\nretain the license choice or identify which license was chosen.",
+   :rdfs/label "concludedLicense"})
+
 (def RelationshipType-ConfigOf
   "configOf"
   {:db/ident   :spdx-core/RelationshipType-ConfigOf,
@@ -1296,6 +1335,14 @@
   {:db/ident   :spdx-core/RelationshipType-DataFile,
    :rdf/type   [:spdx-core/RelationshipType :owl/NamedIndividual],
    :rdfs/label "dataFile"})
+
+(def RelationshipType-DeclaredLicense
+  "A declaredLicense is the license identified in text in the software package,\nfile or snippet as the license declared by its authors.\n\nThis field is not intended to capture license information obtained from an\nexternal source, such as a package's website. Such information can be\nincluded, as needed, in a concludedLicense field.\n\nA declaredLicense may be expressed differently in practice for different\ntypes of artifacts. For example:\n\n* for Packages:\n  * would include license info describing the license of the Package as a\n    whole, when it is found in the Package itself (e.g., LICENSE file,\n    README file, metadata in the repository, etc.)\n  * would not include any license information that is not in the Package\n    itself (e.g., license information from the project’s website or from a\n    third party repository or website)\n* for Files:\n  * would include license info found in the File itself (e.g., license\n    header or notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found in a different file (e.g., LICENSE\n    file in the top directory of a repository)\n* for Snippets:\n  * would include license info found in the Snippet itself (e.g., license\n    notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found elsewhere in the File or in a\n    different File (e.g., comment at top of File if it is not within the\n    Snippet, LICENSE file in the top directory of a repository)\n\nIf a declaredLicense has a NONE value (NoneLicense), this indicates that the\ncorresponding Package, File or Snippet contains no license information\nwhatsoever.\n\nIf a declaredLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no meaning\n  should be implied by doing so)."
+  {:db/ident :spdx-core/RelationshipType-DeclaredLicense,
+   :rdf/type [:spdx-core/RelationshipType :owl/NamedIndividual],
+   :rdfs/comment
+   "A declaredLicense is the license identified in text in the software package,\nfile or snippet as the license declared by its authors.\n\nThis field is not intended to capture license information obtained from an\nexternal source, such as a package's website. Such information can be\nincluded, as needed, in a concludedLicense field.\n\nA declaredLicense may be expressed differently in practice for different\ntypes of artifacts. For example:\n\n* for Packages:\n  * would include license info describing the license of the Package as a\n    whole, when it is found in the Package itself (e.g., LICENSE file,\n    README file, metadata in the repository, etc.)\n  * would not include any license information that is not in the Package\n    itself (e.g., license information from the project’s website or from a\n    third party repository or website)\n* for Files:\n  * would include license info found in the File itself (e.g., license\n    header or notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found in a different file (e.g., LICENSE\n    file in the top directory of a repository)\n* for Snippets:\n  * would include license info found in the Snippet itself (e.g., license\n    notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found elsewhere in the File or in a\n    different File (e.g., comment at top of File if it is not within the\n    Snippet, LICENSE file in the top directory of a repository)\n\nIf a declaredLicense has a NONE value (NoneLicense), this indicates that the\ncorresponding Package, File or Snippet contains no license information\nwhatsoever.\n\nIf a declaredLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no meaning\n  should be implied by doing so).",
+   :rdfs/label "declaredLicense"})
 
 (def RelationshipType-DependencyManifest
   "dependencyManifest"

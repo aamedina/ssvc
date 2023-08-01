@@ -29,21 +29,17 @@
    :sh/property [{:sh/class :spdx-core/DictionaryEntry,
                   :sh/name  "parameters",
                   :sh/path  :spdx-build/parameters}
-                 {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "buildType",
-                  :sh/path     :spdx-build/buildType}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "buildId",
                   :sh/path     :spdx-build/buildId}
-                 {:sh/class :spdx-core/Hash,
-                  :sh/name  "configSourceDigest",
-                  :sh/path  :spdx-build/configSourceDigest}
                  {:sh/class :spdx-core/DictionaryEntry,
                   :sh/name  "environment",
                   :sh/path  :spdx-build/environment}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "buildEndTime",
+                  :sh/path     :spdx-build/buildEndTime}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "buildStartTime",
@@ -54,10 +50,14 @@
                  {:sh/datatype :xsd/string,
                   :sh/name     "configSourceEntrypoint",
                   :sh/path     :spdx-build/configSourceEntrypoint}
-                 {:sh/datatype :spdx-core/DateTime,
+                 {:sh/class :spdx-core/Hash,
+                  :sh/name  "configSourceDigest",
+                  :sh/path  :spdx-build/configSourceDigest}
+                 {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "buildEndTime",
-                  :sh/path     :spdx-build/buildEndTime}],
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "buildType",
+                  :sh/path     :spdx-build/buildType}],
    :vs/term_status "Stable"})
 
 (def buildEndTime

@@ -94,20 +94,20 @@
                   :sh/path     :spdx-software/packageVersion}
                  {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "downloadLocation",
-                  :sh/path     :spdx-software/downloadLocation}
-                 {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "homePage",
-                  :sh/path     :spdx-software/homePage}
-                 {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "packageUrl",
                   :sh/path     :spdx-software/packageUrl}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "sourceInfo",
-                  :sh/path     :spdx-software/sourceInfo}],
+                  :sh/path     :spdx-software/sourceInfo}
+                 {:sh/datatype :xsd/anyURI,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "downloadLocation",
+                  :sh/path     :spdx-software/downloadLocation}
+                 {:sh/datatype :xsd/anyURI,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "homePage",
+                  :sh/path     :spdx-software/homePage}],
    :vs/term_status "Stable"})
 
 (def Sbom
@@ -179,7 +179,12 @@
    :rdfs/comment
    "A Snippet describes a certain part of a file and can be used when the file is known to have some content\nthat has been included from another original source. Snippets are useful for denoting when part of a file\nmay have been originally created under another license or copied from a place with a known vulnerability.",
    :rdfs/subClassOf [:spdx-software/SoftwareArtifact :spdx-core/Artifact],
-   :sh/property [{:sh/class    :spdx-core/PositiveIntegerRange,
+   :sh/property [{:sh/class    :spdx-software/File,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "snippetFromFile",
+                  :sh/path     :spdx-software/snippetFromFile}
+                 {:sh/class    :spdx-core/PositiveIntegerRange,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "byteRange",
                   :sh/path     :spdx-software/byteRange}
@@ -207,14 +212,6 @@
                  {:sh/class :spdx-software/SoftwarePurpose,
                   :sh/name  "additionalPurpose",
                   :sh/path  :spdx-software/additionalPurpose}
-                 {:sh/datatype :spdx-simplelicensing/AnyLicenseInfo,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "concludedLicense",
-                  :sh/path     :spdx-software/concludedLicense}
-                 {:sh/datatype :spdx-simplelicensing/AnyLicenseInfo,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "declaredLicense",
-                  :sh/path     :spdx-software/declaredLicense}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "copyrightText",
@@ -489,16 +486,6 @@
    :rdfs/range :spdx-core/PositiveIntegerRange,
    :vs/term_status "Stable"})
 
-(def concludedLicense
-  "A concludedLicense is the license identified by the SPDX data creator,\nbased on analyzing the license information in the software Package, File\nor Snippet and other information to arrive at a reasonably objective\nconclusion as to what license governs it.\n\nIf a concludedLicense has a NONE value (NoneLicense), this indicates that the\nSPDX data creator has looked and did not find any license information for this\nsoftware Package, File or Snippet.\n\nIf a concludedLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no\n  meaning should be implied by doing so).\n\nA written explanation of a NOASSERTION value (NoAssertionLicense) MAY be\nprovided in the licenseComment field.\n\nIf the concludedLicense for a software Package, File or Snippet is not the\nsame as its declaredLicense, a written explanation SHOULD be provided in\nthe licenseComment field.\n\nIf the declaredLicense for a software Package, File or Snippet is a choice\nof more than one license (e.g. a license expression combining two licenses\nthrough use of the `OR` operator), then the concludedLicense may either\nretain the license choice or identify which license was chosen."
-  {:db/ident :spdx-software/concludedLicense,
-   :rdf/type :owl/ObjectProperty,
-   :rdfs/comment
-   "A concludedLicense is the license identified by the SPDX data creator,\nbased on analyzing the license information in the software Package, File\nor Snippet and other information to arrive at a reasonably objective\nconclusion as to what license governs it.\n\nIf a concludedLicense has a NONE value (NoneLicense), this indicates that the\nSPDX data creator has looked and did not find any license information for this\nsoftware Package, File or Snippet.\n\nIf a concludedLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no\n  meaning should be implied by doing so).\n\nA written explanation of a NOASSERTION value (NoAssertionLicense) MAY be\nprovided in the licenseComment field.\n\nIf the concludedLicense for a software Package, File or Snippet is not the\nsame as its declaredLicense, a written explanation SHOULD be provided in\nthe licenseComment field.\n\nIf the declaredLicense for a software Package, File or Snippet is a choice\nof more than one license (e.g. a license expression combining two licenses\nthrough use of the `OR` operator), then the concludedLicense may either\nretain the license choice or identify which license was chosen.",
-   :rdfs/domain :spdx-software/SoftwareArtifact,
-   :rdfs/range :spdx-simplelicensing/AnyLicenseInfo,
-   :vs/term_status "Stable"})
-
 (def conditionality
   "A conditionality is TODO"
   {:db/ident       :spdx-software/conditionality,
@@ -536,16 +523,6 @@
    "A copyrightText consists of the text(s) of the copyright notice(s) found\nfor a software Package, File or Snippet, if any.\n\nIf a copyrightText contains text, then it may contain any text related to\none or more copyright notices (even if not complete) for that software\nPackage, File or Snippet.\n\nIf a copyrightText has a \"NONE\" value, this indicates that the software\nPackage, File or Snippet contains no copyright notice whatsoever.\n\nIf a copyrightText has a \"NOASSERTION\" value, this indicates that one of the\nfollowing applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no\n  meaning should be implied by doing so).",
    :rdfs/domain :spdx-software/SoftwareArtifact,
    :rdfs/range :xsd/string,
-   :vs/term_status "Stable"})
-
-(def declaredLicense
-  "A declaredLicense is the license identified in text in the software package,\nfile or snippet as the license declared by its authors.\n\nThis field is not intended to capture license information obtained from an\nexternal source, such as a package's website. Such information can be\nincluded, as needed, in a concludedLicense field.\n\nA declaredLicense may be expressed differently in practice for different\ntypes of artifacts. For example:\n\n* for Packages:\n  * would include license info describing the license of the Package as a\n    whole, when it is found in the Package itself (e.g., LICENSE file,\n    README file, metadata in the repository, etc.)\n  * would not include any license information that is not in the Package\n    itself (e.g., license information from the project’s website or from a\n    third party repository or website)\n* for Files:\n  * would include license info found in the File itself (e.g., license\n    header or notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found in a different file (e.g., LICENSE\n    file in the top directory of a repository)\n* for Snippets:\n  * would include license info found in the Snippet itself (e.g., license\n    notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found elsewhere in the File or in a\n    different File (e.g., comment at top of File if it is not within the\n    Snippet, LICENSE file in the top directory of a repository)\n\nIf a declaredLicense has a NONE value (NoneLicense), this indicates that the\ncorresponding Package, File or Snippet contains no license information\nwhatsoever.\n\nIf a declaredLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no meaning\n  should be implied by doing so)."
-  {:db/ident :spdx-software/declaredLicense,
-   :rdf/type :owl/ObjectProperty,
-   :rdfs/comment
-   "A declaredLicense is the license identified in text in the software package,\nfile or snippet as the license declared by its authors.\n\nThis field is not intended to capture license information obtained from an\nexternal source, such as a package's website. Such information can be\nincluded, as needed, in a concludedLicense field.\n\nA declaredLicense may be expressed differently in practice for different\ntypes of artifacts. For example:\n\n* for Packages:\n  * would include license info describing the license of the Package as a\n    whole, when it is found in the Package itself (e.g., LICENSE file,\n    README file, metadata in the repository, etc.)\n  * would not include any license information that is not in the Package\n    itself (e.g., license information from the project’s website or from a\n    third party repository or website)\n* for Files:\n  * would include license info found in the File itself (e.g., license\n    header or notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found in a different file (e.g., LICENSE\n    file in the top directory of a repository)\n* for Snippets:\n  * would include license info found in the Snippet itself (e.g., license\n    notice, comments, SPDX-License-Identifier expression)\n  * would not include license info found elsewhere in the File or in a\n    different File (e.g., comment at top of File if it is not within the\n    Snippet, LICENSE file in the top directory of a repository)\n\nIf a declaredLicense has a NONE value (NoneLicense), this indicates that the\ncorresponding Package, File or Snippet contains no license information\nwhatsoever.\n\nIf a declaredLicense has a NOASSERTION value (NoAssertionLicense), this\nindicates that one of the following applies:\n* the SPDX data creator has attempted to but cannot reach a reasonable\n  objective determination;\n* the SPDX data creator has made no attempt to determine this field; or\n* the SPDX data creator has intentionally provided no information (no meaning\n  should be implied by doing so).",
-   :rdfs/domain :spdx-software/SoftwareArtifact,
-   :rdfs/range :spdx-simplelicensing/AnyLicenseInfo,
    :vs/term_status "Stable"})
 
 (def downloadLocation
@@ -616,6 +593,15 @@
    "This field is a reasonable estimation of the type of SBOM created from a creator perspective.\nIt is intended to be used to give guidance on the elements that may be contained within it.\nAligning with the guidance produced in [Types of Software Bill of Material (SBOM) Documents](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf).",
    :rdfs/domain :spdx-software/Sbom,
    :rdfs/range :spdx-software/SbomType,
+   :vs/term_status "Stable"})
+
+(def snippetFromFile
+  "The field identifies the file which contains the snippet."
+  {:db/ident       :spdx-software/snippetFromFile,
+   :rdf/type       :owl/ObjectProperty,
+   :rdfs/comment   "The field identifies the file which contains the snippet.",
+   :rdfs/domain    :spdx-software/Snippet,
+   :rdfs/range     :spdx-software/File,
    :vs/term_status "Stable"})
 
 (def softwareLinkage

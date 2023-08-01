@@ -65,14 +65,14 @@
    :rdfs/comment
    "Metadata information that can be added to a dataset that may be used in a software or to train/test an AI package.\nExternal property restriction on /Core/Artifact/originatedBy: minCount: 1\nExternal property restriction on /Software/Package/downloadLocation: minCount: 1\nExternal property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1\nExternal property restriction on /Core/Artifact/releaseTime: minCount: 1\nExternal property restriction on /Core/Artifact/builtTime: minCount: 1",
    :rdfs/subClassOf :spdx-software/Package,
-   :sh/property [{:sh/datatype :xsd/string,
+   :sh/property [{:sh/class    :spdx-dataset/ConfidentialityLevelType,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "dataCollectionProcess",
-                  :sh/path     :spdx-dataset/dataCollectionProcess}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "sensor",
-                  :sh/path  :spdx-dataset/sensor}
-                 {:sh/datatype :spdx-ai/PresenceType,
+                  :sh/name     "confidentialityLevel",
+                  :sh/path     :spdx-dataset/confidentialityLevel}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "knownBias",
+                  :sh/path     :spdx-dataset/knownBias}
+                 {:sh/datatype :spdx-core/PresenceType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "sensitivePersonalInformation",
                   :sh/path     :spdx-dataset/sensitivePersonalInformation}
@@ -80,39 +80,39 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetUpdateMechanism",
                   :sh/path     :spdx-dataset/datasetUpdateMechanism}
-                 {:sh/class    :spdx-dataset/DatasetType,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "datasetType",
-                  :sh/path     :spdx-dataset/datasetType}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "anonymizationMethodUsed",
+                  :sh/path     :spdx-dataset/anonymizationMethodUsed}
                  {:sh/datatype :xsd/nonNegativeInteger,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetSize",
                   :sh/path     :spdx-dataset/datasetSize}
-                 {:sh/datatype :xsd/string,
-                  :sh/name     "knownBias",
-                  :sh/path     :spdx-dataset/knownBias}
-                 {:sh/datatype :xsd/string,
-                  :sh/name     "dataPreprocessing",
-                  :sh/path     :spdx-dataset/dataPreprocessing}
                  {:sh/class    :spdx-dataset/DatasetAvailabilityType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetAvailability",
                   :sh/path     :spdx-dataset/datasetAvailability}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "sensor",
+                  :sh/path  :spdx-dataset/sensor}
+                 {:sh/class    :spdx-dataset/DatasetType,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "datasetType",
+                  :sh/path     :spdx-dataset/datasetType}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "intendedUse",
                   :sh/path     :spdx-dataset/intendedUse}
                  {:sh/datatype :xsd/string,
-                  :sh/name     "anonymizationMethodUsed",
-                  :sh/path     :spdx-dataset/anonymizationMethodUsed}
-                 {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetNoise",
                   :sh/path     :spdx-dataset/datasetNoise}
-                 {:sh/class    :spdx-dataset/ConfidentialityLevelType,
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "dataPreprocessing",
+                  :sh/path     :spdx-dataset/dataPreprocessing}
+                 {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "confidentialityLevel",
-                  :sh/path     :spdx-dataset/confidentialityLevel}],
+                  :sh/name     "dataCollectionProcess",
+                  :sh/path     :spdx-dataset/dataCollectionProcess}],
    :vs/term_status "Stable"})
 
 (def DatasetAvailabilityType
@@ -381,7 +381,7 @@
    :rdfs/comment
    "SensitivePersonalInformation indicates the presence of sensitive personal data\nor information that allows drawing conclusions about a person's identity.",
    :rdfs/domain :spdx-dataset/Dataset,
-   :rdfs/range :spdx-ai/PresenceType,
+   :rdfs/range :spdx-core/PresenceType,
    :vs/term_status "Stable"})
 
 (def sensor

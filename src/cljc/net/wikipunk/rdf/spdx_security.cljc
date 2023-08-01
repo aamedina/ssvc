@@ -189,8 +189,8 @@
    :rdfs/comment
    "VexAffectedVulnAssessmentRelationship connects a vulnerability and a number\nof elements. The relationship marks these elements as products affected by the\nvulnerability. This relationship corresponds to the VEX affected status.\n\n**Constraints**\n\nWhen linking elements using a VexAffectedVulnAssessmentRelationship, the\nfollowing requirements must be observed:\n\n- Elements linked with a VulnVexAffectedAssessmentRelationship are constrained\nto the affects relationship type.\n\n**Syntax**\n\n```json\n{\n  \"@type\": \"VexAffectedVulnAssessmentRelationship\",\n  \"@id\": \"urn:spdx.dev:vex-affected-1\",\n  \"relationshipType\": \"affects\",\n  \"from\": \"urn:spdx.dev:vuln-cve-2020-28498\",\n  \"to\": [\"urn:product-acme-application-1.3\"],\n  \"assessedElement\": \"urn:npm-elliptic-6.5.2\",\n  \"actionStatement\": \"Upgrade to version 1.4 of ACME application.\",\n  \"suppliedBy\": [\"urn:spdx.dev:agent-jane-doe\"],\n  \"publishedTime\": \"2021-03-09T11:04:53Z\"\n}\n```",
    :rdfs/subClassOf [:spdx-security/VexVulnAssessmentRelationship
-                     :spdx-security/VulnAssessmentRelationship
-                     :spdx-core/Relationship],
+                     :spdx-core/Relationship
+                     :spdx-security/VulnAssessmentRelationship],
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "actionStatement",
@@ -207,8 +207,8 @@
    :rdfs/comment
    "VexFixedVulnAssessmentRelationship links a vulnerability to a number of elements\nrepresenting VEX products where a vulnerability has been fixed and are no longer\naffected. It represents the VEX fixed status.\n\n**Constraints**\n\nWhen linking elements using a VexFixedVulnAssessmentRelationship, the following\nrequirements must be observed:\n\n- Elements linked with a VulnVexFixedAssessmentRelationship are constrained to\nusing the fixedIn relationship type.\n- The from: end of the relationship must ve a /Security/Vulnerability classed\nelement.\n\n**Syntax**\n\n```json\n{\n  \"@type\": \"VexFixedVulnAssessmentRelationship\",\n  \"@id\": \"urn:spdx.dev:vex-fixed-in-1\",\n  \"relationshipType\": \"fixedIn\",\n  \"from\": \"urn:spdx.dev:vuln-cve-2020-28498\",\n  \"to\": [\"urn:product-acme-application-1.3\"],\n  \"assessedElement\": \"urn:npm-elliptic-6.5.4\",\n  \"suppliedBy\": [\"urn:spdx.dev:agent-jane-doe\"],\n  \"publishedTime\": \"2021-03-09T11:04:53Z\"\n}\n```",
    :rdfs/subClassOf [:spdx-security/VexVulnAssessmentRelationship
-                     :spdx-security/VulnAssessmentRelationship
-                     :spdx-core/Relationship],
+                     :spdx-core/Relationship
+                     :spdx-security/VulnAssessmentRelationship],
    :vs/term_status "Stable"})
 
 (def VexJustificationType
@@ -263,8 +263,8 @@
    :rdfs/comment
    "VexNotAffectedVulnAssessmentRelationship connects a vulnerability and a number\nof elements designating them as products not affected by the vulnerability.\nThis relationship corresponds to the VEX not_affected status.\n\n**Constraints**\n\nWhen linking elements using a VexNotVulnAffectedAssessmentRelationship, the\nfollowing requirements must be observed:\n\n* Relating elements with a VexNotAffectedVulnAssessmentRelationship is restricted\nto the doesNotAffect relationship type.\n* The from: end of the relationship must be a /Security/Vulnerability classed\nelement.\n* Both impactStatement and justificationType properties have a cardinality of\n0..1 making them optional. Nevertheless, to produce a valid VEX not_affected\nstatement, one of them MUST be defined. This is specified in the Minimum Elements\nfor VEX.\n\n**Syntax**\n\n```json\n{\n  \"@type\": \"VexNotAffectedVulnAssessmentRelationship\",\n  \"@id\": \"urn:spdx.dev:vex-not-affected-1\",\n  \"relationshipType\": \"doesNotAffect\",\n  \"from\": \"urn:spdx.dev:vuln-cve-2020-28498\",\n  \"to\": [\"urn:product-acme-application-1.3\"],\n  \"assessedElement\": \"urn:npm-elliptic-6.5.2\",\n  \"justificationType\": \"componentNotPresent\",\n  \"impactStatement\": \"Not using this vulnerable part of this library.\",\n  \"suppliedBy\": [\"urn:spdx.dev:agent-jane-doe\"],\n  \"publishedTime\": \"2021-03-09T11:04:53Z\"\n}\n```",
    :rdfs/subClassOf [:spdx-security/VexVulnAssessmentRelationship
-                     :spdx-security/VulnAssessmentRelationship
-                     :spdx-core/Relationship],
+                     :spdx-core/Relationship
+                     :spdx-security/VulnAssessmentRelationship],
    :sh/property [{:sh/class    :spdx-security/VexJustificationType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "justificationType",
@@ -286,8 +286,8 @@
    :rdfs/comment
    "VexUnderInvestigationVulnAssessmentRelationship links a vulnerability to a\nnumber of products stating the vulnerability's impact on them is being\ninvestigated. It represents the VEX under_investigation status.\n\n**Constraints**\n\nWhen linking elements using a VexUnderInvestigationVulnAssessmentRelationship\nthe following requirements must be observed:\n\n- Elements linked with a VexUnderInvestigationVulnAssessmentRelationship are\nconstrained to using the underInvestigationFor relationship type.\n- The from: end of the relationship must ve a /Security/Vulnerability classed\nelement.\n\n**Syntax**\n\n```json\n{\n  \"@type\": \"VexUnderInvestigationVulnAssessmentRelationship\",\n  \"@id\": \"urn:spdx.dev:vex-underInvestigation-1\",\n  \"relationshipType\": \"underInvestigationFor\",\n  \"from\": \"urn:spdx.dev:vuln-cve-2020-28498\",\n  \"to\": [\"urn:product-acme-application-1.3\"],\n  \"assessedElement\": \"urn:npm-elliptic-6.5.2\",\n  \"suppliedBy\": [\"urn:spdx.dev:agent-jane-doe\"],\n  \"publishedTime\": \"2021-03-09T11:04:53Z\"\n}\n```",
    :rdfs/subClassOf [:spdx-security/VexVulnAssessmentRelationship
-                     :spdx-security/VulnAssessmentRelationship
-                     :spdx-core/Relationship],
+                     :spdx-core/Relationship
+                     :spdx-security/VulnAssessmentRelationship],
    :vs/term_status "Stable"})
 
 (def VexVulnAssessmentRelationship
@@ -317,24 +317,24 @@
    :rdfs/subClassOf :spdx-core/Relationship,
    :sh/property [{:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "modifiedTime",
-                  :sh/path     :spdx-security/modifiedTime}
-                 {:sh/class    :spdx-core/Element,
+                  :sh/name     "publishedTime",
+                  :sh/path     :spdx-security/publishedTime}
+                 {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "assessedElement",
-                  :sh/path     :spdx-security/assessedElement}
+                  :sh/name     "withdrawnTime",
+                  :sh/path     :spdx-security/withdrawnTime}
                  {:sh/class    :spdx-core/Agent,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "suppliedBy",
                   :sh/path     :spdx-security/suppliedBy}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "publishedTime",
-                  :sh/path     :spdx-security/publishedTime}
-                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/name     "modifiedTime",
+                  :sh/path     :spdx-security/modifiedTime}
+                 {:sh/class    :spdx-core/Element,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "withdrawnTime",
-                  :sh/path     :spdx-security/withdrawnTime}],
+                  :sh/name     "assessedElement",
+                  :sh/path     :spdx-security/assessedElement}],
    :vs/term_status "Stable"})
 
 (def Vulnerability

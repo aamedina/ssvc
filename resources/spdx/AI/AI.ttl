@@ -42,7 +42,7 @@ External property restriction on /Core/Artifact/releaseTime: minCount: 1""" ;
     sh:path spdx-ai:informationAboutApplication ;
   ] ;
   sh:property [
-    sh:class spdx-ai:PresenceType ;
+    sh:class spdx-core:PresenceType ;
     sh:maxCount 1 ;
     sh:name "sensitivePersonalInformation" ;
     sh:path spdx-ai:sensitivePersonalInformation ;
@@ -84,7 +84,7 @@ External property restriction on /Core/Artifact/releaseTime: minCount: 1""" ;
     sh:path spdx-ai:informationAboutTraining ;
   ] ;
   sh:property [
-    sh:class spdx-ai:PresenceType ;
+    sh:class spdx-core:PresenceType ;
     sh:maxCount 1 ;
     sh:name "autonomyType" ;
     sh:path spdx-ai:autonomyType ;
@@ -113,13 +113,6 @@ External property restriction on /Core/Artifact/releaseTime: minCount: 1""" ;
   ] ;
   vs:term_status "Stable" .
 
-spdx-ai:PresenceType a owl:Class ;
-  rdfs:comment "This type is used to indicate if a given field is present or absent or unknown." ;
-  sh:in spdx-ai:PresenceType-No ;
-  sh:in spdx-ai:PresenceType-NoAssertion ;
-  sh:in spdx-ai:PresenceType-Yes ;
-  vs:term_status "Stable" .
-
 spdx-ai:SafetyRiskAssessmentType a owl:Class ;
   rdfs:comment """Lists the different safety risk type values that can be used to describe the safety risk of AI software
 according to [Article 20 of Regulation 765/2008/EC](https://ec.europa.eu/docsroom/documents/17107/attachments/1/translations/en/renditions/pdf).""" ;
@@ -133,7 +126,7 @@ spdx-ai:autonomyType a owl:ObjectProperty ;
   rdfs:comment """AutonomyType indicates if a human is involved in any of the decisions of the AI software
 or if that software is fully automatic.""" ;
   rdfs:domain spdx-ai:AIPackage ;
-  rdfs:range spdx-ai:PresenceType ;
+  rdfs:range spdx-core:PresenceType ;
   vs:term_status "Stable" .
 
 spdx-ai:hyperparameter a owl:ObjectProperty ;
@@ -173,7 +166,7 @@ spdx-ai:sensitivePersonalInformation a owl:ObjectProperty ;
 is used in the training or inference of the AI models.
 This might include biometric data, addresses or other data that can be used to infer a person's identity.""" ;
   rdfs:domain spdx-ai:AIPackage ;
-  rdfs:range spdx-ai:PresenceType ;
+  rdfs:range spdx-core:PresenceType ;
   vs:term_status "Stable" .
 
 spdx-ai:domain a owl:DatatypeProperty ;
@@ -241,15 +234,6 @@ For instance, if it is a supervised model, unsupervised model, reinforcement lea
   rdfs:domain spdx-ai:AIPackage ;
   rdfs:range xsd:string ;
   vs:term_status "Stable" .
-
-spdx-ai:PresenceType-No a owl:NamedIndividual, spdx-ai:PresenceType ;
-  rdfs:label "no" .
-
-spdx-ai:PresenceType-NoAssertion a owl:NamedIndividual, spdx-ai:PresenceType ;
-  rdfs:label "noAssertion" .
-
-spdx-ai:PresenceType-Yes a owl:NamedIndividual, spdx-ai:PresenceType ;
-  rdfs:label "yes" .
 
 spdx-ai:SafetyRiskAssessmentType-High a owl:NamedIndividual, spdx-ai:SafetyRiskAssessmentType ;
   rdfs:label "high" .

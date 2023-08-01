@@ -41,8 +41,8 @@
    :rdfs/comment
    "A CustomLicense represents a License that is not listed on the SPDX License\nList at https://spdx.org/licenses, and is therefore defined by an SPDX data\ncreator.",
    :rdfs/subClassOf [:spdx-expandedlicensing/License
-                     :spdx-simplelicensing/AnyLicenseInfo
-                     :spdx-expandedlicensing/ExtendableLicense],
+                     :spdx-expandedlicensing/ExtendableLicense
+                     :spdx-simplelicensing/AnyLicenseInfo],
    :vs/term_status "Stable"})
 
 (def CustomLicenseAddition
@@ -85,14 +85,26 @@
    "A License represents a license text, whether listed on the SPDX License List\n(ListedLicense) or defined by an SPDX data creator (CustomLicense).",
    :rdfs/subClassOf [:spdx-expandedlicensing/ExtendableLicense
                      :spdx-simplelicensing/AnyLicenseInfo],
-   :sh/property [{:sh/datatype :xsd/string,
+   :sh/property [{:sh/datatype :xsd/boolean,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "standardLicenseHeader",
-                  :sh/path     :spdx-expandedlicensing/standardLicenseHeader}
+                  :sh/name     "isOsiApproved",
+                  :sh/path     :spdx-expandedlicensing/isOsiApproved}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "obsoletedBy",
                   :sh/path     :spdx-expandedlicensing/obsoletedBy}
+                 {:sh/datatype :xsd/boolean,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "isFsfLibre",
+                  :sh/path     :spdx-expandedlicensing/isFsfLibre}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "standardLicenseTemplate",
+                  :sh/path     :spdx-expandedlicensing/standardLicenseTemplate}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "standardLicenseHeader",
+                  :sh/path     :spdx-expandedlicensing/standardLicenseHeader}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
@@ -100,20 +112,8 @@
                   :sh/path     :spdx-simplelicensing/licenseText}
                  {:sh/datatype :xsd/boolean,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "isOsiApproved",
-                  :sh/path     :spdx-expandedlicensing/isOsiApproved}
-                 {:sh/datatype :xsd/boolean,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "isDeprecatedLicenseId",
-                  :sh/path     :spdx-expandedlicensing/isDeprecatedLicenseId}
-                 {:sh/datatype :xsd/boolean,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "isFsfLibre",
-                  :sh/path     :spdx-expandedlicensing/isFsfLibre}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name "standardLicenseTemplate",
-                  :sh/path :spdx-expandedlicensing/standardLicenseTemplate}],
+                  :sh/path     :spdx-expandedlicensing/isDeprecatedLicenseId}],
    :vs/term_status "Stable"})
 
 (def LicenseAddition
@@ -149,8 +149,8 @@
    :rdfs/comment
    "A ListedLicense represents a License that is listed on the SPDX License List\nat https://spdx.org/licenses.",
    :rdfs/subClassOf [:spdx-expandedlicensing/License
-                     :spdx-simplelicensing/AnyLicenseInfo
-                     :spdx-expandedlicensing/ExtendableLicense],
+                     :spdx-expandedlicensing/ExtendableLicense
+                     :spdx-simplelicensing/AnyLicenseInfo],
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "deprecatedVersion",

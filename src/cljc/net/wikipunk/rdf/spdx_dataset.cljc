@@ -1,18 +1,12 @@
 (ns net.wikipunk.rdf.spdx-dataset
-  {:dcat/downloadURL  "resources/spdx/model.ttl",
+  {:dcat/downloadURL  "resources/spdx/Dataset/Dataset.ttl",
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
                        "sh" "http://www.w3.org/ns/shacl#",
                        "spdx-ai" "https://spdx.org/rdf/v3/AI/",
-                       "spdx-build" "https://spdx.org/rdf/v3/Build/",
                        "spdx-core" "https://spdx.org/rdf/v3/Core/",
                        "spdx-dataset" "https://spdx.org/rdf/v3/Dataset/",
-                       "spdx-expandedlicensing"
-                       "https://spdx.org/rdf/v3/ExpandedLicensing/",
-                       "spdx-security" "https://spdx.org/rdf/v3/Security/",
-                       "spdx-simplelicensing"
-                       "https://spdx.org/rdf/v3/SimpleLicensing/",
                        "spdx-software" "https://spdx.org/rdf/v3/Software/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
@@ -23,15 +17,38 @@
 (def ConfidentialityLevelType
   "Describes the different confidentiality levels as given by the [Traffic Light Protocol](https://en.wikipedia.org/wiki/Traffic_Light_Protocol)."
   {:db/ident :spdx-dataset/ConfidentialityLevelType,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Dataset/ConfidentialityLevelType/Clear"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/ConfidentialityLevelType/Amber"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/ConfidentialityLevelType/Green"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/ConfidentialityLevelType/Red"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "Describes the different confidentiality levels as given by the [Traffic Light Protocol](https://en.wikipedia.org/wiki/Traffic_Light_Protocol).",
+   :sh/in [:spdx-dataset/ConfidentialityLevelType-Red
+           :spdx-dataset/ConfidentialityLevelType-Green
+           :spdx-dataset/ConfidentialityLevelType-Clear
+           :spdx-dataset/ConfidentialityLevelType-Amber],
    :vs/term_status "Stable"})
+
+(def ConfidentialityLevelType-Amber
+  "amber"
+  {:db/ident   :spdx-dataset/ConfidentialityLevelType-Amber,
+   :rdf/type   [:spdx-dataset/ConfidentialityLevelType :owl/NamedIndividual],
+   :rdfs/label "amber"})
+
+(def ConfidentialityLevelType-Clear
+  "clear"
+  {:db/ident   :spdx-dataset/ConfidentialityLevelType-Clear,
+   :rdf/type   [:spdx-dataset/ConfidentialityLevelType :owl/NamedIndividual],
+   :rdfs/label "clear"})
+
+(def ConfidentialityLevelType-Green
+  "green"
+  {:db/ident   :spdx-dataset/ConfidentialityLevelType-Green,
+   :rdf/type   [:spdx-dataset/ConfidentialityLevelType :owl/NamedIndividual],
+   :rdfs/label "green"})
+
+(def ConfidentialityLevelType-Red
+  "red"
+  {:db/ident   :spdx-dataset/ConfidentialityLevelType-Red,
+   :rdf/type   [:spdx-dataset/ConfidentialityLevelType :owl/NamedIndividual],
+   :rdfs/label "red"})
 
 (def Dataset
   "Metadata information that can be added to a dataset that may be used in a software or to train/test an AI package.\nExternal property restriction on /Core/Artifact/originatedBy: minCount: 1\nExternal property restriction on /Software/Package/downloadLocation: minCount: 1\nExternal property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1\nExternal property restriction on /Core/Artifact/releaseTime: minCount: 1\nExternal property restriction on /Core/Artifact/builtTime: minCount: 1"
@@ -39,100 +56,205 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "Metadata information that can be added to a dataset that may be used in a software or to train/test an AI package.\nExternal property restriction on /Core/Artifact/originatedBy: minCount: 1\nExternal property restriction on /Software/Package/downloadLocation: minCount: 1\nExternal property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1\nExternal property restriction on /Core/Artifact/releaseTime: minCount: 1\nExternal property restriction on /Core/Artifact/builtTime: minCount: 1",
-   :rdfs/subClassOf [:spdx-software/Package
-                     :spdx-software/SoftwareArtifact
-                     :spdx-core/Artifact
-                     :spdx-core/Element],
-   :sh/property [{:sh/class    :spdx-dataset/ConfidentialityLevelType,
+   :rdfs/subClassOf :spdx-software/Package,
+   :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "confidentialityLevel",
-                  :sh/path     :spdx-dataset/confidentialityLevel}
+                  :sh/name     "intendedUse",
+                  :sh/path     :spdx-dataset/intendedUse}
                  {:sh/datatype :xsd/nonNegativeInteger,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetSize",
                   :sh/path     :spdx-dataset/datasetSize}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "dataPreprocessing",
+                  :sh/path     :spdx-dataset/dataPreprocessing}
                  {:sh/class :spdx-core/DictionaryEntry,
                   :sh/name  "sensor",
                   :sh/path  :spdx-dataset/sensor}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "intendedUse",
-                  :sh/path     :spdx-dataset/intendedUse}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "datasetUpdateMechanism",
-                  :sh/path     :spdx-dataset/datasetUpdateMechanism}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "dataCollectionProcess",
-                  :sh/path     :spdx-dataset/dataCollectionProcess}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetNoise",
                   :sh/path     :spdx-dataset/datasetNoise}
-                 {:sh/datatype :xsd/string,
-                  :sh/name     "dataPreprocessing",
-                  :sh/path     :spdx-dataset/dataPreprocessing}
-                 {:sh/datatype :xsd/string,
-                  :sh/name     "knownBias",
-                  :sh/path     :spdx-dataset/knownBias}
-                 {:sh/datatype :spdx-ai/PresenceType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "sensitivePersonalInformation",
-                  :sh/path     :spdx-dataset/sensitivePersonalInformation}
-                 {:sh/class    :spdx-dataset/DatasetType,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "datasetType",
-                  :sh/path     :spdx-dataset/datasetType}
                  {:sh/class    :spdx-dataset/DatasetAvailabilityType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetAvailability",
                   :sh/path     :spdx-dataset/datasetAvailability}
                  {:sh/datatype :xsd/string,
                   :sh/name     "anonymizationMethodUsed",
-                  :sh/path     :spdx-dataset/anonymizationMethodUsed}],
+                  :sh/path     :spdx-dataset/anonymizationMethodUsed}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "datasetUpdateMechanism",
+                  :sh/path     :spdx-dataset/datasetUpdateMechanism}
+                 {:sh/class    :spdx-dataset/ConfidentialityLevelType,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "confidentialityLevel",
+                  :sh/path     :spdx-dataset/confidentialityLevel}
+                 {:sh/class    :spdx-dataset/DatasetType,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "datasetType",
+                  :sh/path     :spdx-dataset/datasetType}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "dataCollectionProcess",
+                  :sh/path     :spdx-dataset/dataCollectionProcess}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "knownBias",
+                  :sh/path     :spdx-dataset/knownBias}
+                 {:sh/datatype :spdx-ai/PresenceType,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "sensitivePersonalInformation",
+                  :sh/path     :spdx-dataset/sensitivePersonalInformation}],
    :vs/term_status "Stable"})
 
 (def DatasetAvailabilityType
   "Describes the possible types of availability of a dataset, indicating whether the dataset can be directly downloaded, can be assembled using a script for scraping the data, is only available after a clickthrough or a registration form."
   {:db/ident :spdx-dataset/DatasetAvailabilityType,
-   :owl/oneOf
-   [{:rdfa/uri
-     "https://spdx.org/rdf/v3/Dataset/DatasetAvailabilityType/Scraping-Script"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Dataset/DatasetAvailabilityType/Direct-Download"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetAvailabilityType/Query"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Dataset/DatasetAvailabilityType/Clickthrough"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Dataset/DatasetAvailabilityType/Registration"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "Describes the possible types of availability of a dataset, indicating whether the dataset can be directly downloaded, can be assembled using a script for scraping the data, is only available after a clickthrough or a registration form.",
+   :sh/in [:spdx-dataset/DatasetAvailabilityType-Scraping-Script
+           :spdx-dataset/DatasetAvailabilityType-Registration
+           :spdx-dataset/DatasetAvailabilityType-Query
+           :spdx-dataset/DatasetAvailabilityType-Direct-Download
+           :spdx-dataset/DatasetAvailabilityType-Clickthrough],
    :vs/term_status "Stable"})
+
+(def DatasetAvailabilityType-Clickthrough
+  "clickthrough"
+  {:db/ident   :spdx-dataset/DatasetAvailabilityType-Clickthrough,
+   :rdf/type   [:spdx-dataset/DatasetAvailabilityType :owl/NamedIndividual],
+   :rdfs/label "clickthrough"})
+
+(def DatasetAvailabilityType-Direct-Download
+  "direct-download"
+  {:db/ident   :spdx-dataset/DatasetAvailabilityType-Direct-Download,
+   :rdf/type   [:spdx-dataset/DatasetAvailabilityType :owl/NamedIndividual],
+   :rdfs/label "direct-download"})
+
+(def DatasetAvailabilityType-Query
+  "query"
+  {:db/ident   :spdx-dataset/DatasetAvailabilityType-Query,
+   :rdf/type   [:spdx-dataset/DatasetAvailabilityType :owl/NamedIndividual],
+   :rdfs/label "query"})
+
+(def DatasetAvailabilityType-Registration
+  "registration"
+  {:db/ident   :spdx-dataset/DatasetAvailabilityType-Registration,
+   :rdf/type   [:spdx-dataset/DatasetAvailabilityType :owl/NamedIndividual],
+   :rdfs/label "registration"})
+
+(def DatasetAvailabilityType-Scraping-Script
+  "scraping-script"
+  {:db/ident   :spdx-dataset/DatasetAvailabilityType-Scraping-Script,
+   :rdf/type   [:spdx-dataset/DatasetAvailabilityType :owl/NamedIndividual],
+   :rdfs/label "scraping-script"})
 
 (def DatasetType
   "Describes the different structures of data within a given dataset. A dataset can have multiple types of data, or even a single type of data but still match multiple types, for example sensor data could also be timeseries or labeled image data could also be considered categorical."
   {:db/ident :spdx-dataset/DatasetType,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/syntactic"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/graph"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/timeseries"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/numeric"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/noAssertion"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/video"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/timestamp"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/audio"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/other"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/categorical"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/image"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/sensor"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/structured"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Dataset/DatasetType/text"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "Describes the different structures of data within a given dataset. A dataset can have multiple types of data, or even a single type of data but still match multiple types, for example sensor data could also be timeseries or labeled image data could also be considered categorical.",
+   :sh/in [:spdx-dataset/DatasetType-Structured
+           :spdx-dataset/DatasetType-Audio
+           :spdx-dataset/DatasetType-Timeseries
+           :spdx-dataset/DatasetType-Image
+           :spdx-dataset/DatasetType-Sensor
+           :spdx-dataset/DatasetType-Timestamp
+           :spdx-dataset/DatasetType-Video
+           :spdx-dataset/DatasetType-NoAssertion
+           :spdx-dataset/DatasetType-Syntactic
+           :spdx-dataset/DatasetType-Numeric
+           :spdx-dataset/DatasetType-Text
+           :spdx-dataset/DatasetType-Other
+           :spdx-dataset/DatasetType-Graph
+           :spdx-dataset/DatasetType-Categorical],
    :vs/term_status "Stable"})
+
+(def DatasetType-Audio
+  "audio"
+  {:db/ident   :spdx-dataset/DatasetType-Audio,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "audio"})
+
+(def DatasetType-Categorical
+  "categorical"
+  {:db/ident   :spdx-dataset/DatasetType-Categorical,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "categorical"})
+
+(def DatasetType-Graph
+  "graph"
+  {:db/ident   :spdx-dataset/DatasetType-Graph,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "graph"})
+
+(def DatasetType-Image
+  "image"
+  {:db/ident   :spdx-dataset/DatasetType-Image,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "image"})
+
+(def DatasetType-NoAssertion
+  "noAssertion"
+  {:db/ident   :spdx-dataset/DatasetType-NoAssertion,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "noAssertion"})
+
+(def DatasetType-Numeric
+  "numeric"
+  {:db/ident   :spdx-dataset/DatasetType-Numeric,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "numeric"})
+
+(def DatasetType-Other
+  "other"
+  {:db/ident   :spdx-dataset/DatasetType-Other,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def DatasetType-Sensor
+  "sensor"
+  {:db/ident   :spdx-dataset/DatasetType-Sensor,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "sensor"})
+
+(def DatasetType-Structured
+  "structured"
+  {:db/ident   :spdx-dataset/DatasetType-Structured,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "structured"})
+
+(def DatasetType-Syntactic
+  "syntactic"
+  {:db/ident   :spdx-dataset/DatasetType-Syntactic,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "syntactic"})
+
+(def DatasetType-Text
+  "text"
+  {:db/ident   :spdx-dataset/DatasetType-Text,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "text"})
+
+(def DatasetType-Timeseries
+  "timeseries"
+  {:db/ident   :spdx-dataset/DatasetType-Timeseries,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "timeseries"})
+
+(def DatasetType-Timestamp
+  "timestamp"
+  {:db/ident   :spdx-dataset/DatasetType-Timestamp,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "timestamp"})
+
+(def DatasetType-Video
+  "video"
+  {:db/ident   :spdx-dataset/DatasetType-Video,
+   :rdf/type   [:spdx-dataset/DatasetType :owl/NamedIndividual],
+   :rdfs/label "video"})
 
 (def anonymizationMethodUsed
   "AnonymizationMethodUsed describes the methods used to anonymize the dataset (of fields in the dataset)."

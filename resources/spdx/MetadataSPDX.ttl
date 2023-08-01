@@ -54,6 +54,7 @@ spdx-core:ProfileIdentifierType-AI a owl:NamedIndividual, spdx-core:ProfileIdent
   dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
   dcterms:references <https://spdx.org/rdf/v3/Core/> ;
   dcterms:references <https://spdx.org/rdf/v3/Software/> ;
+  dcterms:references <https://spdx.org/rdf/v3/SimpleLicensing/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/AI/> .
 
 spdx-core:ProfileIdentifierType-Build a owl:NamedIndividual, spdx-core:ProfileIdentifierType ;
@@ -126,4 +127,5 @@ spdx-core:ProfileIdentifierType-Software a owl:NamedIndividual, spdx-core:Profil
   dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
   dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
   dcterms:references <https://spdx.org/rdf/v3/Core/> ;
+  dcterms:references <https://spdx.org/rdf/v3/SimpleLicensing/> ;
   dcterms:hasPart <https://spdx.org/rdf/v3/Software/> .

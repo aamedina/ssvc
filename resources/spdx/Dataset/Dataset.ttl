@@ -1,0 +1,290 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix spdx-ai: <https://spdx.org/rdf/v3/AI/> .
+@prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
+@prefix spdx-dataset: <https://spdx.org/rdf/v3/Dataset/> .
+@prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+spdx-dataset:ConfidentialityLevelType a owl:Class ;
+  rdfs:comment "Describes the different confidentiality levels as given by the [Traffic Light Protocol](https://en.wikipedia.org/wiki/Traffic_Light_Protocol)." ;
+  sh:in spdx-dataset:ConfidentialityLevelType-Amber ;
+  sh:in spdx-dataset:ConfidentialityLevelType-Clear ;
+  sh:in spdx-dataset:ConfidentialityLevelType-Green ;
+  sh:in spdx-dataset:ConfidentialityLevelType-Red ;
+  vs:term_status "Stable" .
+
+spdx-dataset:Dataset a owl:Class, sh:NodeShape ;
+  rdfs:comment """Metadata information that can be added to a dataset that may be used in a software or to train/test an AI package.
+External property restriction on /Core/Artifact/originatedBy: minCount: 1
+External property restriction on /Software/Package/downloadLocation: minCount: 1
+External property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1
+External property restriction on /Core/Artifact/releaseTime: minCount: 1
+External property restriction on /Core/Artifact/builtTime: minCount: 1""" ;
+  rdfs:subClassOf spdx-software:Package ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "datasetNoise" ;
+    sh:path spdx-dataset:datasetNoise ;
+  ] ;
+  sh:property [
+    sh:class spdx-dataset:DatasetAvailabilityType ;
+    sh:maxCount 1 ;
+    sh:name "datasetAvailability" ;
+    sh:path spdx-dataset:datasetAvailability ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "intendedUse" ;
+    sh:path spdx-dataset:intendedUse ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:name "knownBias" ;
+    sh:path spdx-dataset:knownBias ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:name "anonymizationMethodUsed" ;
+    sh:path spdx-dataset:anonymizationMethodUsed ;
+  ] ;
+  sh:property [
+    sh:class spdx-dataset:DatasetType ;
+    sh:minCount 1 ;
+    sh:name "datasetType" ;
+    sh:path spdx-dataset:datasetType ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "dataCollectionProcess" ;
+    sh:path spdx-dataset:dataCollectionProcess ;
+  ] ;
+  sh:property [
+    sh:class spdx-core:DictionaryEntry ;
+    sh:name "sensor" ;
+    sh:path spdx-dataset:sensor ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:name "dataPreprocessing" ;
+    sh:path spdx-dataset:dataPreprocessing ;
+  ] ;
+  sh:property [
+    sh:class spdx-dataset:ConfidentialityLevelType ;
+    sh:maxCount 1 ;
+    sh:name "confidentialityLevel" ;
+    sh:path spdx-dataset:confidentialityLevel ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "datasetUpdateMechanism" ;
+    sh:path spdx-dataset:datasetUpdateMechanism ;
+  ] ;
+  sh:property [
+    sh:datatype spdx-ai:PresenceType ;
+    sh:maxCount 1 ;
+    sh:name "sensitivePersonalInformation" ;
+    sh:path spdx-dataset:sensitivePersonalInformation ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:nonNegativeInteger ;
+    sh:maxCount 1 ;
+    sh:name "datasetSize" ;
+    sh:path spdx-dataset:datasetSize ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-dataset:DatasetAvailabilityType a owl:Class ;
+  rdfs:comment "Describes the possible types of availability of a dataset, indicating whether the dataset can be directly downloaded, can be assembled using a script for scraping the data, is only available after a clickthrough or a registration form." ;
+  sh:in spdx-dataset:DatasetAvailabilityType-Clickthrough ;
+  sh:in spdx-dataset:DatasetAvailabilityType-Direct-Download ;
+  sh:in spdx-dataset:DatasetAvailabilityType-Query ;
+  sh:in spdx-dataset:DatasetAvailabilityType-Registration ;
+  sh:in spdx-dataset:DatasetAvailabilityType-Scraping-Script ;
+  vs:term_status "Stable" .
+
+spdx-dataset:DatasetType a owl:Class ;
+  rdfs:comment "Describes the different structures of data within a given dataset. A dataset can have multiple types of data, or even a single type of data but still match multiple types, for example sensor data could also be timeseries or labeled image data could also be considered categorical." ;
+  sh:in spdx-dataset:DatasetType-Audio ;
+  sh:in spdx-dataset:DatasetType-Categorical ;
+  sh:in spdx-dataset:DatasetType-Graph ;
+  sh:in spdx-dataset:DatasetType-Image ;
+  sh:in spdx-dataset:DatasetType-NoAssertion ;
+  sh:in spdx-dataset:DatasetType-Numeric ;
+  sh:in spdx-dataset:DatasetType-Other ;
+  sh:in spdx-dataset:DatasetType-Sensor ;
+  sh:in spdx-dataset:DatasetType-Structured ;
+  sh:in spdx-dataset:DatasetType-Syntactic ;
+  sh:in spdx-dataset:DatasetType-Text ;
+  sh:in spdx-dataset:DatasetType-Timeseries ;
+  sh:in spdx-dataset:DatasetType-Timestamp ;
+  sh:in spdx-dataset:DatasetType-Video ;
+  vs:term_status "Stable" .
+
+spdx-dataset:confidentialityLevel a owl:ObjectProperty ;
+  rdfs:comment "ConfidentialityLevel describes the levels of confidentiality of the data points contained in the dataset." ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range spdx-dataset:ConfidentialityLevelType ;
+  vs:term_status "Stable" .
+
+spdx-dataset:sensitivePersonalInformation a owl:ObjectProperty ;
+  rdfs:comment """SensitivePersonalInformation indicates the presence of sensitive personal data
+or information that allows drawing conclusions about a person's identity.""" ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range spdx-ai:PresenceType ;
+  vs:term_status "Stable" .
+
+spdx-dataset:sensor a owl:ObjectProperty ;
+  rdfs:comment """Sensor describes a sensor that was used for collecting the data
+and its calibration value as a key-value pair.""" ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range spdx-core:DictionaryEntry ;
+  vs:term_status "Stable" .
+
+spdx-dataset:anonymizationMethodUsed a owl:DatatypeProperty ;
+  rdfs:comment "AnonymizationMethodUsed describes the methods used to anonymize the dataset (of fields in the dataset)." ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-dataset:dataCollectionProcess a owl:DatatypeProperty ;
+  rdfs:comment """DataCollectionProcess describes how a dataset was collected.
+Examples include the sources from which a dataset was scrapped or
+the interview protocol that was used for data collection.""" ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-dataset:dataPreprocessing a owl:DatatypeProperty ;
+  rdfs:comment """DataPreprocessing describes the various preprocessing steps
+that were applied to the raw data to create the dataset.""" ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-dataset:datasetAvailability a owl:DatatypeProperty ;
+  rdfs:comment "Some datasets are publicly available and can be downloaded directly. Others are only accessible behind a clickthrough, or after filling a registration form. This field will describe the dataset availability from that perspective." ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range spdx-dataset:DatasetAvailabilityType ;
+  vs:term_status "Stable" .
+
+spdx-dataset:datasetNoise a owl:DatatypeProperty ;
+  rdfs:comment """DatasetNoise describes what kinds of noises a dataset might encompass.
+The field uses free form text to specify the fields or the samples that might be noisy.
+Alternatively, it can also be used to describe various noises that could impact the whole dataset.""" ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-dataset:datasetSize a owl:DatatypeProperty ;
+  rdfs:comment """DatasetSize Captures how large a dataset is.
+The size is to be measured in bytes.""" ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:nonNegativeInteger ;
+  vs:term_status "Stable" .
+
+spdx-dataset:datasetType a owl:DatatypeProperty ;
+  rdfs:comment "Type describes the datatype contained in the dataset. For example a dataset can be an image dataset for computer vision applications, a text dataset such as the contents of a book or Wikipedia article, or sometimes a multimodal dataset that contains multiple types of data." ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range spdx-dataset:DatasetType ;
+  vs:term_status "Stable" .
+
+spdx-dataset:datasetUpdateMechanism a owl:DatatypeProperty ;
+  rdfs:comment "DatasetUpdateMechanism describes a mechanism to update the dataset." ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-dataset:intendedUse a owl:DatatypeProperty ;
+  rdfs:comment """IntendedUse describes what the given dataset should be used for.
+Some datasets are collected to be used only for particular purposes. 
+For example, medical data collected from a specific demography might only be applicable
+for training machine learning models to make predictions for that demography.
+In such a case, the intendedUse field would capture this information.
+Similarly, if a dataset is collected for building a facial recognition model,
+the intendedUse field would specify that.""" ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-dataset:knownBias a owl:DatatypeProperty ;
+  rdfs:comment "KnownBias is a free form text field that describes the different biases that the dataset encompasses." ;
+  rdfs:domain spdx-dataset:Dataset ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-dataset:ConfidentialityLevelType-Amber a owl:NamedIndividual, spdx-dataset:ConfidentialityLevelType ;
+  rdfs:label "amber" .
+
+spdx-dataset:ConfidentialityLevelType-Clear a owl:NamedIndividual, spdx-dataset:ConfidentialityLevelType ;
+  rdfs:label "clear" .
+
+spdx-dataset:ConfidentialityLevelType-Green a owl:NamedIndividual, spdx-dataset:ConfidentialityLevelType ;
+  rdfs:label "green" .
+
+spdx-dataset:ConfidentialityLevelType-Red a owl:NamedIndividual, spdx-dataset:ConfidentialityLevelType ;
+  rdfs:label "red" .
+
+spdx-dataset:DatasetAvailabilityType-Clickthrough a owl:NamedIndividual, spdx-dataset:DatasetAvailabilityType ;
+  rdfs:label "clickthrough" .
+
+spdx-dataset:DatasetAvailabilityType-Direct-Download a owl:NamedIndividual, spdx-dataset:DatasetAvailabilityType ;
+  rdfs:label "direct-download" .
+
+spdx-dataset:DatasetAvailabilityType-Query a owl:NamedIndividual, spdx-dataset:DatasetAvailabilityType ;
+  rdfs:label "query" .
+
+spdx-dataset:DatasetAvailabilityType-Registration a owl:NamedIndividual, spdx-dataset:DatasetAvailabilityType ;
+  rdfs:label "registration" .
+
+spdx-dataset:DatasetAvailabilityType-Scraping-Script a owl:NamedIndividual, spdx-dataset:DatasetAvailabilityType ;
+  rdfs:label "scraping-script" .
+
+spdx-dataset:DatasetType-Audio a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "audio" .
+
+spdx-dataset:DatasetType-Categorical a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "categorical" .
+
+spdx-dataset:DatasetType-Graph a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "graph" .
+
+spdx-dataset:DatasetType-Image a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "image" .
+
+spdx-dataset:DatasetType-NoAssertion a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "noAssertion" .
+
+spdx-dataset:DatasetType-Numeric a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "numeric" .
+
+spdx-dataset:DatasetType-Other a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "other" .
+
+spdx-dataset:DatasetType-Sensor a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "sensor" .
+
+spdx-dataset:DatasetType-Structured a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "structured" .
+
+spdx-dataset:DatasetType-Syntactic a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "syntactic" .
+
+spdx-dataset:DatasetType-Text a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "text" .
+
+spdx-dataset:DatasetType-Timeseries a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "timeseries" .
+
+spdx-dataset:DatasetType-Timestamp a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "timestamp" .
+
+spdx-dataset:DatasetType-Video a owl:NamedIndividual, spdx-dataset:DatasetType ;
+  rdfs:label "video" .

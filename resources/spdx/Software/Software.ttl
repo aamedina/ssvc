@@ -1,0 +1,600 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
+@prefix spdx-simplelicensing: <https://spdx.org/rdf/v3/SimpleLicensing/> .
+@prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+spdx-software:DependencyConditionalityType a owl:Class ;
+  rdfs:comment "TODO" ;
+  sh:in ( 
+    spdx-software:DependencyConditionalityType-Optional 
+    spdx-software:DependencyConditionalityType-Other 
+    spdx-software:DependencyConditionalityType-Prerequisite 
+    spdx-software:DependencyConditionalityType-Provided 
+    spdx-software:DependencyConditionalityType-Required 
+    ) ;
+  vs:term_status "Stable" .
+
+spdx-software:File a owl:Class, sh:NodeShape ;
+  rdfs:comment """Refers to any object that stores content on a computer.
+The type of content can optionally be provided in the contentType property.
+External property restriction on /Core/Element/name: minCount: 1""" ;
+  rdfs:subClassOf spdx-software:SoftwareArtifact ;
+  sh:property [
+    sh:datatype spdx-core:MediaType ;
+    sh:maxCount 1 ;
+    sh:name "contentType" ;
+    sh:path spdx-software:contentType ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-software:Package a owl:Class, sh:NodeShape ;
+  rdfs:comment """A package refers to any unit of content that can be associated with a distribution of software.
+Typically, a package is composed of one or more files.  
+Any of the following non-limiting examples may be (but are not required to be) represented in SPDX as a package:
+
+ - a tarball, zip file or other archive
+ - a directory or sub-directory
+ - a separately distributed piece of software which another Package or File uses or depends upon (e.g., a Python package, a Go module, ...)
+ - a container image, and/or each image layer within a container image
+ - a collection of one or more sub-packages
+ - a Git repository snapshot from a particular point in time
+
+Note that some of these could be represented in SPDX as a file as well.
+External property restriction on /Core/Element/name: minCount: 1""" ;
+  rdfs:subClassOf spdx-software:SoftwareArtifact ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "packageVersion" ;
+    sh:path spdx-software:packageVersion ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:anyURI ;
+    sh:maxCount 1 ;
+    sh:name "homePage" ;
+    sh:path spdx-software:homePage ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:anyURI ;
+    sh:maxCount 1 ;
+    sh:name "packageUrl" ;
+    sh:path spdx-software:packageUrl ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:anyURI ;
+    sh:maxCount 1 ;
+    sh:name "downloadLocation" ;
+    sh:path spdx-software:downloadLocation ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "sourceInfo" ;
+    sh:path spdx-software:sourceInfo ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-software:Sbom a owl:Class, sh:NodeShape ;
+  rdfs:comment """A Software Bill of Materials (SBOM) is a collection of SPDX Elements describing a single package.
+This could include details of the content and composition of the product,
+provenance details of the product and/or
+its composition, licensing information, known quality or security issues, etc.""" ;
+  rdfs:subClassOf spdx-core:Bom ;
+  sh:property [
+    sh:class spdx-software:SbomType ;
+    sh:name "sbomType" ;
+    sh:path spdx-software:sbomType ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-software:SbomType a owl:Class ;
+  rdfs:comment """The set of SBOM types with definitions as defined in [Types of Software Bill of Material (SBOM) Documents](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf), published on April 21, 2023. 
+An SBOM type describes the most likely type of an SBOM from the producer perspective, so that consumers can draw conclusions about the data inside an SBOM.  A single SBOM can have multiple SBOM document types associated with it.""" ;
+  sh:in (
+    spdx-software:SbomType-Analyzed
+    spdx-software:SbomType-Build
+    spdx-software:SbomType-Deployed
+    spdx-software:SbomType-Design
+    spdx-software:SbomType-Runtime
+    spdx-software:SbomType-Source
+    ) ;
+  vs:term_status "Stable" .
+
+spdx-software:Snippet a owl:Class, sh:NodeShape ;
+  rdfs:comment """A Snippet describes a certain part of a file and can be used when the file is known to have some content
+that has been included from another original source. Snippets are useful for denoting when part of a file
+may have been originally created under another license or copied from a place with a known vulnerability.""" ;
+  rdfs:subClassOf spdx-software:SoftwareArtifact ;
+  sh:property [
+    sh:class spdx-core:PositiveIntegerRange ;
+    sh:maxCount 1 ;
+    sh:name "lineRange" ;
+    sh:path spdx-software:lineRange ;
+  ] ;
+  sh:property [
+    sh:class spdx-core:PositiveIntegerRange ;
+    sh:maxCount 1 ;
+    sh:name "byteRange" ;
+    sh:path spdx-software:byteRange ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-software:SoftwareArtifact a owl:Class, sh:NodeShape ;
+  rdfs:comment """A software artifact is a distinct article or unit related to software
+such as a package, a file, or a snippet.""" ;
+  rdfs:subClassOf spdx-core:Artifact ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "copyrightText" ;
+    sh:path spdx-software:copyrightText ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "attributionText" ;
+    sh:path spdx-software:attributionText ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:anyURI ;
+    sh:maxCount 1 ;
+    sh:name "contentIdentifier" ;
+    sh:path spdx-software:contentIdentifier ;
+  ] ;
+  sh:property [
+    sh:datatype spdx-simplelicensing:AnyLicenseInfo ;
+    sh:maxCount 1 ;
+    sh:name "declaredLicense" ;
+    sh:path spdx-software:declaredLicense ;
+  ] ;
+  sh:property [
+    sh:class spdx-software:SoftwarePurpose ;
+    sh:name "additionalPurpose" ;
+    sh:path spdx-software:additionalPurpose ;
+  ] ;
+  sh:property [
+    sh:datatype spdx-simplelicensing:AnyLicenseInfo ;
+    sh:maxCount 1 ;
+    sh:name "concludedLicense" ;
+    sh:path spdx-software:concludedLicense ;
+  ] ;
+  sh:property [
+    sh:class spdx-software:SoftwarePurpose ;
+    sh:maxCount 1 ;
+    sh:name "primaryPurpose" ;
+    sh:path spdx-software:primaryPurpose ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-software:SoftwareDependencyLinkType a owl:Class ;
+  rdfs:comment "TODO" ;
+  sh:in (
+    spdx-software:SoftwareDependencyLinkType-Dynamic 
+    spdx-software:SoftwareDependencyLinkType-Other 
+    spdx-software:SoftwareDependencyLinkType-Static 
+    spdx-software:SoftwareDependencyLinkType-Tool 
+  ) ;
+  vs:term_status "Stable" .
+
+spdx-software:SoftwareDependencyRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment "TODO" ;
+  rdfs:subClassOf spdx-core:LifecycleScopedRelationship ;
+  sh:property [
+    sh:class spdx-software:DependencyConditionalityType ;
+    sh:maxCount 1 ;
+    sh:name "conditionality" ;
+    sh:path spdx-software:conditionality ;
+  ] ;
+  sh:property [
+    sh:class spdx-software:SoftwareDependencyLinkType ;
+    sh:maxCount 1 ;
+    sh:name "softwareLinkage" ;
+    sh:path spdx-software:softwareLinkage ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-software:SoftwarePurpose a owl:Class ;
+  rdfs:comment """This field provides information about the primary purpose of an Element.
+Software Purpose is intrinsic to how the Element is being used rather than the content of the Element.
+This field is a reasonable estimate of the most likely usage of the Element
+from the producer and consumer perspective from which both parties can draw conclusions
+about the context in which the Element exists.""" ;
+  sh:in (
+    spdx-software:SoftwarePurpose-Application 
+    spdx-software:SoftwarePurpose-Archive 
+    spdx-software:SoftwarePurpose-Bom 
+    spdx-software:SoftwarePurpose-Configuration 
+    spdx-software:SoftwarePurpose-Container 
+    spdx-software:SoftwarePurpose-Data 
+    spdx-software:SoftwarePurpose-Device 
+    spdx-software:SoftwarePurpose-Documentation 
+    spdx-software:SoftwarePurpose-Evidence 
+    spdx-software:SoftwarePurpose-Executable 
+    spdx-software:SoftwarePurpose-File 
+    spdx-software:SoftwarePurpose-Firmware 
+    spdx-software:SoftwarePurpose-Framework 
+    spdx-software:SoftwarePurpose-Install 
+    spdx-software:SoftwarePurpose-Library 
+    spdx-software:SoftwarePurpose-Manifest 
+    spdx-software:SoftwarePurpose-Model 
+    spdx-software:SoftwarePurpose-Module 
+    spdx-software:SoftwarePurpose-OperatingSystem
+    spdx-software:SoftwarePurpose-Other 
+    spdx-software:SoftwarePurpose-Patch 
+    spdx-software:SoftwarePurpose-Requirement 
+    spdx-software:SoftwarePurpose-Source 
+    spdx-software:SoftwarePurpose-Specification 
+    spdx-software:SoftwarePurpose-Test 
+    ) ;
+  vs:term_status "Stable" .
+
+spdx-software:additionalPurpose a owl:ObjectProperty ;
+  rdfs:comment "Additional purpose provides information about the additional purposes of the software artifact in addition to the primaryPurpose." ;
+  rdfs:domain spdx-software:SoftwareArtifact ;
+  rdfs:range spdx-software:SoftwarePurpose ;
+  vs:term_status "Stable" .
+
+spdx-software:concludedLicense a owl:ObjectProperty ;
+  rdfs:comment """A concludedLicense is the license identified by the SPDX data creator,
+based on analyzing the license information in the software Package, File
+or Snippet and other information to arrive at a reasonably objective
+conclusion as to what license governs it.
+
+If a concludedLicense has a NONE value (NoneLicense), this indicates that the
+SPDX data creator has looked and did not find any license information for this
+software Package, File or Snippet.
+
+If a concludedLicense has a NOASSERTION value (NoAssertionLicense), this
+indicates that one of the following applies:
+* the SPDX data creator has attempted to but cannot reach a reasonable
+  objective determination;
+* the SPDX data creator has made no attempt to determine this field; or
+* the SPDX data creator has intentionally provided no information (no
+  meaning should be implied by doing so).
+
+A written explanation of a NOASSERTION value (NoAssertionLicense) MAY be
+provided in the licenseComment field.
+
+If the concludedLicense for a software Package, File or Snippet is not the
+same as its declaredLicense, a written explanation SHOULD be provided in
+the licenseComment field.
+
+If the declaredLicense for a software Package, File or Snippet is a choice
+of more than one license (e.g. a license expression combining two licenses
+through use of the `OR` operator), then the concludedLicense may either
+retain the license choice or identify which license was chosen.""" ;
+  rdfs:domain spdx-software:SoftwareArtifact ;
+  rdfs:range spdx-simplelicensing:AnyLicenseInfo ;
+  vs:term_status "Stable" .
+
+spdx-software:conditionality a owl:ObjectProperty ;
+  rdfs:comment "A conditionality is TODO" ;
+  rdfs:domain spdx-software:SoftwareDependencyRelationship ;
+  rdfs:range spdx-software:DependencyConditionalityType ;
+  vs:term_status "Stable" .
+
+spdx-software:declaredLicense a owl:ObjectProperty ;
+  rdfs:comment """A declaredLicense is the license identified in text in the software package,
+file or snippet as the license declared by its authors.
+
+This field is not intended to capture license information obtained from an
+external source, such as a package's website. Such information can be
+included, as needed, in a concludedLicense field.
+
+A declaredLicense may be expressed differently in practice for different
+types of artifacts. For example:
+
+* for Packages:
+  * would include license info describing the license of the Package as a
+    whole, when it is found in the Package itself (e.g., LICENSE file,
+    README file, metadata in the repository, etc.)
+  * would not include any license information that is not in the Package
+    itself (e.g., license information from the project’s website or from a
+    third party repository or website)
+* for Files:
+  * would include license info found in the File itself (e.g., license
+    header or notice, comments, SPDX-License-Identifier expression)
+  * would not include license info found in a different file (e.g., LICENSE
+    file in the top directory of a repository)
+* for Snippets:
+  * would include license info found in the Snippet itself (e.g., license
+    notice, comments, SPDX-License-Identifier expression)
+  * would not include license info found elsewhere in the File or in a
+    different File (e.g., comment at top of File if it is not within the
+    Snippet, LICENSE file in the top directory of a repository)
+
+If a declaredLicense has a NONE value (NoneLicense), this indicates that the
+corresponding Package, File or Snippet contains no license information
+whatsoever.
+
+If a declaredLicense has a NOASSERTION value (NoAssertionLicense), this
+indicates that one of the following applies:
+* the SPDX data creator has attempted to but cannot reach a reasonable
+  objective determination;
+* the SPDX data creator has made no attempt to determine this field; or
+* the SPDX data creator has intentionally provided no information (no meaning
+  should be implied by doing so).""" ;
+  rdfs:domain spdx-software:SoftwareArtifact ;
+  rdfs:range spdx-simplelicensing:AnyLicenseInfo ;
+  vs:term_status "Stable" .
+
+spdx-software:primaryPurpose a owl:ObjectProperty ;
+  rdfs:comment "primaryPurpose provides information about the primary purpose of the software artifact." ;
+  rdfs:domain spdx-software:SoftwareArtifact ;
+  rdfs:range spdx-software:SoftwarePurpose ;
+  vs:term_status "Stable" .
+
+spdx-software:sbomType a owl:ObjectProperty ;
+  rdfs:comment """This field is a reasonable estimation of the type of SBOM created from a creator perspective.
+It is intended to be used to give guidance on the elements that may be contained within it.
+Aligning with the guidance produced in [Types of Software Bill of Material (SBOM) Documents](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf).""" ;
+  rdfs:domain spdx-software:Sbom ;
+  rdfs:range spdx-software:SbomType ;
+  vs:term_status "Stable" .
+
+spdx-software:softwareLinkage a owl:ObjectProperty ;
+  rdfs:comment "A softwareLinkage is TODO" ;
+  rdfs:domain spdx-software:SoftwareDependencyRelationship ;
+  rdfs:range spdx-software:SoftwareDependencyLinkType ;
+  vs:term_status "Stable" .
+
+spdx-software:attributionText a owl:DatatypeProperty ;
+  rdfs:comment """An attributionText for a software Package, File or Snippet provides a consumer
+of SPDX data with acknowledgement content, to assist redistributors of the
+Package, File or Snippet with reproducing those acknowledgements.
+
+For example, this field may include a statement that is required by a
+particular license to be reproduced in end-user documentation, advertising
+materials, or another form.
+
+This field may describe where, or in which contexts, the acknowledgements
+need to be reproduced, but it is not required to do so. The SPDX data creator
+may also explain elsewhere (such as in a licenseComment field) how they intend
+for data in this field to be used.
+
+An attributionText is is not meant to include the software Package, File or
+Snippet’s actual complete license text (see concludedLicense to identify the
+corresponding license).""" ;
+  rdfs:domain spdx-software:SoftwareArtifact ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-software:byteRange a owl:DatatypeProperty ;
+  rdfs:comment """This field defines the byte range in the original host file that the snippet information applies to.
+A range of bytes is independent of various formatting concerns, and the most accurate way 
+of referring to the differences. The choice was made to start the numbering of 
+the byte range at 1 to be consistent with the W3C pointer method vocabulary.""" ;
+  rdfs:domain spdx-software:Snippet ;
+  rdfs:range spdx-core:PositiveIntegerRange ;
+  vs:term_status "Stable" .
+
+spdx-software:contentIdentifier a owl:DatatypeProperty ;
+  rdfs:comment """The contentIdentifier provides a canonical, unique, immutable artifact identifier for each software artifact. SPDX 3.0 describes software artifacts as Snippet, File, or Package Elements. The ContentIdentifier can be calculated for any software artifact and can be recorded for any of these SPDX 3.0 Elements using Omnibor, an attempt to standardize how software artifacts are identified independent of which programming language, version control system, build tool, package manager, or software distribution mechanism is in use.  
+
+The contentIdentifier is defined as the [Git Object Identifier](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects) (gitoid) of type `blob` of the software artifact. The use of a git-based version control system is not necessary to calculate a contentIdentifier for any software artifact.
+
+The gitoid is expressed in the ContentIdentifier property by using the IANA [gitoid URI scheme](https://www.iana.org/assignments/uri-schemes/prov/gitoid).
+
+```
+Scheme syntax: gitoid":"<git object type>":"<hash algorithm>":"<hash value>
+```
+
+The OmniBOR ID for the OmniBOR Document associated with a software artifact should not be recorded in this field. Rather, OmniBOR IDs should be recorded in the SPDX Element's ExternalIdentifier property. See [https://omnibor.io](https://omnibor.io) for more details.""" ;
+  rdfs:domain spdx-software:SoftwareArtifact ;
+  rdfs:range xsd:anyURI ;
+  vs:term_status "Stable" .
+
+spdx-software:contentType a owl:DatatypeProperty ;
+  rdfs:comment """This field is a reasonable estimation of the content type of the Element, from a creator perspective.
+Content type is intrinsic to the Element, independent of how the Element is being used.""" ;
+  rdfs:domain spdx-software:File ;
+  rdfs:range spdx-core:MediaType ;
+  vs:term_status "Stable" .
+
+spdx-software:copyrightText a owl:DatatypeProperty ;
+  rdfs:comment """A copyrightText consists of the text(s) of the copyright notice(s) found
+for a software Package, File or Snippet, if any.
+
+If a copyrightText contains text, then it may contain any text related to
+one or more copyright notices (even if not complete) for that software
+Package, File or Snippet.
+
+If a copyrightText has a "NONE" value, this indicates that the software
+Package, File or Snippet contains no copyright notice whatsoever.
+
+If a copyrightText has a "NOASSERTION" value, this indicates that one of the
+following applies:
+* the SPDX data creator has attempted to but cannot reach a reasonable
+  objective determination;
+* the SPDX data creator has made no attempt to determine this field; or
+* the SPDX data creator has intentionally provided no information (no
+  meaning should be implied by doing so).""" ;
+  rdfs:domain spdx-software:SoftwareArtifact ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-software:downloadLocation a owl:DatatypeProperty ;
+  rdfs:comment """DownloadLocation identifies the download Uniform Resource Identifier 
+for the package at the time that the document was created.
+Where and how to download the exact package being referenced 
+is critical for verification and tracking data.""" ;
+  rdfs:domain spdx-software:Package ;
+  rdfs:range xsd:anyURI ;
+  vs:term_status "Stable" .
+
+spdx-software:homePage a owl:DatatypeProperty ;
+  rdfs:comment """HomePage is a place for the SPDX document creator to record a website that serves as the package's home page.
+This saves the recipient of the SPDX document who is looking for more info from
+having to search for and verify a match between the package and the associated project home page.
+This link can also be used to reference further information about the package
+referenced by the SPDX document creator.""" ;
+  rdfs:domain spdx-software:Package ;
+  rdfs:range xsd:anyURI ;
+  vs:term_status "Stable" .
+
+spdx-software:lineRange a owl:DatatypeProperty ;
+  rdfs:comment """This field defines the line range in the original host file that the snippet information applies to.
+If there is a disagreement between the byte range and line range, the byte range values will take precedence.
+A range of lines is a convenient reference for those files where there is a known line delimiter. 
+The choice was made to start the numbering of the lines at 1 to be consistent with the W3C pointer method vocabulary.""" ;
+  rdfs:domain spdx-software:Snippet ;
+  rdfs:range spdx-core:PositiveIntegerRange ;
+  vs:term_status "Stable" .
+
+spdx-software:packageUrl a owl:DatatypeProperty ;
+  rdfs:comment """A packageUrl (commonly pronounced and referred to as "purl") is an attempt to standardize package representations in order to reliably identify and locate software packages. A purl is a URL string which represents a package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases.
+
+the purl URL string is defined by seven components:
+```
+scheme:type/namespace/name@version?qualifiers#subpath
+```
+
+The definition for each component can be found in the [purl specification](https://github.com/package-url/purl-spec/blob/master/PURL-SPECIFICATION.rst). Components are designed such that they form a hierarchy from the most significant on the left to the least significant components on the right. 
+
+Parsing a purl string into its components works from left to right. Some extra type-specific normalizations are required. For more information, see [How to parse a purl string in its components](https://github.com/package-url/purl-spec/blob/master/PURL-SPECIFICATION.rst#how-to-parse-a-purl-string-in-its-components).""" ;
+  rdfs:domain spdx-software:Package ;
+  rdfs:range xsd:anyURI ;
+  vs:term_status "Stable" .
+
+spdx-software:packageVersion a owl:DatatypeProperty ;
+  rdfs:comment "A packageVersion is useful for identification purposes and for indicating later changes of the package version." ;
+  rdfs:domain spdx-software:Package ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-software:sourceInfo a owl:DatatypeProperty ;
+  rdfs:comment """SourceInfo records any relevant background information or additional comments
+about the origin of the package. For example, this field might include comments 
+indicating whether the package was pulled from a source code management system 
+or has been repackaged. The creator can provide additional information to describe
+any anomalies or discoveries in the determination of the origin of the package.""" ;
+  rdfs:domain spdx-software:Package ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-software:DependencyConditionalityType-Optional a owl:NamedIndividual, spdx-software:DependencyConditionalityType ;
+  rdfs:label "optional" .
+
+spdx-software:DependencyConditionalityType-Other a owl:NamedIndividual, spdx-software:DependencyConditionalityType ;
+  rdfs:label "other" .
+
+spdx-software:DependencyConditionalityType-Prerequisite a owl:NamedIndividual, spdx-software:DependencyConditionalityType ;
+  rdfs:label "prerequisite" .
+
+spdx-software:DependencyConditionalityType-Provided a owl:NamedIndividual, spdx-software:DependencyConditionalityType ;
+  rdfs:label "provided" .
+
+spdx-software:DependencyConditionalityType-Required a owl:NamedIndividual, spdx-software:DependencyConditionalityType ;
+  rdfs:label "required" .
+
+spdx-software:SbomType-Analyzed a owl:NamedIndividual, spdx-software:SbomType ;
+  rdfs:label "analyzed" .
+
+spdx-software:SbomType-Build a owl:NamedIndividual, spdx-software:SbomType ;
+  rdfs:label "build" .
+
+spdx-software:SbomType-Deployed a owl:NamedIndividual, spdx-software:SbomType ;
+  rdfs:label "deployed" .
+
+spdx-software:SbomType-Design a owl:NamedIndividual, spdx-software:SbomType ;
+  rdfs:label "design" .
+
+spdx-software:SbomType-Runtime a owl:NamedIndividual, spdx-software:SbomType ;
+  rdfs:label "runtime" .
+
+spdx-software:SbomType-Source a owl:NamedIndividual, spdx-software:SbomType ;
+  rdfs:label "source" .
+
+spdx-software:SoftwareDependencyLinkType-Dynamic a owl:NamedIndividual, spdx-software:SoftwareDependencyLinkType ;
+  rdfs:label "dynamic" .
+
+spdx-software:SoftwareDependencyLinkType-Other a owl:NamedIndividual, spdx-software:SoftwareDependencyLinkType ;
+  rdfs:label "other" .
+
+spdx-software:SoftwareDependencyLinkType-Static a owl:NamedIndividual, spdx-software:SoftwareDependencyLinkType ;
+  rdfs:label "static" .
+
+spdx-software:SoftwareDependencyLinkType-Tool a owl:NamedIndividual, spdx-software:SoftwareDependencyLinkType ;
+  rdfs:label "tool" .
+
+spdx-software:SoftwarePurpose-Application a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "application" .
+
+spdx-software:SoftwarePurpose-Archive a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "archive" .
+
+spdx-software:SoftwarePurpose-Bom a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "bom" .
+
+spdx-software:SoftwarePurpose-Configuration a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "configuration" .
+
+spdx-software:SoftwarePurpose-Container a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "container" .
+
+spdx-software:SoftwarePurpose-Data a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "data" .
+
+spdx-software:SoftwarePurpose-Device a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "device" .
+
+spdx-software:SoftwarePurpose-Documentation a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "documentation" .
+
+spdx-software:SoftwarePurpose-Evidence a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "evidence" .
+
+spdx-software:SoftwarePurpose-Executable a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "executable" .
+
+spdx-software:SoftwarePurpose-File a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "file" .
+
+spdx-software:SoftwarePurpose-Firmware a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "firmware" .
+
+spdx-software:SoftwarePurpose-Framework a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "framework" .
+
+spdx-software:SoftwarePurpose-Install a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "install" .
+
+spdx-software:SoftwarePurpose-Library a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "library" .
+
+spdx-software:SoftwarePurpose-Manifest a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "manifest" .
+
+spdx-software:SoftwarePurpose-Model a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "model" .
+
+spdx-software:SoftwarePurpose-Module a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "module" .
+
+spdx-software:SoftwarePurpose-OperatingSystem a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "operatingSystem" .
+
+spdx-software:SoftwarePurpose-Other a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "other" .
+
+spdx-software:SoftwarePurpose-Patch a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "patch" .
+
+spdx-software:SoftwarePurpose-Requirement a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "requirement" .
+
+spdx-software:SoftwarePurpose-Source a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "source" .
+
+spdx-software:SoftwarePurpose-Specification a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "specification" .
+
+spdx-software:SoftwarePurpose-Test a owl:NamedIndividual, spdx-software:SoftwarePurpose ;
+  rdfs:label "test" .
+
+

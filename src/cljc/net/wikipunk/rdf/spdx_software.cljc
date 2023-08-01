@@ -1,16 +1,10 @@
 (ns net.wikipunk.rdf.spdx-software
-  {:dcat/downloadURL  "resources/spdx/model.ttl",
+  {:dcat/downloadURL  "resources/spdx/Software/Software.ttl",
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
                        "sh" "http://www.w3.org/ns/shacl#",
-                       "spdx-ai" "https://spdx.org/rdf/v3/AI/",
-                       "spdx-build" "https://spdx.org/rdf/v3/Build/",
                        "spdx-core" "https://spdx.org/rdf/v3/Core/",
-                       "spdx-dataset" "https://spdx.org/rdf/v3/Dataset/",
-                       "spdx-expandedlicensing"
-                       "https://spdx.org/rdf/v3/ExpandedLicensing/",
-                       "spdx-security" "https://spdx.org/rdf/v3/Security/",
                        "spdx-simplelicensing"
                        "https://spdx.org/rdf/v3/SimpleLicensing/",
                        "spdx-software" "https://spdx.org/rdf/v3/Software/",
@@ -22,21 +16,50 @@
 
 (def DependencyConditionalityType
   "TODO"
-  {:db/ident :spdx-software/DependencyConditionalityType,
-   :owl/oneOf
-   [{:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/DependencyConditionalityType/other"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/DependencyConditionalityType/prerequisite"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/DependencyConditionalityType/required"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/DependencyConditionalityType/provided"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/DependencyConditionalityType/optional"}],
-   :rdf/type :owl/Class,
-   :rdfs/comment "TODO",
+  {:db/ident       :spdx-software/DependencyConditionalityType,
+   :rdf/type       :owl/Class,
+   :rdfs/comment   "TODO",
+   :sh/in          [:spdx-software/DependencyConditionalityType-Optional
+                    :spdx-software/DependencyConditionalityType-Other
+                    :spdx-software/DependencyConditionalityType-Prerequisite
+                    :spdx-software/DependencyConditionalityType-Provided
+                    :spdx-software/DependencyConditionalityType-Required],
    :vs/term_status "Stable"})
+
+(def DependencyConditionalityType-Optional
+  "optional"
+  {:db/ident   :spdx-software/DependencyConditionalityType-Optional,
+   :rdf/type   [:spdx-software/DependencyConditionalityType
+                :owl/NamedIndividual],
+   :rdfs/label "optional"})
+
+(def DependencyConditionalityType-Other
+  "other"
+  {:db/ident   :spdx-software/DependencyConditionalityType-Other,
+   :rdf/type   [:spdx-software/DependencyConditionalityType
+                :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def DependencyConditionalityType-Prerequisite
+  "prerequisite"
+  {:db/ident   :spdx-software/DependencyConditionalityType-Prerequisite,
+   :rdf/type   [:spdx-software/DependencyConditionalityType
+                :owl/NamedIndividual],
+   :rdfs/label "prerequisite"})
+
+(def DependencyConditionalityType-Provided
+  "provided"
+  {:db/ident   :spdx-software/DependencyConditionalityType-Provided,
+   :rdf/type   [:spdx-software/DependencyConditionalityType
+                :owl/NamedIndividual],
+   :rdfs/label "provided"})
+
+(def DependencyConditionalityType-Required
+  "required"
+  {:db/ident   :spdx-software/DependencyConditionalityType-Required,
+   :rdf/type   [:spdx-software/DependencyConditionalityType
+                :owl/NamedIndividual],
+   :rdfs/label "required"})
 
 (def File
   "Refers to any object that stores content on a computer.\nThe type of content can optionally be provided in the contentType property.\nExternal property restriction on /Core/Element/name: minCount: 1"
@@ -44,8 +67,7 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "Refers to any object that stores content on a computer.\nThe type of content can optionally be provided in the contentType property.\nExternal property restriction on /Core/Element/name: minCount: 1",
-   :rdfs/subClassOf
-   [:spdx-software/SoftwareArtifact :spdx-core/Artifact :spdx-core/Element],
+   :rdfs/subClassOf [:spdx-software/SoftwareArtifact :spdx-core/Artifact],
    :sh/property {:sh/datatype :spdx-core/MediaType,
                  :sh/maxCount #xsd/integer 1,
                  :sh/name     "contentType",
@@ -58,24 +80,23 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "A package refers to any unit of content that can be associated with a distribution of software.\nTypically, a package is composed of one or more files.  \nAny of the following non-limiting examples may be (but are not required to be) represented in SPDX as a package:\n\n - a tarball, zip file or other archive\n - a directory or sub-directory\n - a separately distributed piece of software which another Package or File uses or depends upon (e.g., a Python package, a Go module, ...)\n - a container image, and/or each image layer within a container image\n - a collection of one or more sub-packages\n - a Git repository snapshot from a particular point in time\n\nNote that some of these could be represented in SPDX as a file as well.\nExternal property restriction on /Core/Element/name: minCount: 1",
-   :rdfs/subClassOf
-   [:spdx-software/SoftwareArtifact :spdx-core/Artifact :spdx-core/Element],
-   :sh/property [{:sh/datatype :xsd/anyURI,
+   :rdfs/subClassOf [:spdx-software/SoftwareArtifact :spdx-core/Artifact],
+   :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "homePage",
-                  :sh/path     :spdx-software/homePage}
-                 {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "packageUrl",
-                  :sh/path     :spdx-software/packageUrl}
+                  :sh/name     "packageVersion",
+                  :sh/path     :spdx-software/packageVersion}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "sourceInfo",
                   :sh/path     :spdx-software/sourceInfo}
-                 {:sh/datatype :xsd/string,
+                 {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "packageVersion",
-                  :sh/path     :spdx-software/packageVersion}
+                  :sh/name     "packageUrl",
+                  :sh/path     :spdx-software/packageUrl}
+                 {:sh/datatype :xsd/anyURI,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "homePage",
+                  :sh/path     :spdx-software/homePage}
                  {:sh/datatype :xsd/anyURI,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "downloadLocation",
@@ -88,10 +109,7 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "A Software Bill of Materials (SBOM) is a collection of SPDX Elements describing a single package.\nThis could include details of the content and composition of the product,\nprovenance details of the product and/or\nits composition, licensing information, known quality or security issues, etc.",
-   :rdfs/subClassOf [:spdx-core/Bom
-                     :spdx-core/Bundle
-                     :spdx-core/ElementCollection
-                     :spdx-core/Element],
+   :rdfs/subClassOf :spdx-core/Bom,
    :sh/property {:sh/class :spdx-software/SbomType,
                  :sh/name  "sbomType",
                  :sh/path  :spdx-software/sbomType},
@@ -100,17 +118,52 @@
 (def SbomType
   "The set of SBOM types with definitions as defined in [Types of Software Bill of Material (SBOM) Documents](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf), published on April 21, 2023. \nAn SBOM type describes the most likely type of an SBOM from the producer perspective, so that consumers can draw conclusions about the data inside an SBOM.  A single SBOM can have multiple SBOM document types associated with it."
   {:db/ident :spdx-software/SbomType,
-   :owl/oneOf [{:rdfa/uri "https://spdx.org/rdf/v3/Software/SbomType/source"}
-               {:rdfa/uri "https://spdx.org/rdf/v3/Software/SbomType/design"}
-               {:rdfa/uri "https://spdx.org/rdf/v3/Software/SbomType/analyzed"}
-               {:rdfa/uri "https://spdx.org/rdf/v3/Software/SbomType/runtime"}
-               {:rdfa/uri "https://spdx.org/rdf/v3/Software/SbomType/build"}
-               {:rdfa/uri
-                "https://spdx.org/rdf/v3/Software/SbomType/deployed"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "The set of SBOM types with definitions as defined in [Types of Software Bill of Material (SBOM) Documents](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf), published on April 21, 2023. \nAn SBOM type describes the most likely type of an SBOM from the producer perspective, so that consumers can draw conclusions about the data inside an SBOM.  A single SBOM can have multiple SBOM document types associated with it.",
+   :sh/in [:spdx-software/SbomType-Analyzed
+           :spdx-software/SbomType-Build
+           :spdx-software/SbomType-Deployed
+           :spdx-software/SbomType-Design
+           :spdx-software/SbomType-Runtime
+           :spdx-software/SbomType-Source],
    :vs/term_status "Stable"})
+
+(def SbomType-Analyzed
+  "analyzed"
+  {:db/ident   :spdx-software/SbomType-Analyzed,
+   :rdf/type   [:spdx-software/SbomType :owl/NamedIndividual],
+   :rdfs/label "analyzed"})
+
+(def SbomType-Build
+  "build"
+  {:db/ident   :spdx-software/SbomType-Build,
+   :rdf/type   [:spdx-software/SbomType :owl/NamedIndividual],
+   :rdfs/label "build"})
+
+(def SbomType-Deployed
+  "deployed"
+  {:db/ident   :spdx-software/SbomType-Deployed,
+   :rdf/type   [:spdx-software/SbomType :owl/NamedIndividual],
+   :rdfs/label "deployed"})
+
+(def SbomType-Design
+  "design"
+  {:db/ident   :spdx-software/SbomType-Design,
+   :rdf/type   [:spdx-software/SbomType :owl/NamedIndividual],
+   :rdfs/label "design"})
+
+(def SbomType-Runtime
+  "runtime"
+  {:db/ident   :spdx-software/SbomType-Runtime,
+   :rdf/type   [:spdx-software/SbomType :owl/NamedIndividual],
+   :rdfs/label "runtime"})
+
+(def SbomType-Source
+  "source"
+  {:db/ident   :spdx-software/SbomType-Source,
+   :rdf/type   [:spdx-software/SbomType :owl/NamedIndividual],
+   :rdfs/label "source"})
 
 (def Snippet
   "A Snippet describes a certain part of a file and can be used when the file is known to have some content\nthat has been included from another original source. Snippets are useful for denoting when part of a file\nmay have been originally created under another license or copied from a place with a known vulnerability."
@@ -118,8 +171,7 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "A Snippet describes a certain part of a file and can be used when the file is known to have some content\nthat has been included from another original source. Snippets are useful for denoting when part of a file\nmay have been originally created under another license or copied from a place with a known vulnerability.",
-   :rdfs/subClassOf
-   [:spdx-software/SoftwareArtifact :spdx-core/Artifact :spdx-core/Element],
+   :rdfs/subClassOf [:spdx-software/SoftwareArtifact :spdx-core/Artifact],
    :sh/property [{:sh/class    :spdx-core/PositiveIntegerRange,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "byteRange",
@@ -136,8 +188,19 @@
    :rdf/type [:owl/Class :sh/NodeShape],
    :rdfs/comment
    "A software artifact is a distinct article or unit related to software\nsuch as a package, a file, or a snippet.",
-   :rdfs/subClassOf [:spdx-core/Artifact :spdx-core/Element],
-   :sh/property [{:sh/datatype :xsd/string,
+   :rdfs/subClassOf :spdx-core/Artifact,
+   :sh/property [{:sh/datatype :xsd/anyURI,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "contentIdentifier",
+                  :sh/path     :spdx-software/contentIdentifier}
+                 {:sh/datatype :spdx-simplelicensing/AnyLicenseInfo,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "concludedLicense",
+                  :sh/path     :spdx-software/concludedLicense}
+                 {:sh/class :spdx-software/SoftwarePurpose,
+                  :sh/name  "additionalPurpose",
+                  :sh/path  :spdx-software/additionalPurpose}
+                 {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "copyrightText",
                   :sh/path     :spdx-software/copyrightText}
@@ -145,21 +208,10 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "primaryPurpose",
                   :sh/path     :spdx-software/primaryPurpose}
-                 {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "contentIdentifier",
-                  :sh/path     :spdx-software/contentIdentifier}
-                 {:sh/class :spdx-software/SoftwarePurpose,
-                  :sh/name  "additionalPurpose",
-                  :sh/path  :spdx-software/additionalPurpose}
                  {:sh/datatype :spdx-simplelicensing/AnyLicenseInfo,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "declaredLicense",
                   :sh/path     :spdx-software/declaredLicense}
-                 {:sh/datatype :spdx-simplelicensing/AnyLicenseInfo,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "concludedLicense",
-                  :sh/path     :spdx-software/concludedLicense}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "attributionText",
@@ -168,72 +220,237 @@
 
 (def SoftwareDependencyLinkType
   "TODO"
-  {:db/ident :spdx-software/SoftwareDependencyLinkType,
-   :owl/oneOf
-   [{:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/SoftwareDependencyLinkType/dynamic"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/SoftwareDependencyLinkType/other"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/SoftwareDependencyLinkType/tool"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/SoftwareDependencyLinkType/static"}],
-   :rdf/type :owl/Class,
-   :rdfs/comment "TODO",
+  {:db/ident       :spdx-software/SoftwareDependencyLinkType,
+   :rdf/type       :owl/Class,
+   :rdfs/comment   "TODO",
+   :sh/in          [:spdx-software/SoftwareDependencyLinkType-Dynamic
+                    :spdx-software/SoftwareDependencyLinkType-Other
+                    :spdx-software/SoftwareDependencyLinkType-Static
+                    :spdx-software/SoftwareDependencyLinkType-Tool],
    :vs/term_status "Stable"})
+
+(def SoftwareDependencyLinkType-Dynamic
+  "dynamic"
+  {:db/ident   :spdx-software/SoftwareDependencyLinkType-Dynamic,
+   :rdf/type   [:spdx-software/SoftwareDependencyLinkType :owl/NamedIndividual],
+   :rdfs/label "dynamic"})
+
+(def SoftwareDependencyLinkType-Other
+  "other"
+  {:db/ident   :spdx-software/SoftwareDependencyLinkType-Other,
+   :rdf/type   [:spdx-software/SoftwareDependencyLinkType :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def SoftwareDependencyLinkType-Static
+  "static"
+  {:db/ident   :spdx-software/SoftwareDependencyLinkType-Static,
+   :rdf/type   [:spdx-software/SoftwareDependencyLinkType :owl/NamedIndividual],
+   :rdfs/label "static"})
+
+(def SoftwareDependencyLinkType-Tool
+  "tool"
+  {:db/ident   :spdx-software/SoftwareDependencyLinkType-Tool,
+   :rdf/type   [:spdx-software/SoftwareDependencyLinkType :owl/NamedIndividual],
+   :rdfs/label "tool"})
 
 (def SoftwareDependencyRelationship
   "TODO"
   {:db/ident        :spdx-software/SoftwareDependencyRelationship,
    :rdf/type        [:sh/NodeShape :owl/Class],
    :rdfs/comment    "TODO",
-   :rdfs/subClassOf [:spdx-core/LifecycleScopedRelationship
-                     :spdx-core/Relationship
-                     :spdx-core/Element],
-   :sh/property     [{:sh/class    :spdx-software/DependencyConditionalityType,
-                      :sh/maxCount #xsd/integer 1,
-                      :sh/name     "conditionality",
-                      :sh/path     :spdx-software/conditionality}
-                     {:sh/class    :spdx-software/SoftwareDependencyLinkType,
+   :rdfs/subClassOf :spdx-core/LifecycleScopedRelationship,
+   :sh/property     [{:sh/class    :spdx-software/SoftwareDependencyLinkType,
                       :sh/maxCount #xsd/integer 1,
                       :sh/name     "softwareLinkage",
-                      :sh/path     :spdx-software/softwareLinkage}],
+                      :sh/path     :spdx-software/softwareLinkage}
+                     {:sh/class    :spdx-software/DependencyConditionalityType,
+                      :sh/maxCount #xsd/integer 1,
+                      :sh/name     "conditionality",
+                      :sh/path     :spdx-software/conditionality}],
    :vs/term_status  "Stable"})
 
 (def SoftwarePurpose
   "This field provides information about the primary purpose of an Element.\nSoftware Purpose is intrinsic to how the Element is being used rather than the content of the Element.\nThis field is a reasonable estimate of the most likely usage of the Element\nfrom the producer and consumer perspective from which both parties can draw conclusions\nabout the context in which the Element exists."
   {:db/ident :spdx-software/SoftwarePurpose,
-   :owl/oneOf
-   [{:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/module"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/framework"}
-    {:rdfa/uri
-     "https://spdx.org/rdf/v3/Software/SoftwarePurpose/operatingSystem"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/library"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/evidence"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/bom"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/test"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/install"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/documentation"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/model"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/archive"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/executable"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/container"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/requirement"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/other"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/data"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/application"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/configuration"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/firmware"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/manifest"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/specification"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/file"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/source"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/patch"}
-    {:rdfa/uri "https://spdx.org/rdf/v3/Software/SoftwarePurpose/device"}],
    :rdf/type :owl/Class,
    :rdfs/comment
    "This field provides information about the primary purpose of an Element.\nSoftware Purpose is intrinsic to how the Element is being used rather than the content of the Element.\nThis field is a reasonable estimate of the most likely usage of the Element\nfrom the producer and consumer perspective from which both parties can draw conclusions\nabout the context in which the Element exists.",
+   :sh/in [:spdx-software/SoftwarePurpose-Application
+           :spdx-software/SoftwarePurpose-Archive
+           :spdx-software/SoftwarePurpose-Bom
+           :spdx-software/SoftwarePurpose-Configuration
+           :spdx-software/SoftwarePurpose-Container
+           :spdx-software/SoftwarePurpose-Data
+           :spdx-software/SoftwarePurpose-Device
+           :spdx-software/SoftwarePurpose-Documentation
+           :spdx-software/SoftwarePurpose-Evidence
+           :spdx-software/SoftwarePurpose-Executable
+           :spdx-software/SoftwarePurpose-File
+           :spdx-software/SoftwarePurpose-Firmware
+           :spdx-software/SoftwarePurpose-Framework
+           :spdx-software/SoftwarePurpose-Install
+           :spdx-software/SoftwarePurpose-Library
+           :spdx-software/SoftwarePurpose-Manifest
+           :spdx-software/SoftwarePurpose-Model
+           :spdx-software/SoftwarePurpose-Module
+           :spdx-software/SoftwarePurpose-OperatingSystem
+           :spdx-software/SoftwarePurpose-Other
+           :spdx-software/SoftwarePurpose-Patch
+           :spdx-software/SoftwarePurpose-Requirement
+           :spdx-software/SoftwarePurpose-Source
+           :spdx-software/SoftwarePurpose-Specification
+           :spdx-software/SoftwarePurpose-Test],
    :vs/term_status "Stable"})
+
+(def SoftwarePurpose-Application
+  "application"
+  {:db/ident   :spdx-software/SoftwarePurpose-Application,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "application"})
+
+(def SoftwarePurpose-Archive
+  "archive"
+  {:db/ident   :spdx-software/SoftwarePurpose-Archive,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "archive"})
+
+(def SoftwarePurpose-Bom
+  "bom"
+  {:db/ident   :spdx-software/SoftwarePurpose-Bom,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "bom"})
+
+(def SoftwarePurpose-Configuration
+  "configuration"
+  {:db/ident   :spdx-software/SoftwarePurpose-Configuration,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "configuration"})
+
+(def SoftwarePurpose-Container
+  "container"
+  {:db/ident   :spdx-software/SoftwarePurpose-Container,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "container"})
+
+(def SoftwarePurpose-Data
+  "data"
+  {:db/ident   :spdx-software/SoftwarePurpose-Data,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "data"})
+
+(def SoftwarePurpose-Device
+  "device"
+  {:db/ident   :spdx-software/SoftwarePurpose-Device,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "device"})
+
+(def SoftwarePurpose-Documentation
+  "documentation"
+  {:db/ident   :spdx-software/SoftwarePurpose-Documentation,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "documentation"})
+
+(def SoftwarePurpose-Evidence
+  "evidence"
+  {:db/ident   :spdx-software/SoftwarePurpose-Evidence,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "evidence"})
+
+(def SoftwarePurpose-Executable
+  "executable"
+  {:db/ident   :spdx-software/SoftwarePurpose-Executable,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "executable"})
+
+(def SoftwarePurpose-File
+  "file"
+  {:db/ident   :spdx-software/SoftwarePurpose-File,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "file"})
+
+(def SoftwarePurpose-Firmware
+  "firmware"
+  {:db/ident   :spdx-software/SoftwarePurpose-Firmware,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "firmware"})
+
+(def SoftwarePurpose-Framework
+  "framework"
+  {:db/ident   :spdx-software/SoftwarePurpose-Framework,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "framework"})
+
+(def SoftwarePurpose-Install
+  "install"
+  {:db/ident   :spdx-software/SoftwarePurpose-Install,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "install"})
+
+(def SoftwarePurpose-Library
+  "library"
+  {:db/ident   :spdx-software/SoftwarePurpose-Library,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "library"})
+
+(def SoftwarePurpose-Manifest
+  "manifest"
+  {:db/ident   :spdx-software/SoftwarePurpose-Manifest,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "manifest"})
+
+(def SoftwarePurpose-Model
+  "model"
+  {:db/ident   :spdx-software/SoftwarePurpose-Model,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "model"})
+
+(def SoftwarePurpose-Module
+  "module"
+  {:db/ident   :spdx-software/SoftwarePurpose-Module,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "module"})
+
+(def SoftwarePurpose-OperatingSystem
+  "operatingSystem"
+  {:db/ident   :spdx-software/SoftwarePurpose-OperatingSystem,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "operatingSystem"})
+
+(def SoftwarePurpose-Other
+  "other"
+  {:db/ident   :spdx-software/SoftwarePurpose-Other,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "other"})
+
+(def SoftwarePurpose-Patch
+  "patch"
+  {:db/ident   :spdx-software/SoftwarePurpose-Patch,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "patch"})
+
+(def SoftwarePurpose-Requirement
+  "requirement"
+  {:db/ident   :spdx-software/SoftwarePurpose-Requirement,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "requirement"})
+
+(def SoftwarePurpose-Source
+  "source"
+  {:db/ident   :spdx-software/SoftwarePurpose-Source,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "source"})
+
+(def SoftwarePurpose-Specification
+  "specification"
+  {:db/ident   :spdx-software/SoftwarePurpose-Specification,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "specification"})
+
+(def SoftwarePurpose-Test
+  "test"
+  {:db/ident   :spdx-software/SoftwarePurpose-Test,
+   :rdf/type   [:spdx-software/SoftwarePurpose :owl/NamedIndividual],
+   :rdfs/label "test"})
 
 (def additionalPurpose
   "Additional purpose provides information about the additional purposes of the software artifact in addition to the primaryPurpose."

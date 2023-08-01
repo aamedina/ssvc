@@ -66,6 +66,7 @@
    :dcterms/license {:rdfa/uri "http://spdx.org/licenses/Community-Spec-1.0"},
    :dcterms/modified #xsd/dateTime #inst "2023-07-31T14:53:02.000+00:00",
    :dcterms/references [{:rdfa/uri "https://spdx.org/rdf/v3/Software/"}
+                        {:rdfa/uri "https://spdx.org/rdf/v3/SimpleLicensing/"}
                         {:rdfa/uri "https://spdx.org/rdf/v3/Core/"}],
    :rdf/type [:spdx-core/ProfileIdentifierType :owl/NamedIndividual]})
 
@@ -165,6 +166,7 @@
    :dcterms/issued #xsd/dateTime #inst "2023-07-31T14:53:02.000+00:00",
    :dcterms/license {:rdfa/uri "http://spdx.org/licenses/Community-Spec-1.0"},
    :dcterms/modified #xsd/dateTime #inst "2023-07-31T14:53:02.000+00:00",
-   :dcterms/references {:rdfa/uri "https://spdx.org/rdf/v3/Core/"},
+   :dcterms/references [{:rdfa/uri "https://spdx.org/rdf/v3/SimpleLicensing/"}
+                        {:rdfa/uri "https://spdx.org/rdf/v3/Core/"}],
    :rdf/type [:spdx-core/ProfileIdentifierType :owl/NamedIndividual],
    :rdfs/label "Software Profile"})

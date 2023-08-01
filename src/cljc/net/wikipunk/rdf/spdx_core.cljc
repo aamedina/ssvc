@@ -77,27 +77,27 @@
    :rdfs/comment
    "An artifact is a distinct article or unit within the digital domain,\nsuch as an electronic file, a software package, a device or an element of data.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/class :spdx-core/Agent,
+   :sh/property [{:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "builtTime",
+                  :sh/path     :spdx-core/builtTime}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "releaseTime",
+                  :sh/path     :spdx-core/releaseTime}
+                 {:sh/class :spdx-core/Agent,
                   :sh/name  "originatedBy",
                   :sh/path  :spdx-core/originatedBy}
+                 {:sh/class :spdx-core/Agent,
+                  :sh/name  "suppliedBy",
+                  :sh/path  :spdx-core/suppliedBy}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "validUntilTime",
                   :sh/path     :spdx-core/validUntilTime}
                  {:sh/datatype :xsd/string,
                   :sh/name     "standard",
-                  :sh/path     :spdx-core/standard}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "releaseTime",
-                  :sh/path     :spdx-core/releaseTime}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "builtTime",
-                  :sh/path     :spdx-core/builtTime}
-                 {:sh/class :spdx-core/Agent,
-                  :sh/name  "suppliedBy",
-                  :sh/path  :spdx-core/suppliedBy}],
+                  :sh/path     :spdx-core/standard}],
    :vs/term_status "Stable"})
 
 (def Bom
@@ -129,29 +129,29 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "The CreationInfo provides information about who created the Element, and when and how it was created. \n\nThe dateTime created is often the date of last change (e.g., a git commit date), not the date when the SPDX data was created, as doing so supports reproducible builds.",
-   :sh/property [{:sh/class    :spdx-core/ProfileIdentifierType,
+   :sh/property [{:sh/class    :spdx-core/Agent,
                   :sh/minCount #xsd/integer 1,
-                  :sh/name     "profile",
-                  :sh/path     :spdx-core/profile}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "dataLicense",
-                  :sh/path     :spdx-core/dataLicense}
+                  :sh/name     "createdBy",
+                  :sh/path     :spdx-core/createdBy}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "comment",
                   :sh/path     :spdx-core/comment}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "dataLicense",
+                  :sh/path     :spdx-core/dataLicense}
                  {:sh/class :spdx-core/Tool,
                   :sh/name  "createdUsing",
                   :sh/path  :spdx-core/createdUsing}
+                 {:sh/class    :spdx-core/ProfileIdentifierType,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "profile",
+                  :sh/path     :spdx-core/profile}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "created",
                   :sh/path     :spdx-core/created}
-                 {:sh/class    :spdx-core/Agent,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "createdBy",
-                  :sh/path     :spdx-core/createdBy}
                  {:sh/datatype :spdx-core/SemVer,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
@@ -195,34 +195,34 @@
    "An Element is a representation of a fundamental concept either directly inherent\nto the Bill of Materials (BOM) domain or indirectly related to the BOM domain\nand necessary for contextually characterizing BOM concepts and relationships.\nWithin SPDX-3.0 structure this is the base class acting as a consistent,\nunifying, and interoperable foundation for all explicit\nand inter-relatable content objects.",
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "name",
-                  :sh/path     :spdx-core/name}
-                 {:sh/class :spdx-core/IntegrityMethod,
-                  :sh/name  "verifiedUsing",
-                  :sh/path  :spdx-core/verifiedUsing}
+                  :sh/name     "description",
+                  :sh/path     :spdx-core/description}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "summary",
                   :sh/path     :spdx-core/summary}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "description",
-                  :sh/path     :spdx-core/description}
-                 {:sh/class :spdx-core/ExternalIdentifier,
-                  :sh/name  "externalIdentifier",
-                  :sh/path  :spdx-core/externalIdentifier}
+                  :sh/name     "name",
+                  :sh/path     :spdx-core/name}
+                 {:sh/class :spdx-core/IntegrityMethod,
+                  :sh/name  "verifiedUsing",
+                  :sh/path  :spdx-core/verifiedUsing}
                  {:sh/class    :spdx-core/CreationInfo,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "creationInfo",
                   :sh/path     :spdx-core/creationInfo}
+                 {:sh/class :spdx-core/ExternalIdentifier,
+                  :sh/name  "externalIdentifier",
+                  :sh/path  :spdx-core/externalIdentifier}
+                 {:sh/class :spdx-core/ExternalReference,
+                  :sh/name  "externalReference",
+                  :sh/path  :spdx-core/externalReference}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}
-                 {:sh/class :spdx-core/ExternalReference,
-                  :sh/name  "externalReference",
-                  :sh/path  :spdx-core/externalReference}],
+                  :sh/path     :spdx-core/comment}],
    :vs/term_status "Stable"})
 
 (def ElementCollection
@@ -1102,31 +1102,31 @@
    :rdfs/comment
    "A Relationship is a grouping of characteristics unique to an assertion\nthat one Element is related to one or more other Elements in some way.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/class    :spdx-core/RelationshipCompleteness,
+   :sh/property [{:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "completeness",
-                  :sh/path     :spdx-core/completeness}
-                 {:sh/class    :spdx-core/RelationshipType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "relationshipType",
-                  :sh/path     :spdx-core/relationshipType}
+                  :sh/name     "endTime",
+                  :sh/path     :spdx-core/endTime}
                  {:sh/class    :spdx-core/Element,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "from",
                   :sh/path     :spdx-core/from}
-                 {:sh/datatype :spdx-core/DateTime,
+                 {:sh/class    :spdx-core/RelationshipType,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "endTime",
-                  :sh/path     :spdx-core/endTime}
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "relationshipType",
+                  :sh/path     :spdx-core/relationshipType}
+                 {:sh/class :spdx-core/Element,
+                  :sh/name  "to",
+                  :sh/path  :spdx-core/to}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "startTime",
                   :sh/path     :spdx-core/startTime}
-                 {:sh/class :spdx-core/Element,
-                  :sh/name  "to",
-                  :sh/path  :spdx-core/to}],
+                 {:sh/class    :spdx-core/RelationshipCompleteness,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "completeness",
+                  :sh/path     :spdx-core/completeness}],
    :vs/term_status "Stable"})
 
 (def RelationshipCompleteness

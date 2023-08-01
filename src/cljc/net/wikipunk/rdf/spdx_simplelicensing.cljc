@@ -1,19 +1,11 @@
 (ns net.wikipunk.rdf.spdx-simplelicensing
-  {:dcat/downloadURL  "resources/spdx/model.ttl",
+  {:dcat/downloadURL  "resources/spdx/SimpleLicensing/SimpleLicensing.ttl",
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
-                       "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
                        "sh" "http://www.w3.org/ns/shacl#",
-                       "spdx-ai" "https://spdx.org/rdf/v3/AI/",
-                       "spdx-build" "https://spdx.org/rdf/v3/Build/",
                        "spdx-core" "https://spdx.org/rdf/v3/Core/",
-                       "spdx-dataset" "https://spdx.org/rdf/v3/Dataset/",
-                       "spdx-expandedlicensing"
-                       "https://spdx.org/rdf/v3/ExpandedLicensing/",
-                       "spdx-security" "https://spdx.org/rdf/v3/Security/",
                        "spdx-simplelicensing"
                        "https://spdx.org/rdf/v3/SimpleLicensing/",
-                       "spdx-software" "https://spdx.org/rdf/v3/Software/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
    :rdf/type          :rdfa/PrefixMapping,

@@ -1,0 +1,826 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
+@prefix spdx-security: <https://spdx.org/rdf/v3/Security/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+spdx-security:CvssV2VulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """A CvssV2VulnAssessmentRelationship relationship describes the determined score and vector of a vulnerability using version 2.0 of the Common Vulnerability Scoring System
+(CVSS) as defined on [https://www.first.org/cvss/v2/guide](https://www.first.org/cvss/v2/guide). It is intented to communicate the results of using a CVSS calculator.
+
+**Constraints**
+
+- The value of severity must be one of 'low', 'medium' or 'high'
+- The relationship type must be set to hasAssessmentFor.
+
+**Syntax**
+
+```json
+{
+  "@type": "CvssV2VulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:cvssv2-cve-2020-28498",
+  "relationshipType": "hasAssessmentFor",
+  "score": 4.3,
+  "vector": "(AV:N/AC:M/Au:N/C:P/I:N/A:N)",
+  "severity": "low",
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "assessedElement": "urn:npm-elliptic-6.5.2",
+  "externalReferences": [
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityAdvisory",
+      "locator": "https://nvd.nist.gov/vuln/detail/CVE-2020-28498"
+    },
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityAdvisory",
+      "locator": "https://snyk.io/vuln/SNYK-JS-ELLIPTIC-1064899"
+    },
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityFix",
+      "locator": "https://github.com/indutny/elliptic/commit/441b742"
+    }
+  ],
+  "suppliedBy": ["urn:spdx.dev:agent-my-security-vendor"],
+  "publishedTime": "2023-05-06T10:06:13Z"
+},
+{
+  "@type": "Relationship",
+  "@id": "urn:spdx.dev:vulnAgentRel-1",  
+  "relationshipType": "publishedBy",  
+  "from": "urn:spdx.dev:cvssv2-cve-2020-28498",
+  "to": ["urn:spdx.dev:agent-snyk"],
+  "startTime": "2021-03-08T16:06:50Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VulnAssessmentRelationship ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "vector" ;
+    sh:path spdx-security:vector ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:decimal ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "score" ;
+    sh:path spdx-security:score ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "severity" ;
+    sh:path spdx-security:severity ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:CvssV3VulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """A CvssV3VulnAssessmentRelationship relationship describes the determined score,
+severity, and vector of a vulnerability using version 3.1 of the Common
+Vulnerability Scoring System (CVSS) as defined on 
+[https://www.first.org/cvss/v3.1/specification-document](https://www.first.org/cvss/v3.1/specification-document). It is intented to communicate the results of using a CVSS calculator.
+
+**Constraints**
+
+- The value of severity must be one of 'none', 'low', 'medium', 'high' or 'critical'.
+- Absence of the property shall be interpreted as 'none'.
+- The relationship type must be set to hasAssessmentFor.
+
+**Syntax**
+
+```json
+{
+  "@type": "CvssV3VulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:cvssv3-cve-2020-28498",
+  "relationshipType": "hasAssessmentFor",
+  "severity": "medium",
+  "score": 6.8,
+  "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N",
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "assessedElement": "urn:npm-elliptic-6.5.2",
+  "externalReferences": [
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityAdvisory",
+      "locator": "https://nvd.nist.gov/vuln/detail/CVE-2020-28498"
+    },
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityAdvisory",
+      "locator": "https://snyk.io/vuln/SNYK-JS-ELLIPTIC-1064899"
+    },
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityFix",
+      "locator": "https://github.com/indutny/elliptic/commit/441b742"
+    }
+  ],
+  "suppliedBy": ["urn:spdx.dev:agent-my-security-vendor"],
+  "publishedTime": "2023-05-06T10:06:13Z"
+},
+{
+  "@type": "Relationship",
+  "@id": "urn:spdx.dev:vulnAgentRel-1",
+  "relationshipType": "publishedBy",
+  "from": "urn:spdx.dev:cvssv3-cve-2020-28498",
+  "to": "urn:spdx.dev:agent-snyk",
+  "startTime": "2021-03-08T16:06:50Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VulnAssessmentRelationship ;
+  sh:property [
+    sh:datatype xsd:decimal ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "score" ;
+    sh:path spdx-security:score ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "vector" ;
+    sh:path spdx-security:vector ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "severity" ;
+    sh:path spdx-security:severity ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:EpssVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """An EpssVulnAssessmentRelationship relationship describes the likelihood or
+probability that a vulnerability will be exploited in the wild using the Exploit
+Prediction Scoring System (EPSS) as defined on 
+[https://www.first.org/epss/model](https://www.first.org/epss/model).
+
+**Constraints**
+
+- The relationship type must be set to hasAssessmentFor.
+
+**Syntax**
+
+```json
+{
+  "@type": "EpssVulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:epss-1",
+  "relationshipType": "hasAssessmentFor",
+  "probability": 80,
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "suppliedBy": ["urn:spdx.dev:agent-jane-doe"],
+  "publishedTime": "2021-03-09T11:04:53Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VulnAssessmentRelationship ;
+  sh:property [
+    sh:datatype xsd:nonNegativeInteger ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "probability" ;
+    sh:path spdx-security:probability ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "severity" ;
+    sh:path spdx-security:severity ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:ExploitCatalogType a owl:Class ;
+  rdfs:comment "ExploitCatalogType specifies the type of exploit catalog that a vulnerability is listed in." ;
+  sh:in ( spdx-security:ExploitCatalogType-Other spdx-security:ExploitCatalogType-Kev ) ;
+  vs:term_status "Stable" .
+
+spdx-security:ExploitCatalogVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """An ExploitCatalogVulnAssessmentRelationship describes if a vulnerability is
+listed in any exploit catalog such as the CISA Known Exploited Vulnerabilities
+Catalog (KEV) 
+[https://www.cisa.gov/known-exploited-vulnerabilities-catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog).
+
+**Constraints**
+
+- The relationship type must be set to hasAssessmentFor.
+
+**Syntax**
+
+```json
+{
+  "@type": "ExploitCatalogVulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:exploit-catalog-1",
+  "relationshipType": "hasAssessmentFor",
+  "catalogType": "kev",
+  "locator": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+  "exploited": "true",
+  "from": "urn:spdx.dev:vuln-cve-2023-2136",
+  "to": ["urn:product-google-chrome-112.0.5615.136"],
+  "suppliedBy": ["urn:spdx.dev:agent-jane-doe"],
+  "publishedTime": "2021-03-09T11:04:53Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VulnAssessmentRelationship ;
+  sh:property [
+    sh:class spdx-security:ExploitCatalogType ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "catalogType" ;
+    sh:path spdx-security:catalogType ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:anyURI ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "locator" ;
+    sh:path spdx-security:locator ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "exploited" ;
+    sh:path spdx-security:exploited ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:SsvcDecisionType a owl:Class ;
+  rdfs:comment "SsvcDecisionType specifies the type of decision that's been made according to the Stakeholder-Specific Vulnerability Categorization (SSVC)  system [https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc](https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc)" ;
+  sh:in ( spdx-security:SsvcDecisionType-Act spdx-security:SsvcDecisionType-Attend
+    spdx-security:SsvcDecisionType-TrackStar spdx-security:SsvcDecisionType-Track ) ;
+  vs:term_status "Stable" .
+
+spdx-security:SsvcVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """An SsvcVulnAssessmentRelationship describes the decision made using the
+Stakeholder-Specific Vulnerability Categorization (SSVC) decision tree as
+defined on [https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc](https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc).
+It is intended to communicate the results of using the CISA SSVC Calculator.
+
+**Constraints**
+
+- The relationship type must be set to hasAssessmentFor.
+
+**Syntax**
+
+```json
+{
+  "@type": "SsvcVulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:ssvc-1",
+  "relationshipType": "hasAssessmentFor",
+  "decisionType": "act",
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "assessedElement": "urn:npm-elliptic-6.5.2",
+  "suppliedBy": ["urn:spdx.dev:agent-jane-doe"],
+  "publishedTime": "2021-03-09T11:04:53Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VulnAssessmentRelationship ;
+  sh:property [
+    sh:class spdx-security:SsvcDecisionType ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "decisionType" ;
+    sh:path spdx-security:decisionType ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:VexAffectedVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """VexAffectedVulnAssessmentRelationship connects a vulnerability and a number
+of elements. The relationship marks these elements as products affected by the
+vulnerability. This relationship corresponds to the VEX affected status.
+
+**Constraints**
+
+When linking elements using a VexAffectedVulnAssessmentRelationship, the
+following requirements must be observed:
+
+- Elements linked with a VulnVexAffectedAssessmentRelationship are constrained
+to the affects relationship type.
+
+**Syntax**
+
+```json
+{
+  "@type": "VexAffectedVulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:vex-affected-1",
+  "relationshipType": "affects",
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "assessedElement": "urn:npm-elliptic-6.5.2",
+  "actionStatement": "Upgrade to version 1.4 of ACME application.",
+  "suppliedBy": ["urn:spdx.dev:agent-jane-doe"],
+  "publishedTime": "2021-03-09T11:04:53Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VexVulnAssessmentRelationship ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:name "actionStatementTime" ;
+    sh:path spdx-security:actionStatementTime ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "actionStatement" ;
+    sh:path spdx-security:actionStatement ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:VexFixedVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """VexFixedVulnAssessmentRelationship links a vulnerability to a number of elements
+representing VEX products where a vulnerability has been fixed and are no longer
+affected. It represents the VEX fixed status.
+
+**Constraints**
+
+When linking elements using a VexFixedVulnAssessmentRelationship, the following
+requirements must be observed:
+
+- Elements linked with a VulnVexFixedAssessmentRelationship are constrained to
+using the fixedIn relationship type.
+- The from: end of the relationship must ve a /Security/Vulnerability classed
+element.
+
+**Syntax**
+
+```json
+{
+  "@type": "VexFixedVulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:vex-fixed-in-1",
+  "relationshipType": "fixedIn",
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "assessedElement": "urn:npm-elliptic-6.5.4",
+  "suppliedBy": ["urn:spdx.dev:agent-jane-doe"],
+  "publishedTime": "2021-03-09T11:04:53Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VexVulnAssessmentRelationship ;
+  vs:term_status "Stable" .
+
+spdx-security:VexJustificationType a owl:Class ;
+  rdfs:comment "VexJustificationType specifies the type of Vulnerability Exploitability eXchange (VEX) justification." ;
+  sh:in ( spdx-security:VexJustificationType-VulnerableCodeNotInExecutePath
+    spdx-security:VexJustificationType-VulnerableCodeNotPresent
+    spdx-security:VexJustificationType-InlineMitigationsAlreadyExist
+    spdx-security:VexJustificationType-VulnerableCodeCannotBeControlledByAdversary
+    spdx-security:VexJustificationType-ComponentNotPresent ) ;
+  vs:term_status "Stable" .
+
+spdx-security:VexNotAffectedVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """VexNotAffectedVulnAssessmentRelationship connects a vulnerability and a number
+of elements designating them as products not affected by the vulnerability.
+This relationship corresponds to the VEX not_affected status.
+
+**Constraints**
+
+When linking elements using a VexNotVulnAffectedAssessmentRelationship, the
+following requirements must be observed:
+
+* Relating elements with a VexNotAffectedVulnAssessmentRelationship is restricted
+to the doesNotAffect relationship type.
+* The from: end of the relationship must be a /Security/Vulnerability classed
+element.
+* Both impactStatement and justificationType properties have a cardinality of
+0..1 making them optional. Nevertheless, to produce a valid VEX not_affected
+statement, one of them MUST be defined. This is specified in the Minimum Elements
+for VEX.
+
+**Syntax**
+
+```json
+{
+  "@type": "VexNotAffectedVulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:vex-not-affected-1",
+  "relationshipType": "doesNotAffect",
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "assessedElement": "urn:npm-elliptic-6.5.2",
+  "justificationType": "componentNotPresent",
+  "impactStatement": "Not using this vulnerable part of this library.",
+  "suppliedBy": ["urn:spdx.dev:agent-jane-doe"],
+  "publishedTime": "2021-03-09T11:04:53Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VexVulnAssessmentRelationship ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:maxCount 1 ;
+    sh:name "impactStatementTime" ;
+    sh:path spdx-security:impactStatementTime ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "impactStatement" ;
+    sh:path spdx-security:impactStatement ;
+  ] ;
+  sh:property [
+    sh:class spdx-security:VexJustificationType ;
+    sh:maxCount 1 ;
+    sh:name "justificationType" ;
+    sh:path spdx-security:justificationType ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:VexUnderInvestigationVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """VexUnderInvestigationVulnAssessmentRelationship links a vulnerability to a
+number of products stating the vulnerability's impact on them is being
+investigated. It represents the VEX under_investigation status.
+
+**Constraints**
+
+When linking elements using a VexUnderInvestigationVulnAssessmentRelationship
+the following requirements must be observed:
+
+- Elements linked with a VexUnderInvestigationVulnAssessmentRelationship are
+constrained to using the underInvestigationFor relationship type.
+- The from: end of the relationship must ve a /Security/Vulnerability classed
+element.
+
+**Syntax**
+
+```json
+{
+  "@type": "VexUnderInvestigationVulnAssessmentRelationship",
+  "@id": "urn:spdx.dev:vex-underInvestigation-1",
+  "relationshipType": "underInvestigationFor",
+  "from": "urn:spdx.dev:vuln-cve-2020-28498",
+  "to": ["urn:product-acme-application-1.3"],
+  "assessedElement": "urn:npm-elliptic-6.5.2",
+  "suppliedBy": ["urn:spdx.dev:agent-jane-doe"],
+  "publishedTime": "2021-03-09T11:04:53Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-security:VexVulnAssessmentRelationship ;
+  vs:term_status "Stable" .
+
+spdx-security:VexVulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """VexVulnAssessmentRelationship is an abstract subclass that defined the common
+properties shared by all the SPDX-VEX status relationships. 
+
+**Constraints**
+
+When linking elements using a VexVulnAssessmentRelationship, the following
+requirements must be observed:
+
+- The from: end must be a /Security/Vulnerability classed element
+- The to: end must point to elements representing the VEX _products_. To
+specify a different element where the vulnerability was detected, the VEX
+relationship can optionally specify _subcomponents_ using the assessedElement
+property.
+
+VEX inherits information from the document level down to its statements. When a
+statement is missing information it can be completed by reading the equivalent 
+field from the containing document. For example, if a VEX relationship is
+missing data in its createdBy property, tools must consider the entity
+listed in the CreationInfo section of the document as the VEX author.
+In the same way, when a VEX relationship does not have a created property,
+the document's date must be considered as authoritative.""" ;
+  rdfs:subClassOf spdx-security:VulnAssessmentRelationship ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "vexVersion" ;
+    sh:path spdx-security:vexVersion ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "statusNotes" ;
+    sh:path spdx-security:statusNotes ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:VulnAssessmentRelationship a owl:Class, sh:NodeShape ;
+  rdfs:comment """VulnAssessmentRelationship is the ancestor class common to all vulnerability
+assessment relationships. It factors out the common properties shared by them.
+External property restriction on /Core/Relationship/to: minCount: 1""" ;
+  rdfs:subClassOf spdx-core:Relationship ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:maxCount 1 ;
+    sh:name "publishedTime" ;
+    sh:path spdx-security:publishedTime ;
+  ] ;
+  sh:property [
+    sh:class spdx-core:Element ;
+    sh:maxCount 1 ;
+    sh:name "assessedElement" ;
+    sh:path spdx-security:assessedElement ;
+  ] ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:maxCount 1 ;
+    sh:name "modifiedTime" ;
+    sh:path spdx-security:modifiedTime ;
+  ] ;
+  sh:property [
+    sh:class spdx-core:Agent ;
+    sh:maxCount 1 ;
+    sh:name "suppliedBy" ;
+    sh:path spdx-security:suppliedBy ;
+  ] ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:maxCount 1 ;
+    sh:name "withdrawnTime" ;
+    sh:path spdx-security:withdrawnTime ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:Vulnerability a owl:Class, sh:NodeShape ;
+  rdfs:comment """Specifies a vulnerability and its associated information.
+
+**Syntax**
+
+```json
+{
+  "@type": "Vulnerability",
+  "@id": "urn:spdx.dev:vuln-1",
+  "summary": "Use of a Broken or Risky Cryptographic Algorithm",
+  "description": "The npm package `elliptic` before version 6.5.4 are vulnerable to Cryptographic Issues via the secp256k1 implementation in elliptic/ec/key.js. There is no check to confirm that the public key point passed into the derive function actually exists on the secp256k1 curve. This results in the potential for the private key used in this implementation to be revealed after a number of ECDH operations are performed.",      
+  "modified": "2021-03-08T16:02:43Z",
+  "published": "2021-03-08T16:06:50Z",
+  "externalIdentifiers": [
+    {
+      "@type": "ExternalIdentifier",
+      "externalIdentifierType": "cve",
+      "identifier": "CVE-2020-2849",
+      "identifierLocator": [
+        "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-28498",
+        "https://www.cve.org/CVERecord?id=CVE-2020-28498"
+      ],
+      "issuingAuthority": "urn:spdx.dev:agent-cve.org"
+    },
+    {
+      "type": "ExternalIdentifier",
+      "externalIdentifierType": "securityOther",
+      "identifier": "GHSA-r9p9-mrjm-926w",
+      "identifierLocator": "https://github.com/advisories/GHSA-r9p9-mrjm-926w"
+    },
+    {
+      "type": "ExternalIdentifier",
+      "externalIdentifierType": "securityOther",
+      "identifier": "SNYK-JS-ELLIPTIC-1064899",
+      "identifierLocator": "https://security.snyk.io/vuln/SNYK-JS-ELLIPTIC-1064899"
+    }
+  ],
+  "externalReferences": [
+    {
+        "@type": "ExternalReference",
+        "externalReferenceType": "securityAdvisory",
+        "locator": "https://nvd.nist.gov/vuln/detail/CVE-2020-28498"
+    },
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityAdvisory",
+      "locator": "https://ubuntu.com/security/CVE-2020-28498"
+    },
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityOther",
+      "locator": "https://github.com/indutny/elliptic/pull/244/commits"
+    },
+    {
+      "@type": "ExternalReference",
+      "externalReferenceType": "securityOther",
+      "locator": "https://github.com/christianlundkvist/blog/blob/master/2020_05_26_secp256k1_twist_attacks/secp256k1_twist_attacks.md"
+    }
+  ]
+},
+{
+  "@type": "Relationship",
+  "@id": "urn:spdx.dev:vulnRelationship-1",
+  "relationshipType": "hasAssociatedVulnerability",
+  "from": "urn:npm-elliptic-6.5.2",
+  "to": ["urn:spdx.dev:vuln-1"],
+  "startTime": "2021-03-08T16:06:50Z"
+},
+{
+  "@type": "Relationship",
+  "@id": "urn:spdx.dev:vulnAgentRel-1",  
+  "relationshipType": "publishedBy",  
+  "from": "urn:spdx.dev:vuln-1",
+  "to": ["urn:spdx.dev:agent-snyk"],
+  "startTime": "2021-03-08T16:06:50Z"
+}
+```""" ;
+  rdfs:subClassOf spdx-core:Element ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:maxCount 1 ;
+    sh:name "modifiedTime" ;
+    sh:path spdx-security:modifiedTime ;
+  ] ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:maxCount 1 ;
+    sh:name "publishedTime" ;
+    sh:path spdx-security:publishedTime ;
+  ] ;
+  sh:property [
+    sh:datatype spdx-core:DateTime ;
+    sh:maxCount 1 ;
+    sh:name "withdrawnTime" ;
+    sh:path spdx-security:withdrawnTime ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-security:assessedElement a owl:ObjectProperty ;
+  rdfs:comment """Specifies subpackages, files or snippets referenced by a security assessment
+to specify the precise location where a vulnerability was found.""" ;
+  rdfs:domain spdx-security:VulnAssessmentRelationship ;
+  rdfs:range spdx-core:Element ;
+  vs:term_status "Stable" .
+
+spdx-security:catalogType a owl:ObjectProperty ;
+  rdfs:comment "A catalogType is a mandatory value and must select one of the two entries in the `ExploitCatalogType.md` vocabulary." ;
+  rdfs:domain spdx-security:ExploitCatalogVulnAssessmentRelationship ;
+  rdfs:range spdx-security:ExploitCatalogType ;
+  vs:term_status "Stable" .
+
+spdx-security:decisionType a owl:ObjectProperty ;
+  rdfs:comment "A decisionType is a mandatory value and must select one of the four entries in the `SsvcDecisionType.md` vocabulary." ;
+  rdfs:domain spdx-security:SsvcVulnAssessmentRelationship ;
+  rdfs:range spdx-security:SsvcDecisionType ;
+  vs:term_status "Stable" .
+
+spdx-security:justificationType a owl:ObjectProperty ;
+  rdfs:comment """When stating that an element is not affected by a vulnerability, the
+VexNotAffectedVulnAssessmentRelationship must include a justification from the
+machine-readable labels catalog informing the reason the element is not impacted.
+
+impactStatement which is a string with English prose can be used instead or as
+complementary to the justification label, but one of both MUST be defined.""" ;
+  rdfs:domain spdx-security:VexNotAffectedVulnAssessmentRelationship ;
+  rdfs:range spdx-security:VexJustificationType ;
+  vs:term_status "Stable" .
+
+spdx-security:suppliedBy a owl:ObjectProperty ;
+  rdfs:comment "Identify the actual distribution source for the vulnerability assessment relationship being referenced." ;
+  rdfs:domain spdx-security:VulnAssessmentRelationship ;
+  rdfs:range spdx-core:Agent ;
+  vs:term_status "Stable" .
+
+spdx-security:actionStatement a owl:DatatypeProperty ;
+  rdfs:comment """When an element is referenced with a VexAffectedVulnAssessmentRelationship,
+the relationship MUST include one actionStatement that SHOULD describe actions
+to remediate or mitigate the vulnerability.""" ;
+  rdfs:domain spdx-security:VexAffectedVulnAssessmentRelationship ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-security:actionStatementTime a owl:DatatypeProperty ;
+  rdfs:comment """When a VEX statement communicates an affected status, the author MUST
+include an action statement with a recommended action to help mitigate the
+vulnerability's impact. The actionStatementTime property records the time
+when the action statement was first communicated.""" ;
+  rdfs:domain spdx-security:VexAffectedVulnAssessmentRelationship ;
+  rdfs:range spdx-core:DateTime ;
+  vs:term_status "Stable" .
+
+spdx-security:exploited a owl:DatatypeProperty ;
+  rdfs:comment "This field is set when a CVE is listed in an exploit catalog." ;
+  rdfs:domain spdx-security:ExploitCatalogVulnAssessmentRelationship ;
+  rdfs:range xsd:boolean ;
+  vs:term_status "Stable" .
+
+spdx-security:impactStatement a owl:DatatypeProperty ;
+  rdfs:comment """When a VEX product element is related with a VexNotAffectedVulnAssessmentRelationship
+and a machine readable justification label is not provided, then an impactStatement
+that further explains how or why the prouct(s) are not affected by the vulnerability
+must be provided.""" ;
+  rdfs:domain spdx-security:VexNotAffectedVulnAssessmentRelationship ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-security:impactStatementTime a owl:DatatypeProperty ;
+  rdfs:comment "TODO" ;
+  rdfs:domain spdx-security:VexNotAffectedVulnAssessmentRelationship ;
+  rdfs:range spdx-core:DateTime ;
+  vs:term_status "Stable" .
+
+spdx-security:locator a owl:DatatypeProperty ;
+  rdfs:comment "A locator provides the location of an exploit catalog." ;
+  rdfs:domain spdx-security:ExploitCatalogVulnAssessmentRelationship ;
+  rdfs:range xsd:anyURI ;
+  vs:term_status "Stable" .
+
+spdx-security:modifiedTime a owl:DatatypeProperty ;
+  rdfs:comment "Specifies a time when a vulnerability assessment was last modified." ;
+  rdfs:range spdx-core:DateTime ;
+  sh:or ( [
+    rdfs:domain spdx-security:VulnAssessmentRelationship ;
+    rdfs:domain spdx-security:Vulnerability ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-security:probability a owl:DatatypeProperty ;
+  rdfs:comment """The probability score between 0 and 1 (0 and 100%) estimating the likelihood
+that a vulnerability will be exploited in the next 12 months.""" ;
+  rdfs:domain spdx-security:EpssVulnAssessmentRelationship ;
+  rdfs:range xsd:decimal ;
+  vs:term_status "Stable" .
+
+spdx-security:publishedTime a owl:DatatypeProperty ;
+  rdfs:comment "Specifies the time when a vulnerability was first published." ;
+  rdfs:range spdx-core:DateTime ;
+  sh:or ( [
+    rdfs:domain spdx-security:VulnAssessmentRelationship ;
+    rdfs:domain spdx-security:Vulnerability ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-security:score a owl:DatatypeProperty ;
+  rdfs:comment """The score provides information on the severity of a vulnerability per the
+Common Vulnerability Scoring System as defined on [https://www.first.org/cvss](https://www.first.org/cvss/).""" ;
+  rdfs:range xsd:string ;
+  sh:or ( [
+    rdfs:domain spdx-security:CvssV2VulnAssessmentRelationship ;
+    rdfs:domain spdx-security:CvssV3VulnAssessmentRelationship ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-security:severity a owl:DatatypeProperty ;
+  rdfs:comment """The severity field provides a human readable string, a label that can be used
+as an English adjective that qualifies its numerical score.""" ;
+  rdfs:range xsd:string ;
+  sh:or ( [
+    rdfs:domain spdx-security:CvssV2VulnAssessmentRelationship ;
+    rdfs:domain spdx-security:CvssV3VulnAssessmentRelationship ;
+    rdfs:domain spdx-security:EpssVulnAssessmentRelationship ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-security:statusNotes a owl:DatatypeProperty ;
+  rdfs:comment "TODO" ;
+  rdfs:domain spdx-security:VexVulnAssessmentRelationship ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-security:vector a owl:DatatypeProperty ;
+  rdfs:comment """Sepcifies the vector string of a vulnerability, a string combining metrics
+from an assessment of its severity.""" ;
+  rdfs:range xsd:string ;
+  sh:or ( [
+    rdfs:domain spdx-security:CvssV2VulnAssessmentRelationship ;
+    rdfs:domain spdx-security:CvssV3VulnAssessmentRelationship ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-security:vexVersion a owl:DatatypeProperty ;
+  rdfs:comment "TODO" ;
+  rdfs:domain spdx-security:VexVulnAssessmentRelationship ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-security:withdrawnTime a owl:DatatypeProperty ;
+  rdfs:comment "Specified the time and date when a vulnerability was withdrawn." ;
+  rdfs:range spdx-core:DateTime ;
+  sh:or ( [
+    rdfs:domain spdx-security:VulnAssessmentRelationship ;
+    rdfs:domain spdx-security:Vulnerability ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-security:ExploitCatalogType-Kev a owl:NamedIndividual, spdx-security:ExploitCatalogType ;
+  rdfs:label "kev" .
+
+spdx-security:ExploitCatalogType-Other a owl:NamedIndividual, spdx-security:ExploitCatalogType ;
+  rdfs:label "other" .
+
+spdx-security:SsvcDecisionType-Act a owl:NamedIndividual, spdx-security:SsvcDecisionType ;
+  rdfs:label "act" .
+
+spdx-security:SsvcDecisionType-Attend a owl:NamedIndividual, spdx-security:SsvcDecisionType ;
+  rdfs:label "attend" .
+
+spdx-security:SsvcDecisionType-Track a owl:NamedIndividual, spdx-security:SsvcDecisionType ;
+  rdfs:label "track" .
+
+spdx-security:SsvcDecisionType-TrackStar a owl:NamedIndividual, spdx-security:SsvcDecisionType ;
+  rdfs:label "trackStar" .
+
+spdx-security:VexJustificationType-ComponentNotPresent a owl:NamedIndividual, spdx-security:VexJustificationType ;
+  rdfs:label "componentNotPresent" .
+
+spdx-security:VexJustificationType-InlineMitigationsAlreadyExist a owl:NamedIndividual, spdx-security:VexJustificationType ;
+  rdfs:label "inlineMitigationsAlreadyExist" .
+
+spdx-security:VexJustificationType-VulnerableCodeCannotBeControlledByAdversary a owl:NamedIndividual, spdx-security:VexJustificationType ;
+  rdfs:label "vulnerableCodeCannotBeControlledByAdversary" .
+
+spdx-security:VexJustificationType-VulnerableCodeNotInExecutePath a owl:NamedIndividual, spdx-security:VexJustificationType ;
+  rdfs:label "vulnerableCodeNotInExecutePath" .
+
+spdx-security:VexJustificationType-VulnerableCodeNotPresent a owl:NamedIndividual, spdx-security:VexJustificationType ;
+  rdfs:label "vulnerableCodeNotPresent" .

@@ -1,19 +1,14 @@
 (ns net.wikipunk.rdf.spdx-expandedlicensing
-  {:dcat/downloadURL  "resources/spdx/model.ttl",
+  {:dcat/downloadURL  "resources/spdx/ExpandedLicensing/ExpandedLicensing.ttl",
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
                        "sh" "http://www.w3.org/ns/shacl#",
-                       "spdx-ai" "https://spdx.org/rdf/v3/AI/",
-                       "spdx-build" "https://spdx.org/rdf/v3/Build/",
                        "spdx-core" "https://spdx.org/rdf/v3/Core/",
-                       "spdx-dataset" "https://spdx.org/rdf/v3/Dataset/",
                        "spdx-expandedlicensing"
                        "https://spdx.org/rdf/v3/ExpandedLicensing/",
-                       "spdx-security" "https://spdx.org/rdf/v3/Security/",
                        "spdx-simplelicensing"
                        "https://spdx.org/rdf/v3/SimpleLicensing/",
-                       "spdx-software" "https://spdx.org/rdf/v3/Software/",
                        "vs" "http://www.w3.org/2003/06/sw-vocab-status/ns#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
    :rdf/type          :rdfa/PrefixMapping,
@@ -26,7 +21,7 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "A ConjunctiveLicenseSet indicates that _each_ of its subsidiary\nAnyLicenseInfos apply. In other words, a ConjunctiveLicenseSet of two or\nmore licenses represents a licensing situation where _all_ of the specified\nlicenses are to be complied with. It is represented in the SPDX License\nExpression Syntax by the `AND` operator.\n\nIt is syntactically correct to specify a ConjunctiveLicenseSet where the\nsubsidiary AnyLicenseInfos may be \"incompatible\" according to a particular\ninterpretation of the corresponding Licenses. The SPDX License Expression\nSyntax does not take into account interpretation of license texts, which is\nleft to the consumer of SPDX data to determine for themselves.",
-   :rdfs/subClassOf [:spdx-simplelicensing/AnyLicenseInfo :spdx-core/Element],
+   :rdfs/subClassOf :spdx-simplelicensing/AnyLicenseInfo,
    :sh/property {:sh/class    :spdx-simplelicensing/AnyLicenseInfo,
                  :sh/minCount #xsd/integer 2,
                  :sh/name     "member",
@@ -40,9 +35,8 @@
    :rdfs/comment
    "A CustomLicense represents a License that is not listed on the SPDX License\nList at https://spdx.org/licenses, and is therefore defined by an SPDX data\ncreator.",
    :rdfs/subClassOf [:spdx-expandedlicensing/License
-                     :spdx-expandedlicensing/ExtendableLicense
                      :spdx-simplelicensing/AnyLicenseInfo
-                     :spdx-core/Element],
+                     :spdx-expandedlicensing/ExtendableLicense],
    :vs/term_status "Stable"})
 
 (def CustomLicenseAddition
@@ -61,7 +55,7 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "A DisjunctiveLicenseSet indicates that _only one_ of its subsidiary\nAnyLicenseInfos is required to apply. In other words, a\nDisjunctiveLicenseSet of two or more licenses represents a licensing\nsituation where _only one_ of the specified licenses are to be complied with.\nA consumer of SPDX data would typically understand this to permit the recipient\nof the licensed content to choose which of the corresponding license they\nwould prefer to use. It is represented in the SPDX License Expression Syntax\nby the `OR` operator.",
-   :rdfs/subClassOf [:spdx-simplelicensing/AnyLicenseInfo :spdx-core/Element],
+   :rdfs/subClassOf :spdx-simplelicensing/AnyLicenseInfo,
    :sh/property {:sh/class    :spdx-simplelicensing/AnyLicenseInfo,
                  :sh/minCount #xsd/integer 2,
                  :sh/name     "member",
@@ -74,7 +68,7 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "The WithAdditionOperator can have a License or an OrLaterOperator as the license property value.  This class is used for the value.",
-   :rdfs/subClassOf [:spdx-simplelicensing/AnyLicenseInfo :spdx-core/Element],
+   :rdfs/subClassOf :spdx-simplelicensing/AnyLicenseInfo,
    :vs/term_status "Stable"})
 
 (def License
@@ -84,25 +78,20 @@
    :rdfs/comment
    "A License represents a license text, whether listed on the SPDX License List\n(ListedLicense) or defined by an SPDX data creator (CustomLicense).",
    :rdfs/subClassOf [:spdx-expandedlicensing/ExtendableLicense
-                     :spdx-simplelicensing/AnyLicenseInfo
-                     :spdx-core/Element],
+                     :spdx-simplelicensing/AnyLicenseInfo],
    :sh/property [{:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "licenseText",
+                  :sh/path     :spdx-simplelicensing/licenseText}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "standardLicenseTemplate",
+                  :sh/path     :spdx-expandedlicensing/standardLicenseTemplate}
+                 {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "obsoletedBy",
                   :sh/path     :spdx-expandedlicensing/obsoletedBy}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "/SimpleLicensing/licenseText",
-                  :sh/path     :spdx-simplelicensing/licenseText}
-                 {:sh/datatype :xsd/boolean,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "isOsiApproved",
-                  :sh/path     :spdx-expandedlicensing/isOsiApproved}
-                 {:sh/datatype :xsd/boolean,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "isDeprecatedLicenseId",
-                  :sh/path     :spdx-expandedlicensing/isDeprecatedLicenseId}
                  {:sh/datatype :xsd/boolean,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "isFsfLibre",
@@ -111,10 +100,14 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "standardLicenseHeader",
                   :sh/path     :spdx-expandedlicensing/standardLicenseHeader}
-                 {:sh/datatype :xsd/string,
+                 {:sh/datatype :xsd/boolean,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name "standardLicenseTemplate",
-                  :sh/path :spdx-expandedlicensing/standardLicenseTemplate}],
+                  :sh/name     "isDeprecatedLicenseId",
+                  :sh/path     :spdx-expandedlicensing/isDeprecatedLicenseId}
+                 {:sh/datatype :xsd/boolean,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "isOsiApproved",
+                  :sh/path     :spdx-expandedlicensing/isOsiApproved}],
    :vs/term_status "Stable"})
 
 (def LicenseAddition
@@ -130,17 +123,17 @@
                   :sh/path     :spdx-expandedlicensing/isDeprecatedAdditionId}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "standardAdditionTemplate",
-                  :sh/path     :spdx-expandedlicensing/standardAdditionTemplate}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "obsoletedBy",
                   :sh/path     :spdx-expandedlicensing/obsoletedBy}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "additionText",
-                  :sh/path     :spdx-expandedlicensing/additionText}],
+                  :sh/path     :spdx-expandedlicensing/additionText}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name "standardAdditionTemplate",
+                  :sh/path :spdx-expandedlicensing/standardAdditionTemplate}],
    :vs/term_status "Stable"})
 
 (def ListedLicense
@@ -150,17 +143,16 @@
    :rdfs/comment
    "A ListedLicense represents a License that is listed on the SPDX License List\nat https://spdx.org/licenses.",
    :rdfs/subClassOf [:spdx-expandedlicensing/License
-                     :spdx-expandedlicensing/ExtendableLicense
                      :spdx-simplelicensing/AnyLicenseInfo
-                     :spdx-core/Element],
+                     :spdx-expandedlicensing/ExtendableLicense],
    :sh/property [{:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "listVersionAdded",
-                  :sh/path     :spdx-expandedlicensing/listVersionAdded}
+                  :sh/name     "deprecatedVersion",
+                  :sh/path     :spdx-expandedlicensing/deprecatedVersion}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "deprecatedVersion",
-                  :sh/path     :spdx-expandedlicensing/deprecatedVersion}],
+                  :sh/name     "listVersionAdded",
+                  :sh/path     :spdx-expandedlicensing/listVersionAdded}],
    :vs/term_status "Stable"})
 
 (def ListedLicenseException
@@ -188,8 +180,7 @@
    :rdfs/comment
    "An OrLaterOperator indicates that this portion of the AnyLicenseInfo\nrepresents either (1) the specified version of the corresponding License, or\n(2) any later version of that License. It is represented in the SPDX License\nExpression Syntax by the `+` operator.\n\nIt is context-dependent, and unspecified by SPDX, as to what constitutes a\n\"later version\" of any particular License. Some Licenses may not be versioned,\nor may not have clearly-defined ordering for versions. The consumer of SPDX\ndata will need to determine for themselves what meaning to attribute to a\n\"later version\" operator for a particular License.",
    :rdfs/subClassOf [:spdx-expandedlicensing/ExtendableLicense
-                     :spdx-simplelicensing/AnyLicenseInfo
-                     :spdx-core/Element],
+                     :spdx-simplelicensing/AnyLicenseInfo],
    :sh/property {:sh/class    :spdx-expandedlicensing/License,
                  :sh/maxCount #xsd/integer 1,
                  :sh/minCount #xsd/integer 1,
@@ -203,17 +194,17 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "A WithAdditionOperator indicates that the designated License is subject to the\ndesignated LicenseAddition, which might be a license exception on the SPDX\nExceptions List (ListedLicenseException) or may be other additional text\n(CustomLicenseAddition). It is represented in the SPDX License Expression\nSyntax by the `WITH` operator.",
-   :rdfs/subClassOf [:spdx-simplelicensing/AnyLicenseInfo :spdx-core/Element],
-   :sh/property [{:sh/class    :spdx-expandedlicensing/ExtendableLicense,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "subjectLicense",
-                  :sh/path     :spdx-expandedlicensing/subjectLicense}
-                 {:sh/class    :spdx-expandedlicensing/LicenseAddition,
+   :rdfs/subClassOf :spdx-simplelicensing/AnyLicenseInfo,
+   :sh/property [{:sh/class    :spdx-expandedlicensing/LicenseAddition,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "subjectAddition",
-                  :sh/path     :spdx-expandedlicensing/subjectAddition}],
+                  :sh/path     :spdx-expandedlicensing/subjectAddition}
+                 {:sh/class    :spdx-expandedlicensing/ExtendableLicense,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "subjectLicense",
+                  :sh/path     :spdx-expandedlicensing/subjectLicense}],
    :vs/term_status "Stable"})
 
 (def additionComment

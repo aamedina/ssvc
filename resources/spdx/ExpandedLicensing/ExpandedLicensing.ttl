@@ -1,0 +1,525 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
+@prefix spdx-expandedlicensing: <https://spdx.org/rdf/v3/ExpandedLicensing/> .
+@prefix spdx-simplelicensing: <https://spdx.org/rdf/v3/SimpleLicensing/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+spdx-expandedlicensing:ConjunctiveLicenseSet a owl:Class, sh:NodeShape ;
+  rdfs:comment """A ConjunctiveLicenseSet indicates that _each_ of its subsidiary
+AnyLicenseInfos apply. In other words, a ConjunctiveLicenseSet of two or
+more licenses represents a licensing situation where _all_ of the specified
+licenses are to be complied with. It is represented in the SPDX License
+Expression Syntax by the `AND` operator.
+
+It is syntactically correct to specify a ConjunctiveLicenseSet where the
+subsidiary AnyLicenseInfos may be "incompatible" according to a particular
+interpretation of the corresponding Licenses. The SPDX License Expression
+Syntax does not take into account interpretation of license texts, which is
+left to the consumer of SPDX data to determine for themselves.""" ;
+  rdfs:subClassOf spdx-simplelicensing:AnyLicenseInfo ;
+  sh:property [
+    sh:class spdx-simplelicensing:AnyLicenseInfo ;
+    sh:minCount 2 ;
+    sh:name "member" ;
+    sh:path spdx-expandedlicensing:member ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:CustomLicense a owl:Class, sh:NodeShape ;
+  rdfs:comment """A CustomLicense represents a License that is not listed on the SPDX License
+List at https://spdx.org/licenses, and is therefore defined by an SPDX data
+creator.""" ;
+  rdfs:subClassOf spdx-expandedlicensing:License ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:CustomLicenseAddition a owl:Class, sh:NodeShape ;
+  rdfs:comment """A CustomLicenseAddition represents an addition to a License that is not listed
+on the SPDX Exceptions List at https://spdx.org/licenses/exceptions-index.html,
+and is therefore defined by an SPDX data creator.
+
+It is intended to represent additional language which is meant to be added to
+a License, but which is not itself a standalone License.""" ;
+  rdfs:subClassOf spdx-expandedlicensing:LicenseAddition ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:DisjunctiveLicenseSet a owl:Class, sh:NodeShape ;
+  rdfs:comment """A DisjunctiveLicenseSet indicates that _only one_ of its subsidiary
+AnyLicenseInfos is required to apply. In other words, a
+DisjunctiveLicenseSet of two or more licenses represents a licensing
+situation where _only one_ of the specified licenses are to be complied with.
+A consumer of SPDX data would typically understand this to permit the recipient
+of the licensed content to choose which of the corresponding license they
+would prefer to use. It is represented in the SPDX License Expression Syntax
+by the `OR` operator.""" ;
+  rdfs:subClassOf spdx-simplelicensing:AnyLicenseInfo ;
+  sh:property [
+    sh:class spdx-simplelicensing:AnyLicenseInfo ;
+    sh:minCount 2 ;
+    sh:name "member" ;
+    sh:path spdx-expandedlicensing:member ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:ExtendableLicense a owl:Class, sh:NodeShape ;
+  rdfs:comment "The WithAdditionOperator can have a License or an OrLaterOperator as the license property value.  This class is used for the value." ;
+  rdfs:subClassOf spdx-simplelicensing:AnyLicenseInfo ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:License a owl:Class, sh:NodeShape ;
+  rdfs:comment """A License represents a license text, whether listed on the SPDX License List
+(ListedLicense) or defined by an SPDX data creator (CustomLicense).""" ;
+  rdfs:subClassOf spdx-expandedlicensing:ExtendableLicense ;
+  sh:property [
+    sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
+    sh:name "isOsiApproved" ;
+    sh:path spdx-expandedlicensing:isOsiApproved ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "obsoletedBy" ;
+    sh:path spdx-expandedlicensing:obsoletedBy ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "standardLicenseTemplate" ;
+    sh:path spdx-expandedlicensing:standardLicenseTemplate ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
+    sh:name "isFsfLibre" ;
+    sh:path spdx-expandedlicensing:isFsfLibre ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
+    sh:name "isDeprecatedLicenseId" ;
+    sh:path spdx-expandedlicensing:isDeprecatedLicenseId ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "licenseText" ;
+    sh:path spdx-simplelicensing:licenseText ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "standardLicenseHeader" ;
+    sh:path spdx-expandedlicensing:standardLicenseHeader ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:LicenseAddition a owl:Class, sh:NodeShape ;
+  rdfs:comment """A LicenseAddition represents text which is intended to be added to a License
+as additional text, but which is not itself intended to be a standalone
+License.
+
+It may be an exception which is listed on the SPDX Exceptions List
+(ListedLicenseException), or may be any other additional text (as an exception
+or otherwise) which is defined by an SPDX data creator (CustomLicenseAddition).""" ;
+  rdfs:subClassOf spdx-core:Element ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "standardAdditionTemplate" ;
+    sh:path spdx-expandedlicensing:standardAdditionTemplate ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "additionText" ;
+    sh:path spdx-expandedlicensing:additionText ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "obsoletedBy" ;
+    sh:path spdx-expandedlicensing:obsoletedBy ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:boolean ;
+    sh:maxCount 1 ;
+    sh:name "isDeprecatedAdditionId" ;
+    sh:path spdx-expandedlicensing:isDeprecatedAdditionId ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:ListedLicense a owl:Class, sh:NodeShape ;
+  rdfs:comment """A ListedLicense represents a License that is listed on the SPDX License List
+at https://spdx.org/licenses.""" ;
+  rdfs:subClassOf spdx-expandedlicensing:License ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "listVersionAdded" ;
+    sh:path spdx-expandedlicensing:listVersionAdded ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "deprecatedVersion" ;
+    sh:path spdx-expandedlicensing:deprecatedVersion ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:ListedLicenseException a owl:Class, sh:NodeShape ;
+  rdfs:comment """A ListedLicenseException represents an exception to a License (in other words,
+an exception to a license condition or an additional permission beyond those
+granted in a License) which is listed on the SPDX Exceptions List at
+https://spdx.org/licenses/exceptions-index.html.""" ;
+  rdfs:subClassOf spdx-expandedlicensing:LicenseAddition ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "listVersionAdded" ;
+    sh:path spdx-expandedlicensing:listVersionAdded ;
+  ] ;
+  sh:property [
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:name "deprecatedVersion" ;
+    sh:path spdx-expandedlicensing:deprecatedVersion ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:OrLaterOperator a owl:Class, sh:NodeShape ;
+  rdfs:comment """An OrLaterOperator indicates that this portion of the AnyLicenseInfo
+represents either (1) the specified version of the corresponding License, or
+(2) any later version of that License. It is represented in the SPDX License
+Expression Syntax by the `+` operator.
+
+It is context-dependent, and unspecified by SPDX, as to what constitutes a
+"later version" of any particular License. Some Licenses may not be versioned,
+or may not have clearly-defined ordering for versions. The consumer of SPDX
+data will need to determine for themselves what meaning to attribute to a
+"later version" operator for a particular License.""" ;
+  rdfs:subClassOf spdx-expandedlicensing:ExtendableLicense ;
+  sh:property [
+    sh:class spdx-expandedlicensing:License ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "subjectLicense" ;
+    sh:path spdx-expandedlicensing:subjectLicense ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:WithAdditionOperator a owl:Class, sh:NodeShape ;
+  rdfs:comment """A WithAdditionOperator indicates that the designated License is subject to the
+designated LicenseAddition, which might be a license exception on the SPDX
+Exceptions List (ListedLicenseException) or may be other additional text
+(CustomLicenseAddition). It is represented in the SPDX License Expression
+Syntax by the `WITH` operator.""" ;
+  rdfs:subClassOf spdx-simplelicensing:AnyLicenseInfo ;
+  sh:property [
+    sh:class spdx-expandedlicensing:ExtendableLicense ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "subjectLicense" ;
+    sh:path spdx-expandedlicensing:subjectLicense ;
+  ] ;
+  sh:property [
+    sh:class spdx-expandedlicensing:LicenseAddition ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "subjectAddition" ;
+    sh:path spdx-expandedlicensing:subjectAddition ;
+  ] ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:member a owl:ObjectProperty ;
+  rdfs:comment """A member is a license expression participating in a conjunctive (of type
+ConjunctiveLicenseSet) or a disjunctive (of type DisjunctiveLicenseSet)
+license set.""" ;
+  rdfs:range spdx-simplelicensing:AnyLicenseInfo ;
+  sh:or ( [
+    rdfs:domain spdx-expandedlicensing:ConjunctiveLicenseSet ;
+    rdfs:domain spdx-expandedlicensing:DisjunctiveLicenseSet ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:subjectAddition a owl:ObjectProperty ;
+  rdfs:comment """A subjectAddition is a LicenseAddition which is subject to a 'with additional
+text' effect (WithAdditionOperator).""" ;
+  rdfs:domain spdx-expandedlicensing:WithAdditionOperator ;
+  rdfs:range spdx-expandedlicensing:LicenseAddition ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:subjectLicense a owl:ObjectProperty ;
+  rdfs:comment """A subjectLicense is a License which is subject to either an 'or later' effect
+(OrLaterOperator) or a 'with additional text' effect (WithAdditionOperator).""" ;
+  rdfs:range spdx-expandedlicensing:License ;
+  sh:or ( [
+    rdfs:domain spdx-expandedlicensing:OrLaterOperator ;
+    rdfs:domain spdx-expandedlicensing:WithAdditionOperator ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:additionComment a owl:DatatypeProperty ;
+  rdfs:comment """An additionComment for a LicenseAddition describes general factual information
+about the LicenseAddition. It should not contain information (or links to
+information) that includes any kind of interpretation about the meaning or
+effect of the License, even if written by the license addition's author.
+
+Examples of information for an additionComment may include the following:
+
+* If the LicenseAddition's identifier is deprecated, it may briefly explain the
+  reason for deprecation.
+* It may include the date of release, if identified, for LicenseAdditions with
+  multiple versions.
+* It may include links to other official language translations for the
+  LicenseAddition.
+* It may include a reference to the License(s) with which this LicenseAddition
+  is typically used.""" ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:additionId a owl:DatatypeProperty ;
+  rdfs:comment """An additionId contains a human-readable, short-form identifier for a
+LicenseAddition. It may only include letters, numbers, period (".") and
+hyphen ("-") characters.
+
+For a ListedLicenseException, the licenseId will be as specified on the
+[SPDX Exceptions List](https://spdx.org/licenses/exceptions-index.html) for the
+particular exception.
+
+For a CustomLicenseAddition, the short-form identifier must begin with the
+prefix `AdditionRef-` and must be unique within the applicable SPDX namespace.
+The short-form identifier may be preceded by an SPDX namespace or a
+fully-qualified URI prefix.""" ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:additionName a owl:DatatypeProperty ;
+  rdfs:comment """An additionName contains the full name of a LicenseAddition, preferably using
+the title found in the applicable license addition text or file, or as
+otherwise specified by the LicenseAddition's author or steward.
+
+When no such title is specified, using a name from another well-known source or list
+of licenses additions (such as OSI or Fedora) is suggested.
+
+If no official or common name is known, any name may be used to aid in
+distinguishing the LicenseAddition from other LicenseAdditions.""" ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:additionText a owl:DatatypeProperty ;
+  rdfs:comment """An additionText contains the plain text of the LicenseAddition, without
+templating or other similar markup.
+
+Users of the additionText for a License can apply the SPDX Matching Guidelines
+when comparing it to another text for matching purposes.""" ;
+  rdfs:domain spdx-expandedlicensing:LicenseAddition ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:deprecatedVersion a owl:DatatypeProperty ;
+  rdfs:comment """A deprecatedVersion for a ListedLicense or ListedLicenseException on the SPDX
+License List specifies which version release of the License List was the first
+one in which it was marked as deprecated.""" ;
+  rdfs:range xsd:string ;
+  sh:or ( [
+    rdfs:domain spdx-expandedlicensing:ListedLicense ;
+    rdfs:domain spdx-expandedlicensing:ListedLicenseException ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:isDeprecatedAdditionId a owl:DatatypeProperty ;
+  rdfs:comment """The isDeprecatedAdditionId property specifies whether an identifier for a
+LicenseAddition has been marked as deprecated. If the property is not defined,
+then it is presumed to be false (i.e., not deprecated).
+
+If the LicenseAddition is included on the SPDX Exceptions List, then
+the `deprecatedVersion` property indicates on which version release of the
+Exceptions List it was first marked as deprecated.
+
+"Deprecated" in this context refers to deprecating the use of the
+_identifier_, not the underlying license addition. In other words, even if a
+LicenseAddition's author or steward has stated that a particular
+LicenseAddition generally should not be used, that would _not_ mean that the
+LicenseAddition's identifier is "deprecated." Rather, a LicenseAddition
+operator is typically marked as "deprecated" when it is determined that use of
+another identifier is preferable.""" ;
+  rdfs:domain spdx-expandedlicensing:LicenseAddition ;
+  rdfs:range xsd:boolean ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:isDeprecatedLicenseId a owl:DatatypeProperty ;
+  rdfs:comment """The isDeprecatedLicenseId property specifies whether an identifier for a
+License or LicenseAddition has been marked as deprecated. If the property
+is not defined, then it is presumed to be false (i.e., not deprecated).
+
+If the License or LicenseAddition is included on the SPDX License List, then
+the `deprecatedVersion` property indicates on which version release of the
+License List it was first marked as deprecated.
+
+"Deprecated" in this context refers to deprecating the use of the
+_identifier_, not the underlying license. In other words, even if a License's
+author or steward has stated that a particular License generally should not be
+used, that would _not_ mean that the License's identifier is "deprecated."
+Rather, a License or LicenseAddition operator is typically marked as
+"deprecated" when it is determined that use of another identifier is
+preferable.""" ;
+  rdfs:domain spdx-expandedlicensing:License ;
+  rdfs:range xsd:boolean ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:isFsfLibre a owl:DatatypeProperty ;
+  rdfs:comment """isFsfLibre specifies whether the [Free Software Foundation FSF](https://fsf.org)
+has listed this License as "free" in their commentary on licenses, located at
+the time of this writing at https://www.gnu.org/licenses/license-list.en.html.
+
+A value of "true" indicates that the FSF has listed this License as _free_.
+
+A value of "false" indicates that the FSF has listed this License as _not free_.
+
+If the isFsfLibre field is not specified, the SPDX data creator makes no
+assertions about whether the License is listed in the FSF's commentary.""" ;
+  rdfs:domain spdx-expandedlicensing:License ;
+  rdfs:range xsd:boolean ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:isOsiApproved a owl:DatatypeProperty ;
+  rdfs:comment """isOsiApproved specifies whether the [Open Source Initiative (OSI)](https://opensource.org)
+has listed this License as "approved" in their list of OSI Approved Licenses,
+located at the time of this writing at https://opensource.org/licenses/.
+
+A value of "true" indicates that the OSI has listed this License as approved.
+
+A value of "false" indicates that the OSI has not listed this License as
+approved.
+
+If the isOsiApproved field is not specified, the SPDX data creator makes no
+assertions about whether the License is approved by the OSI.""" ;
+  rdfs:domain spdx-expandedlicensing:License ;
+  rdfs:range xsd:boolean ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:licenseComment a owl:DatatypeProperty ;
+  rdfs:comment """A licenseComment describes general factual information about the License. It
+should not contain information (or links to information) that includes any kind
+of interpretation about the meaning or effect of the License, even if written
+by the license's author.
+
+Examples of information for a licenseComment may include the following:
+
+* If the License's identifier is deprecated, it may briefly explain the reason
+  for deprecation.
+* It may include the date of release, if identified, for Licenses with multiple
+  versions.
+* It may include links to other official language translations for the License.
+* For LicenseAdditions, it may include a reference to the License(s) with
+  which this additional text is typically used.""" ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:licenseId a owl:DatatypeProperty ;
+  rdfs:comment """A licenseId contains a human-readable, short-form license identifier for a
+License. It may only include letters, numbers, period (".") and hyphen ("-")
+characters.
+
+For a ListedLicense, the licenseId will be as specified on the
+[SPDX License List](https://spdx.org/licenses) for the particular license.
+
+For a CustomLicense, the short-form license identifier must begin with the
+prefix `LicenseRef-` and must be unique within the applicable SPDX namespace.
+The short-form license ID may be preceded by an SPDX namespace or a
+fully-qualified URI prefix.""" ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:licenseName a owl:DatatypeProperty ;
+  rdfs:comment """A licenseName contains the full name of a License, preferably using the title found
+in the applicable license text or file, or as otherwise specified by the
+License's author or steward.
+
+When no such title is specified, using a name from another well-known source or list
+of licenses (such as OSI or Fedora) is suggested.
+
+If no official or common name is known, any name may be used to aid in
+distinguishing the License from other Licenses.""" ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:listVersionAdded a owl:DatatypeProperty ;
+  rdfs:comment """A listVersionAdded for a ListedLicense or ListedLicenseException on the SPDX
+License List specifies which version release of the License List was the first
+one in which it was included.""" ;
+  rdfs:range xsd:string ;
+  sh:or ( [
+    rdfs:domain spdx-expandedlicensing:ListedLicense ;
+    rdfs:domain spdx-expandedlicensing:ListedLicenseException ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:obsoletedBy a owl:DatatypeProperty ;
+  rdfs:comment """An obsoletedBy value for a deprecated License or LicenseAddition specifies
+the licenseId of the replacement License or LicenseAddition that is preferred
+to be used in its place. It should use the same format as specified for a
+licenseId.
+
+The License's or LicenseAddition's comment value may include more information
+about the reason why the licenseId specified in the obsoletedBy value is
+preferred.""" ;
+  rdfs:range xsd:string ;
+  sh:or ( [
+    rdfs:domain spdx-expandedlicensing:License ;
+    rdfs:domain spdx-expandedlicensing:LicenseAddition ;
+  ] ) ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:seeAlso a owl:DatatypeProperty ;
+  rdfs:comment """A seeAlso defines a cross-reference with a URL where the License or
+LicenseAddition can be found in use by one or a few projects.
+
+If applicable, it should include a URL where the license text is posted by
+the license steward, particularly if the license steward has made available a
+"canonical" primary URL for the license text.
+
+If the license is OSI approved, a seeAlso should be included with the URL for
+the license's listing on the OSI website.
+
+The seeAlso URL may refer to a previously-available URL for the License or
+LicenseAddition which is no longer active.
+
+Where applicable, the seeAlso URL should include the license text in its
+native language. seeAlso URLs to English or other translations may be included
+where multiple, equivalent official translations exist.""" ;
+  rdfs:range xsd:anyURI ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:standardAdditionTemplate a owl:DatatypeProperty ;
+  rdfs:comment """A standardAdditionTemplate contains a license addition template which describes
+sections of the LicenseAddition text which can be varied. See the Legacy Text
+Template format section of the SPDX specification for format information.""" ;
+  rdfs:domain spdx-expandedlicensing:LicenseAddition ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:standardLicenseHeader a owl:DatatypeProperty ;
+  rdfs:comment """A standardLicenseHeader contains the plain text of the License author's
+preferred wording to be used, typically in a source code file's header
+comments or similar location, to indicate that the file is subject to
+the specified License.""" ;
+  rdfs:domain spdx-expandedlicensing:License ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+spdx-expandedlicensing:standardLicenseTemplate a owl:DatatypeProperty ;
+  rdfs:comment """A standardLicenseTemplate contains a license template which describes
+sections of the License text which can be varied. See the Legacy Text Template
+format section of the SPDX specification for format information.""" ;
+  rdfs:domain spdx-expandedlicensing:License ;
+  rdfs:range xsd:string ;
+  vs:term_status "Stable" .
+
+

@@ -37,13 +37,13 @@
   {:rdfa/uri         "https://spdx.org/rdf/v3/AI/"
    :rdfa/prefix      "spdx-ai"
    :rdf/type         :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/AI/AI.ttl"})
 
 (def spdx-build
   {:rdfa/uri    "https://spdx.org/rdf/v3/Build/"
    :rdfa/prefix "spdx-build"
    :rdf/type    :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/Build/Build.ttl"})
 
 (def spdx-core
   {:rdfa/uri    "https://spdx.org/rdf/v3/Core/"
@@ -55,31 +55,31 @@
   {:rdfa/uri    "https://spdx.org/rdf/v3/Dataset/"
    :rdfa/prefix "spdx-dataset"
    :rdf/type    :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/Dataset/Dataset.ttl"})
 
 (def spdx-security
   {:rdfa/uri    "https://spdx.org/rdf/v3/Security/"
    :rdfa/prefix "spdx-security"
    :rdf/type    :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/Security/Security.ttl"})
 
 (def spdx-simplelicensing
   {:rdfa/uri    "https://spdx.org/rdf/v3/SimpleLicensing/"
    :rdfa/prefix "spdx-simplelicensing"
    :rdf/type    :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/SimpleLicensing/SimpleLicensing.ttl"})
 
 (def spdx-expandedlicensing
   {:rdfa/uri    "https://spdx.org/rdf/v3/ExpandedLicensing/"
    :rdfa/prefix "spdx-expandedlicensing"
    :rdf/type    :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/ExpandedLicensing/ExpandedLicensing.ttl"})
 
 (def spdx-software
   {:rdfa/uri    "https://spdx.org/rdf/v3/Software/"
    :rdfa/prefix "spdx-software"
    :rdf/type    :rdfa/PrefixMapping
-   :dcat/downloadURL "resources/spdx/model.ttl"})
+   :dcat/downloadURL "resources/spdx/Software/Software.ttl"})
 
 (def spdx-spec
   {:rdfa/uri         "https://spdx.org/rdf/v3/MetadataSPDX/"

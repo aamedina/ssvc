@@ -17,9 +17,17 @@
    [net.wikipunk.rdf.pointers]
    [net.wikipunk.rdf.tal]
    [net.wikipunk.rdf.tac]
-   [net.wikipunk.rdf.sh]
+   [net.wikipunk.rdf.sh]      
+   [net.wikipunk.rdf.spdx-ai]
+   [net.wikipunk.rdf.spdx-build]
    [net.wikipunk.rdf.spdx-core]
-   [net.wikipunk.rdf.spdx-spec]))
+   [net.wikipunk.rdf.spdx-dataset]
+   [net.wikipunk.rdf.spdx-expandedlicensing]
+   [net.wikipunk.rdf.spdx-security]
+   [net.wikipunk.rdf.spdx-simplelicensing]
+   [net.wikipunk.rdf.spdx-software]
+   [net.wikipunk.rdf.spdx-spec]
+   [net.wikipunk.rdf.openvex]))
 
 (defrecord SSVC []
   com/Lifecycle

@@ -10,9 +10,7 @@
 spdx-build: a owl:Ontology ;
   rdfs:comment "The Build namespace defines concepts related to building of artifacts." ;
   rdfs:seeAlso <https://slsa.dev/provenance/v0.2> ;
-  owl:imports (
-    spdx-core:
-    ) ;
+  owl:imports <https://spdx.org/rdf/v3/Core> ;
   sh:declare [
     sh:prefix "spdx-build" ;
     sh:namespace "https://spdx.org/rdf/v3/Build/" ;

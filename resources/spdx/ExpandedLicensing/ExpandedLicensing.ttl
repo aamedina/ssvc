@@ -10,10 +10,8 @@
 
 spdx-expandedlicensing: a owl:Ontology ;
   rdfs:comment "This profile supports representing a fully expanded license expression in object form." ;
-  owl:imports (
-    spdx-core:
-    spdx-simplelicensing:
-  ) ;
+  owl:imports <https://spdx.org/rdf/v3/SimpleLicensing> ;
+  owl:imports <https://spdx.org/rdf/v3/Core> ;
   sh:declare [
     sh:prefix "spdx-expandedlicensing" ;
     sh:namespace "https://spdx.org/rdf/v3/ExpandedLicensing/" ;

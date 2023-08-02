@@ -1,7 +1,7 @@
 (ns net.wikipunk.rdf.spdx-security
   "This ontology provides a vocabulary for describing security-related information about software packages and their dependencies. It is intended to be used in conjunction with the SPDX specification, which provides a vocabulary for describing software packages and their dependencies."
   {:dcat/downloadURL "resources/spdx/Security/Security.ttl",
-   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Core/"}],
+   :owl/imports {:rdfa/uri "https://spdx.org/rdf/v3/Core/"},
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
@@ -315,26 +315,26 @@
    :rdfs/comment
    "VulnAssessmentRelationship is the ancestor class common to all vulnerability\nassessment relationships. It factors out the common properties shared by them.\nExternal property restriction on /Core/Relationship/to: minCount: 1",
    :rdfs/subClassOf :spdx-core/Relationship,
-   :sh/property [{:sh/datatype :spdx-core/DateTime,
+   :sh/property [{:sh/class    :spdx-core/Element,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "assessedElement",
+                  :sh/path     :spdx-security/assessedElement}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "modifiedTime",
+                  :sh/path     :spdx-security/modifiedTime}
+                 {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "publishedTime",
                   :sh/path     :spdx-security/publishedTime}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "withdrawnTime",
-                  :sh/path     :spdx-security/withdrawnTime}
                  {:sh/class    :spdx-core/Agent,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "suppliedBy",
                   :sh/path     :spdx-security/suppliedBy}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "modifiedTime",
-                  :sh/path     :spdx-security/modifiedTime}
-                 {:sh/class    :spdx-core/Element,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "assessedElement",
-                  :sh/path     :spdx-security/assessedElement}],
+                  :sh/name     "withdrawnTime",
+                  :sh/path     :spdx-security/withdrawnTime}],
    :vs/term_status "Stable"})
 
 (def Vulnerability

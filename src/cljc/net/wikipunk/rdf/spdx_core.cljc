@@ -84,25 +84,25 @@
    :rdfs/subClassOf :spdx-core/Element,
    :sh/property [{:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "releaseTime",
-                  :sh/path     :spdx-core/releaseTime}
-                 {:sh/class :spdx-core/Agent,
-                  :sh/name  "originatedBy",
-                  :sh/path  :spdx-core/originatedBy}
-                 {:sh/class :spdx-core/Agent,
-                  :sh/name  "suppliedBy",
-                  :sh/path  :spdx-core/suppliedBy}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "validUntilTime",
                   :sh/path     :spdx-core/validUntilTime}
                  {:sh/datatype :xsd/string,
                   :sh/name     "standard",
                   :sh/path     :spdx-core/standard}
+                 {:sh/class :spdx-core/Agent,
+                  :sh/name  "originatedBy",
+                  :sh/path  :spdx-core/originatedBy}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "releaseTime",
+                  :sh/path     :spdx-core/releaseTime}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "builtTime",
-                  :sh/path     :spdx-core/builtTime}],
+                  :sh/path     :spdx-core/builtTime}
+                 {:sh/class :spdx-core/Agent,
+                  :sh/name  "suppliedBy",
+                  :sh/path  :spdx-core/suppliedBy}],
    :vs/term_status "Stable"})
 
 (def Bom
@@ -134,15 +134,7 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "The CreationInfo provides information about who created the Element, and when and how it was created. \n\nThe dateTime created is often the date of last change (e.g., a git commit date), not the date when the SPDX data was created, as doing so supports reproducible builds.",
-   :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "dataLicense",
-                  :sh/path     :spdx-core/dataLicense}
-                 {:sh/class    :spdx-core/Agent,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "createdBy",
-                  :sh/path     :spdx-core/createdBy}
-                 {:sh/datatype :spdx-core/DateTime,
+   :sh/property [{:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "created",
                   :sh/path     :spdx-core/created}
@@ -154,14 +146,22 @@
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "specVersion",
                   :sh/path     :spdx-core/specVersion}
+                 {:sh/class    :spdx-core/Agent,
+                  :sh/minCount #xsd/integer 1,
+                  :sh/name     "createdBy",
+                  :sh/path     :spdx-core/createdBy}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}
                  {:sh/class    :spdx-core/ProfileIdentifierType,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "profile",
                   :sh/path     :spdx-core/profile}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}],
+                  :sh/name     "dataLicense",
+                  :sh/path     :spdx-core/dataLicense}],
    :vs/term_status "Stable"})
 
 (def DateTime
@@ -205,9 +205,20 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "description",
                   :sh/path     :spdx-core/description}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "summary",
+                  :sh/path     :spdx-core/summary}
                  {:sh/class :spdx-core/IntegrityMethod,
                   :sh/name  "verifiedUsing",
                   :sh/path  :spdx-core/verifiedUsing}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "name",
+                  :sh/path     :spdx-core/name}
+                 {:sh/class :spdx-core/ExternalIdentifier,
+                  :sh/name  "externalIdentifier",
+                  :sh/path  :spdx-core/externalIdentifier}
                  {:sh/class :spdx-core/ExternalReference,
                   :sh/name  "externalReference",
                   :sh/path  :spdx-core/externalReference}
@@ -215,18 +226,7 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "creationInfo",
-                  :sh/path     :spdx-core/creationInfo}
-                 {:sh/class :spdx-core/ExternalIdentifier,
-                  :sh/name  "externalIdentifier",
-                  :sh/path  :spdx-core/externalIdentifier}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "name",
-                  :sh/path     :spdx-core/name}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "summary",
-                  :sh/path     :spdx-core/summary}],
+                  :sh/path     :spdx-core/creationInfo}],
    :vs/term_status "Stable"})
 
 (def ElementCollection
@@ -1143,10 +1143,9 @@
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "completeness",
                   :sh/path     :spdx-core/completeness}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "startTime",
-                  :sh/path     :spdx-core/startTime}
+                 {:sh/class :spdx-core/Element,
+                  :sh/name  "to",
+                  :sh/path  :spdx-core/to}
                  {:sh/class    :spdx-core/Element,
                   :sh/maxCount #xsd/integer 1,
                   :sh/minCount #xsd/integer 1,
@@ -1154,11 +1153,12 @@
                   :sh/path     :spdx-core/from}
                  {:sh/datatype :spdx-core/DateTime,
                   :sh/maxCount #xsd/integer 1,
+                  :sh/name     "startTime",
+                  :sh/path     :spdx-core/startTime}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "endTime",
-                  :sh/path     :spdx-core/endTime}
-                 {:sh/class :spdx-core/Element,
-                  :sh/name  "to",
-                  :sh/path  :spdx-core/to}],
+                  :sh/path     :spdx-core/endTime}],
    :vs/term_status "Stable"})
 
 (def RelationshipCompleteness

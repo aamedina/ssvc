@@ -87,3 +87,9 @@
    :rdf/type         :rdfa/PrefixMapping
    :dcat/downloadURL "resources/spdx/MetadataSPDX.ttl"
    :private          true})
+
+(def openvex
+  {:rdfa/uri         "https://openvex.dev/ns/v1#"
+   :rdfa/prefix      "openvex"
+   :rdf/type         :rdfa/PrefixMapping
+   :dcat/downloadURL "resources/vex/openvex.ttl"})

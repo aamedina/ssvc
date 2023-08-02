@@ -1,9 +1,9 @@
 (ns net.wikipunk.rdf.spdx-dataset
   "This ontology describes the metadata that can be added to a dataset that may be used in a software or to train/test an AI package."
   {:dcat/downloadURL "resources/spdx/Dataset/Dataset.ttl",
-   :owl/import [{:rdfa/uri "https://spdx.org/rdf/v3/AI/"}
-                {:rdfa/uri "https://spdx.org/rdf/v3/Core/"}
-                {:rdfa/uri "https://spdx.org/rdf/v3/Software/"}],
+   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Software/"}
+                 {:rdfa/uri "https://spdx.org/rdf/v3/Core/"}
+                 {:rdfa/uri "https://spdx.org/rdf/v3/AI/"}],
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
@@ -65,54 +65,54 @@
    :rdfs/comment
    "Metadata information that can be added to a dataset that may be used in a software or to train/test an AI package.\nExternal property restriction on /Core/Artifact/originatedBy: minCount: 1\nExternal property restriction on /Software/Package/downloadLocation: minCount: 1\nExternal property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1\nExternal property restriction on /Core/Artifact/releaseTime: minCount: 1\nExternal property restriction on /Core/Artifact/builtTime: minCount: 1",
    :rdfs/subClassOf :spdx-software/Package,
-   :sh/property [{:sh/class    :spdx-dataset/ConfidentialityLevelType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "confidentialityLevel",
-                  :sh/path     :spdx-dataset/confidentialityLevel}
-                 {:sh/datatype :xsd/string,
-                  :sh/name     "knownBias",
-                  :sh/path     :spdx-dataset/knownBias}
-                 {:sh/datatype :spdx-core/PresenceType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "sensitivePersonalInformation",
-                  :sh/path     :spdx-dataset/sensitivePersonalInformation}
+   :sh/property [{:sh/datatype :xsd/string,
+                  :sh/name     "dataPreprocessing",
+                  :sh/path     :spdx-dataset/dataPreprocessing}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetUpdateMechanism",
                   :sh/path     :spdx-dataset/datasetUpdateMechanism}
                  {:sh/datatype :xsd/string,
-                  :sh/name     "anonymizationMethodUsed",
-                  :sh/path     :spdx-dataset/anonymizationMethodUsed}
-                 {:sh/datatype :xsd/nonNegativeInteger,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "datasetSize",
-                  :sh/path     :spdx-dataset/datasetSize}
+                  :sh/name     "datasetNoise",
+                  :sh/path     :spdx-dataset/datasetNoise}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "sensor",
+                  :sh/path  :spdx-dataset/sensor}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "knownBias",
+                  :sh/path     :spdx-dataset/knownBias}
                  {:sh/class    :spdx-dataset/DatasetAvailabilityType,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "datasetAvailability",
                   :sh/path     :spdx-dataset/datasetAvailability}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "sensor",
-                  :sh/path  :spdx-dataset/sensor}
                  {:sh/class    :spdx-dataset/DatasetType,
                   :sh/minCount #xsd/integer 1,
                   :sh/name     "datasetType",
                   :sh/path     :spdx-dataset/datasetType}
+                 {:sh/datatype :xsd/nonNegativeInteger,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "datasetSize",
+                  :sh/path     :spdx-dataset/datasetSize}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
                   :sh/name     "intendedUse",
                   :sh/path     :spdx-dataset/intendedUse}
                  {:sh/datatype :xsd/string,
                   :sh/maxCount #xsd/integer 1,
-                  :sh/name     "datasetNoise",
-                  :sh/path     :spdx-dataset/datasetNoise}
-                 {:sh/datatype :xsd/string,
-                  :sh/name     "dataPreprocessing",
-                  :sh/path     :spdx-dataset/dataPreprocessing}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
                   :sh/name     "dataCollectionProcess",
-                  :sh/path     :spdx-dataset/dataCollectionProcess}],
+                  :sh/path     :spdx-dataset/dataCollectionProcess}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "anonymizationMethodUsed",
+                  :sh/path     :spdx-dataset/anonymizationMethodUsed}
+                 {:sh/class    :spdx-dataset/ConfidentialityLevelType,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "confidentialityLevel",
+                  :sh/path     :spdx-dataset/confidentialityLevel}
+                 {:sh/datatype :spdx-core/PresenceType,
+                  :sh/maxCount #xsd/integer 1,
+                  :sh/name     "sensitivePersonalInformation",
+                  :sh/path     :spdx-dataset/sensitivePersonalInformation}],
    :vs/term_status "Stable"})
 
 (def DatasetAvailabilityType

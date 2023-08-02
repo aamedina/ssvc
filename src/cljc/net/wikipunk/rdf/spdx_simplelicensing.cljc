@@ -1,7 +1,7 @@
 (ns net.wikipunk.rdf.spdx-simplelicensing
   "The Licensing namespace defines metadata fields applicable to software licensing. It also defines the classes and properties that comprise the SPDX License Expression syntax and that relate to the SPDX License List."
   {:dcat/downloadURL "resources/spdx/SimpleLicensing/SimpleLicensing.ttl",
-   :owl/imports [{:rdfa/uri "https://spdx.org/rdf/v3/Core/"}],
+   :owl/imports {:rdfa/uri "https://spdx.org/rdf/v3/Core"},
    :rdf/ns-prefix-map {"owl" "http://www.w3.org/2002/07/owl#",
                        "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                        "rdfs" "http://www.w3.org/2000/01/rdf-schema#",

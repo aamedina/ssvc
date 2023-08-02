@@ -1,0 +1,195 @@
+@prefix openvex: <https://openvex.dev/ns/v1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
+@prefix spdx-security: <https://spdx.org/rdf/v3/Security/> .
+@prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
+
+openvex: a owl:Ontology ;
+  rdfs:label "OpenVEX" ;
+  rdfs:comment "OpenVEX is a data model for exchanging vulnerability information between software supply chain participants." ;
+  owl:versionIRI <https://openvex.dev/ns/v1> ;
+  owl:versionInfo "0.0.2" ;
+  owl:imports <https://spdx.org/rdf/v3/Core/> ;
+  owl:imports <https://spdx.org/rdf/v3/Security/> ;
+  owl:imports <https://spdx.org/rdf/v3/Software/> .
+
+# Classes
+
+openvex:Document a owl:Class ;
+  rdfs:label "Document" ;
+  rdfs:comment "A data structure that groups together one or more VEX statements. A document MUST define a timestamp to express when it was issued." .
+
+openvex:Statement a owl:Class ;
+  rdfs:label "Statement" ;
+  rdfs:comment "An assertion made by the document's author about the impact a vulnerability has on one or more software products." .
+
+openvex:Product a owl:Class ;
+  rdfs:subClassOf spdx-software:SoftwareArtifact ;
+  rdfs:label "Product" ;
+  rdfs:comment "A logical unit representing a piece of software. The concept is intentionally broad to allow for a wide variety of use cases but generally speaking, anything that can be described in a Software Bill of Materials (SBOM) can be thought of as a product." .
+
+openvex:Vulnerability a owl:Class ;
+  rdfs:subClassOf spdx-core:ExternalIdentifier ;
+  rdfs:label "Vulnerability" ;
+  rdfs:comment "A cataloged defect in a software product. Documents SHOULD use global, well-known identifying schemas. For internal identifying schemes, the only requirement for a vulnerability to be listed in a VEX document is that it needs to have an ID string to address it. Public identifiers (such as CVE IDs) are the most common case, but private internal identifiers can be used if they are understood by all participants of the supply chain where the VEX metadata is expected to flow." .
+
+openvex:Status a owl:Class ;
+  rdfs:subClassOf spdx-security:VexVulnAssessmentRelationship ;
+  rdfs:label "Status" ;
+  rdfs:comment "The known relationship a vulnerability has to a software product. The status expresses if the product is impacted by the vulnerability or not, if the authors are investigating it, or if it has already been fixed." ;
+  owl:oneOf (
+    openvex:Status-NotAffected
+    openvex:Status-UnderInvestigation
+    openvex:Status-Fixed
+    openvex:Status-Affected
+    ) .
+
+openvex:Justification a owl:Class ;  
+  rdfs:label "Justification" ;
+  rdfs:comment "When assessing risk, consumers of a `not_affected` software product can know why the vulnerability is not affected by reading the justification label associated with the VEX statement. These labels are predefined and machine-readable to enable automated uses such as deployment policies." ;
+  owl:oneOf (
+    openvex:Justification-ComponentNotPresent
+    openvex:Justification-VulnerableCodeCannotBeControlledByAdversary
+    openvex:Justification-VulnerableCodeNotInExecutePath
+    openvex:Justification-VulnerableCodeNotPresent
+    openvex:Justification-InlineMitigationsAlreadyExist
+    ) .
+
+# Properties
+
+openvex:author a owl:ObjectProperty ;
+  owl:equivalentProperty dcterms:creator ;
+  rdfs:domain openvex:Document ;
+  rdfs:label "author" ;
+  rdfs:comment "Author is the identifier for the author of the VEX statement. This field should ideally be a machine readable identifier such as an IRI, email address, etc. `author` MUST be an individual or organization. `author` identity SHOULD be cryptographically associated with the signature of the VEX document or other exchange mechanism." .
+
+openvex:role a owl:DatatypeProperty ;
+  rdfs:domain openvex:Document ;
+  rdfs:range xsd:string ;
+  rdfs:label "role" ;
+  rdfs:comment "Role describes the role of the document author." .
+
+openvex:timestamp a owl:DatatypeProperty ;
+  owl:equivalentProperty dcterms:issued ;
+  rdfs:domain [ owl:unionOf ( openvex:Document openvex:Statement ) ] ;
+  rdfs:range xsd:dateTime ;
+  rdfs:label "timestamp" ;
+  rdfs:comment "For documents, timestamp defines the time at which the document was issued. For Statements, timestamp is the time at which the information expressed in the Statement was known to be true. Cascades down from the document." .
+
+openvex:version a owl:DatatypeProperty ;
+  rdfs:domain [ owl:unionOf ( openvex:Document openvex:Statement ) ] ;
+  rdfs:range xsd:nonNegativeInteger ;
+  rdfs:label "version" ;
+  rdfs:comment "Version is the document version. It must be incremented when any content within the VEX document changes, including any VEX statements included within the VEX document." .
+
+openvex:tooling a owl:DatatypeProperty ;
+  rdfs:domain openvex:Document ;
+  rdfs:range xsd:string ;
+  rdfs:label "tooling" ;
+  rdfs:comment "Tooling expresses how the VEX document and contained VEX statements were generated. It may specify tools or automated processes used in the document or statement generation." .
+
+openvex:statement a owl:ObjectProperty ;
+  rdfs:domain openvex:Document ;
+  rdfs:range openvex:Statement ;
+  rdfs:label "statement" ;
+  rdfs:comment "Relates a Document to one or more Statements." .
+
+openvex:vulnerability a owl:ObjectProperty ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range openvex:Vulnerability ;
+  rdfs:label "vulnerability" ;
+  rdfs:comment "Vulnerability SHOULD use existing and well known identifiers. For example: [CVE](https://cve.mitre.org/), [OSV](https://osv.dev/), [GHSA](https://github.com/advisories), a supplier's vulnerability tracking system such as [RHSA](https://access.redhat.com/security/security-updates/#/) or a propietary system. It is expected that vulnerability identification systems are external to and maintained separately from VEX.<br>`vulnerability` MAY be an IRI and MAY be arbitrary, created by the VEX document `author`. " .
+
+openvex:vulnDescription a owl:DatatypeProperty ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range xsd:string ;
+  rdfs:label "vuln_description" ;
+  rdfs:comment "Optional free-form text describing the vulnerability." .
+
+openvex:lastUpdated a owl:DatatypeProperty ;
+  owl:equivalentProperty dcterms:modified ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range xsd:dateTime ;
+  rdfs:label "last_updated" ;
+  rdfs:comment "Timestamp when the statement was last updated." .
+
+openvex:product a owl:ObjectProperty ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range openvex:Product ;
+  rdfs:label "product" ;
+  rdfs:comment "Product identifiers that the statement applies to. Any software identifier can be used and SHOULD be traceable to a described item in an SBOM. The use of [Package URLs](https://github.com/package-url/purl-spec) (purls) is recommended. While a product identifier is required to have a complete statement, this field is optional as it can cascade down from the encapsulating document." .
+
+openvex:subcomponent a owl:ObjectProperty ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range openvex:Product ;
+  rdfs:label "subcomponent" ;
+  rdfs:comment "Identifiers of components where the vulnerability originates. While the statement asserts about the impact on the software product, listing `subcomponents` let scanners find identifiers to match their findings." .
+
+openvex:status a owl:ObjectProperty ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range openvex:Status ;
+  rdfs:label "status" ;
+  rdfs:comment "A VEX statement MUST provide the status of the vulnerabilities with respect to the products and components listed in the statement. `status` MUST be one of the labels defined by VEX." .
+
+openvex:supplier a owl:ObjectProperty ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range xsd:string ;
+  rdfs:label "supplier" ;
+  rdfs:comment "Supplier of the product or subcomponent." .
+
+openvex:justification a owl:ObjectProperty ;
+  rdfs:domain openvex:Statement ;
+  rdfs:range openvex:Justification ;
+  rdfs:label "justification" ;
+  rdfs:comment "For statements conveying a `not_affected` status, a VEX statement MUST include either a status justification or an impact_statement informing why the product is not affected by the vulnerability. Justifications are fixed labels defined by VEX." .
+
+# Named Individuals
+
+openvex:Status-NotAffected a owl:Class, owl:NamedIndividual, openvex:Status ;
+  rdfs:subClassOf spdx-security:VexNotAffectedVulnAssessmentRelationship ;
+  rdfs:label "not_affected" ;
+  rdfs:comment "No remediation is required regarding this vulnerability. A `not_affected` status required the addition of a `justification` to the statement." .
+
+openvex:Status-Affected a owl:Class, owl:NamedIndividual, openvex:Status ;
+  rdfs:subClassOf spdx-security:VexAffectedVulnAssessmentRelationship ;
+  rdfs:label "affected" ;
+  rdfs:comment "Actions are recommended to remediate or address this vulnerability." .
+
+openvex:Status-Fixed a owl:Class, owl:NamedIndividual, openvex:Status ;
+  rdfs:subClassOf spdx-security:VexFixedVulnAssessmentRelationship ;
+  rdfs:label "fixed" ;
+  rdfs:comment "These product versions contain a fix for the vulnerability." .
+
+openvex:Status-UnderInvestigation a owl:Class, owl:NamedIndividual, openvex:Status ;
+  rdfs:subClassOf spdx-security:VexUnderInvestigationVulnAssessmentRelationship ;
+  rdfs:label "under_investigation" ;
+  rdfs:comment "It is not yet known whether these product versions are affected by the vulnerability. Updates should be provided in further VEX documents as knowledge evolves." .
+
+openvex:Justification-ComponentNotPresent a owl:NamedIndividual, openvex:Justification ;
+  owl:sameAs spdx-security:VexJustificationType-ComponentNotPresent ;
+  rdfs:label "component_not_present" ;
+  rdfs:comment "The product is not affected by the vulnerability because the component is not included. The status justification may be used to preemptively inform product users who are seeking to understand a vulnerability that is widespread, receiving a lot of attention, or is in similar products." .
+
+openvex:Justification-VulnerableCodeNotPresent a owl:NamedIndividual, openvex:Justification ;
+  owl:sameAs spdx-security:VexJustificationType-VulnerableCodeNotPresent ;
+  rdfs:label "vulnerable_code_not_present" ;
+  rdfs:comment "The vulnerable component is included in artifact, but the vulnerable code is not present. Typically, this case occurs when source code is configured or built in a way that excluded the vulnerable code." .
+
+openvex:Justification-VulnerableCodeNotInExecutePath a owl:NamedIndividual, openvex:Justification ;
+  owl:sameAs spdx-security:VexJustificationType-VulnerableCodeNotInExecutePath ;
+  rdfs:label "vulnerable_code_not_in_execute_path" ;
+  rdfs:comment "The vulnerable code (likely in `subcomponents`) can not be executed as it is used by the product. Typically, this case occurs when the product includes the vulnerable `subcomponent` but does not call or use the vulnerable code." .
+
+openvex:Justification-VulnerableCodeCannotBeControlledByAdversary a owl:NamedIndividual, openvex:Justification ;
+  owl:sameAs spdx-security:VexJustificationType-VulnerableCodeCannotBeControlledByAdversary ;
+  rdfs:label "vulnerable_code_cannot_be_controlled_by_adversary" ;
+  rdfs:comment "The vulnerable code cannot be controlled by an attacker to exploit the vulnerability. This justification could  be difficult to prove conclusively." .
+
+openvex:Justification-InlineMitigationsAlreadyExist a owl:NamedIndividual, openvex:Justification ;
+  owl:sameAs spdx-security:VexJustificationType-InlineMitigationsAlreadyExist ;
+  rdfs:label "inline_mitigations_already_exist" ;
+  rdfs:comment "The product includes built-in protections or features that prevent exploitation of the vulnerability. These built-in protections cannot be subverted by the attacker and cannot be configured or disabled by the user. These mitigations completely prevent exploitation based on known attack vectors. This justification could be difficult to prove conclusively. History is littered with examples of mitigation bypasses, typically involving minor modifications of existing exploit code." .

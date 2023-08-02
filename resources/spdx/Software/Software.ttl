@@ -4,16 +4,13 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
-@prefix spdx-simplelicensing: <https://spdx.org/rdf/v3/SimpleLicensing/> .
 @prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 spdx-software: a owl:Ontology ;
   rdfs:comment "This ontology provides a vocabulary for describing software-related SPDX elements." ;
-  owl:imports (
-    spdx-core:
-    spdx-simplelicensing:
-    ) ;
+  owl:imports <https://spdx.org/rdf/v3/Core/> ;
+  owl:imports <https://spdx.org/rdf/v3/Software/> ;
   sh:declare [
     sh:prefix "spdx-software" ;
     sh:namespace "https://spdx.org/rdf/v3/Software/" ;

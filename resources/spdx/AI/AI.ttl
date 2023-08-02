@@ -11,11 +11,9 @@
 
 spdx-ai: a owl:Ontology ;
   rdfs:comment "The AI profile namespace defines concepts related to AI application and model artifacts." ;
-  owl:imports (
-    spdx-core:
-    spdx-simplelicensing:
-    spdx-software:
-    ) ;
+  owl:imports <https://spdx.org/rdf/v3/Core/> ;
+  owl:imports <https://spdx.org/rdf/v3/SimpleLicensing/> ;
+  owl:imports <https://spdx.org/rdf/v3/Software/> ;  
   sh:declare [
     sh:prefix "spdx-ai" ;
     sh:namespace "https://spdx.org/rdf/v3/AI/" ;

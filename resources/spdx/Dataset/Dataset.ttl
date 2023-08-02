@@ -11,11 +11,9 @@
 
 spdx-dataset: a owl:Ontology ;
   rdfs:comment "This ontology describes the metadata that can be added to a dataset that may be used in a software or to train/test an AI package." ;
-  owl:import (
-    spdx-ai:
-    spdx-core:
-    spdx-software:
-    ) ;
+  owl:imports <https://spdx.org/rdf/v3/AI/> ;
+  owl:imports <https://spdx.org/rdf/v3/Core/> ;
+  owl:imports <https://spdx.org/rdf/v3/Software/> ;
   sh:declare [
     sh:prefix "spdx-dataset" ;
     sh:namespace "https://spdx.org/rdf/v3/Dataset/" ;

@@ -2,7 +2,7 @@
  {org.clojure/data.csv
   {:mvn/version "1.0.1"}
   io.github.aamedina/rdf
-  {:sha     "ba5ca1d77d10ff7bbce306cf2011fee63164e6ed"
+  {:sha     "bc0f422125ef45e50f039b3cc9879b24b3de4f3a"
    :git/url "https://github.com/aamedina/rdf.git"}
   org.topbraid/shacl
   {:mvn/version "1.4.2"}}

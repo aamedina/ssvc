@@ -8,7 +8,7 @@
 @prefix spdx-build: <https://spdx.org/rdf/v3/Build/> .
 @prefix spdx-core: <https://spdx.org/rdf/v3/Core/> .
 @prefix spdx-dataset: <https://spdx.org/rdf/v3/Dataset/> .
-@prefix spdx-expandedlicensing: <https://spdx.org/rdf/v3/ExpandedLicensing/>
+@prefix spdx-expandedlicensing: <https://spdx.org/rdf/v3/ExpandedLicensing/> .
 @prefix spdx-security: <https://spdx.org/rdf/v3/Security/> .
 @prefix spdx-simplelicensing: <https://spdx.org/rdf/v3/SimpleLicensing/> .
 @prefix spdx-software: <https://spdx.org/rdf/v3/Software/> .
@@ -19,16 +19,14 @@
   dcterms:issued "2023-07-31T14:53:02Z"^^xsd:dateTime ;
   dcterms:modified "2023-07-31T14:53:02Z"^^xsd:dateTime ;
   dcterms:license <http://spdx.org/licenses/Community-Spec-1.0> ;
-  owl:imports (
-    <https://spdx.org/rdf/v3/AI/>
-    <https://spdx.org/rdf/v3/Build/>
-    <https://spdx.org/rdf/v3/Core/> 
-    <https://spdx.org/rdf/v3/Dataset/>
-    <https://spdx.org/rdf/v3/ExpandedLicensing/>
-    <https://spdx.org/rdf/v3/Security/>
-    <https://spdx.org/rdf/v3/SimpleLicensing/>
-    <https://spdx.org/rdf/v3/Software/>
-    ) .
+  owl:imports <https://spdx.org/rdf/v3/AI/> ;
+  owl:imports <https://spdx.org/rdf/v3/Build/> ;
+  owl:imports <https://spdx.org/rdf/v3/Core/> ;
+  owl:imports <https://spdx.org/rdf/v3/Dataset/> ;
+  owl:imports <https://spdx.org/rdf/v3/ExpandedLicensing/> ;
+  owl:imports <https://spdx.org/rdf/v3/Security/> ;
+  owl:imports <https://spdx.org/rdf/v3/SimpleLicensing/> ;
+  owl:imports <https://spdx.org/rdf/v3/Software/> .
 
 :SPDXSpecification a owl:NamedIndividual ;
   rdfs:label "SPDX" ;

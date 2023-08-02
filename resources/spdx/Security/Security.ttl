@@ -9,9 +9,7 @@
 
 spdx-security: a owl:Ontology ;
   rdfs:comment "This ontology provides a vocabulary for describing security-related information about software packages and their dependencies. It is intended to be used in conjunction with the SPDX specification, which provides a vocabulary for describing software packages and their dependencies." ;
-  owl:imports (
-    spdx-core:
-    ) ;
+  owl:imports <https://spdx.org/rdf/v3/Core/> ;
   sh:declare [
     sh:prefix "spdx-security" ;
     sh:namespace "https://spdx.org/rdf/v3/Security/" ;

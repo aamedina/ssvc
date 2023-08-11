@@ -26,36 +26,36 @@
    :rdfs/comment
    "A build is a representation of the process in which a piece of software or artifact is built. It encapsulates information related to a build process and\nprovides an element from which relationships can be created to describe the build's inputs, outputs, and related entities (e.g. builders, identities, etc.).\n\nDefinitions of \"BuildType\", \"ConfigSource\", \"Parameters\" and \"Environment\" follow\nthose defined in [SLSA provenance](https://slsa.dev/provenance/v0.2).\n\nExternalIdentifier of type \"urlScheme\" may be used to identify build logs. In this case, the comment of the ExternalIdentifier should be \"LogReference\".\n\nNote that buildStart and buildEnd are optional, and may be omitted to simplify creating reproducible builds.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/datatype :xsd/anyURI,
+   :sh/property [{:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount 1,
+                  :sh/name     "buildStartTime",
+                  :sh/path     :spdx-build/buildStartTime}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "environment",
+                  :sh/path  :spdx-build/environment}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "configSourceEntrypoint",
+                  :sh/path     :spdx-build/configSourceEntrypoint}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount 1,
+                  :sh/name     "buildEndTime",
+                  :sh/path     :spdx-build/buildEndTime}
+                 {:sh/datatype :xsd/anyURI,
                   :sh/name     "configSourceUri",
                   :sh/path     :spdx-build/configSourceUri}
                  {:sh/class :spdx-core/DictionaryEntry,
                   :sh/name  "parameters",
                   :sh/path  :spdx-build/parameters}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "buildEndTime",
-                  :sh/path     :spdx-build/buildEndTime}
                  {:sh/class :spdx-core/Hash,
                   :sh/name  "configSourceDigest",
                   :sh/path  :spdx-build/configSourceDigest}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "environment",
-                  :sh/path  :spdx-build/environment}
                  {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "buildType",
                   :sh/path     :spdx-build/buildType}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "buildStartTime",
-                  :sh/path     :spdx-build/buildStartTime}
                  {:sh/datatype :xsd/string,
-                  :sh/name     "configSourceEntrypoint",
-                  :sh/path     :spdx-build/configSourceEntrypoint}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "buildId",
                   :sh/path     :spdx-build/buildId}],
    :vs/term_status "Stable"})

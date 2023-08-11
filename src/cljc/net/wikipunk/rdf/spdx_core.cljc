@@ -34,20 +34,20 @@
    "An Annotation is an assertion made in relation to one or more elements.",
    :rdfs/subClassOf :spdx-core/Element,
    :sh/property [{:sh/class    :spdx-core/AnnotationType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "annotationType",
                   :sh/path     :spdx-core/annotationType}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "statement",
                   :sh/path     :spdx-core/statement}
                  {:sh/datatype :spdx-core/MediaType,
                   :sh/name     "contentType",
                   :sh/path     :spdx-core/contentType}
                  {:sh/class    :spdx-core/Element,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "subject",
                   :sh/path     :spdx-core/subject}],
    :vs/term_status "Stable"})
@@ -82,27 +82,27 @@
    :rdfs/comment
    "An artifact is a distinct article or unit within the digital domain,\nsuch as an electronic file, a software package, a device or an element of data.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "validUntilTime",
-                  :sh/path     :spdx-core/validUntilTime}
-                 {:sh/datatype :xsd/string,
+   :sh/property [{:sh/datatype :xsd/string,
                   :sh/name     "standard",
                   :sh/path     :spdx-core/standard}
                  {:sh/class :spdx-core/Agent,
-                  :sh/name  "originatedBy",
-                  :sh/path  :spdx-core/originatedBy}
+                  :sh/name  "suppliedBy",
+                  :sh/path  :spdx-core/suppliedBy}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "releaseTime",
-                  :sh/path     :spdx-core/releaseTime}
+                  :sh/maxCount 1,
+                  :sh/name     "validUntilTime",
+                  :sh/path     :spdx-core/validUntilTime}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "builtTime",
                   :sh/path     :spdx-core/builtTime}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount 1,
+                  :sh/name     "releaseTime",
+                  :sh/path     :spdx-core/releaseTime}
                  {:sh/class :spdx-core/Agent,
-                  :sh/name  "suppliedBy",
-                  :sh/path  :spdx-core/suppliedBy}],
+                  :sh/name  "originatedBy",
+                  :sh/path  :spdx-core/originatedBy}],
    :vs/term_status "Stable"})
 
 (def Bom
@@ -112,7 +112,7 @@
    :rdfs/comment
    "A Bill Of Materials (BOM) is a container for a grouping of SPDX-3.0 content\ncharacterizing details about a product.\nThis could include details of the content and composition of the product,\nprovenence details of the product and/or\nits composition, licensing information, known quality or security issues, etc.",
    :rdfs/subClassOf
-   [:spdx-core/Bundle :spdx-core/Element :spdx-core/ElementCollection],
+   [:spdx-core/Bundle :spdx-core/ElementCollection :spdx-core/Element],
    :vs/term_status "Stable"})
 
 (def Bundle
@@ -123,7 +123,7 @@
    "A bundle is a collection of Elements that have a shared context.",
    :rdfs/subClassOf [:spdx-core/ElementCollection :spdx-core/Element],
    :sh/property {:sh/datatype :xsd/string,
-                 :sh/maxCount #xsd/integer 1,
+                 :sh/maxCount 1,
                  :sh/name     "context",
                  :sh/path     :spdx-core/context},
    :vs/term_status "Stable"})
@@ -134,34 +134,34 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "The CreationInfo provides information about who created the Element, and when and how it was created. \n\nThe dateTime created is often the date of last change (e.g., a git commit date), not the date when the SPDX data was created, as doing so supports reproducible builds.",
-   :sh/property [{:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+   :sh/property [{:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount 1,
                   :sh/name     "created",
                   :sh/path     :spdx-core/created}
+                 {:sh/class    :spdx-core/ProfileIdentifierType,
+                  :sh/minCount 1,
+                  :sh/name     "profile",
+                  :sh/path     :spdx-core/profile}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "dataLicense",
+                  :sh/path     :spdx-core/dataLicense}
+                 {:sh/class    :spdx-core/Agent,
+                  :sh/minCount 1,
+                  :sh/name     "createdBy",
+                  :sh/path     :spdx-core/createdBy}
                  {:sh/class :spdx-core/Tool,
                   :sh/name  "createdUsing",
                   :sh/path  :spdx-core/createdUsing}
                  {:sh/datatype :spdx-core/SemVer,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "specVersion",
-                  :sh/path     :spdx-core/specVersion}
-                 {:sh/class    :spdx-core/Agent,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "createdBy",
-                  :sh/path     :spdx-core/createdBy}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}
-                 {:sh/class    :spdx-core/ProfileIdentifierType,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "profile",
-                  :sh/path     :spdx-core/profile}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "dataLicense",
-                  :sh/path     :spdx-core/dataLicense}],
+                  :sh/path     :spdx-core/specVersion}],
    :vs/term_status "Stable"})
 
 (def DateTime
@@ -181,12 +181,12 @@
    :rdfs/comment
    "The class used for implementing a generic string mapping (also known as associative array, dictionary, or hash map) in SPDX.  Each DictionaryEntry contains a key-value pair which maps the key to its associated value.  To implement a dictionary, this class is to be used in a collection with unique keys.",
    :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "value",
                   :sh/path     :spdx-core/value}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "key",
                   :sh/path     :spdx-core/key}],
    :vs/term_status "Stable"})
@@ -197,36 +197,36 @@
    :rdf/type [:sh/NodeShape :owl/Class],
    :rdfs/comment
    "An Element is a representation of a fundamental concept either directly inherent\nto the Bill of Materials (BOM) domain or indirectly related to the BOM domain\nand necessary for contextually characterizing BOM concepts and relationships.\nWithin SPDX-3.0 structure this is the base class acting as a consistent,\nunifying, and interoperable foundation for all explicit\nand inter-relatable content objects.",
-   :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "comment",
-                  :sh/path     :spdx-core/comment}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "description",
-                  :sh/path     :spdx-core/description}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "summary",
-                  :sh/path     :spdx-core/summary}
-                 {:sh/class :spdx-core/IntegrityMethod,
+   :sh/property [{:sh/class :spdx-core/IntegrityMethod,
                   :sh/name  "verifiedUsing",
                   :sh/path  :spdx-core/verifiedUsing}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "name",
                   :sh/path     :spdx-core/name}
-                 {:sh/class :spdx-core/ExternalIdentifier,
-                  :sh/name  "externalIdentifier",
-                  :sh/path  :spdx-core/externalIdentifier}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "description",
+                  :sh/path     :spdx-core/description}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "comment",
+                  :sh/path     :spdx-core/comment}
                  {:sh/class :spdx-core/ExternalReference,
                   :sh/name  "externalReference",
                   :sh/path  :spdx-core/externalReference}
+                 {:sh/class :spdx-core/ExternalIdentifier,
+                  :sh/name  "externalIdentifier",
+                  :sh/path  :spdx-core/externalIdentifier}
                  {:sh/class    :spdx-core/CreationInfo,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "creationInfo",
-                  :sh/path     :spdx-core/creationInfo}],
+                  :sh/path     :spdx-core/creationInfo}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "summary",
+                  :sh/path     :spdx-core/summary}],
    :vs/term_status "Stable"})
 
 (def ElementCollection
@@ -237,11 +237,11 @@
    "An SpdxCollection is a collection of Elements, not necessarily with unifying context.",
    :rdfs/subClassOf :spdx-core/Element,
    :sh/property [{:sh/class    :spdx-core/Element,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/minCount 1,
                   :sh/name     "element",
                   :sh/path     :spdx-core/element}
                  {:sh/class    :spdx-core/Element,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/minCount 1,
                   :sh/name     "rootElement",
                   :sh/path     :spdx-core/rootElement}
                  {:sh/class :spdx-core/ExternalMap,
@@ -259,21 +259,21 @@
                   :sh/name     "identifierLocator",
                   :sh/path     :spdx-core/identifierLocator}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "comment",
                   :sh/path     :spdx-core/comment}
                  {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "issuingAuthority",
                   :sh/path     :spdx-core/issuingAuthority}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "identifier",
                   :sh/path     :spdx-core/identifier}
                  {:sh/class    :spdx-core/ExternalIdentifierType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "externalIdentifierType",
                   :sh/path     :spdx-core/externalIdentifierType}],
    :vs/term_status "Stable"})
@@ -369,19 +369,19 @@
    :rdfs/comment
    "An External Map is a map of Element identifiers that are used within a Document\nbut defined external to that Document.\nThe external map provides details about the externally-defined Element\nsuch as its provenance, where to retrieve it, and how to verify its integrity.",
    :sh/property [{:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "definingDocument",
                   :sh/path     :spdx-core/definingDocument}
                  {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "externalId",
                   :sh/path     :spdx-core/externalId}
                  {:sh/class :spdx-core/IntegrityMethod,
                   :sh/name  "verifiedUsing",
                   :sh/path  :spdx-core/verifiedUsing}
                  {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "locationHint",
                   :sh/path     :spdx-core/locationHint}],
    :vs/term_status "Stable"})
@@ -396,15 +396,15 @@
                   :sh/name     "locator",
                   :sh/path     :spdx-core/locator}
                  {:sh/datatype :spdx-core/MediaType,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "contentType",
                   :sh/path     :spdx-core/contentType}
                  {:sh/class    :spdx-core/ExternalReferenceType,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "externalReferenceType",
                   :sh/path     :spdx-core/externalReferenceType}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "comment",
                   :sh/path     :spdx-core/comment}],
    :vs/term_status "Stable"})
@@ -714,13 +714,13 @@
    "A hash is a grouping of characteristics unique to the result\nof applying a mathematical algorithm\nthat maps data of arbitrary size to a bit string (the hash)\nand is a one-way function, that is,\na function which is practically infeasible to invert.\nThis is commonly used for integrity checking of data.",
    :rdfs/subClassOf :spdx-core/IntegrityMethod,
    :sh/property [{:sh/class    :spdx-core/HashAlgorithm,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "algorithm",
                   :sh/path     :spdx-core/algorithm}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "hashValue",
                   :sh/path     :spdx-core/hashValue}],
    :vs/term_status "Stable"})
@@ -908,7 +908,7 @@
    :rdfs/comment
    "An IntegrityMethod provides an independently reproducible mechanism that permits verification\nof a specific Element that correlates to the data in this SPDX document. This identifier enables\na recipient to determine if anything in the original Element has been changed and eliminates\nconfusion over which version or modification of a specific Element is referenced.",
    :sh/property {:sh/datatype :xsd/string,
-                 :sh/maxCount #xsd/integer 1,
+                 :sh/maxCount 1,
                  :sh/name     "comment",
                  :sh/path     :spdx-core/comment},
    :vs/term_status "Stable"})
@@ -969,7 +969,7 @@
    :rdfs/comment    "TODO",
    :rdfs/subClassOf [:spdx-core/Relationship :spdx-core/Element],
    :sh/property     {:sh/class    :spdx-core/LifecycleScopeType,
-                     :sh/maxCount #xsd/integer 1,
+                     :sh/maxCount 1,
                      :sh/name     "scope",
                      :sh/path     :spdx-core/scope},
    :vs/term_status  "Stable"})
@@ -1009,13 +1009,13 @@
    :rdfs/comment
    "PositiveIntegerRange is a tuple of two positive integers that define a range.\n\"begin\" must be less than or equal to \"end\".",
    :sh/property [{:sh/datatype :xsd/positiveInteger,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "end",
                   :sh/path     :spdx-core/end}
                  {:sh/datatype :xsd/positiveInteger,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "begin",
                   :sh/path     :spdx-core/begin}],
    :vs/term_status "Stable"})
@@ -1134,31 +1134,31 @@
    :rdfs/comment
    "A Relationship is a grouping of characteristics unique to an assertion\nthat one Element is related to one or more other Elements in some way.",
    :rdfs/subClassOf :spdx-core/Element,
-   :sh/property [{:sh/class    :spdx-core/RelationshipType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "relationshipType",
-                  :sh/path     :spdx-core/relationshipType}
-                 {:sh/class    :spdx-core/RelationshipCompleteness,
-                  :sh/maxCount #xsd/integer 1,
+   :sh/property [{:sh/class    :spdx-core/RelationshipCompleteness,
+                  :sh/maxCount 1,
                   :sh/name     "completeness",
                   :sh/path     :spdx-core/completeness}
-                 {:sh/class :spdx-core/Element,
-                  :sh/name  "to",
-                  :sh/path  :spdx-core/to}
-                 {:sh/class    :spdx-core/Element,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
-                  :sh/name     "from",
-                  :sh/path     :spdx-core/from}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "startTime",
                   :sh/path     :spdx-core/startTime}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "endTime",
-                  :sh/path     :spdx-core/endTime}],
+                  :sh/path     :spdx-core/endTime}
+                 {:sh/class    :spdx-core/RelationshipType,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
+                  :sh/name     "relationshipType",
+                  :sh/path     :spdx-core/relationshipType}
+                 {:sh/class    :spdx-core/Element,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
+                  :sh/name     "from",
+                  :sh/path     :spdx-core/from}
+                 {:sh/class :spdx-core/Element,
+                  :sh/name  "to",
+                  :sh/path  :spdx-core/to}],
    :vs/term_status "Stable"})
 
 (def RelationshipCompleteness
@@ -1676,7 +1676,7 @@
    :rdfs/comment
    "An SpdxDocument assembles a collection of Elements under a common string, the name of the document.\nCommonly used when representing a unit of transfer of SPDX Elements.\nExternal property restriction on /Core/Element/name: minCount: 1",
    :rdfs/subClassOf
-   [:spdx-core/Bundle :spdx-core/Element :spdx-core/ElementCollection],
+   [:spdx-core/Bundle :spdx-core/ElementCollection :spdx-core/Element],
    :vs/term_status "Stable"})
 
 (def Tool

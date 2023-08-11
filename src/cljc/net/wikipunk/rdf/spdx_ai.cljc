@@ -30,58 +30,58 @@
    :rdfs/comment
    "Metadata information that can be added to a package to describe an AI application or trained AI model.\nExternal property restriction on /Core/Artifact/suppliedBy: minCount: 1\nExternal property restriction on /Software/Package/downloadLocation: minCount: 1\nExternal property restriction on /Software/Package/packageVersion: minCount: 1\nExternal property restriction on /Software/SoftwareArtifact/primaryPurpose: minCount: 1\nExternal property restriction on /Core/Artifact/releaseTime: minCount: 1",
    :rdfs/subClassOf :spdx-software/Package,
-   :sh/property [{:sh/datatype :xsd/string,
-                  :sh/name     "typeOfModel",
-                  :sh/path     :spdx-ai/typeOfModel}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "metric",
-                  :sh/path  :spdx-ai/metric}
+   :sh/property [{:sh/class    :spdx-ai/SafetyRiskAssessmentType,
+                  :sh/maxCount 1,
+                  :sh/name     "safetyRiskAssessment",
+                  :sh/path     :spdx-ai/safetyRiskAssessment}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "limitation",
                   :sh/path     :spdx-ai/limitation}
                  {:sh/datatype :xsd/string,
-                  :sh/name     "modelExplainability",
-                  :sh/path     :spdx-ai/modelExplainability}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "hyperparameter",
-                  :sh/path  :spdx-ai/hyperparameter}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "energyConsumption",
-                  :sh/path     :spdx-ai/energyConsumption}
-                 {:sh/class    :spdx-ai/SafetyRiskAssessmentType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "safetyRiskAssessment",
-                  :sh/path     :spdx-ai/safetyRiskAssessment}
-                 {:sh/class    :spdx-core/PresenceType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "sensitivePersonalInformation",
-                  :sh/path     :spdx-ai/sensitivePersonalInformation}
-                 {:sh/class    :spdx-core/PresenceType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "autonomyType",
-                  :sh/path     :spdx-ai/autonomyType}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "informationAboutApplication",
-                  :sh/path     :spdx-ai/informationAboutApplication}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "informationAboutTraining",
                   :sh/path     :spdx-ai/informationAboutTraining}
                  {:sh/datatype :xsd/string,
-                  :sh/name     "standardCompliance",
-                  :sh/path     :spdx-ai/standardCompliance}
-                 {:sh/class :spdx-core/DictionaryEntry,
-                  :sh/name  "metricDecisionThreshold",
-                  :sh/path  :spdx-ai/metricDecisionThreshold}
+                  :sh/maxCount 1,
+                  :sh/name     "energyConsumption",
+                  :sh/path     :spdx-ai/energyConsumption}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "informationAboutApplication",
+                  :sh/path     :spdx-ai/informationAboutApplication}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "modelExplainability",
+                  :sh/path     :spdx-ai/modelExplainability}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "typeOfModel",
+                  :sh/path     :spdx-ai/typeOfModel}
+                 {:sh/datatype :xsd/string,
+                  :sh/name     "modelDataPreprocessing",
+                  :sh/path     :spdx-ai/modelDataPreprocessing}
+                 {:sh/class    :spdx-core/PresenceType,
+                  :sh/maxCount 1,
+                  :sh/name     "autonomyType",
+                  :sh/path     :spdx-ai/autonomyType}
                  {:sh/datatype :xsd/string,
                   :sh/name     "domain",
                   :sh/path     :spdx-ai/domain}
                  {:sh/datatype :xsd/string,
-                  :sh/name     "modelDataPreprocessing",
-                  :sh/path     :spdx-ai/modelDataPreprocessing}],
+                  :sh/name     "standardCompliance",
+                  :sh/path     :spdx-ai/standardCompliance}
+                 {:sh/class    :spdx-core/PresenceType,
+                  :sh/maxCount 1,
+                  :sh/name     "sensitivePersonalInformation",
+                  :sh/path     :spdx-ai/sensitivePersonalInformation}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "metricDecisionThreshold",
+                  :sh/path  :spdx-ai/metricDecisionThreshold}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "metric",
+                  :sh/path  :spdx-ai/metric}
+                 {:sh/class :spdx-core/DictionaryEntry,
+                  :sh/name  "hyperparameter",
+                  :sh/path  :spdx-ai/hyperparameter}],
    :vs/term_status "Stable"})
 
 (def SafetyRiskAssessmentType

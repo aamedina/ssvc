@@ -73,7 +73,7 @@
    "Refers to any object that stores content on a computer.\nThe type of content can optionally be provided in the contentType property.\nExternal property restriction on /Core/Element/name: minCount: 1",
    :rdfs/subClassOf [:spdx-software/SoftwareArtifact :spdx-core/Artifact],
    :sh/property {:sh/datatype :spdx-core/MediaType,
-                 :sh/maxCount #xsd/integer 1,
+                 :sh/maxCount 1,
                  :sh/name     "contentType",
                  :sh/path     :spdx-software/contentType},
    :vs/term_status "Stable"})
@@ -85,26 +85,26 @@
    :rdfs/comment
    "A package refers to any unit of content that can be associated with a distribution of software.\nTypically, a package is composed of one or more files.  \nAny of the following non-limiting examples may be (but are not required to be) represented in SPDX as a package:\n\n - a tarball, zip file or other archive\n - a directory or sub-directory\n - a separately distributed piece of software which another Package or File uses or depends upon (e.g., a Python package, a Go module, ...)\n - a container image, and/or each image layer within a container image\n - a collection of one or more sub-packages\n - a Git repository snapshot from a particular point in time\n\nNote that some of these could be represented in SPDX as a file as well.\nExternal property restriction on /Core/Element/name: minCount: 1",
    :rdfs/subClassOf [:spdx-software/SoftwareArtifact :spdx-core/Artifact],
-   :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "sourceInfo",
-                  :sh/path     :spdx-software/sourceInfo}
+   :sh/property [{:sh/datatype :xsd/anyURI,
+                  :sh/maxCount 1,
+                  :sh/name     "downloadLocation",
+                  :sh/path     :spdx-software/downloadLocation}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "packageVersion",
                   :sh/path     :spdx-software/packageVersion}
                  {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "packageUrl",
-                  :sh/path     :spdx-software/packageUrl}
-                 {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "homePage",
                   :sh/path     :spdx-software/homePage}
+                 {:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "sourceInfo",
+                  :sh/path     :spdx-software/sourceInfo}
                  {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "downloadLocation",
-                  :sh/path     :spdx-software/downloadLocation}],
+                  :sh/maxCount 1,
+                  :sh/name     "packageUrl",
+                  :sh/path     :spdx-software/packageUrl}],
    :vs/term_status "Stable"})
 
 (def Sbom
@@ -177,16 +177,16 @@
    "A Snippet describes a certain part of a file and can be used when the file is known to have some content\nthat has been included from another original source. Snippets are useful for denoting when part of a file\nmay have been originally created under another license or copied from a place with a known vulnerability.",
    :rdfs/subClassOf [:spdx-software/SoftwareArtifact :spdx-core/Artifact],
    :sh/property [{:sh/class    :spdx-software/File,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "snippetFromFile",
                   :sh/path     :spdx-software/snippetFromFile}
                  {:sh/class    :spdx-core/PositiveIntegerRange,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "byteRange",
                   :sh/path     :spdx-software/byteRange}
                  {:sh/class    :spdx-core/PositiveIntegerRange,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "lineRange",
                   :sh/path     :spdx-software/lineRange}],
    :vs/term_status "Stable"})
@@ -198,25 +198,25 @@
    :rdfs/comment
    "A software artifact is a distinct article or unit related to software\nsuch as a package, a file, or a snippet.",
    :rdfs/subClassOf :spdx-core/Artifact,
-   :sh/property [{:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
+   :sh/property [{:sh/datatype :xsd/string,
+                  :sh/maxCount 1,
+                  :sh/name     "attributionText",
+                  :sh/path     :spdx-software/attributionText}
+                 {:sh/datatype :xsd/anyURI,
+                  :sh/maxCount 1,
                   :sh/name     "contentIdentifier",
                   :sh/path     :spdx-software/contentIdentifier}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "attributionText",
-                  :sh/path     :spdx-software/attributionText}
-                 {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "copyrightText",
                   :sh/path     :spdx-software/copyrightText}
-                 {:sh/class    :spdx-software/SoftwarePurpose,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "primaryPurpose",
-                  :sh/path     :spdx-software/primaryPurpose}
                  {:sh/class :spdx-software/SoftwarePurpose,
                   :sh/name  "additionalPurpose",
-                  :sh/path  :spdx-software/additionalPurpose}],
+                  :sh/path  :spdx-software/additionalPurpose}
+                 {:sh/class    :spdx-software/SoftwarePurpose,
+                  :sh/maxCount 1,
+                  :sh/name     "primaryPurpose",
+                  :sh/path     :spdx-software/primaryPurpose}],
    :vs/term_status "Stable"})
 
 (def SoftwareDependencyLinkType
@@ -261,11 +261,11 @@
    :rdfs/comment    "TODO",
    :rdfs/subClassOf :spdx-core/LifecycleScopedRelationship,
    :sh/property     [{:sh/class    :spdx-software/SoftwareDependencyLinkType,
-                      :sh/maxCount #xsd/integer 1,
+                      :sh/maxCount 1,
                       :sh/name     "softwareLinkage",
                       :sh/path     :spdx-software/softwareLinkage}
                      {:sh/class    :spdx-software/DependencyConditionalityType,
-                      :sh/maxCount #xsd/integer 1,
+                      :sh/maxCount 1,
                       :sh/name     "conditionality",
                       :sh/path     :spdx-software/conditionality}],
    :vs/term_status  "Stable"})

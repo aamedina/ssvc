@@ -2,7 +2,8 @@
   "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers."
   {:dcat/downloadURL "resources/ssvc.ttl",
    :owl/imports [{:rdfa/uri "http://d3fend.mitre.org/ontologies/d3fend.owl"}
-                 {:rdfa/uri "http://docs.oasis-open.org/cti/ns/stix"}],
+                 {:rdfa/uri "http://docs.oasis-open.org/cti/ns/stix"}
+                 {:rdfa/uri "http://docs.oasis-open.org/cti/ns/tac"}],
    :owl/versionInfo "2.03",
    :prov/wasDerivedFrom
    [{:rdfa/uri
@@ -20,6 +21,7 @@
                        "spdx" "http://spdx.org/rdf/terms#",
                        "ssvc" "https://wikipunk.net/ssvc/",
                        "stix" "http://docs.oasis-open.org/cti/ns/stix#",
+                       "tac" "http://docs.oasis-open.org/cti/ns/tac#",
                        "xsd" "http://www.w3.org/2001/XMLSchema#"},
    :rdf/type :owl/Ontology,
    :rdfa/prefix "ssvc",

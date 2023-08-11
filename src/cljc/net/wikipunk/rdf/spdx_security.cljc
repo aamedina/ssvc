@@ -28,16 +28,16 @@
    :rdfs/subClassOf [:spdx-security/VulnAssessmentRelationship
                      :spdx-core/Relationship],
    :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "severity",
                   :sh/path     :spdx-security/severity}
                  {:sh/datatype :xsd/decimal,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "score",
                   :sh/path     :spdx-security/score}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "vector",
                   :sh/path     :spdx-security/vector}],
    :vs/term_status "Stable"})
@@ -51,16 +51,16 @@
    :rdfs/subClassOf [:spdx-security/VulnAssessmentRelationship
                      :spdx-core/Relationship],
    :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "severity",
                   :sh/path     :spdx-security/severity}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "vector",
                   :sh/path     :spdx-security/vector}
                  {:sh/datatype :xsd/decimal,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "score",
                   :sh/path     :spdx-security/score}],
    :vs/term_status "Stable"})
@@ -74,12 +74,12 @@
    :rdfs/subClassOf [:spdx-security/VulnAssessmentRelationship
                      :spdx-core/Relationship],
    :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "severity",
                   :sh/path     :spdx-security/severity}
                  {:sh/datatype :xsd/nonNegativeInteger,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "probability",
                   :sh/path     :spdx-security/probability}],
    :vs/term_status "Stable"})
@@ -115,18 +115,18 @@
    :rdfs/subClassOf [:spdx-security/VulnAssessmentRelationship
                      :spdx-core/Relationship],
    :sh/property [{:sh/datatype :xsd/boolean,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "exploited",
                   :sh/path     :spdx-security/exploited}
                  {:sh/datatype :xsd/anyURI,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "locator",
                   :sh/path     :spdx-security/locator}
                  {:sh/class    :spdx-security/ExploitCatalogType,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/minCount #xsd/integer 1,
+                  :sh/maxCount 1,
+                  :sh/minCount 1,
                   :sh/name     "catalogType",
                   :sh/path     :spdx-security/catalogType}],
    :vs/term_status "Stable"})
@@ -176,8 +176,8 @@
    :rdfs/subClassOf [:spdx-security/VulnAssessmentRelationship
                      :spdx-core/Relationship],
    :sh/property {:sh/class    :spdx-security/SsvcDecisionType,
-                 :sh/maxCount #xsd/integer 1,
-                 :sh/minCount #xsd/integer 1,
+                 :sh/maxCount 1,
+                 :sh/minCount 1,
                  :sh/name     "decisionType",
                  :sh/path     :spdx-security/decisionType},
    :vs/term_status "Stable"})
@@ -192,7 +192,7 @@
                      :spdx-core/Relationship
                      :spdx-security/VulnAssessmentRelationship],
    :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "actionStatement",
                   :sh/path     :spdx-security/actionStatement}
                  {:sh/datatype :spdx-core/DateTime,
@@ -266,15 +266,15 @@
                      :spdx-core/Relationship
                      :spdx-security/VulnAssessmentRelationship],
    :sh/property [{:sh/class    :spdx-security/VexJustificationType,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "justificationType",
                   :sh/path     :spdx-security/justificationType}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "impactStatement",
                   :sh/path     :spdx-security/impactStatement}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "impactStatementTime",
                   :sh/path     :spdx-security/impactStatementTime}],
    :vs/term_status "Stable"})
@@ -299,11 +299,11 @@
    :rdfs/subClassOf [:spdx-security/VulnAssessmentRelationship
                      :spdx-core/Relationship],
    :sh/property [{:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "statusNotes",
                   :sh/path     :spdx-security/statusNotes}
                  {:sh/datatype :xsd/string,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "vexVersion",
                   :sh/path     :spdx-security/vexVersion}],
    :vs/term_status "Stable"})
@@ -315,26 +315,26 @@
    :rdfs/comment
    "VulnAssessmentRelationship is the ancestor class common to all vulnerability\nassessment relationships. It factors out the common properties shared by them.\nExternal property restriction on /Core/Relationship/to: minCount: 1",
    :rdfs/subClassOf :spdx-core/Relationship,
-   :sh/property [{:sh/class    :spdx-core/Element,
-                  :sh/maxCount #xsd/integer 1,
+   :sh/property [{:sh/class    :spdx-core/Agent,
+                  :sh/maxCount 1,
+                  :sh/name     "suppliedBy",
+                  :sh/path     :spdx-security/suppliedBy}
+                 {:sh/class    :spdx-core/Element,
+                  :sh/maxCount 1,
                   :sh/name     "assessedElement",
                   :sh/path     :spdx-security/assessedElement}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "modifiedTime",
                   :sh/path     :spdx-security/modifiedTime}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "publishedTime",
-                  :sh/path     :spdx-security/publishedTime}
-                 {:sh/class    :spdx-core/Agent,
-                  :sh/maxCount #xsd/integer 1,
-                  :sh/name     "suppliedBy",
-                  :sh/path     :spdx-security/suppliedBy}
-                 {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "withdrawnTime",
-                  :sh/path     :spdx-security/withdrawnTime}],
+                  :sh/path     :spdx-security/withdrawnTime}
+                 {:sh/datatype :spdx-core/DateTime,
+                  :sh/maxCount 1,
+                  :sh/name     "publishedTime",
+                  :sh/path     :spdx-security/publishedTime}],
    :vs/term_status "Stable"})
 
 (def Vulnerability
@@ -345,15 +345,15 @@
    "Specifies a vulnerability and its associated information.\n\n**Syntax**\n\n```json\n{\n  \"@type\": \"Vulnerability\",\n  \"@id\": \"urn:spdx.dev:vuln-1\",\n  \"summary\": \"Use of a Broken or Risky Cryptographic Algorithm\",\n  \"description\": \"The npm package `elliptic` before version 6.5.4 are vulnerable to Cryptographic Issues via the secp256k1 implementation in elliptic/ec/key.js. There is no check to confirm that the public key point passed into the derive function actually exists on the secp256k1 curve. This results in the potential for the private key used in this implementation to be revealed after a number of ECDH operations are performed.\",      \n  \"modified\": \"2021-03-08T16:02:43Z\",\n  \"published\": \"2021-03-08T16:06:50Z\",\n  \"externalIdentifiers\": [\n    {\n      \"@type\": \"ExternalIdentifier\",\n      \"externalIdentifierType\": \"cve\",\n      \"identifier\": \"CVE-2020-2849\",\n      \"identifierLocator\": [\n        \"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-28498\",\n        \"https://www.cve.org/CVERecord?id=CVE-2020-28498\"\n      ],\n      \"issuingAuthority\": \"urn:spdx.dev:agent-cve.org\"\n    },\n    {\n      \"type\": \"ExternalIdentifier\",\n      \"externalIdentifierType\": \"securityOther\",\n      \"identifier\": \"GHSA-r9p9-mrjm-926w\",\n      \"identifierLocator\": \"https://github.com/advisories/GHSA-r9p9-mrjm-926w\"\n    },\n    {\n      \"type\": \"ExternalIdentifier\",\n      \"externalIdentifierType\": \"securityOther\",\n      \"identifier\": \"SNYK-JS-ELLIPTIC-1064899\",\n      \"identifierLocator\": \"https://security.snyk.io/vuln/SNYK-JS-ELLIPTIC-1064899\"\n    }\n  ],\n  \"externalReferences\": [\n    {\n        \"@type\": \"ExternalReference\",\n        \"externalReferenceType\": \"securityAdvisory\",\n        \"locator\": \"https://nvd.nist.gov/vuln/detail/CVE-2020-28498\"\n    },\n    {\n      \"@type\": \"ExternalReference\",\n      \"externalReferenceType\": \"securityAdvisory\",\n      \"locator\": \"https://ubuntu.com/security/CVE-2020-28498\"\n    },\n    {\n      \"@type\": \"ExternalReference\",\n      \"externalReferenceType\": \"securityOther\",\n      \"locator\": \"https://github.com/indutny/elliptic/pull/244/commits\"\n    },\n    {\n      \"@type\": \"ExternalReference\",\n      \"externalReferenceType\": \"securityOther\",\n      \"locator\": \"https://github.com/christianlundkvist/blog/blob/master/2020_05_26_secp256k1_twist_attacks/secp256k1_twist_attacks.md\"\n    }\n  ]\n},\n{\n  \"@type\": \"Relationship\",\n  \"@id\": \"urn:spdx.dev:vulnRelationship-1\",\n  \"relationshipType\": \"hasAssociatedVulnerability\",\n  \"from\": \"urn:npm-elliptic-6.5.2\",\n  \"to\": [\"urn:spdx.dev:vuln-1\"],\n  \"startTime\": \"2021-03-08T16:06:50Z\"\n},\n{\n  \"@type\": \"Relationship\",\n  \"@id\": \"urn:spdx.dev:vulnAgentRel-1\",  \n  \"relationshipType\": \"publishedBy\",  \n  \"from\": \"urn:spdx.dev:vuln-1\",\n  \"to\": [\"urn:spdx.dev:agent-snyk\"],\n  \"startTime\": \"2021-03-08T16:06:50Z\"\n}\n```",
    :rdfs/subClassOf :spdx-core/Element,
    :sh/property [{:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "withdrawnTime",
                   :sh/path     :spdx-security/withdrawnTime}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "publishedTime",
                   :sh/path     :spdx-security/publishedTime}
                  {:sh/datatype :spdx-core/DateTime,
-                  :sh/maxCount #xsd/integer 1,
+                  :sh/maxCount 1,
                   :sh/name     "modifiedTime",
                   :sh/path     :spdx-security/modifiedTime}],
    :vs/term_status "Stable"})

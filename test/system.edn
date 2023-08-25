@@ -1,0 +1,13 @@
+{:vocab  {:sc/create-fn net.wikipunk.rdf/map->UniversalTranslator
+          :sc/refs      [:ssvc]
+          :boot         [net.wikipunk.ssvc.boot]
+          :config       {:xtdb.lucene/lucene-store
+                         {:db-dir ".vocab/test/lucene"}}}
+ :ssvc   {:sc/create-fn net.wikipunk.ssvc/map->SSVC}
+ :client {:sc/create-fn datomic.client.api/client
+          :storage-dir  :mem
+          :server-type  :datomic-local
+          :system       "dev"}
+ :db     {:sc/create-fn net.wikipunk.datomic/map->Connection
+          :sc/refs      [:client]
+          :db-name      "ssvc"}}

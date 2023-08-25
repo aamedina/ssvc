@@ -8,6 +8,7 @@
   (:require
    [clj-http.client :as http]
    [clojure.data.csv :as csv]
+   [clojure.data.json :as json]
    [clojure.datafy :refer [datafy]]
    [clojure.edn :as edn]
    [clojure.java.io :as io]
@@ -17,6 +18,7 @@
    [clojure.repl :refer [apropos dir find-doc pst source]]
    [clojure.set :as set]
    [clojure.string :as str]
+   [clojure.tools.deps :as deps]
    [clojure.tools.namespace.repl :refer [refresh refresh-all clear]]
    [clojure.walk :as walk]
    [com.stuartsierra.component :as com]
@@ -35,6 +37,7 @@
 
 (set-init
   (fn [_]
+    (set! *print-namespace-maps* nil)
     (if-let [r (io/resource "system.edn")]
       (-> (slurp r)
           (edn/read-string)
@@ -68,13 +71,15 @@
   [mo]
   (->> mo
        (walk/prewalk rdf/unroll-langString)
-       (walk/prewalk rdf/unroll-tagged-literals)       
        (walk/postwalk (fn [form]
                         (cond
                           (and (map-entry? form)
                                (isa? (key form) :rdf/Property))
                           (let [k (key form)
-                                v (val form)]
+                                v (val form)
+                                v (if (tagged-literal? v)
+                                    (:form v)
+                                    v)]
                             [k (case (rdf/infer-datomic-type k)
                                  :db.type/string  (if (map? v)
                                                     (or (:rdfa/uri v) (pr-str v))
@@ -106,10 +111,8 @@
             (for [file  (file-seq (io/file "resources/spdx/license-list-data/"))
                   :when (.isFile file)
                   :when (str/ends-with? (.getPath file) ".ttl")]
-              (mapv transactable (rdf/parse {:dcat/downloadURL (.getPath file)}))))))
+              (mapv db/select-attributes (rdf/parse {:dcat/downloadURL (.getPath file)}))))))
 
 (comment
   (d/pull license-db '[*] [:spdx/licenseId "MIT"]))
 
-;; do we need to add this to rdf/unroll-blank?
-;; (not (some #{:db.unique/identity} (map infer-datomic-unique (keys form))))

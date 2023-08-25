@@ -5,7 +5,7 @@
                          {:db-dir ".vocab/lucene"}}}
  :ssvc   {:sc/create-fn net.wikipunk.ssvc/map->SSVC}
  :client {:sc/create-fn datomic.client.api/client
-          :server-type  :dev-local
+          :server-type  :datomic-local
           :system       "dev"}
  :db     {:sc/create-fn net.wikipunk.datomic/map->Connection
           :sc/refs      [:client]

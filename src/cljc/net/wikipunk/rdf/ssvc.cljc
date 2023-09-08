@@ -1,40 +1,39 @@
 (ns net.wikipunk.rdf.ssvc
-  "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers."
-  {:dcat/downloadURL "resources/ssvc.ttl",
-   :owl/imports [{:rdfa/uri "http://d3fend.mitre.org/ontologies/d3fend.owl"}
-                 {:rdfa/uri "http://docs.oasis-open.org/cti/ns/stix"}
-                 {:rdfa/uri "http://docs.oasis-open.org/cti/ns/tac"}],
+  ^{:base       "https://wikipunk.net/ssvc/",
+    :namespaces {"d3f"        "http://d3fend.mitre.org/ontologies/d3fend.owl#",
+                 "dcterms"    "http://purl.org/dc/terms/",
+                 "jsonschema" "https://www.w3.org/2019/wot/json-schema#",
+                 "owl"        "http://www.w3.org/2002/07/owl#",
+                 "prov"       "http://www.w3.org/ns/prov#",
+                 "rdf"        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                 "rdfs"       "http://www.w3.org/2000/01/rdf-schema#",
+                 "skos"       "http://www.w3.org/2004/02/skos/core#",
+                 "spdx"       "http://spdx.org/rdf/terms#",
+                 "ssvc"       "https://wikipunk.net/ssvc/",
+                 "stix"       "http://docs.oasis-open.org/cti/ns/stix#",
+                 "tac"        "http://docs.oasis-open.org/cti/ns/tac#",
+                 "xsd"        "http://www.w3.org/2001/XMLSchema#"},
+    :prefix     "ssvc",
+    :source     "resources/ssvc.ttl"}
+  {:owl/imports [{:xsd/anyURI "http://d3fend.mitre.org/ontologies/d3fend.owl"}
+                 {:xsd/anyURI "http://docs.oasis-open.org/cti/ns/stix"}
+                 {:xsd/anyURI "http://docs.oasis-open.org/cti/ns/tac"}],
    :owl/versionInfo "2.03",
    :prov/wasDerivedFrom
-   [{:rdfa/uri
+   [{:xsd/anyURI
      "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"}
-    {:rdfa/uri
+    {:xsd/anyURI
      "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}],
-   :rdf/ns-prefix-map {"d3f" "http://d3fend.mitre.org/ontologies/d3fend.owl#",
-                       "dcterms" "http://purl.org/dc/terms/",
-                       "jsonschema" "https://www.w3.org/2019/wot/json-schema#",
-                       "owl" "http://www.w3.org/2002/07/owl#",
-                       "prov" "http://www.w3.org/ns/prov#",
-                       "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                       "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
-                       "skos" "http://www.w3.org/2004/02/skos/core#",
-                       "spdx" "http://spdx.org/rdf/terms#",
-                       "ssvc" "https://wikipunk.net/ssvc/",
-                       "stix" "http://docs.oasis-open.org/cti/ns/stix#",
-                       "tac" "http://docs.oasis-open.org/cti/ns/tac#",
-                       "xsd" "http://www.w3.org/2001/XMLSchema#"},
    :rdf/type :owl/Ontology,
-   :rdfa/prefix "ssvc",
-   :rdfa/uri "https://wikipunk.net/ssvc/",
    :rdfs/comment
    "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers.",
    :rdfs/label "Stakeholder-Specific Vulnerability Categorization Ontology",
    :rdfs/seeAlso
-   {:rdfa/uri
-    "https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"}})
+   {:xsd/anyURI
+    "https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"},
+   :xsd/anyURI "https://wikipunk.net/ssvc/"})
 
 (def Act
-  "The vulnerability requires attention from the organization's internal, supervisory-level and leadership-level individuals. Necessary actions include requesting assistance or information about the vulnerability, as well as publishing a notification either internally and/or externally. Typically, internal groups would meet to determine the overall response and then execute agreed upon actions. CISA recommends remediating Act vulnerabilities as soon as possible."
   {:db/ident :ssvc/Act,
    :rdf/type :ssvc/Decision,
    :rdfs/comment
@@ -43,7 +42,6 @@
    :ssvc/hasColor "red"})
 
 (def Attend
-  "The vulnerability requires attention from the organization's internal, supervisory-level individuals. Necessary actions may include requesting assistance or information about the vulnerability and may involve publishing a notification, either internally and/or externally, about the vulnerability. CISA recommends remediating Attend vulnerabilities sooner than standard update timelines."
   {:db/ident :ssvc/Attend,
    :rdf/type :ssvc/Decision,
    :rdfs/comment
@@ -52,16 +50,14 @@
    :ssvc/hasColor "orange"})
 
 (def Automatable
-  "A decision point representing whether an attacker can reliably automate creating exploitation events for a given vulnerability, including reconnaissance, weaponization, delivery, and exploitation steps in the kill chain."
   {:db/ident :ssvc/Automatable,
    :rdf/type :ssvc/DecisionPoint,
    :rdfs/comment
    "A decision point representing whether an attacker can reliably automate creating exploitation events for a given vulnerability, including reconnaissance, weaponization, delivery, and exploitation steps in the kill chain.",
    :rdfs/label "Automatable",
-   :ssvc/hasOption [:ssvc/AutomatableYes :ssvc/AutomatableNo]})
+   :ssvc/hasOption #{:ssvc/AutomatableYes :ssvc/AutomatableNo}})
 
 (def AutomatableNo
-  "Attackers cannot reliably automate steps 1-4 of the kill chain for this vulnerability."
   {:db/ident :ssvc/AutomatableNo,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -69,7 +65,6 @@
    :rdfs/label "No"})
 
 (def AutomatableYes
-  "Attackers can reliably automate steps 1-4 of the kill chain for this vulnerability."
   {:db/ident :ssvc/AutomatableYes,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -77,21 +72,18 @@
    :rdfs/label "Yes"})
 
 (def Color
-  "A color used to represent a decision"
   {:db/ident     :ssvc/Color,
    :rdf/type     :owl/Class,
    :rdfs/comment "A color used to represent a decision",
    :rdfs/label   "Color"})
 
 (def Complex
-  "A decision type with children."
   {:db/ident     :ssvc/Complex,
    :rdf/type     :ssvc/DecisionType,
    :rdfs/comment "A decision type with children.",
    :rdfs/label   "Complex Decision Type"})
 
 (def ComputedScore
-  "A computed SSVC score representing the path in the decision tree"
   {:db/ident :ssvc/ComputedScore,
    :rdf/type :owl/Class,
    :rdfs/comment
@@ -99,7 +91,6 @@
    :rdfs/label "Computed Score"})
 
 (def Decision
-  "A decision made when a vulnerability is discovered, determining the level of action required."
   {:db/ident :ssvc/Decision,
    :rdf/type :owl/Class,
    :rdfs/comment
@@ -107,7 +98,6 @@
    :rdfs/label "Vulnerability Decision"})
 
 (def DecisionPoint
-  "A node in the decision tree, including the root node, with a label and two or more options"
   {:db/ident :ssvc/DecisionPoint,
    :rdf/type :owl/Class,
    :rdfs/comment
@@ -115,7 +105,6 @@
    :rdfs/label "Decision Point"})
 
 (def DecisionTree
-  "A decision tree used in computing SSVC scores for a vulnerability."
   {:db/ident :ssvc/DecisionTree,
    :rdf/type :owl/Class,
    :rdfs/comment
@@ -125,7 +114,6 @@
    "A DecisionTree represents a structured framework used within the SSVC process for vulnerability prioritization. The tree is made up of nodes, which correspond to different decision points based on various aspects or properties relevant to assessing vulnerabilities. Branches in the tree represent the possible options for each decision point."})
 
 (def DecisionType
-  "A decision type, which can be simple, complex, or final"
   {:db/ident     :ssvc/DecisionType,
    :owl/oneOf    [:ssvc/Simple :ssvc/Complex :ssvc/Final],
    :rdf/type     :owl/Class,
@@ -133,17 +121,15 @@
    :rdfs/label   "Decision Type"})
 
 (def Exploitation
-  "A decision point representing the current state of exploitation of a vulnerability, focusing on the present situation rather than predicting future exploitation."
   {:db/ident :ssvc/Exploitation,
    :rdf/type :ssvc/DecisionPoint,
    :rdfs/comment
    "A decision point representing the current state of exploitation of a vulnerability, focusing on the present situation rather than predicting future exploitation.",
    :rdfs/label "Exploitation",
-   :ssvc/hasOption
-   [:ssvc/ExploitationActive :ssvc/ExploitationPoC :ssvc/ExploitationNone]})
+   :ssvc/hasOption #{:ssvc/ExploitationActive :ssvc/ExploitationPoC
+                     :ssvc/ExploitationNone}})
 
 (def ExploitationActive
-  "Shared, observable, reliable evidence that the exploit is being used in the wild by real attackers; there is credible public reporting."
   {:db/ident :ssvc/ExploitationActive,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -151,7 +137,6 @@
    :rdfs/label "Active"})
 
 (def ExploitationNone
-  "There is no evidence of active exploitation and no public proof of concept (PoC) of how to exploit the vulnerability."
   {:db/ident :ssvc/ExploitationNone,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -159,7 +144,6 @@
    :rdfs/label "None"})
 
 (def ExploitationPoC
-  "One of the following cases is true: (1) exploit code is sold or traded on underground or restricted fora; (2) a typical public PoC in places such as Metasploit or ExploitDB; or (3) the vulnerability has a well-known method of exploitation."
   {:db/ident :ssvc/ExploitationPoC,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -167,36 +151,31 @@
    :rdfs/label "PoC (Proof of Concept)"})
 
 (def Final
-  "The last node on the decision tree."
   {:db/ident   :ssvc/Final,
    :rdf/type   :ssvc/DecisionType,
    :rdfs/label "The last node on the decision tree."})
 
 (def Option
-  "An option within a decision point"
   {:db/ident     :ssvc/Option,
    :rdf/type     :owl/Class,
    :rdfs/comment "An option within a decision point",
    :rdfs/label   "Option"})
 
 (def Simple
-  "A decision type that without children."
   {:db/ident     :ssvc/Simple,
    :rdf/type     :ssvc/DecisionType,
    :rdfs/comment "A decision type that without children.",
    :rdfs/label   "Simple Decision Type"})
 
 (def TechnicalImpact
-  "A decision point representing the extent to which exploiting a vulnerability affects the control or information exposure of the software containing the vulnerability."
   {:db/ident :ssvc/TechnicalImpact,
    :rdf/type :ssvc/DecisionPoint,
    :rdfs/comment
    "A decision point representing the extent to which exploiting a vulnerability affects the control or information exposure of the software containing the vulnerability.",
    :rdfs/label "Technical Impact",
-   :ssvc/hasOption [:ssvc/TechnicalImpactTotal :ssvc/TechnicalImpactPartial]})
+   :ssvc/hasOption #{:ssvc/TechnicalImpactPartial :ssvc/TechnicalImpactTotal}})
 
 (def TechnicalImpactPartial
-  "The exploit gives the adversary limited control over, or information exposure about, the behavior of the software that contains the vulnerability. Or the exploit gives the adversary an importantly low stochastic opportunity for total control. Denial of service is a form of limited control over the behavior of the vulnerable component."
   {:db/ident :ssvc/TechnicalImpactPartial,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -204,7 +183,6 @@
    :rdfs/label "Partial"})
 
 (def TechnicalImpactTotal
-  "The exploit gives the adversary total control over the behavior of the software, or it gives total disclosure of all information on the system that contains the vulnerability."
   {:db/ident :ssvc/TechnicalImpactTotal,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -212,7 +190,6 @@
    :rdfs/label "Total"})
 
 (def Track
-  "The vulnerability does not require action at this time. The organization would continue to track the vulnerability and reassess it if new information becomes available. CISA recommends remediating Track vulnerabilities within standard update guidelines."
   {:db/ident :ssvc/Track,
    :rdf/type :ssvc/Decision,
    :rdfs/comment
@@ -221,7 +198,6 @@
    :ssvc/hasColor "green"})
 
 (def TrackStar
-  "The vulnerability contains specific characteristics that may require closer monitoring for changes. CISA recommends remdiating Track* vulnerabilities within standard update guidelines."
   {:db/ident :ssvc/TrackStar,
    :rdf/type :ssvc/Decision,
    :rdfs/comment
@@ -230,17 +206,15 @@
    :ssvc/hasColor "yellow"})
 
 (def Utility
-  "A decision point representing the usefulness of the exploit to an adversary, based on the assumption that they can exploit the vulnerability. Utility is independent from the state of Exploitation and is a combination of the value density of vulnerable components and whether potential exploitation is automatable."
   {:db/ident :ssvc/Utility,
    :rdf/type :ssvc/DecisionPoint,
    :rdfs/comment
    "A decision point representing the usefulness of the exploit to an adversary, based on the assumption that they can exploit the vulnerability. Utility is independent from the state of Exploitation and is a combination of the value density of vulnerable components and whether potential exploitation is automatable.",
    :rdfs/label "Utility",
-   :ssvc/hasOption
-   [:ssvc/UtilitySuperEffective :ssvc/UtilityEfficient :ssvc/UtilityLaborious]})
+   :ssvc/hasOption #{:ssvc/UtilityLaborious :ssvc/UtilitySuperEffective
+                     :ssvc/UtilityEfficient}})
 
 (def UtilityEfficient
-  "{Yes to automatable and diffuse value} OR {No to automatable and concentrated value}."
   {:db/ident :ssvc/UtilityEfficient,
    :rdf/type :ssvc/Option,
    :rdfs/comment
@@ -248,21 +222,18 @@
    :rdfs/label "Efficient"})
 
 (def UtilityLaborious
-  "No to automatable and diffuse value."
   {:db/ident     :ssvc/UtilityLaborious,
    :rdf/type     :ssvc/Option,
    :rdfs/comment "No to automatable and diffuse value.",
    :rdfs/label   "Laborious"})
 
 (def UtilitySuperEffective
-  "Yes to automatable and concentrated value."
   {:db/ident     :ssvc/UtilitySuperEffective,
    :rdf/type     :ssvc/Option,
    :rdfs/comment "Yes to automatable and concentrated value.",
    :rdfs/label   "Super Effective"})
 
 (def hasChild
-  "Relates a decision point to its child decision points"
   {:db/ident     :ssvc/hasChild,
    :rdf/type     :owl/ObjectProperty,
    :rdfs/comment "Relates a decision point to its child decision points",
@@ -271,16 +242,14 @@
    :rdfs/range   :ssvc/DecisionPoint})
 
 (def hasColor
-  "An optional color to represent the final edge node or final recommended action provided by the SSVC tree"
   {:db/ident :ssvc/hasColor,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
    "An optional color to represent the final edge node or final recommended action provided by the SSVC tree",
    :rdfs/label "Color",
-   :rdfs/range [:xsd/string :ssvc/DecisionPoint]})
+   :rdfs/range #{:xsd/string :ssvc/DecisionPoint}})
 
 (def hasComputedScore
-  "A short vector representation of an SSVC computed decision score"
   {:db/ident :ssvc/hasComputedScore,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
@@ -290,7 +259,6 @@
    :rdfs/range :xsd/string})
 
 (def hasDecision
-  "Relates a vulnerability to its decision"
   {:db/ident     :ssvc/hasDecision,
    :rdf/type     :owl/ObjectProperty,
    :rdfs/comment "Relates a vulnerability to its decision",
@@ -299,7 +267,6 @@
    :rdfs/range   :ssvc/Decision})
 
 (def hasDecisionPoint
-  "Relates a decision tree to its decision points"
   {:db/ident     :ssvc/hasDecisionPoint,
    :rdf/type     :owl/ObjectProperty,
    :rdfs/comment "Relates a decision tree to its decision points",
@@ -308,7 +275,6 @@
    :rdfs/range   :ssvc/DecisionPoint})
 
 (def hasDecisionTree
-  "The full decision tree that was used for this SSVC computed score"
   {:db/ident :ssvc/hasDecisionTree,
    :rdf/type :owl/ObjectProperty,
    :rdfs/comment
@@ -318,7 +284,6 @@
    :rdfs/range :ssvc/DecisionTree})
 
 (def hasDecisionTreeURL
-  "A URL that points to the decision tree used to make this computed decision"
   {:db/ident :ssvc/hasDecisionTreeURL,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
@@ -328,7 +293,6 @@
    :rdfs/range :xsd/anyURI})
 
 (def hasDecisionType
-  "Relates a decision point to its decision type"
   {:db/ident     :ssvc/hasDecisionType,
    :rdf/type     :owl/ObjectProperty,
    :rdfs/comment "Relates a decision point to its decision type",
@@ -337,7 +301,6 @@
    :rdfs/range   :ssvc/DecisionType})
 
 (def hasKey
-  "An optional short key that identifies a decision point or option in the SSVC score vector form"
   {:db/ident :ssvc/hasKey,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
@@ -347,7 +310,6 @@
    :rdfs/range :xsd/string})
 
 (def hasOption
-  "Relates a decision point to its options"
   {:db/ident     :ssvc/hasOption,
    :rdf/type     :owl/ObjectProperty,
    :rdfs/comment "Relates a decision point to its options",
@@ -356,7 +318,6 @@
    :rdfs/range   :ssvc/Option})
 
 (def hasOptionPattern
-  "Relates an option to the option patterns within it"
   {:db/ident     :ssvc/hasOptionPattern,
    :rdf/type     :owl/ObjectProperty,
    :rdfs/comment "Relates an option to the option patterns within it",
@@ -365,7 +326,6 @@
    :rdfs/range   :xsd/string})
 
 (def hasParent
-  "Relates a decision point to its parent decision point"
   {:db/ident     :ssvc/hasParent,
    :rdf/type     :owl/ObjectProperty,
    :rdfs/comment "Relates a decision point to its parent decision point",
@@ -374,7 +334,6 @@
    :rdfs/range   :ssvc/DecisionPoint})
 
 (def hasRole
-  "Roles defined in the SSVC spec and optional in the SSVC provision schema"
   {:db/ident :ssvc/hasRole,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
@@ -384,7 +343,6 @@
    :rdfs/range :prov/Role})
 
 (def hasSchema
-  "A URL that points to the schema used for the decision tree to make this computed decision"
   {:db/ident :ssvc/hasSchema,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
@@ -394,7 +352,6 @@
    :rdfs/range :xsd/anyURI})
 
 (def hasTimestamp
-  "Date and time in ISO format (ISO 8601)"
   {:db/ident     :ssvc/hasTimestamp,
    :rdf/type     :owl/DatatypeProperty,
    :rdfs/comment "Date and time in ISO format (ISO 8601)",
@@ -403,7 +360,6 @@
    :rdfs/range   :xsd/dateTime})
 
 (def hasVersion
-  "Version of the SSVC that was used in this decision, in semver format"
   {:db/ident :ssvc/hasVersion,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
@@ -413,7 +369,6 @@
    :rdfs/range :xsd/string})
 
 (def hasVulnerability
-  "Identifier for a vulnerability (CVE, CERT/CC VU#, OSV id, Bugtraq, etc.)"
   {:db/ident :ssvc/hasVulnerability,
    :rdf/type :owl/DatatypeProperty,
    :rdfs/comment
@@ -421,3 +376,22 @@
    :rdfs/domain :ssvc/ComputedScore,
    :rdfs/label "ID",
    :rdfs/range :d3f/Vulnerability})
+
+(def urn:uuid:a834d686-f5ca-589d-83b6-c723be01d5a5
+  {:owl/imports [{:xsd/anyURI "http://d3fend.mitre.org/ontologies/d3fend.owl"}
+                 {:xsd/anyURI "http://docs.oasis-open.org/cti/ns/stix"}
+                 {:xsd/anyURI "http://docs.oasis-open.org/cti/ns/tac"}],
+   :owl/versionInfo "2.03",
+   :prov/wasDerivedFrom
+   [{:xsd/anyURI
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"}
+    {:xsd/anyURI
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}],
+   :rdf/type :owl/Ontology,
+   :rdfs/comment
+   "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers.",
+   :rdfs/label "Stakeholder-Specific Vulnerability Categorization Ontology",
+   :rdfs/seeAlso
+   {:xsd/anyURI
+    "https://resources.sei.cmu.edu/asset_files/WhitePaper/2021_019_001_653461.pdf"},
+   :xsd/anyURI "https://wikipunk.net/ssvc/"})

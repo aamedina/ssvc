@@ -32,8 +32,7 @@
    [net.wikipunk.ssvc.boot :as boot]
    [net.wikipunk.ssvc :as ssvc]
    [net.wikipunk.datomic.boot :as db]
-   [datomic.client.api :as d]
-   [xtdb.api :as xt]))
+   [datomic.client.api :as d]))
 
 (set-init
   (fn [_]
@@ -65,43 +64,6 @@
     (reduce (fn [m [property value]]
               (update m (:db/ident property) (fnil conj #{}) (:db/ident value)))
             {} result)))
-
-(defn transactable
-  "Ensure the metaobject can be transacted into Datomic."
-  [mo]
-  (->> mo
-       (walk/prewalk rdf/unroll-langString)
-       (walk/postwalk (fn [form]
-                        (cond
-                          (and (map-entry? form)
-                               (isa? (key form) :rdf/Property))
-                          (let [k (key form)
-                                v (val form)
-                                v (if (tagged-literal? v)
-                                    (:form v)
-                                    v)]
-                            [k (case (rdf/infer-datomic-type k)
-                                 :db.type/string  (if (map? v)
-                                                    (or (:rdfa/uri v) (pr-str v))
-                                                    (str v))
-                                 :db.type/long    (long v)
-                                 :db.type/double  (double v)
-                                 :db.type/instant (if (string? v)
-                                                    (clojure.instant/read-instant-date v)
-                                                    v)
-                                 :db.type/ref     (mapv (fn [v]
-                                                          (cond
-                                                            (not (or (map? v) (keyword? v)))
-                                                            (rdf/box v)
-                                                            :else v))
-                                                        (if (vector? v)
-                                                          v
-                                                          [v]))
-                                 :db.type/bigint  (bigint v)
-                                 :db.type/bigdec  (bigdec v)
-                                 v)])
-                          :else form)))
-       (walk/prewalk rdf/unroll-blank)))
 
 (comment
   (def license-db

@@ -1,22 +1,20 @@
 (ns net.wikipunk.rdf.tac
-  "Concepts that have been developed and approved at a committee level by the OASIS Threat Actor Context Technical Committee are called TAC TC concepts. TAC TC concepts are incorporated as import statements into the main tac.owl file and thus are part of the core ontology."
-  {:dcat/downloadURL "resources/tac/tac.owl",
-   :owl/imports {:rdfa/uri "http://docs.oasis-open.org/cti/ns/stix"},
-   :private true,
-   :rdf/ns-prefix-map {"owl"  "http://www.w3.org/2002/07/owl#",
-                       "rdf"  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                       "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
-                       "stix" "http://docs.oasis-open.org/cti/ns/stix#",
-                       "tac"  "http://docs.oasis-open.org/tac/ns/tac#",
-                       "xsd"  "http://www.w3.org/2001/XMLSchema#"},
+  ^{:base       "http://docs.oasis-open.org/tac/ns/tac#",
+    :namespaces {"owl"  "http://www.w3.org/2002/07/owl#",
+                 "rdf"  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                 "rdfs" "http://www.w3.org/2000/01/rdf-schema#",
+                 "stix" "http://docs.oasis-open.org/cti/ns/stix#",
+                 "tac"  "http://docs.oasis-open.org/tac/ns/tac#",
+                 "xsd"  "http://www.w3.org/2001/XMLSchema#"},
+    :prefix     "tac",
+    :source     "resources/tac/tac.owl"}
+  {:owl/imports {:xsd/anyURI "http://docs.oasis-open.org/cti/ns/stix"},
    :rdf/type :owl/Ontology,
-   :rdfa/prefix "tac",
-   :rdfa/uri "http://docs.oasis-open.org/tac/ns/tac",
    :rdfs/comment
-   "Concepts that have been developed and approved at a committee level by the OASIS Threat Actor Context Technical Committee are called TAC TC concepts. TAC TC concepts are incorporated as import statements into the main tac.owl file and thus are part of the core ontology."})
+   "Concepts that have been developed and approved at a committee level by the OASIS Threat Actor Context Technical Committee are called TAC TC concepts. TAC TC concepts are incorporated as import statements into the main tac.owl file and thus are part of the core ontology.",
+   :xsd/anyURI "http://docs.oasis-open.org/tac/ns/tac"})
 
 (def Adversary
-  "There has been some ambiguity with respect to the differentiation of stix:IntrusionSet and stix:ThreatActor. They are different, and the tac:Adversary class is intended to clarify the differences."
   {:db/ident :tac/Adversary,
    :rdf/type :owl/Class,
    :rdfs/comment
@@ -55,7 +53,7 @@
   {:db/ident           :tac/hasIntrusionSet,
    :rdf/type           :owl/ObjectProperty,
    :rdfs/range         :stix/IntrusionSet,
-   :rdfs/subPropertyOf [:tac/hasAdversary :tac/topTacObjectProperty]})
+   :rdfs/subPropertyOf :tac/hasAdversary})
 
 (def hasOriginator
   {:db/ident           :tac/hasOriginator,
@@ -67,7 +65,7 @@
   {:db/ident           :tac/hasThreatActor,
    :rdf/type           :owl/ObjectProperty,
    :rdfs/range         :stix/ThreatActor,
-   :rdfs/subPropertyOf [:tac/hasAdversary :tac/topTacObjectProperty]})
+   :rdfs/subPropertyOf :tac/hasAdversary})
 
 (def hasThreatEvent
   {:db/ident :tac/hasThreatEvent,
@@ -84,3 +82,15 @@
 (def topTacObjectProperty
   {:db/ident :tac/topTacObjectProperty,
    :rdf/type :owl/ObjectProperty})
+
+(def ^{:private true} ThreatActor
+  {:db/ident        :stix/ThreatActor,
+   :rdf/type        :rdfs/Class,
+   :rdfs/subClassOf :tac/Adversary})
+
+(def urn:uuid:738e7e4a-cc2e-5ced-81ed-00cfe4851600
+  {:owl/imports {:xsd/anyURI "http://docs.oasis-open.org/cti/ns/stix"},
+   :rdf/type :owl/Ontology,
+   :rdfs/comment
+   "Concepts that have been developed and approved at a committee level by the OASIS Threat Actor Context Technical Committee are called TAC TC concepts. TAC TC concepts are incorporated as import statements into the main tac.owl file and thus are part of the core ontology.",
+   :xsd/anyURI "http://docs.oasis-open.org/tac/ns/tac"})

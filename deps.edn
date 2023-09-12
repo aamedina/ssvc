@@ -1,6 +1,6 @@
 {:deps
  {io.github.aamedina/rdf
-  {:sha     "b2f1912ba648afb5d337f7c3000564b79ac6222a"
+  {:sha     "04aa42683be259030b22053eb9bbae0b2c98379b"
    :git/url "https://github.com/aamedina/rdf.git"}
   org.clojure/tools.deps
   {:mvn/version "0.18.1354"}

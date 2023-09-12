@@ -32,7 +32,8 @@
    [net.wikipunk.ssvc.boot :as boot]
    [net.wikipunk.ssvc :as ssvc]
    [net.wikipunk.datomic.boot :as db]
-   [datomic.client.api :as d]))
+   [datomic.client.api :as d]
+   [asami.core :as asami]))
 
 (set-init
   (fn [_]
@@ -77,4 +78,3 @@
 
 (comment
   (d/pull license-db '[*] [:spdx/licenseId "MIT"]))
-

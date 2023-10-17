@@ -22,6 +22,8 @@
   prov:wasDerivedFrom (
     <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json>
     <https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json>
+    <https://github.com/CERTCC/SSVC/raw/main/data/schema/Decision_Point.schema.json>
+    <https://github.com/CERTCC/SSVC/raw/main/data/schema/Decision_Point_Group.schema.json>
     ) ;
   rdfs:label "Stakeholder-Specific Vulnerability Categorization Ontology" ;
   rdfs:comment  "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers." ;
@@ -254,3 +256,95 @@
   rdfs:label "Yes" ;
   rdfs:comment "Attackers can reliably automate steps 1-4 of the kill chain for this vulnerability." .
 
+:DecisionPointSchema a jsonschema:ObjectSchema ;
+  dcterms:description "Decision points are the basic building blocks of SSVC decision functions. Individual decision points describe a single aspect of the input to a decision function." ;
+  jsonschema:additionalProperties false ;
+  jsonschema:properties 
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "namespace" ;
+      dcterms:description "Namespace (a short, unique string): For example, \"ssvc\" or \"cvss\" to indicate the source of the decision point" ; ] ,
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "version" ;
+      dcterms:description "Version (a semantic version string) that identifies this object" ; ] ,
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "key" ;
+      dcterms:description "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way" ; ] ,
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "name" ;
+      dcterms:description "A short label that captures the description of the Decision Point or the Group of Decision Points." ; ] ,
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "description" ;
+      dcterms:description "Description of the Decision Point or the Group of Decision Points." ; ] ,
+    [ rdf:type jsonschema:ArraySchema ;
+      jsonschema:propertyName "values" ;
+      dcterms:description "Decision Point Values are valid results from a Decision Point" ;
+      jsonschema:uniqueItems true ;
+      jsonschema:items [ rdf:type jsonschema:ObjectSchema ;
+        jsonschema:properties
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "key" ;
+            dcterms:description "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way" ; ] ,
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "name" ;
+            dcterms:description "A short label that captures the description of the Decision Point or the Group of Decision Points." ; ] ,
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "description" ;
+            dcterms:description "Description of the Decision Point or the Group of Decision Points." ; ] ;
+        ] ;
+      ] ;
+  jsonschema:required "namespace", "version", "key", "name", "description", "values" .
+
+:DecisionPointGroupSchema a jsonschema:ObjectSchema ;
+  dcterms:description "Decision Points Group schema definition" ;
+  jsonschema:additionalProperties false ;
+  jsonschema:properties 
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "version" ;
+      dcterms:description "Version (a semantic version string) that identifies this object" ; ] ,
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "name" ;
+      dcterms:description "A short label that captures the description of the Decision Point or the Group of Decision Points." ; ] ,
+    [ rdf:type jsonschema:StringSchema ;
+      jsonschema:propertyName "description" ;
+      dcterms:description "Description of the Decision Point or the Group of Decision Points." ; ] ,
+    [ rdf:type jsonschema:ArraySchema ;
+      jsonschema:propertyName "decision_points" ;
+      dcterms:description "Decision points are the basic building blocks of SSVC decision functions. Individual decision points describe a single aspect of the input to a decision function." ;
+      jsonschema:additionalProperties false ;
+      jsonschema:items [ rdf:type jsonschema:ObjectSchema ;
+        jsonschema:properties
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "namespace" ;
+            dcterms:description "Namespace (a short, unique string): For example, \"ssvc\" or \"cvss\" to indicate the source of the decision point" ; ] ,
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "version" ;
+            dcterms:description "Version (a semantic version string) that identifies this object" ; ] ,
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "key" ;
+            dcterms:description "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way" ; ] ,
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "name" ;
+            dcterms:description "A short label that captures the description of the Decision Point or the Group of Decision Points." ; ] ,
+          [ rdf:type jsonschema:StringSchema ;
+            jsonschema:propertyName "description" ;
+            dcterms:description "Description of the Decision Point or the Group of Decision Points." ; ] ,
+          [ rdf:type jsonschema:ArraySchema ;
+            jsonschema:propertyName "values" ;
+            dcterms:description "Decision Point Values are valid results from a Decision Point" ;
+            jsonschema:uniqueItems true ;
+            jsonschema:items [ rdf:type jsonschema:ObjectSchema ;
+              jsonschema:properties
+                [ rdf:type jsonschema:StringSchema ;
+                  jsonschema:propertyName "key" ;
+                  dcterms:description "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way" ; ] ,
+                [ rdf:type jsonschema:StringSchema ;
+                  jsonschema:propertyName "name" ;
+                  dcterms:description "A short label that captures the description of the Decision Point or the Group of Decision Points." ; ] ,
+                [ rdf:type jsonschema:StringSchema ;
+                  jsonschema:propertyName "description" ;
+                  dcterms:description "Description of the Decision Point or the Group of Decision Points." ; ] ;
+              ] ;
+            ] ;
+          ] ;
+        ] ;
+  jsonschema:required "version", "name", "description", "decision_points" .

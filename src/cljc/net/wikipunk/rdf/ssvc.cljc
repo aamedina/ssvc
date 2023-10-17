@@ -23,7 +23,11 @@
    [{:xsd/anyURI
      "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"}
     {:xsd/anyURI
-     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}],
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}
+    {:xsd/anyURI
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/Decision_Point.schema.json"}
+    {:xsd/anyURI
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/Decision_Point_Group.schema.json"}],
    :rdf/type :owl/Ontology,
    :rdfs/comment
    "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers.",
@@ -103,6 +107,124 @@
    :rdfs/comment
    "A node in the decision tree, including the root node, with a label and two or more options",
    :rdfs/label "Decision Point"})
+
+(def DecisionPointGroupSchema
+  {:db/ident :ssvc/DecisionPointGroupSchema,
+   :dcterms/description "Decision Points Group schema definition",
+   :jsonschema/additionalProperties false,
+   :jsonschema/properties
+   #{{:dcterms/description
+      "A short label that captures the description of the Decision Point or the Group of Decision Points.",
+      :jsonschema/propertyName "name",
+      :rdf/type :jsonschema/StringSchema}
+     {:dcterms/description
+      "Description of the Decision Point or the Group of Decision Points.",
+      :jsonschema/propertyName "description",
+      :rdf/type :jsonschema/StringSchema}
+     {:dcterms/description
+      "Decision points are the basic building blocks of SSVC decision functions. Individual decision points describe a single aspect of the input to a decision function.",
+      :jsonschema/additionalProperties false,
+      :jsonschema/items
+      {:jsonschema/properties
+       #{{:dcterms/description
+          "A short label that captures the description of the Decision Point or the Group of Decision Points.",
+          :jsonschema/propertyName "name",
+          :rdf/type :jsonschema/StringSchema}
+         {:dcterms/description
+          "Namespace (a short, unique string): For example, \"ssvc\" or \"cvss\" to indicate the source of the decision point",
+          :jsonschema/propertyName "namespace",
+          :rdf/type :jsonschema/StringSchema}
+         {:dcterms/description
+          "Description of the Decision Point or the Group of Decision Points.",
+          :jsonschema/propertyName "description",
+          :rdf/type :jsonschema/StringSchema}
+         {:dcterms/description
+          "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way",
+          :jsonschema/propertyName "key",
+          :rdf/type :jsonschema/StringSchema}
+         {:dcterms/description
+          "Decision Point Values are valid results from a Decision Point",
+          :jsonschema/items
+          {:jsonschema/properties
+           #{{:dcterms/description
+              "A short label that captures the description of the Decision Point or the Group of Decision Points.",
+              :jsonschema/propertyName "name",
+              :rdf/type :jsonschema/StringSchema}
+             {:dcterms/description
+              "Description of the Decision Point or the Group of Decision Points.",
+              :jsonschema/propertyName "description",
+              :rdf/type :jsonschema/StringSchema}
+             {:dcterms/description
+              "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way",
+              :jsonschema/propertyName "key",
+              :rdf/type :jsonschema/StringSchema}},
+           :rdf/type :jsonschema/ObjectSchema},
+          :jsonschema/propertyName "values",
+          :jsonschema/uniqueItems true,
+          :rdf/type :jsonschema/ArraySchema}
+         {:dcterms/description
+          "Version (a semantic version string) that identifies this object",
+          :jsonschema/propertyName "version",
+          :rdf/type :jsonschema/StringSchema}},
+       :rdf/type :jsonschema/ObjectSchema},
+      :jsonschema/propertyName "decision_points",
+      :rdf/type :jsonschema/ArraySchema}
+     {:dcterms/description
+      "Version (a semantic version string) that identifies this object",
+      :jsonschema/propertyName "version",
+      :rdf/type :jsonschema/StringSchema}},
+   :jsonschema/required #{"decision_points" "name" "version" "description"},
+   :rdf/type :jsonschema/ObjectSchema})
+
+(def DecisionPointSchema
+  {:db/ident :ssvc/DecisionPointSchema,
+   :dcterms/description
+   "Decision points are the basic building blocks of SSVC decision functions. Individual decision points describe a single aspect of the input to a decision function.",
+   :jsonschema/additionalProperties false,
+   :jsonschema/properties
+   #{{:dcterms/description
+      "A short label that captures the description of the Decision Point or the Group of Decision Points.",
+      :jsonschema/propertyName "name",
+      :rdf/type :jsonschema/StringSchema}
+     {:dcterms/description
+      "Namespace (a short, unique string): For example, \"ssvc\" or \"cvss\" to indicate the source of the decision point",
+      :jsonschema/propertyName "namespace",
+      :rdf/type :jsonschema/StringSchema}
+     {:dcterms/description
+      "Description of the Decision Point or the Group of Decision Points.",
+      :jsonschema/propertyName "description",
+      :rdf/type :jsonschema/StringSchema}
+     {:dcterms/description
+      "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way",
+      :jsonschema/propertyName "key",
+      :rdf/type :jsonschema/StringSchema}
+     {:dcterms/description
+      "Decision Point Values are valid results from a Decision Point",
+      :jsonschema/items
+      {:jsonschema/properties
+       #{{:dcterms/description
+          "A short label that captures the description of the Decision Point or the Group of Decision Points.",
+          :jsonschema/propertyName "name",
+          :rdf/type :jsonschema/StringSchema}
+         {:dcterms/description
+          "Description of the Decision Point or the Group of Decision Points.",
+          :jsonschema/propertyName "description",
+          :rdf/type :jsonschema/StringSchema}
+         {:dcterms/description
+          "A key (a short, unique string) that can be used to identify the Decision Point/Decision Point value in a shorthand way",
+          :jsonschema/propertyName "key",
+          :rdf/type :jsonschema/StringSchema}},
+       :rdf/type :jsonschema/ObjectSchema},
+      :jsonschema/propertyName "values",
+      :jsonschema/uniqueItems true,
+      :rdf/type :jsonschema/ArraySchema}
+     {:dcterms/description
+      "Version (a semantic version string) that identifies this object",
+      :jsonschema/propertyName "version",
+      :rdf/type :jsonschema/StringSchema}},
+   :jsonschema/required #{"values" "key" "name" "version" "namespace"
+                          "description"},
+   :rdf/type :jsonschema/ObjectSchema})
 
 (def DecisionTree
   {:db/ident :ssvc/DecisionTree,
@@ -386,7 +508,11 @@
    [{:xsd/anyURI
      "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Computed_v2.03.schema.json"}
     {:xsd/anyURI
-     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}],
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/SSVC_Provision_v2.03.schema.json"}
+    {:xsd/anyURI
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/Decision_Point.schema.json"}
+    {:xsd/anyURI
+     "https://github.com/CERTCC/SSVC/raw/main/data/schema/Decision_Point_Group.schema.json"}],
    :rdf/type :owl/Ontology,
    :rdfs/comment
    "The SSVC Ontology is a formal representation of the concepts, relationships, and structure of the Stakeholder-Specific Vulnerability Categorization (SSVC) framework. It provides a standardized model to represent decision trees, decision points, options, and computed scores for the prioritization of vulnerability remediation efforts. The ontology enables consistent communication, sharing, and analysis of SSVC scores and related information among different stakeholders, including vulnerability analysts, software developers, and security researchers.",

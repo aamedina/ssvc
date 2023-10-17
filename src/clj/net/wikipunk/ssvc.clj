@@ -42,6 +42,8 @@
     (defmethod rdf/infer-datomic-unique :spdx/licenseId [_] :db.unique/identity)
     (defmethod rdf/infer-datomic-cardinality :spdx/licenseId [_] :db.cardinality/one)
     (defmethod rdf/infer-datomic-type :spdx-core/DateTime [_] :db.type/instant)
+    (defmethod rdf/infer-datomic-cardinality :jsonschema/additionalProperties [_] :db.cardinality/one)
+    (defmethod rdf/infer-datomic-cardinality :jsonschema/uniqueItems [_] :db.cardinality/one)
     (rdf/import-from 'net.wikipunk.rdf.spdx-spec 'net.wikipunk.rdf.spdx-core)
     this)
   (stop [this]
